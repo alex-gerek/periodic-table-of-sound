@@ -49,6 +49,24 @@ class Periodicity:
 
 # ---------------------------------------------------------------- basic tools
 
+def _require(ok: bool, message: str) -> None:
+    """Raise a ValueError that names the parameter and its allowed range."""
+    if not ok:
+        raise ValueError(message)
+
+
+def _samples(name: str, seconds: float, sr: float) -> int:
+    """A duration in seconds as a whole number of samples, at least one."""
+    _require(seconds > 0, f"{name} must be > 0 seconds, got {seconds!r}")
+    n = int(round(seconds * sr))
+    _require(n >= 1, f"{name} = {seconds!r} s is shorter than one sample at sr = {sr!r}")
+    return n
+
+
+def _check_sr(sr: float) -> None:
+    _require(np.isfinite(sr) and sr > 0, f"sr must be a positive sample rate, got {sr!r}")
+
+
 def mono(x: np.ndarray) -> np.ndarray:
     x = np.asarray(x, dtype=np.float64)
     return x.mean(axis=1) if x.ndim == 2 else x
@@ -146,14 +164,24 @@ def pitch_track(x: np.ndarray, sr: int, fmin: float = 30.0, fmax: float = 1000.0
     deepest dip if 1 - d' >= `voiced`. Unlike a plain autocorrelation peak this does not
     lose a voice whose level changes inside the frame, which reverberant vocals do.
     """
+    _check_sr(sr)
+    _require(0 < fmin < fmax, f"need 0 < fmin < fmax, got fmin = {fmin!r}, fmax = {fmax!r}")
     x = mono(x)
-    size, hop = int(frame_s * sr), int(hop_s * sr)
+    size, hop = int(frame_s * sr), _samples("hop_s", hop_s, sr)
+    _require(frame_s > 0 and size >= 2, f"frame_s = {frame_s!r} s must cover at least two samples")
     F = frames(x, size, hop)
     if len(F) == 0:                      # shorter than one frame: no pitch can be measured
         return np.zeros(0), np.zeros(0)
     lo, hi = int(np.floor(sr / fmax)), min(int(np.ceil(sr / fmin)), size // 2)
     nfft = 1 << int(np.ceil(np.log2(2 * size)))
-    rms = np.sqrt((F ** 2).mean(axis=1))
+    # The silence gate looks at the energy that can carry a period: the mean is removed
+    # first. A constant (DC) frame then has no energy and stays unvoiced; measuring the RMS
+    # before removing the mean let it through, and its all-zero difference function read
+    # as a perfect period at the shortest lag (fmax).
+    rms = np.sqrt(((F - F.mean(axis=1, keepdims=True)) ** 2).mean(axis=1))
+    # what is left of a constant frame after removing its mean is rounding noise, about
+    # 1e-16 of its raw level; anything below 1e-8 of the raw level counts as no variation
+    rms[rms <= 1e-8 * np.sqrt((F ** 2).mean(axis=1))] = 0.0
     floor = rms.max() * 10 ** (silence_db / 20) if rms.max() > 0 else np.inf
     out = np.full(len(F), np.nan)
     good = np.where(rms > floor)[0]
@@ -213,8 +241,10 @@ def clean_cents(cents: np.ndarray, fs: float, max_dev: float = 150.0, med_s: flo
 
 
 def stft_power(x: np.ndarray, sr: int, size: int = 1024, hop_s: float = 0.005):
+    _check_sr(sr)
+    _require(int(size) >= 2, f"size must be at least 2 samples, got {size!r}")
     x = mono(x)
-    hop = int(round(hop_s * sr))
+    hop = _samples("hop_s", hop_s, sr)
     F = frames(np.pad(x, (size // 2, size // 2)), size, hop) * np.hanning(size)
     return np.abs(np.fft.rfft(F, axis=1)) ** 2, sr / hop
 
@@ -240,19 +270,26 @@ def onset_envelope(x: np.ndarray, sr: int, hop_s: float = 0.005):
 
 
 def level_track(x: np.ndarray, sr: int, hop_s: float = 0.01, detrend_s: float = 4.0):
-    """Level in dB per hop with the slow trend removed. Returns (track, fs)."""
+    """Level in dB per hop with the slow trend removed. Returns (track, fs).
+
+    The trend is a moving average over detrend_s that averages only the hops that exist.
+    A plain zero-padded moving average is pulled towards 0 near both ends, and on a
+    steady level it leaves a false slope of up to 60 dB in the first and last seconds.
+    """
+    _check_sr(sr)
+    _require(detrend_s > 0, f"detrend_s must be > 0 seconds, got {detrend_s!r}")
     x = mono(x)
-    hop = int(hop_s * sr)
+    hop = _samples("hop_s", hop_s, sr)
+    fs = sr / hop
     F = frames(x, hop, hop)
     if len(F) == 0:
-        return np.zeros(0), 1 / hop_s
+        return np.zeros(0), fs
     lv = 10 * np.log10((F ** 2).mean(axis=1) + 1e-12)
     lv = np.maximum(lv, lv.max() - 60)
-    # the detrend window can never be longer than the track itself; with np.convolve
-    # "same", a longer window would return an array of the window's length
-    k = max(1, min(int(detrend_s / hop_s), len(lv)))
-    trend = np.convolve(lv, np.ones(k) / k, mode="same")
-    return lv - trend, 1 / hop_s
+    k = max(1, min(int(round(detrend_s * fs)), len(lv)))   # never longer than the track
+    window = np.ones(k)
+    trend = np.convolve(lv, window, mode="same") / np.convolve(np.ones_like(lv), window, mode="same")
+    return lv - trend, fs
 
 
 def frame_features(x: np.ndarray, sr: int, hop_s: float = 0.1):
@@ -347,8 +384,11 @@ def compress_time(x: np.ndarray, k: int) -> np.ndarray:
     then every k-th sample is kept. Every time in the signal shrinks by k, so every
     element moves down by log2(k) in Z.
     """
+    _require(isinstance(k, (int, np.integer)) and k >= 1, f"k must be a whole number >= 1, got {k!r}")
     x = mono(x)
     n = len(x)
+    if n == 0:
+        return np.zeros(0)
     X = np.fft.rfft(x)
     X[len(X) // k:] = 0
     return np.fft.irfft(X, n)[::k]

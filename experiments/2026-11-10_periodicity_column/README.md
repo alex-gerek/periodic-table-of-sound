@@ -18,7 +18,9 @@ The headline count in `results.md` (23 of 27 in the predicted row) mixes both ki
 ## What held
 
 1. **The time-compression test passes on real drums.** 32 seconds of each drum stem were played 32 times faster. The pitch detector, a waveform tool, found periods that, multiplied back by 32, are exactly 2.00, 2.00 and 1.00 pulses of the original, within 0.3%. The detector found the kick-snare pattern (two beats) on GRAVITY and Metro and the pulse itself on Pure voltage. The same column, exactly 5 octaves of Z lower: this is the column law on real music, not on a synthetic click train.
-2. **The second-order element confirms itself.** Sidechain pump was searched freely, from 50 ms to 4 s, in the level track of the bass stem. Where pumping exists, it equals the drum pulse measured from a different stem and a different track type: 502.7 vs 504.3 ms on GRAVITY and 536.5 vs 538.3 ms on Pure voltage (0.3%). It lands in row 4 as predicted. Metro's bass shows no pump (r = 0.10), which is a correct negative.
+2. **The second-order element confirms itself.** Sidechain pump was searched freely, from 50 ms to 4 s, in the level track of the bass stem. Where pumping exists, it nests in the drum pulse measured from a different stem and a different track type. On GRAVITY it equals the pulse: 502.8 vs 504.3 ms (0.3%). It lands in row 4 as predicted. Metro's bass shows no pump (r = 0.10), which is a correct negative.
+
+   **Corrected on 2026-11-11 (issue #5).** On Pure voltage the bass level repeats most strongly every **two** pulses (1.072 s, r = 0.49), and less strongly every pulse (0.537 s, r = 0.37). The first run reported one pulse, but only because that candidate sat just above the 0.9 threshold of the peak rule. After the level track stopped dipping at both ends of the recording, the two-pulse repeat became slightly cleaner, and the rule now picks it: 1.072 vs 1.077 s (two pulses), ratio 1.991. The pump on this track is therefore ambiguous between one and two beats. The nesting in whole pulses holds either way. The earlier claim "equal to the pulse on two tracks" was too strong; it holds on one track.
 3. **The periods of one track nest as whole numbers.** Pulse/Subdivision is 4.03 and 2.00. Meter/Pulse is 4.00, 8.00 and 3.98. The worst case is 0.6% off an integer.
 4. **Pitch ranges.** Bass sits at Z 8.5 to 9.7 and the lead vocal at Z 5.1 to 8.7 (10th to 90th percentile). Both are in the Tone row, except the highest vocal notes on Pure voltage. Above 500 Hz they cross into Wave, as the Z rule says they should.
 
@@ -35,7 +37,7 @@ The headline count in `results.md` (23 of 27 in the predicted row) mixes both ki
 
 ## Status after this step
 
-- **Periodicity column law: supported on real data.** The compression test passes, the nesting check passes, and Sidechain = Pulse.
+- **Periodicity column law: supported on real data.** The compression test passes and the nesting check passes. Sidechain pump nests in the pulse on both tracks with pumping: one pulse on GRAVITY, two pulses on Pure voltage (see the correction above).
 - **Period borders: one border (Z 16) conflicts with real bars.** It needs a decision.
 - **Vibrato:** the detector is calibrated on real voices. Natural vibrato material is needed (see `data/material_request.md`).
 - **Loop and Repetition:** the definition is not good enough yet.
