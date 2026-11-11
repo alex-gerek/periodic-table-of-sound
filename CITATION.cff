@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "Periodic Table of Sound"
+abstract: "A periodic table of musical elements ordered by time octave Z, measured on real recordings, with a sound collider for predicted elements."
+authors:
+  - family-names: "Gerek"
+    given-names: "Lex"
+version: "0.3.0"
+date-released: "2026-11-11"
+license: MIT
+repository-code: "https://github.com/alex-gerek/periodic-table-of-sound"
+keywords:
+  - music information retrieval
+  - audio analysis
+  - rhythm
+  - pitch
+  - periodicity
