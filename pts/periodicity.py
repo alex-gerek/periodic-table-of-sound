@@ -27,6 +27,9 @@ import numpy as np
 from .zscale import z_of, period_of
 
 RULE = 0.9
+# A sequence counts as flat when its variance is below this share of its mean square:
+# far below any real signal, well above the rounding noise left after removing the mean.
+_FLAT = 1e-20
 
 
 @dataclass
@@ -52,11 +55,21 @@ def mono(x: np.ndarray) -> np.ndarray:
 
 
 def autocorr(x: np.ndarray, max_lag: int, unbiased: bool = True) -> np.ndarray:
-    """Autocorrelation r[0..max_lag] of a mean-removed sequence, r[0] = 1."""
-    x = np.asarray(x, dtype=np.float64)
-    x = x - x.mean()
+    """Autocorrelation r[0..max_lag] of a mean-removed sequence, r[0] = 1.
+
+    A sequence with nothing to correlate (fewer than two values, or no variation at all)
+    gives zeros: there is no periodicity in it, and dividing by its zero energy would
+    only produce noise or NaN.
+    """
+    x = np.asarray(x, dtype=np.float64).ravel()
     n = len(x)
-    max_lag = min(max_lag, n - 1)
+    if n < 2:
+        return np.zeros(1)
+    max_lag = max(0, min(max_lag, n - 1))
+    ref = np.mean(x ** 2)
+    x = x - x.mean()
+    if not np.mean(x ** 2) > _FLAT * ref:
+        return np.zeros(max_lag + 1)
     nfft = 1 << int(np.ceil(np.log2(2 * n)))
     spec = np.fft.rfft(x, nfft)
     r = np.fft.irfft(spec * np.conj(spec), nfft)[: max_lag + 1]
@@ -110,7 +123,11 @@ def pick_period(r: np.ndarray, fs: float, tau_lo: float, tau_hi: float, rule: fl
 
 
 def frames(x: np.ndarray, size: int, hop: int) -> np.ndarray:
-    n = 1 + max(0, (len(x) - size) // hop)
+    """Overlapping frames of length size, every hop samples. A signal shorter than one
+    frame gives no frames (shape (0, size)) rather than a frame that runs past its end."""
+    if len(x) < size:
+        return np.zeros((0, size), dtype=np.asarray(x).dtype)
+    n = 1 + (len(x) - size) // hop
     idx = np.arange(size)[None, :] + hop * np.arange(n)[:, None]
     return x[idx]
 
@@ -132,6 +149,8 @@ def pitch_track(x: np.ndarray, sr: int, fmin: float = 30.0, fmax: float = 1000.0
     x = mono(x)
     size, hop = int(frame_s * sr), int(hop_s * sr)
     F = frames(x, size, hop)
+    if len(F) == 0:                      # shorter than one frame: no pitch can be measured
+        return np.zeros(0), np.zeros(0)
     lo, hi = int(np.floor(sr / fmax)), min(int(np.ceil(sr / fmin)), size // 2)
     nfft = 1 << int(np.ceil(np.log2(2 * size)))
     rms = np.sqrt((F ** 2).mean(axis=1))
@@ -225,9 +244,13 @@ def level_track(x: np.ndarray, sr: int, hop_s: float = 0.01, detrend_s: float = 
     x = mono(x)
     hop = int(hop_s * sr)
     F = frames(x, hop, hop)
+    if len(F) == 0:
+        return np.zeros(0), 1 / hop_s
     lv = 10 * np.log10((F ** 2).mean(axis=1) + 1e-12)
     lv = np.maximum(lv, lv.max() - 60)
-    k = max(1, int(detrend_s / hop_s))
+    # the detrend window can never be longer than the track itself; with np.convolve
+    # "same", a longer window would return an array of the window's length
+    k = max(1, min(int(detrend_s / hop_s), len(lv)))
     trend = np.convolve(lv, np.ones(k) / k, mode="same")
     return lv - trend, 1 / hop_s
 
@@ -246,13 +269,20 @@ def lag_similarity(F: np.ndarray, max_lag: int) -> np.ndarray:
     The multichannel version of the autocorrelation: the sum over bands of each band's
     autocorrelation.
     """
+    F = np.asarray(F, dtype=np.float64)
+    if F.ndim != 2 or F.shape[0] < 2:
+        return np.zeros(1)
     n, d = F.shape
-    max_lag = min(max_lag, n - 1)
+    max_lag = max(0, min(max_lag, n - 1))
+    ref = np.mean(F ** 2)
+    G = F - F.mean(axis=0)
+    if not np.mean(G ** 2) > _FLAT * ref:          # constant frames: nothing repeats
+        return np.zeros(max_lag + 1)
     nfft = 1 << int(np.ceil(np.log2(2 * n)))
-    S = np.fft.rfft(F - F.mean(axis=0), nfft, axis=0)
+    S = np.fft.rfft(G, nfft, axis=0)
     r = np.fft.irfft((S * np.conj(S)).sum(axis=1), nfft)[: max_lag + 1]
     r = r / (n - np.arange(max_lag + 1))
-    return r / r[0]
+    return r / r[0] if r[0] > 0 else np.zeros_like(r)
 
 
 # ---------------------------------------------------------------- the elements
