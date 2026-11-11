@@ -156,6 +156,11 @@ function refresh() {
     document.getElementById("el-" + e.k).classList.toggle("off", !e.on);
     document.getElementById("z-" + e.k).textContent = x[e.k] ? `τ ${fmtT(x[e.k])} · Z ${zOf(x[e.k]).toFixed(2)} · row ${rowOf(zOf(x[e.k]))}` : "";
   });
+  // results belong to the recipe that produced them: any change clears them
+  if (Object.keys(lastFound).length || Object.keys(controls).length) {
+    lastFound = {}; controls = {};
+    document.getElementById("res").innerHTML = `<tr><td colspan="5" class="mut">The recipe changed. Press Collide to measure it.</td></tr>`;
+  }
   drawMini(x, lastFound);
 }
 const fmtT = t => t < 1 ? (t * 1000).toFixed(0) + " ms" : t.toFixed(2) + " s";
@@ -277,17 +282,19 @@ function detectRhythm(st) {
   const e = []; for (let i = 0; i + W <= x.length; i += hop) e.push(Math.pow(cs[i + W] - cs[i], 0.3));
   const env = e.map((v, i) => i ? Math.max(v - e[i - 1], 0) : 0);
   const r = autocorr(env, Math.round(8.5 * fs));
-  // PROVISIONAL rules, sandbox only (not used for official results):
-  // pulse = the shortest peak between 0.25 and 2 s whose value is at least half of the
-  //         highest peak there (the finest level that is still a clear repeat);
-  // meter = the n in 2..7 where r(n * pulse) is highest (the shortest n on a tie),
-  //         reported only if it repeats clearly more strongly than the pulse itself.
+  // PROVISIONAL rule, sandbox only (not used for official results):
+  // pulse = the shortest peak between 0.25 and 2 s whose comb score (mean over its first
+  //         four multiples) is at least 0.8 of the best comb score. A fill raises the
+  //         half-beat once but not at its odd multiples, so the half-beat scores lower.
+  //         0.8 sits in the middle of the range (0.8-0.85) that was right at all 15
+  //         settings of the sandbox check; 0.75 and 0.9 each failed some.
   const a = Math.ceil(0.25 * fs), b = Math.floor(2 * fs), pk = [];
   for (let k = a; k <= b; k++) if (r[k] > r[k - 1] && r[k] >= r[k + 1] && r[k] > 0) pk.push(k);
   if (!pk.length) return { Pu: null, Me: null };
   const top = Math.max(...pk.map(k => r[k]));
   if (top < 0.3) return { Pu: null, Me: null };
-  const k0 = pk.find(k => r[k] >= 0.5 * top), A = r[k0 - 1], Bv = r[k0], C = r[k0 + 1], den = A - 2 * Bv + C;
+  const csc = pk.map(k => comb(r, k, 4)), bestC = Math.max(...csc);
+  const k0 = pk[csc.findIndex(c => c >= 0.8 * bestC)], A = r[k0 - 1], Bv = r[k0], C = r[k0 + 1], den = A - 2 * Bv + C;
   const pu = (k0 + (den < 0 ? 0.5 * (A - C) / den : 0)) / fs;
   // meter = periodicity of the accent pattern: the strength of every beat on the pulse
   // grid, autocorrelated in whole beats. Equal beats (no accents) give no meter.
@@ -349,7 +356,8 @@ function detectVariation(rd) {
   // variation exists if some bars clearly stand out; it has a period only if those bars sit on
   // an exact grid: at least 80% of them on one arithmetic step, and that step filled for 80%
   const mx = Math.max(...d), thr = 0.5 * mx, H = d.map((x, i) => x > thr ? i : -1).filter(i => i >= 0);
-  if (mx < 0.05 || H.length < 2) return null;
+  // 0.1: fills give 0.17-0.19, timing noise without fills reaches about 0.07 at slow tempos
+  if (mx < 0.1 || H.length < 2) return null;
   const extraA = `${H.length} of ${d.length} bars differ`;
   let bestP = null;
   for (let p = 2; p <= Math.min(12, Math.floor(d.length / 3)); p++) for (let o = 0; o < p; o++) {
@@ -468,7 +476,10 @@ document.getElementById("go").onclick = async () => {
   play(["Rhythm", "Melody", "Pad"]);
 };
 document.getElementById("ctl").onclick = async () => {
-  const act = EL.filter(e => e.on).map(e => e.k); controls = {};
+  const act = EL.filter(e => e.on).map(e => e.k);
+  status("Measuring the full recipe first…");
+  const full = await collide(); lastFound = full.found; lastStems = full.stems; controls = {}; showResults(); drawWave(full.stems);
+  document.getElementById("play").disabled = false;
   for (const k of act) {
     status(`Control: everything except ${k}…`);
     const res = await collide(val, j => on(j) && j !== k);

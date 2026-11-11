@@ -17,13 +17,19 @@ This is a sandbox for listening and exploring. Official results come only from `
 
 ## Check on 2026-11-11 (in the browser)
 
-- **Pulse:** correct at every setting without fills, from 60 to 200 BPM. With loud fills the pulse may come out as the half-beat (100/4 and 80/4). The bar and phrase lengths are still right.
-- **Meter:** correct at 8 of 8 settings (2, 3, 4, 5, 6 and 7 beats, 66 to 200 BPM). No meter is reported for the 3 rhythms without accents.
-- **Variation, fills at the end of each phrase:** the period is found at 6 of 7 settings (2, 3, 4 and 8 bars, 100 to 174 BPM). The one miss is an 8-bar phrase at 90 BPM, where fewer than three phrases fit into the sound.
-- **Variation, random fills:** reported as variation without a period at 4 of 4 settings, so no false periods.
-- **No fills:** no variation at 2 of 2 settings.
-- **Vibrato, Spatial motion and Width arc** are found at the set rate or length at every setting.
-- **Controls:** each of the six elements disappears when it is removed.
+A battery of 18 settings, from 60 to 200 BPM in 2 to 7 beats per bar, with no fills, fills of one or two beats every 4 bars, and random fills. Pulse, meter and variation must all be right for a setting to pass.
+
+- **18 of 18 settings pass.**
+- **Pulse:** the comb rule picks the beat even when fills make the half-beat loud. The previous rule failed at 100/4 and 80/4 with fills.
+- **Meter:** 2 to 7 beats are correct, and no meter is reported for a rhythm without accents.
+- **Variation:** fills every 4 bars give exactly 4 bars, including one-beat fills. Random fills give variation without a period. A rhythm without fills gives no variation; the threshold is 0.1, because fills reach 0.17 to 0.19 and timing noise reaches about 0.07 at slow tempos.
+- **Vibrato, Spatial motion and Width arc** are found at the set rate or length.
+- **Controls:** with all six elements on, each one disappears when it is removed.
+- **Results follow the recipe.** Changing any dial or checkbox clears the old results, and *Run controls* measures the full recipe first.
+
+Known limits:
+- An 8-bar phrase needs at least three phrases in the sound to be proven.
+- Thresholds were chosen on this battery, so they are sandbox rules, not results.
 
 ## How to hear Variation
 
