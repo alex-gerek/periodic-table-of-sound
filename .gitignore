@@ -1,0 +1,15 @@
+# Audio and large data stay out of git (see data/README.md)
+data/stems/
+*.wav
+*.flac
+*.mp3
+*.zip
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Generated results that can be rebuilt
+experiments/**/out/
+.pytest_cache/

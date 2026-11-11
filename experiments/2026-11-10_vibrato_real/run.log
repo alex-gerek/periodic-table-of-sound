@@ -1,0 +1,19 @@
+Soprano, Suno (lead vocal stem) {'held_notes': 58, 'vibrato_notes': 9, 'held_seconds': 58.0, 'share': 0.15517241379310345, 'rate_median': 5.67470882308452, 'rate_p10': 5.476798008428766, 'rate_p90': 6.050833415569168, 'depth_median': 30.301633227056804, 'depth_p10': 24.191513308718054, 'depth_p90': 33.976802063391936, 'tau': 0.17622049539035983, 'z': 12.49545363231349, 'row': 3, 'kind': 'solo', 'voiced_share': 0.4966915995397008, 'duration_s': 69.56}
+Baritone, Suno (lead vocal stem) {'held_notes': 43, 'vibrato_notes': 5, 'held_seconds': 42.56, 'share': 0.10714285714285715, 'rate_median': 5.8392947671435955, 'rate_p10': 5.499938917179228, 'rate_p90': 6.468964420871716, 'depth_median': 39.86048724750408, 'depth_p10': 30.11309341568132, 'depth_p90': 65.05200992268122, 'tau': 0.171253557129326, 'z': 12.45420585989845, 'row': 3, 'kind': 'solo', 'voiced_share': 0.5032660332541568, 'duration_s': 67.4}
+Violin, Bach Partita 3 (Telmanyi, historic, solo) {'held_notes': 444, 'vibrato_notes': 58, 'held_seconds': 389.36, 'share': 0.13373227861105402, 'rate_median': 6.544203089513845, 'rate_p10': 6.054438877523637, 'rate_p90': 6.958882702591835, 'depth_median': 13.223233631594056, 'depth_p10': 9.270926965972167, 'depth_p90': 20.6744642069739, 'tau': 0.1528069936586103, 'z': 12.289782479151866, 'row': 3, 'kind': 'solo', 'voiced_share': 0.7537290269179701, 'duration_s': 1159.8658503401361}
+Violin, Salut d'amour (Salvador, with piano) {'held_notes': 0, 'vibrato_notes': 0, 'held_seconds': 0, 'share': 0.0, 'kind': 'mix', 'voiced_share': 0.21993064427815295, 'duration_s': 164.41469387755103}
+Cello, The Swan (with orchestra) {'held_notes': 16, 'vibrato_notes': 0, 'held_seconds': 11.69, 'share': 0.0, 'kind': 'mix', 'voiced_share': 0.4633211070356786, 'duration_s': 179.98367346938775}
+Piano, Moonlight Adagio (control) {'held_notes': 93, 'vibrato_notes': 0, 'held_seconds': 78.91, 'share': 0.0, 'kind': 'control', 'voiced_share': 0.6617936044780564, 'duration_s': 335.9085714285714}
+# Natural vibrato in real recordings
+
+Gate for a vibrato note (the same for every recording): r ≥ 0.5, depth ≥ 8 cents, rate 4.0–8.5 Hz. A held note is a voiced run of at least 0.6 s; it is cut into 1 s windows (step 0.5 s) and each window is judged on its own.
+
+| Recording | Kind | Held-note time | Share of it with vibrato | Rate, median (10–90%) | Depth in cents, median (10–90%) | Z of the period | Row |
+|---|---|---|---|---|---|---|---|
+| Soprano, Suno (lead vocal stem) | solo | 58 s | 16% | 5.67 Hz (5.48–6.05) | ±30 (24–34) | 12.50 | 3 |
+| Baritone, Suno (lead vocal stem) | solo | 43 s | 11% | 5.84 Hz (5.50–6.47) | ±40 (30–65) | 12.45 | 3 |
+| Violin, Bach Partita 3 (Telmanyi, historic, solo) | solo | 389 s | 13% | 6.54 Hz (6.05–6.96) | ±13 (9–21) | 12.29 | 3 |
+| Violin, Salut d'amour (Salvador, with piano) | mix | 0 s | 0% | – | – | – | – |
+| Cello, The Swan (with orchestra) | mix | 12 s | 0% | – | – | – | – |
+| Piano, Moonlight Adagio (control) | control | 79 s | 0% | – | – | – | – |
+| ↳ same piano + 15 cents at 5.5 Hz written in | control | 75 s | 26% | 5.51 Hz (5.34–5.67) | ±14 (12–19) | 12.54 | 3 |

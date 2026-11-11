@@ -1,0 +1,5 @@
+One line per file: file name | performer, work | source URL | licence (public domain / CC BY / CC0 ...)
+cello_swan_saint-saens_seattle-youth-so.mp3 | Seattle Youth Symphony Orchestra, Saint-Saens - The Carnival of the Animals XIII. The Swan | Musopen (URL to add) | CC BY-SA
+violin_salut-d-amour_elgar_salvador.mp3 | Emanuel Salvador, Elgar - Salut d'amour, Op. 12 | Musopen, IMSLP #164477 | CC BY
+piano_moonlight-adagio_beethoven_control.mp3 | Beethoven - Piano Sonata No. 14 Op. 27 No. 2, I. Adagio sostenuto, Musopen catalogue (negative control: a piano cannot play vibrato) | Musopen (URL to add) | Public Domain
+violin_bach-partita3_telmanyi.mp3 | Emil Telmanyi, Bach - Violin Partita No. 3, BWV 1006 (historic recording; mostly fast movements, sustained notes mainly in II. Loure) | Musopen (URL to add) | Public Domain

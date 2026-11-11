@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sound Collider</title>
+<style>
+/* Layout: three panels like a beamline: table (source) -> recipe (collider) -> detector. */
+:root {
+  --bg: #f2f3f6; --panel: #ffffff; --ink: #12141b; --muted: #5d6474; --line: #d9dce4;
+  --period: #e8761a; --space: #1f8fd0; --irreg: #6b7a90; --ok: #1a9a5b; --bad: #d23b4b; --want: #b98a00;
+  --mono: "JetBrains Mono", Consolas, monospace; --body: "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root {
+  --bg: #0c0e14; --panel: #151924; --ink: #eef1f7; --muted: #9aa3b5; --line: #273041;
+  --period: #fb923c; --space: #38bdf8; --irreg: #94a3b8; --ok: #34d399; --bad: #f87171; --want: #facc15; color-scheme: dark } }
+* { box-sizing: border-box }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 var(--body); }
+.wrap { max-width: 1500px; margin: 0 auto; padding: 22px 18px 40px; }
+h1 { margin: 0 0 4px; font-size: 26px; letter-spacing: .02em; }
+.lede { color: var(--muted); margin: 0 0 16px; max-width: 95ch; }
+.grid { display: grid; grid-template-columns: minmax(260px, 340px) minmax(380px, 1fr) minmax(360px, 1fr); gap: 14px; align-items: start; }
+@media (max-width: 1100px) { .grid { grid-template-columns: 1fr; } }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; min-width: 0; }
+.card h2 { margin: 0 0 10px; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.mini { display: grid; grid-template-columns: 54px repeat(6, 1fr); gap: 3px; font-family: var(--mono); font-size: 10.5px; }
+.mini div { min-height: 34px; border-radius: 4px; display: flex; align-items: center; justify-content: center; text-align: center; gap: 3px; flex-wrap: wrap; }
+.mini .h { color: var(--muted); min-height: 22px; }
+.mini .rh { justify-content: flex-start; color: var(--muted); }
+.mini .c { background: color-mix(in srgb, var(--line) 40%, transparent); }
+.tag { padding: 1px 4px; border-radius: 3px; font-weight: 700; }
+.tag.want { border: 1.5px dashed var(--want); color: var(--want); }
+.tag.got { background: var(--ok); color: var(--panel); }
+.tag.gotx { background: var(--bad); color: var(--panel); }
+.legend { font-size: 12px; color: var(--muted); margin-top: 8px; display: grid; gap: 3px; }
+.el { border: 1px solid var(--line); border-left: 5px solid var(--fam); border-radius: 8px; padding: 10px 12px; margin-bottom: 10px; }
+.el header { display: flex; align-items: center; gap: 8px; }
+.el header b { font-size: 15px; } .el header .sym { font-family: var(--mono); color: var(--fam); font-weight: 700; }
+.el header .z { margin-left: auto; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.el .hint { font-size: 12.5px; color: var(--muted); margin: 2px 0 6px; }
+.row { display: grid; grid-template-columns: 120px 1fr 70px; gap: 8px; align-items: center; font-size: 13px; }
+.row output { font-family: var(--mono); text-align: right; }
+input[type=range] { width: 100%; }
+.el.off { opacity: .5; }
+.btns { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+button { font: inherit; border-radius: 7px; padding: 8px 14px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); cursor: pointer; }
+button.main { background: var(--period); border-color: var(--period); color: #fff; font-weight: 600; }
+button:disabled { opacity: .5; cursor: default; }
+button:focus-visible, input:focus-visible { outline: 2px solid var(--space); outline-offset: 2px; }
+table.res { width: 100%; border-collapse: collapse; font-size: 13px; }
+table.res th { text-align: left; font-weight: 600; color: var(--muted); font-size: 11.5px; text-transform: uppercase; letter-spacing: .05em; padding: 4px 6px; border-bottom: 1px solid var(--line); }
+table.res td { padding: 6px; border-bottom: 1px solid var(--line); vertical-align: top; font-variant-numeric: tabular-nums; }
+.yes { color: var(--ok); font-weight: 700 } .no { color: var(--bad); font-weight: 700 } .mut { color: var(--muted) }
+.status { font-family: var(--mono); font-size: 12.5px; color: var(--muted); min-height: 1.5em; margin-top: 8px; }
+.note { font-size: 12.5px; color: var(--muted); margin-top: 10px; }
+canvas { width: 100%; height: 70px; display: block; margin-top: 8px; background: color-mix(in srgb, var(--line) 30%, transparent); border-radius: 6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Sound Collider</h1>
+  <p class="lede">A sandbox. Pick elements and set their dials, then collide: the page builds the sound from scratch and plays it. Our detectors then search it without being told the recipe. A control run removes one element at a time, and the detector must stop finding it. This is for listening and exploring; official results still come from the Python code in <code>pts/</code>.</p>
+
+  <div class="grid">
+    <section class="card">
+      <h2>Table · expected and found</h2>
+      <div class="mini" id="mini"></div>
+      <div class="legend">
+        <span><span class="tag want">Pu</span> expected from the recipe</span>
+        <span><span class="tag got">Pu</span> found in the predicted cell</span>
+        <span><span class="tag gotx">Pu</span> found in another cell</span>
+      </div>
+      <canvas id="wave" width="600" height="70" aria-label="Waveform of the mix"></canvas>
+    </section>
+
+    <section class="card">
+      <h2>Collider · recipe</h2>
+      <div id="recipe"></div>
+      <div class="btns">
+        <button class="main" id="go">Collide</button>
+        <button id="ctl">Run controls</button>
+        <button id="play" disabled>Play mix</button>
+        <button id="stop" disabled>Stop</button>
+      </div>
+      <div class="btns" id="solo"></div>
+      <div class="status" id="status">Ready.</div>
+    </section>
+
+    <section class="card">
+      <h2>Detector</h2>
+      <table class="res"><thead><tr><th>Element</th><th>Expected</th><th>Found</th><th>Cell</th><th>Control</th></tr></thead><tbody id="res"><tr><td colspan="5" class="mut">Collide to see results.</td></tr></tbody></table>
+      <p class="note">Detectors: Pulse and Meter from the onset envelope of the rhythm stem; Vibrato from the pitch track of the melody stem; Spatial motion from the left–right balance of the melody; Width arc from the side-to-mid energy of the pad. Each works on its stem, as with the Suno stems, and never reads the recipe.</p>
+    </section>
+  </div>
+</div>
+
+<script>
+"use strict";
+const SR = 22050;                                         // enough for these sounds, fast to analyse
+const CUTS = [6, 10.7, 13, 16, 18, 20];
+const PERIODS = ["Wave", "Tone", "Event", "Beat", "Bar", "Phrase", "Form"];
+const GROUPS = ["Level", "Period.", "Irreg.", "Change", "Makeup", "Space"];
+const zOf = t => Math.log2(t) + 15;
+const rowOf = z => 1 + CUTS.filter(c => z >= c).length;
+
+// ---------------------------------------------------------------- recipe
+const EL = [
+  { k: "Pu", name: "Pulse", g: 1, fam: "var(--period)", on: true, hint: "A kick on every beat, a hat between.",
+    dials: [["bpm", "Tempo", 60, 200, 1, 120, "BPM"]] },
+  { k: "Me", name: "Meter", g: 1, fam: "var(--period)", on: true, hint: "An accented kick and a low bass note on beat 1 of every bar.",
+    dials: [["beats", "Beats per bar", 2, 7, 1, 3, ""]] },
+  { k: "Vb", name: "Vibrato", g: 1, fam: "var(--period)", on: true, hint: "A swing in the pitch of the held melody notes.",
+    dials: [["rate", "Rate", 3, 9, 0.1, 5.5, "Hz"], ["depth", "Depth", 5, 100, 1, 40, "cents"]] },
+  { k: "Va", name: "Variation", g: 2, fam: "var(--irreg)", on: true, hint: "Predicted cell. A drum fill changes the last bar of every phrase, or random bars if Random is 1.",
+    dials: [["bars", "Phrase", 2, 8, 1, 4, "bars"], ["fill", "Fill length", 1, 4, 1, 2, "beats"], ["random", "Random", 0, 1, 1, 0, ""]] },
+  { k: "Sp", name: "Spatial motion", g: 5, fam: "var(--space)", on: true, hint: "Predicted cell. The melody travels left to right and back once per cycle.",
+    dials: [["bars", "Cycle", 1, 8, 1, 2, "bars"]] },
+  { k: "Wa", name: "Width arc", g: 5, fam: "var(--space)", on: true, hint: "Predicted cell. The pad opens from mono to wide, then starts again.",
+    dials: [["bars", "Opens over", 2, 16, 1, 8, "bars"]] },
+];
+const val = {}; EL.forEach(e => e.dials.forEach(d => val[e.k + "." + d[0]] = d[5]));
+const R = document.getElementById("recipe");
+R.innerHTML = EL.map(e => `<div class="el" id="el-${e.k}" style="--fam:${e.fam}">
+  <header><input type="checkbox" id="on-${e.k}" ${e.on ? "checked" : ""} aria-label="Use ${e.name}"><span class="sym">${e.k}</span><b>${e.name}</b><span class="z" id="z-${e.k}"></span></header>
+  <div class="hint">${e.hint}</div>
+  ${e.dials.map(d => `<div class="row"><label for="d-${e.k}-${d[0]}">${d[1]}</label><input type="range" id="d-${e.k}-${d[0]}" min="${d[2]}" max="${d[3]}" step="${d[4]}" value="${d[5]}"><output id="o-${e.k}-${d[0]}">${d[5]} ${d[6]}</output></div>`).join("")}
+</div>`).join("");
+EL.forEach(e => {
+  document.getElementById("on-" + e.k).addEventListener("change", ev => { e.on = ev.target.checked; refresh(); });
+  e.dials.forEach(d => document.getElementById(`d-${e.k}-${d[0]}`).addEventListener("input", ev => {
+    val[e.k + "." + d[0]] = +ev.target.value; document.getElementById(`o-${e.k}-${d[0]}`).textContent = `${ev.target.value} ${d[6]}`; refresh(); }));
+});
+const on = k => EL.find(e => e.k === k).on;
+
+function plan(v = val, active = k => on(k)) {
+  const beat = 60 / v["Pu.bpm"], nb = active("Me") ? v["Me.beats"] : 4, bar = beat * nb;
+  const bars = Math.max(16, Math.min(32, Math.floor(48 / bar)));
+  return { beat, nb, bar, bars, dur: bars * bar };
+}
+function expected() {
+  const p = plan(), x = {};
+  if (on("Pu")) x.Pu = p.beat;
+  if (on("Me") && on("Pu")) x.Me = p.bar;
+  if (on("Vb")) x.Vb = 1 / val["Vb.rate"];
+  if (on("Va") && !val["Va.random"]) x.Va = val["Va.bars"] * p.bar;
+  if (on("Sp")) x.Sp = val["Sp.bars"] * p.bar;
+  if (on("Wa")) x.Wa = val["Wa.bars"] * p.bar;
+  return x;
+}
+function refresh() {
+  const x = expected();
+  EL.forEach(e => {
+    document.getElementById("el-" + e.k).classList.toggle("off", !e.on);
+    document.getElementById("z-" + e.k).textContent = x[e.k] ? `τ ${fmtT(x[e.k])} · Z ${zOf(x[e.k]).toFixed(2)} · row ${rowOf(zOf(x[e.k]))}` : "";
+  });
+  drawMini(x, lastFound);
+}
+const fmtT = t => t < 1 ? (t * 1000).toFixed(0) + " ms" : t.toFixed(2) + " s";
+
+// ---------------------------------------------------------------- synthesis
+const rand = n => { let t = (n + 1) * 0x6D2B79F5 >>> 0; t = Math.imul(t ^ t >>> 15, t | 1); t ^= t + Math.imul(t ^ t >>> 7, t | 61); return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+const MELODY = [220.0, 246.9, 196.0, 261.6, 220.0, 293.7, 246.9, 196.0];
+const noiseBuf = ctx => { const b = ctx.createBuffer(1, Math.floor(0.06 * SR), SR), d = b.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1; return b; };
+
+async function renderStem(kind, v, active) {
+  const P = plan(v, active), len = Math.ceil(P.dur * SR) + SR;
+  const ctx = new OfflineAudioContext(2, len, SR);
+  if (kind === "rhythm" && active("Pu")) {
+    const nz = noiseBuf(ctx);
+    const total = P.bars * P.nb;
+    for (let i = 0; i < total; i++) {
+      const t = i * P.beat, down = active("Me") && i % P.nb === 0;
+      const amp = active("Me") ? (down ? 1.0 : 0.42) : 0.75;
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      o.frequency.setValueAtTime(130, t); o.frequency.exponentialRampToValueAtTime(45, t + 0.12);
+      g.gain.setValueAtTime(amp, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.32);
+      o.connect(g).connect(ctx.destination); o.start(t); o.stop(t + 0.35);
+      for (const h of [t, t + P.beat / 2]) {
+        const s = ctx.createBufferSource(), f = ctx.createBiquadFilter(), hg = ctx.createGain();
+        s.buffer = nz; f.type = "highpass"; f.frequency.value = 6000;
+        hg.gain.setValueAtTime(0.12, h); hg.gain.exponentialRampToValueAtTime(0.001, h + 0.045);
+        s.connect(f).connect(hg).connect(ctx.destination); s.start(h);
+      }
+      const barI = Math.floor(i / P.nb), beatI = i % P.nb, ph = v["Va.bars"];
+      const fillBar = active("Va") && (v["Va.random"] ? rand(barI) < 1 / ph : barI % ph === ph - 1);
+      if (fillBar && beatI >= P.nb - Math.min(v["Va.fill"], P.nb)) {
+        for (let q = 0; q < 4; q++) {
+          const ts = t + q * P.beat / 4, sn = ctx.createBufferSource(), bp = ctx.createBiquadFilter(), sg = ctx.createGain();
+          sn.buffer = nz; bp.type = "bandpass"; bp.frequency.value = 1800; bp.Q.value = 0.8;
+          const lv = 0.35 + 0.15 * q / 3;
+          sg.gain.setValueAtTime(lv, ts); sg.gain.exponentialRampToValueAtTime(0.001, ts + 0.055);
+          sn.connect(bp).connect(sg).connect(ctx.destination); sn.start(ts);
+          const tn = ctx.createOscillator(), tg = ctx.createGain();
+          tn.frequency.value = 190 - 25 * (beatI - (P.nb - v["Va.fill"])); tg.gain.setValueAtTime(lv * 0.8, ts); tg.gain.exponentialRampToValueAtTime(0.001, ts + 0.08);
+          tn.connect(tg).connect(ctx.destination); tn.start(ts); tn.stop(ts + 0.09);
+        }
+      }
+      if (down) {
+        const b = ctx.createOscillator(), bg = ctx.createGain();
+        b.frequency.value = 55; bg.gain.setValueAtTime(0.5, t); bg.gain.exponentialRampToValueAtTime(0.001, t + 0.6);
+        b.connect(bg).connect(ctx.destination); b.start(t); b.stop(t + 0.65);
+      }
+    }
+  }
+  if (kind === "melody") {
+    const noteLen = 2 * P.bar, n = Math.ceil(P.dur / noteLen);
+    const pan = ctx.createStereoPanner(); pan.connect(ctx.destination);
+    if (active("Sp")) {
+      const l = ctx.createOscillator(), lg = ctx.createGain();
+      l.frequency.value = 1 / (v["Sp.bars"] * P.bar); lg.gain.value = 0.9;
+      l.connect(lg).connect(pan.pan); l.start(0);
+    }
+    const real = new Float32Array([0, 1, 0.35, 0.15]), imag = new Float32Array(4);
+    const wave = ctx.createPeriodicWave(real, imag);
+    for (let i = 0; i < n; i++) {
+      const t = i * noteLen, o = ctx.createOscillator(), g = ctx.createGain();
+      o.setPeriodicWave(wave); o.frequency.value = MELODY[i % MELODY.length];
+      if (active("Vb")) {
+        const l = ctx.createOscillator(), lg = ctx.createGain();
+        l.frequency.value = v["Vb.rate"]; lg.gain.value = v["Vb.depth"];
+        l.connect(lg).connect(o.detune); l.start(t); l.stop(t + noteLen);
+      }
+      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.35, t + 0.06);
+      g.gain.setValueAtTime(0.35, t + noteLen - 0.12); g.gain.linearRampToValueAtTime(0, t + noteLen - 0.04);
+      o.connect(g).connect(pan); o.start(t); o.stop(t + noteLen);
+    }
+  }
+  if (kind === "pad") {
+    const merge = ctx.createChannelMerger(2); merge.connect(ctx.destination);
+    const mid = ctx.createGain(), side = ctx.createGain(), inv = ctx.createGain();
+    mid.gain.value = 0.18; inv.gain.value = -1;
+    mid.connect(merge, 0, 0); mid.connect(merge, 0, 1);
+    side.connect(merge, 0, 0); side.connect(inv).connect(merge, 0, 1);
+    for (const f of [110, 164.8, 220, 277.2]) {
+      const a = ctx.createOscillator(), b = ctx.createOscillator(), bg = ctx.createGain();
+      a.type = b.type = "triangle"; a.frequency.value = f; b.frequency.value = f; b.detune.value = 11;
+      bg.gain.value = 0.18; a.connect(mid); b.connect(bg).connect(side); a.start(0); b.start(0); a.stop(P.dur); b.stop(P.dur);
+    }
+    side.gain.setValueAtTime(0, 0);
+    if (active("Wa")) {
+      const cyc = v["Wa.bars"] * P.bar;
+      for (let t = 0; t < P.dur; t += cyc) { side.gain.setValueAtTime(0, t); side.gain.linearRampToValueAtTime(1, t + cyc - 0.02); }
+    }
+  }
+  const buf = await ctx.startRendering();
+  return { L: buf.getChannelData(0), R: buf.getChannelData(1), dur: P.dur, P };
+}
+
+// ---------------------------------------------------------------- detectors (simplified copies of pts/)
+function autocorr(x, maxLag) {
+  const n = x.length; let m = 0; for (const v of x) m += v; m /= n;
+  const y = Float64Array.from(x, v => v - m); maxLag = Math.min(maxLag, n - 2);
+  const r = new Float64Array(maxLag + 1);
+  for (let k = 0; k <= maxLag; k++) { let s = 0; for (let i = 0; i + k < n; i++) s += y[i] * y[i + k]; r[k] = s / (n - k); }
+  const r0 = r[0] || 1; for (let k = 0; k <= maxLag; k++) r[k] /= r0; return r;
+}
+function comb(r, k, nm) { let s = 0, c = 0; for (let m = 1; m <= nm; m++) { const j = m * k; if (j + 1 >= r.length) break; s += Math.max(r[j - 1], r[j], r[j + 1]); c++; } return c ? s / c : 0; }
+function pick(r, fs, lo, hi, nm = 1, rule = 0.9) {
+  const a = Math.max(1, Math.floor(lo * fs)), b = Math.min(r.length - 2, Math.ceil(hi * fs)), pk = [];
+  for (let k = a; k <= b; k++) if (r[k] > r[k - 1] && r[k] >= r[k + 1] && r[k] > 0 && k / fs >= lo && k / fs < hi) pk.push(k);
+  if (!pk.length) return null;
+  const sc = pk.map(k => nm > 1 ? comb(r, k, nm) : r[k]), best = Math.max(...sc);
+  if (!(best > 0)) return null;
+  const k = pk[sc.findIndex(s => s >= rule * best)];
+  const A = r[k - 1], B = r[k], C = r[k + 1], den = A - 2 * B + C, sh = den < 0 ? 0.5 * (A - C) / den : 0;
+  return { tau: (k + sh) / fs, r: B, k };
+}
+function frames(x, hop, f) { const out = []; for (let i = 0; i + hop <= x.length; i += hop) out.push(f(i, i + hop)); return out; }
+
+function detectRhythm(st) {
+  // energy over a 23 ms window (longer than one cycle of the kick) every 5 ms
+  const x = st.L, hop = Math.round(0.005 * SR), fs = SR / hop, W = Math.round(0.023 * SR);
+  const cs = new Float64Array(x.length + 1); for (let i = 0; i < x.length; i++) cs[i + 1] = cs[i] + x[i] * x[i];
+  const e = []; for (let i = 0; i + W <= x.length; i += hop) e.push(Math.pow(cs[i + W] - cs[i], 0.3));
+  const env = e.map((v, i) => i ? Math.max(v - e[i - 1], 0) : 0);
+  const r = autocorr(env, Math.round(8.5 * fs));
+  // PROVISIONAL rules, sandbox only (not used for official results):
+  // pulse = the shortest peak between 0.25 and 2 s whose value is at least half of the
+  //         highest peak there (the finest level that is still a clear repeat);
+  // meter = the n in 2..7 where r(n * pulse) is highest (the shortest n on a tie),
+  //         reported only if it repeats clearly more strongly than the pulse itself.
+  const a = Math.ceil(0.25 * fs), b = Math.floor(2 * fs), pk = [];
+  for (let k = a; k <= b; k++) if (r[k] > r[k - 1] && r[k] >= r[k + 1] && r[k] > 0) pk.push(k);
+  if (!pk.length) return { Pu: null, Me: null };
+  const top = Math.max(...pk.map(k => r[k]));
+  if (top < 0.3) return { Pu: null, Me: null };
+  const k0 = pk.find(k => r[k] >= 0.5 * top), A = r[k0 - 1], Bv = r[k0], C = r[k0 + 1], den = A - 2 * Bv + C;
+  const pu = (k0 + (den < 0 ? 0.5 * (A - C) / den : 0)) / fs;
+  // meter = periodicity of the accent pattern: the strength of every beat on the pulse
+  // grid, autocorrelated in whole beats. Equal beats (no accents) give no meter.
+  let phase = 0, bestSum = -1;
+  for (let j = 0; j < 60; j++) {
+    const ph = pu * j / 60; let s = 0;
+    for (let t = ph; t * fs < env.length; t += pu) s += env[Math.round(t * fs)] || 0;
+    if (s > bestSum) { bestSum = s; phase = ph; }
+  }
+  const w = Math.round(0.03 * fs), str = [];
+  // follow the beats: each beat is re-anchored on the strongest rise within 60 ms of where it was expected
+  const w2 = Math.round(0.06 * fs), beatT = [];
+  for (let t = phase; t * fs + w2 + w < env.length;) {
+    const c = Math.round(t * fs); let bi = c;
+    for (let i = Math.max(0, c - w2); i <= c + w2; i++) if (env[i] > env[bi]) bi = i;
+    let m = 0; for (let i = Math.max(0, bi - w); i <= bi + w; i++) m += env[i];
+    str.push(m); beatT.push(bi / fs); t = bi / fs + pu;
+  }
+  const mean = str.reduce((x, y) => x + y, 0) / str.length, sd = Math.sqrt(str.reduce((x, y) => x + (y - mean) ** 2, 0) / str.length);
+  let Me = null;
+  if (sd / mean > 0.15 && str.length > 16) {
+    // for each n: the median strength at every position of an n-beat cycle. Medians ignore
+    // the occasional loud fill. Score = share of the variance the median profile explains.
+    const medv = a => { const c = [...a].sort((x, y) => x - y); return c[c.length >> 1]; };
+    const vAll = sd * sd, sc = [];
+    for (let n = 2; n <= 7; n++) {
+      const prof = Array.from({ length: n }, (_, p) => medv(str.filter((_, i) => i % n === p)));
+      const pm = prof.reduce((x, y) => x + y, 0) / n, pv = prof.reduce((x, y) => x + (y - pm) ** 2, 0) / n;
+      sc.push([n, pv / vAll]);
+    }
+    const best = Math.max(...sc.map(x => x[1])), n = sc.find(x => x[1] >= 0.9 * best)[0];
+    if (best >= 0.3) Me = { tau: n * pu, r: Math.min(1, best), extra: `${n} beats` };
+  }
+  return { Pu: { tau: pu, r: Bv, extra: `${(60 / pu).toFixed(1)} BPM` }, Me, beatT, env, fs, nb: Me ? Math.round(Me.tau / pu) : 4 };
+}
+// Variation: cut the rhythm into bars on the followed beats, compare each bar with the
+// median bar, then look for a period in that "how different is this bar" series (in bars).
+function detectVariation(rd) {
+  if (!rd.beatT || rd.beatT.length < 2 * rd.nb * 4) return null;
+  // one straight grid fitted to all beats (least squares), so every bar is cut the same way;
+  // each bar is then lightly smoothed so that a shift of one cell does not count as a change
+  const n = rd.beatT.length, idx = rd.beatT.map((_, i) => i);
+  const mi = (n - 1) / 2, mt = rd.beatT.reduce((s, t) => s + t, 0) / n;
+  let sxy = 0, sxx = 0; idx.forEach(i => { sxy += (i - mi) * (rd.beatT[i] - mt); sxx += (i - mi) ** 2; });
+  const beat = sxy / sxx, t0 = mt - beat * mi, L = beat * rd.nb;
+  const B = 32, vecs = [], starts = [];
+  // the first bar (sound starting from silence) and the last one are left out
+  for (let j = 1; t0 + (j + 2) * L < rd.beatT[n - 1] + beat; j++) starts.push(t0 + j * L);
+  for (let j = 0; j < starts.length; j++) {
+    const a = starts[j] * rd.fs, b = (starts[j] + L) * rd.fs, raw = [];
+    for (let q = 0; q < B; q++) { let m = 0; const s0 = Math.floor(a + (b - a) * q / B), s1 = Math.floor(a + (b - a) * (q + 1) / B); for (let i = Math.max(0, s0); i < s1; i++) m += rd.env[i] || 0; raw.push(m); }
+    vecs.push(raw.map((x, q) => 0.25 * (raw[q - 1] || 0) + 0.5 * x + 0.25 * (raw[q + 1] || 0)));
+  }
+  if (vecs.length < 8) return null;
+  const med = Array.from({ length: B }, (_, q) => { const c = vecs.map(v => v[q]).sort((x, y) => x - y); return c[c.length >> 1]; });
+  const corr = (x, y) => { const mx = x.reduce((s, v) => s + v, 0) / B, my = y.reduce((s, v) => s + v, 0) / B; let n = 0, dx = 0, dy = 0; for (let q = 0; q < B; q++) { n += (x[q] - mx) * (y[q] - my); dx += (x[q] - mx) ** 2; dy += (y[q] - my) ** 2; } return n / Math.sqrt(dx * dy + 1e-12); };
+  const d = vecs.map(v => 1 - corr(v, med));
+  const bar = (starts[starts.length - 1] - starts[0]) / (starts.length - 1);
+  // variation exists if some bars clearly stand out; it has a period only if those bars sit on
+  // an exact grid: at least 80% of them on one arithmetic step, and that step filled for 80%
+  const mx = Math.max(...d), thr = 0.5 * mx, H = d.map((x, i) => x > thr ? i : -1).filter(i => i >= 0);
+  if (mx < 0.05 || H.length < 2) return null;
+  const extraA = `${H.length} of ${d.length} bars differ`;
+  let bestP = null;
+  for (let p = 2; p <= Math.min(12, Math.floor(d.length / 3)); p++) for (let o = 0; o < p; o++) {
+    const slots = d.map((_, i) => i).filter(i => i % p === o), hit = H.filter(i => i % p === o).length;
+    const prec = hit / H.length, rec = hit / slots.length;
+    if (prec >= 0.8 && rec >= 0.8 && (!bestP || p < bestP.p)) bestP = { p, r: Math.min(prec, rec) };
+  }
+  if (bestP) return { tau: bestP.p * bar, r: bestP.r, extra: `${bestP.p} bars, ${extraA}` };
+  return { tau: null, r: 0, extra: `no period, ${extraA}` };
+}
+function runningMedian(x, n) { const h = n >> 1, out = new Float64Array(x.length); for (let i = 0; i < x.length; i++) { const w = x.slice(Math.max(0, i - h), i + h + 1).sort((a, b) => a - b); out[i] = w[w.length >> 1]; } return out; }
+function detectVibrato(st) {
+  const ds = 2, sr = SR / ds, x = new Float64Array(Math.floor(st.L.length / ds));
+  for (let i = 0; i < x.length; i++) x[i] = (st.L[2 * i] + st.L[2 * i + 1] + st.R[2 * i] + st.R[2 * i + 1]) / 4;
+  const W = 512, hop = Math.round(0.01 * sr), lo = Math.floor(sr / 600), hi = Math.ceil(sr / 120), cents = [];
+  for (let s = 0; s + W + hi < x.length; s += hop) {
+    let e0 = 0; for (let i = 0; i < W; i++) e0 += x[s + i] * x[s + i];
+    if (e0 < 1e-4) { cents.push(NaN); continue; }
+    let best = -1, bk = 0; const rr = [];
+    for (let k = lo; k <= hi; k++) { let c = 0, e1 = 0; for (let i = 0; i < W; i++) { c += x[s + i] * x[s + i + k]; e1 += x[s + i + k] * x[s + i + k]; } const v = c / Math.sqrt(e0 * e1 + 1e-12); rr.push(v); if (v > best) best = v; }
+    const j = rr.findIndex((v, i) => i > 0 && i < rr.length - 1 && v >= rr[i - 1] && v >= rr[i + 1] && v >= 0.9 * best);
+    if (best < 0.7 || j < 0) { cents.push(NaN); continue; }
+    const A = rr[j - 1], B = rr[j], C = rr[j + 1], den = A - 2 * B + C, k = lo + j + (den < 0 ? 0.5 * (A - C) / den : 0);
+    cents.push(1200 * Math.log2(sr / k / 440));
+  }
+  const fs = 100, runs = []; let a = -1;
+  cents.forEach((c, i) => { if (isFinite(c) && a < 0) a = i; if ((!isFinite(c) || i === cents.length - 1) && a >= 0) { if (i - a >= 60) runs.push(cents.slice(a, i)); a = -1; } });
+  const K = 51, maxLag = 40, acc = new Float64Array(maxLag + 1); let w = 0, sq = 0, cnt = 0;
+  for (const c of runs) {
+    const med = runningMedian(Float64Array.from(c), K), hp = []; for (let i = K >> 1; i < c.length - (K >> 1); i++) hp.push(c[i] - med[i]);
+    if (hp.length < maxLag + 5) continue;
+    const r = autocorr(hp, maxLag); for (let k = 0; k <= maxLag; k++) acc[k] += r[k] * hp.length; w += hp.length;
+    for (const v of hp) { sq += v * v; cnt++; }
+  }
+  if (!w) return null;
+  for (let k = 0; k <= maxLag; k++) acc[k] /= w;
+  const p = pick(acc, fs, 0.1, 0.35), depth = Math.SQRT2 * Math.sqrt(sq / cnt);
+  return p && p.r >= 0.5 && depth >= 8 ? { tau: p.tau, r: p.r, extra: `${(1 / p.tau).toFixed(2)} Hz, ±${depth.toFixed(0)} cents` } : null;
+}
+function detectSlow(st, f) {
+  const hop = Math.round(0.05 * SR), fs = SR / hop;
+  const s = frames(st.L, hop, (a, b) => f(st.L, st.R, a, b));
+  const r = autocorr(s, Math.floor(s.length / 2));
+  const p = pick(r, fs, 0.4, st.dur / 2, 2);
+  return p && p.r >= 0.5 ? { tau: p.tau, r: p.r } : null;
+}
+const balance = (L, R, a, b) => { let l = 0, r = 0; for (let i = a; i < b; i++) { l += L[i] * L[i]; r += R[i] * R[i]; } return (r - l) / (r + l + 1e-9); };
+const sideShare = (L, R, a, b) => { let m = 0, s = 0; for (let i = a; i < b; i++) { const M = L[i] + R[i], S = L[i] - R[i]; m += M * M; s += S * S; } return s / (m + s + 1e-9); };
+
+async function collide(v = val, active = k => on(k)) {
+  const [rh, me, pa] = await Promise.all(["rhythm", "melody", "pad"].map(k => renderStem(k, v, active)));
+  const rd = detectRhythm(rh);
+  if (!rd.Pu) { rd.beatT = null; }
+  const found = { Pu: rd.Pu, Me: rd.Me, Va: rd.Pu ? detectVariation(rd) : null, Vb: detectVibrato(me), Sp: detectSlow(me, balance), Wa: detectSlow(pa, sideShare) };
+  if (found.Sp) found.Sp.extra = `${(found.Sp.tau / rh.P.bar).toFixed(2)} bars`;
+  if (found.Wa) found.Wa.extra = `${(found.Wa.tau / pa.P.bar).toFixed(2)} bars`;
+  return { found, stems: { Rhythm: rh, Melody: me, Pad: pa } };
+}
+
+// ---------------------------------------------------------------- display
+let lastFound = {}, lastStems = null, controls = {}, player = null, actx = null;
+function drawMini(exp, got) {
+  const cells = {};
+  const add = (k, z, cls) => { const g = EL.find(e => e.k === k).g, key = rowOf(z) + "," + g; (cells[key] = cells[key] || []).push(`<span class="tag ${cls}">${k}</span>`); };
+  Object.entries(exp).forEach(([k, t]) => add(k, zOf(t), "want"));
+  Object.entries(got).forEach(([k, f]) => { if (f && f.tau && exp[k]) add(k, zOf(f.tau), rowOf(zOf(f.tau)) === rowOf(zOf(exp[k])) ? "got" : "gotx"); });
+  let h = `<div class="h"></div>` + GROUPS.map(g => `<div class="h">${g}</div>`).join("");
+  PERIODS.forEach((p, i) => { h += `<div class="rh">${i + 1} ${p}</div>` + GROUPS.map((_, g) => `<div class="c">${(cells[(i + 1) + "," + g] || []).join("")}</div>`).join(""); });
+  document.getElementById("mini").innerHTML = h;
+}
+function showResults() {
+  const exp = expected();
+  document.getElementById("res").innerHTML = EL.map(e => {
+    const x = exp[e.k], f = lastFound[e.k], c = controls[e.k];
+    const randomVa = e.k === "Va" && e.on && val["Va.random"];
+    const match = f && f.tau && x ? Math.abs(Math.log2(f.tau / x)) < 0.05 : false;
+    const fTxt = !f ? (x ? `<span class="no">not found</span>` : `<span class="mut">—</span>`)
+      : !f.tau ? `<span class="${randomVa ? "yes" : "no"}">variation without a period</span><br><span class="mut">${f.extra}</span>`
+      : `<span class="${x ? (match ? "yes" : "no") : "no"}">${fmtT(f.tau)} · Z ${zOf(f.tau).toFixed(2)}</span><br><span class="mut">${f.extra || ""} r ${f.r.toFixed(2)}</span>`;
+    const exTxt = x ? `${fmtT(x)} · Z ${zOf(x).toFixed(2)}` : randomVa ? `variation, no period` : `<span class="mut">off</span>`;
+    const cell = f && f.tau ? `${rowOf(zOf(f.tau))} ${PERIODS[rowOf(zOf(f.tau)) - 1]}` : "";
+    const cTxt = c === undefined ? `<span class="mut">—</span>` : c ? `<span class="yes">gone ✓</span>` : `<span class="no">still found ✗</span>`;
+    return `<tr><td><b>${e.k}</b> ${e.name}</td><td>${exTxt}</td><td>${fTxt}</td><td>${cell}</td><td>${cTxt}</td></tr>`;
+  }).join("");
+  drawMini(exp, lastFound);
+}
+function drawWave(st) {
+  const cv = document.getElementById("wave"), g = cv.getContext("2d"), n = st.Rhythm.L.length, W = cv.width, H = cv.height;
+  g.clearRect(0, 0, W, H); g.fillStyle = getComputedStyle(document.documentElement).getPropertyValue("--period");
+  for (let x = 0; x < W; x++) { let m = 0; const a = Math.floor(x * n / W), b = Math.floor((x + 1) * n / W);
+    for (let i = a; i < b; i += 4) { const v = Math.abs(st.Rhythm.L[i] * 0.8 + (st.Melody.L[i] || 0) * 0.6 + (st.Pad.L[i] || 0) * 0.5); if (v > m) m = v; }
+    const h = Math.min(H / 2, m * H * 0.6); g.fillRect(x, H / 2 - h, 1, 2 * h); }
+}
+const status = t => document.getElementById("status").textContent = t;
+function stop() {
+  if (player) { const p = player; player = null; p.onended = null; try { p.stop(); } catch (e) {} }
+  document.getElementById("stop").disabled = true;
+}
+function play(parts) {
+  stop(); actx = actx || new AudioContext();
+  const n = lastStems.Rhythm.L.length, b = actx.createBuffer(2, n, SR), gain = { Rhythm: 0.8, Melody: 0.6, Pad: 0.5 };
+  for (const ch of [0, 1]) { const d = b.getChannelData(ch); for (const p of parts) { const s = lastStems[p][ch ? "R" : "L"]; for (let i = 0; i < Math.min(n, s.length); i++) d[i] += gain[p] * s[i]; } }
+  const p = actx.createBufferSource(); p.buffer = b; p.connect(actx.destination); p.start();
+  p.onended = () => { if (player === p) { player = null; document.getElementById("stop").disabled = true; } };
+  player = p;
+  document.getElementById("stop").disabled = false;
+}
+document.getElementById("go").onclick = async () => {
+  status("Colliding…"); controls = {};
+  const t0 = performance.now(), res = await collide();
+  lastFound = res.found; lastStems = res.stems; showResults(); drawWave(res.stems);
+  document.getElementById("play").disabled = false;
+  document.getElementById("solo").innerHTML = ["Rhythm", "Melody", "Pad"].map(p => `<button data-p="${p}">Solo ${p.toLowerCase()}</button>`).join("");
+  document.querySelectorAll("#solo button").forEach(b => b.onclick = () => play([b.dataset.p]));
+  status(`Done in ${((performance.now() - t0) / 1000).toFixed(1)} s · ${res.stems.Rhythm.dur.toFixed(1)} s of sound · ${res.stems.Rhythm.P.bars} bars.`);
+  play(["Rhythm", "Melody", "Pad"]);
+};
+document.getElementById("ctl").onclick = async () => {
+  const act = EL.filter(e => e.on).map(e => e.k); controls = {};
+  for (const k of act) {
+    status(`Control: everything except ${k}…`);
+    const res = await collide(val, j => on(j) && j !== k);
+    controls[k] = !res.found[k];
+    showResults();
+  }
+  status("Controls done: each element removed in turn; the detector must stop finding it.");
+};
+document.getElementById("play").onclick = () => play(["Rhythm", "Melody", "Pad"]);
+document.getElementById("stop").onclick = stop;
+refresh(); showResults();
+</script>
+</body>
+</html>

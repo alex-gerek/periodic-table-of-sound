@@ -1,0 +1,452 @@
+<title>Periodic Table of Sound II</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a laboratory wall chart, second edition. Rows = periods of time cut at perceptual borders,
+   columns = six questions asked of the signal. Every element is placed by its measured time octave Z. */
+:root {
+  --bg: #f3f4f7; --panel: #ffffff; --ink: #11131a; --muted: #5b6273; --line: #d8dce5; --band: #e9ebf1;
+  --level: #0f9e8e; --period: #e8761a; --irreg: #6b7a90; --change: #d93a5b; --makeup: #7b5ce6; --space: #1f8fd0;
+  --unstable: #b98a00;
+  --font-display: "Orbitron", "Segoe UI", sans-serif;
+  --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-data: "JetBrains Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0b0d13; --panel: #131722; --ink: #eef1f7; --muted: #9aa3b5; --line: #262c3b; --band: #171c28;
+  --level: #2dd4bf; --period: #fb923c; --irreg: #94a3b8; --change: #f43f5e; --makeup: #a78bfa; --space: #38bdf8;
+  --unstable: #facc15; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0b0d13; --panel: #131722; --ink: #eef1f7; --muted: #9aa3b5; --line: #262c3b; --band: #171c28;
+  --level: #2dd4bf; --period: #fb923c; --irreg: #94a3b8; --change: #f43f5e; --makeup: #a78bfa; --space: #38bdf8;
+  --unstable: #facc15; color-scheme: dark }
+
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.55; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-block: 28px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.eyebrow { font-family: var(--font-data); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 4px; }
+h1 { font-family: var(--font-display); font-weight: 800; letter-spacing: .04em; font-size: clamp(24px, 4vw, 38px); margin: 0 0 6px; text-wrap: balance; }
+h2 { font-family: var(--font-display); font-weight: 600; letter-spacing: .05em; font-size: 17px; margin: 44px 0 12px; text-transform: uppercase; }
+.lede { color: var(--muted); max-width: 70ch; margin: 0 0 18px; }
+code, .mono { font-family: var(--font-data); font-size: .92em; }
+
+.rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin: 6px 0 22px; }
+.rule { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; min-width: 0; }
+.rule h3 { margin: 0 0 4px; font-size: 14px; font-family: var(--font-display); letter-spacing: .04em; }
+.rule p { margin: 0; color: var(--muted); font-size: 13.5px; }
+.rule .f { display: block; font-family: var(--font-data); color: var(--ink); font-size: 14px; margin: 4px 0 6px; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 0 0 10px; font-size: 13px; }
+.legend > span { display: inline-flex; align-items: center; gap: 7px; }
+.sw { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.status { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--muted); margin: 0 0 18px; align-items: center; }
+.st { width: 22px; height: 14px; border-radius: 3px; display: inline-block; vertical-align: -2px; margin-right: 6px; border: 1.5px solid var(--muted); }
+.st.m { background: color-mix(in srgb, var(--muted) 45%, transparent); }
+.st.p { background: linear-gradient(135deg, color-mix(in srgb, var(--muted) 45%, transparent) 50%, transparent 50%); }
+.st.n { border-style: dashed; }
+.st.g { border-style: dotted; }
+.st.u { border-color: var(--unstable); box-shadow: inset 0 3px 0 var(--unstable); }
+
+.scroller { overflow-x: auto; padding-bottom: 6px; }
+.table { display: grid; grid-template-columns: 158px repeat(6, minmax(138px, 1fr)); gap: 6px; min-width: 1010px; }
+.colhead { font-family: var(--font-data); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; padding: 6px 4px 8px; border-bottom: 3px solid; }
+.colhead b { font-family: var(--font-display); font-size: 12px; }
+.colhead small { display: block; color: var(--muted); text-transform: none; letter-spacing: 0; font-family: var(--font-body); font-size: 12px; margin-top: 2px; }
+.rowhead { font-family: var(--font-data); font-size: 11px; color: var(--muted); padding: 8px 6px; border-right: 1px solid var(--line); line-height: 1.45; }
+.rowhead b { display: block; color: var(--ink); font-family: var(--font-display); font-size: 12.5px; letter-spacing: .04em; margin-bottom: 2px; }
+.rowhead i { display: block; font-style: normal; font-family: var(--font-body); font-size: 11.5px; margin-top: 4px; }
+.cell { display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: 4px; align-content: start; min-height: 74px; }
+.cell.one { grid-template-columns: 1fr; }
+.el { position: relative; text-align: left; border-radius: 6px; padding: 5px 6px 6px; cursor: pointer; min-width: 0;
+  background: var(--panel); border: 1.5px solid var(--fam); color: var(--ink); font: inherit; min-height: 70px; }
+.el.m { background: color-mix(in srgb, var(--fam) 22%, var(--panel)); }
+.el.p { background: linear-gradient(135deg, color-mix(in srgb, var(--fam) 22%, var(--panel)) 50%, var(--panel) 50%); }
+.el.n { border-style: dashed; }
+.el.g { border-style: dotted; background: transparent; }
+.el.u { box-shadow: inset 0 4px 0 var(--unstable); }
+.el:hover, .el:focus-visible { outline: 2px solid var(--fam); outline-offset: 1px; }
+.el[aria-pressed="true"] { outline: 3px solid color-mix(in srgb, var(--fam) 60%, transparent); outline-offset: 1px; }
+.num { font-family: var(--font-data); font-size: 9.5px; color: var(--muted); display: block; }
+.z { position: absolute; top: 5px; right: 6px; font-family: var(--font-data); font-size: 9.5px; color: var(--muted); }
+.sym { font-family: var(--font-display); font-weight: 800; font-size: 18px; line-height: 1.05; color: var(--fam); display: block; margin-top: 2px; }
+.sym sup { font-size: 10px; font-weight: 600; margin-left: 1px; }
+.nm { font-size: 10.5px; font-weight: 600; line-height: 1.2; display: block; margin-top: 3px; overflow-wrap: break-word; hyphens: auto; }
+.cell.one .sym { font-size: 22px; }
+.cell.one .nm { font-size: 11.5px; }
+
+.ruler { margin-top: 18px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px 6px; }
+.ruler h3 { margin: 0 0 2px; font-size: 13px; font-family: var(--font-display); letter-spacing: .05em; text-transform: uppercase; }
+.ruler p { margin: 0 0 6px; color: var(--muted); font-size: 13px; }
+.ruler svg { display: block; width: 100%; min-width: 760px; height: auto; }
+.ruler text { font-family: var(--font-data); }
+
+.drawer { margin-top: 16px; background: var(--panel); border: 1px solid var(--line); border-left: 6px solid var(--fam, var(--line)); border-radius: 10px; padding: 16px 18px; display: grid; grid-template-columns: 110px 1fr; gap: 6px 22px; }
+.drawer .big { font-family: var(--font-display); font-weight: 800; font-size: 48px; line-height: 1; color: var(--fam, var(--ink)); }
+.drawer .bigz { font-family: var(--font-data); font-size: 13px; color: var(--muted); margin-top: 8px; }
+.drawer h3 { margin: 0 0 2px; font-size: 18px; }
+.drawer .meta { font-family: var(--font-data); font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+.drawer dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; margin: 8px 0 0; }
+.drawer dt { font-family: var(--font-data); font-size: 11.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; padding-top: 2px; }
+.drawer dd { margin: 0; max-width: 72ch; min-width: 0; }
+.drawer > div { min-width: 0; }
+
+.chains { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 12px; }
+.chain { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--fam); border-radius: 10px; padding: 12px 16px; min-width: 0; }
+.chain h4 { margin: 0; font-family: var(--font-display); font-size: 13.5px; letter-spacing: .04em; color: var(--fam); }
+.chain .q { margin: 2px 0 8px; font-size: 13.5px; }
+.steps { display: flex; flex-wrap: wrap; gap: 4px 2px; align-items: center; font-size: 12.5px; }
+.steps .arr { color: var(--muted); padding: 0 2px; }
+.steps .s { font-family: var(--font-data); white-space: nowrap; }
+.steps .s small { color: var(--muted); }
+.chain .test { margin: 8px 0 0; color: var(--muted); font-size: 12.5px; }
+
+.formula { display: flex; flex-wrap: wrap; gap: 5px; margin: 6px 0 8px; }
+.chip { font-family: var(--font-display); font-weight: 600; font-size: 12px; padding: 2px 7px; border-radius: 4px; border: 1.5px solid var(--fam); color: var(--fam); background: color-mix(in srgb, var(--fam) 12%, transparent); }
+.gaps { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+.gap { border: 1.5px dotted var(--fam); border-radius: 10px; padding: 14px 16px; min-width: 0; }
+.gap h4 { margin: 0 0 2px; font-family: var(--font-display); font-size: 14px; letter-spacing: .03em; color: var(--fam); }
+.gap .where { font-family: var(--font-data); font-size: 11.5px; color: var(--muted); margin-bottom: 6px; }
+.gap p { margin: 0; font-size: 13.5px; color: var(--muted); }
+.gap p + p { margin-top: 6px; font-size: 12.5px; }
+.moves { display: grid; gap: 8px; max-width: 92ch; padding: 0; margin: 0; list-style: none; }
+.moves li { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; color: var(--muted); font-size: 13.5px; }
+.moves b { color: var(--ink); }
+.ifams { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 14px; }
+.ifam { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; min-width: 0; }
+.ifam h4 { margin: 0 0 2px; font-family: var(--font-display); font-size: 14px; letter-spacing: .04em; }
+.ifam .why { margin: 0 0 6px; color: var(--muted); font-size: 13px; }
+.ifam .formula { margin: 4px 0 10px; }
+.inst { border-top: 1px solid var(--line); padding: 8px 0 2px; }
+.inst b { font-size: 13.5px; }
+.inst .formula { margin: 4px 0 4px; }
+.inst p { margin: 0; color: var(--muted); font-size: 12.5px; }
+.note { color: var(--muted); font-size: 13px; max-width: 86ch; margin-top: 26px; }
+@media (max-width: 640px) { .drawer { grid-template-columns: 1fr; } .drawer .big { font-size: 40px; } .chains { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: no-preference) { .el { transition: transform .12s ease; } .el:hover { transform: translateY(-1px); } }
+</style>
+
+<div class="wrap" lang="en">
+  <p class="eyebrow">Second edition · ordered by time</p>
+  <h1>Periodic Table of Sound II</h1>
+  <p class="lede">Mendeleev first ordered the elements by atomic mass, and a few landed in the wrong place. Moseley found the true key by measuring a frequency: the atomic number. This edition does the same for sound. Every element is placed by a number measured on the signal, its time octave Z. The columns are the six questions you can ask a signal at any time scale.</p>
+
+  <div class="rules">
+    <div class="rule"><h3>1 · Order: time octave Z</h3><span class="f">Z = log₂(τ / 1 s) + 15</span><p>τ is the element's own time: the period of its vibration, the length of its pattern or the spacing of its repeats. One step of Z doubles τ. Music spans about 23 steps, from 20 kHz (Z ≈ 0.6) to a whole song (Z ≈ 23). A pulse at 120 BPM is exactly Z 14 and a 4/4 bar at that tempo is Z 16.</p></div>
+    <div class="rule"><h3>2 · Group: the question</h3><span class="f">same question, any scale</span><p>Elements in one column answer the same question at different time scales. Test: compress an element in time by 2ᵏ and it must turn into another element of its own column. A pulse sped up 32 times is a low pitch.</p></div>
+    <div class="rule"><h3>3 · Periods: borders of hearing</h3><span class="f">cuts at Z 6 · 10.7 · 13 · 16 · 18 · 20</span><p>Rows end where the ear changes how it treats time: clicks fuse, repeats turn into pitch, a pulse can be tapped, the present moment ends, memory takes over. The border values are approximate and should be checked against the literature.</p></div>
+    <div class="rule"><h3>4 · Stability</h3><span class="f">defect = unstable isotope</span><p>A defect is no longer a column of its own. It sits in the group of the healthy element it corrupts, marked as unstable. Clipping is a level element, Smear is a broken attack, Seam is a false boundary.</p></div>
+  </div>
+
+  <div class="legend" id="legend"></div>
+  <div class="status">
+    <span><i class="st m"></i>Measured by PHARMAKON</span>
+    <span><i class="st p"></i>Partly measured</span>
+    <span><i class="st n"></i>Not measured yet</span>
+    <span><i class="st g"></i>Predicted cell</span>
+    <span><i class="st u"></i>Unstable (defect)</span>
+    <span><b class="mono" style="color:var(--ink)">²</b>&nbsp;second-order: measured on another element's track</span>
+  </div>
+
+  <div class="scroller"><div class="table" id="table" role="grid" aria-label="Periodic table of sound, second edition"></div></div>
+
+  <div class="ruler">
+    <h3>The time axis</h3>
+    <p>Each tick is one octave of time. Landmarks show where familiar things fall; shaded bands are the seven periods.</p>
+    <div class="scroller"><svg id="ruler" viewBox="0 0 1000 150" role="img" aria-label="Time octave axis from Z 0 to Z 24 with seven periods"></svg></div>
+  </div>
+
+  <section class="drawer" id="drawer" aria-live="polite"></section>
+
+  <h2>Reading a column</h2>
+  <p class="lede">Read any column from top to bottom and the same question repeats at slower and slower time scales. This repetition is the periodic law of this table.</p>
+  <div class="chains" id="chains"></div>
+
+  <h2>Predicted cells</h2>
+  <p class="lede">These cells are empty because no element was placed there, not because the grid was drawn around the known ones. Each prediction follows from its row and column. Most already have relatives in practice, which supports the grid.</p>
+  <div class="gaps" id="gaps"></div>
+
+  <h2>What moved since the first edition</h2>
+  <ul class="moves">
+    <li><b>Tonal and Order merged into Periodicity.</b> Pitch and pulse are the same quantity at Z 7 and Z 14. The first edition kept them in different columns, which left Order empty in its first three rows.</li>
+    <li><b>The Defects column dissolved.</b> All 11 defects found a home in a regular group. Instability is now a mark on the tile, the way radioactivity is a property and not a group.</li>
+    <li><b>Rows 8 and 9 dissolved.</b> Texture elements and generated-audio artifacts now sit at their own Z. Flutter lands right on the pitch border, where the first edition said it lives.</li>
+    <li><b>Some elements changed period because their time was measured.</b> Subdivision (16ths at 120 BPM, 125 ms) moved from Beat to Event. Reverb tail (about 1 s) moved from Event to Beat. Spectral elements above 500 Hz moved to Wave.</li>
+    <li><b>Compounds are marked.</b> Vibrato, Glide, Sidechain pump, Beating, Drift, Swing, Timbre motion and Modulation are questions asked of another element's track, not of the raw signal. The group follows the question; the inner element is named in the detail panel.</li>
+    <li><b>New elements:</b> Envelope (level at Z 8), Short-term loudness (Z 16.6) and Echo (Z 11.7) fill cells the grid required.</li>
+  </ul>
+
+  <h2>Instrument fingerprints</h2>
+  <p class="lede">Unchanged from the first edition. Instruments come from six ways of exciting a vibrating body. Each family shares a backbone of elements and each instrument adds a few of its own. Proportions (alloy recipes) are the next step.</p>
+  <div class="ifams" id="mols"></div>
+
+  <p class="note">Status reflects PHARMAKON 3.2. τ values are typical, with ranges in the detail panel. An element is placed by its typical τ, so elements near a border can belong to both neighbouring periods. The first edition is kept as a separate page.</p>
+</div>
+
+<script>
+const GRP = {
+  level:  ["Level",        "How strong is it?",                         "--level"],
+  period: ["Periodicity",  "What repeats, and how often?",              "--period"],
+  irreg:  ["Irregularity", "How far from regular is it?",               "--irreg"],
+  change: ["Change",       "Where does it start, end or turn?",         "--change"],
+  makeup: ["Makeup",       "Which components, in what proportions?",    "--makeup"],
+  space:  ["Space",        "Where is it, and how do signals relate?",   "--space"],
+};
+const COLS = ["level","period","irreg","change","makeup","space"];
+const CUTS = [6, 10.7, 13, 16, 18, 20];
+const PERIODS = [
+  ["Wave",   "τ < 2 ms",      "Z < 6",      "Two clicks closer than about 2 ms fuse into one; time is heard as color."],
+  ["Tone",   "2 – 50 ms",     "Z 6 – 10.7", "Repeats faster than about 20 per second are heard as pitch."],
+  ["Event",  "50 – 250 ms",   "Z 10.7 – 13","Single notes, syllables and fast rhythms: too slow for pitch, too fast to tap."],
+  ["Beat",   "0.25 – 2 s",    "Z 13 – 16",  "The range in which a pulse can be felt and tapped."],
+  ["Bar",    "2 – 8 s",       "Z 16 – 18",  "About the length of the perceived present moment."],
+  ["Phrase", "8 – 32 s",      "Z 18 – 20",  "Held in short-term memory as one musical sentence."],
+  ["Form",   "> 32 s",        "Z ≥ 20",     "Only memory connects it: sections, returns, the whole song."],
+];
+const zOf = t => Math.log2(t) + 15;
+const periodOf = z => { let p = 1; for (const c of CUTS) if (z >= c) p++; return p; };
+
+// [symbol, name, group, tau typical (s), tau min, tau max, status m|p|n, unstable 0|1, inner element (second-order) or "", what it is, PHARMAKON]
+const RAW = [
+ // Level
+ ["Am","Amplitude","level",5e-5,2e-5,1e-3,"m",0,"","How far the wave swings at each sample. Its 4x oversampled maximum is the true peak.","4x true-peak meter and limiter ceiling."],
+ ["Cl","Clipping","level",5e-5,2e-5,1e-3,"m",1,"","A flattened waveform top where the level hits the ceiling: harsh odd harmonics.","Source diagnosis reports clipped samples and true-peak overs."],
+ ["Ev","Envelope","level",0.01,0.002,0.05,"p",0,"","The level of a sound followed over a few milliseconds: the outline of each note.","Used by the kick onset detector; no general envelope readout."],
+ ["Hb","Harsh burst","level",0.06,0.02,0.15,"m",1,"","A short spike of energy in the 2 to 5 kHz presence band.","Presence flux on the metrics bench."],
+ ["Cr","Crest","level",0.1,0.02,0.5,"m",0,"","Peak over average level: how punchy or squashed a sound is.","Crest factor and PLR in every report."],
+ ["Ld","Momentary loudness","level",0.4,0.4,0.4,"m",0,"","Perceived level over a 400 ms window, weighted the way the ear hears (K-weighting).","ITU-R BS.1770-4 meter, verified against EBU Tech 3341."],
+ ["Bl","Bloom","level",0.8,0.3,3,"n",0,"","A sound that grows after it starts instead of decaying: a swell, a reversed hit, a pad opening up.","Partly visible as level rise in buildups."],
+ ["Gv","Groove","level",2,1,4,"n",0,"","The pattern of strong and weak hits across a bar: the level profile of one bar.","Not measured yet."],
+ ["Ls","Short-term loudness","level",3,3,3,"p",0,"","Perceived level over a 3 s window: the loudness of a bar.","Part of the BS.1770 meter; not reported per bar yet."],
+ ["Ar","Energy arc","level",16,8,60,"p",0,"","Build-ups and releases over a phrase: the level profile of a phrase.","Level rise inside sections labels buildups."],
+ ["Lu","Integrated loudness","level",240,60,600,"m",0,"","Loudness of the whole track in LUFS.","BS.1770-4 integrated meter; loudness-matched comparisons."],
+ ["Dr","Dynamic range","level",240,60,600,"m",0,"","The distance between the loud and quiet parts of a song.","PLR and crest factor, before and after."],
+ // Periodicity
+ ["Fq","Frequency","period",1e-3,5e-5,0.05,"m",0,"","How many times per second the air moves back and forth: the raw cycle.","STFT and spectral analysis across the whole engine."],
+ ["F0","Pitch","period",0.0045,2e-4,0.05,"p",0,"","The fundamental period we hear as a note. A4 is 2.27 ms, Z 6.2.","Used inside tempo and chroma analysis; no pitch tracker for melody or bass yet."],
+ ["Pc","Pitch class","period",0.0045,2e-4,0.05,"p",0,"","The note name regardless of octave: the period modulo doubling. C in any octave is one element.","12-bin chroma for section repetition clusters."],
+ ["Fl","Flutter","period",0.055,0.03,0.1,"n",0,"","Hits repeated so fast they fuse into one object with a pitch of its own: a drum roll, a buzz, a zipper. It sits on the border where rhythm becomes pitch.","Not measured yet."],
+ ["Sd","Subdivision","period",0.125,0.08,0.25,"p",0,"","How the beat is split: 8ths, 16ths, triplets. 16ths at 120 BPM repeat every 125 ms.","Off-beat ratios decide the tempo octave; no subdivision readout yet."],
+ ["Vb","Vibrato","period",0.17,0.12,0.25,"n",0,"F0","A periodic pitch wobble, 5 to 7 times per second for singers.","Not measured yet."],
+ ["Bt","Beating","period",0.2,0.07,1,"n",0,"Ld","Two close frequencies swell and fade against each other; the rate equals their difference in hertz.","Not measured yet."],
+ ["Pu","Pulse","period",0.5,0.25,1.5,"m",0,"","The beat you tap your foot to; its rate is the tempo. 120 BPM is exactly Z 14.","Tempo v2: multi-band onsets, octave and meter checks."],
+ ["Sc","Sidechain pump","period",0.5,0.25,1,"n",0,"Ld","Level ducking on every kick that makes a mix breathe.","Not measured yet."],
+ ["Me","Meter","period",2,1,4,"p",0,"","Beats grouped into bars: 4/4, 3/4.","4/4 assumed for the grid; 3-vs-4 conflicts resolved in tempo v2."],
+ ["Lp","Loop","period",8,4,32,"p",0,"","A phrase repeated exactly; the building block of electronic and AI music.","Used implicitly by section clustering; patent-sensitive as a separation method."],
+ ["Rp","Repetition","period",60,30,180,"p",0,"","Which sections come back.","Repetition clusters name verse and chorus."],
+ // Irregularity
+ ["Wn","White noise","irreg",5e-5,2e-5,1e-3,"p",0,"","Energy spread evenly over all frequencies with no repeating pattern: air, hiss, the wash of a cymbal.","The residual class of harmonic-percussive separation; not yet a stem of its own."],
+ ["Fz","Fizz","irreg",1e-4,5e-5,3e-4,"n",1,"","A thin, noisy sizzle on top of the spectrum that follows the music instead of the room.","Partly covered by air-band and de-harshing checks."],
+ ["Sb","Sibilance","irreg",1.4e-4,1e-4,2e-4,"p",0,"","The s and sh band, roughly 5 to 10 kHz.","Covered indirectly by dynamic de-harshing."],
+ ["Br","Breath and air","irreg",4e-4,1e-4,1e-3,"n",0,"","Unpitched noise around a voice or wind instrument; the air of a recording.","Not separated yet."],
+ ["Gt","Grit","irreg",0.015,0.007,0.05,"n",0,"","Fine roughness: level or pitch flickers 20 to 150 times per second. Heard as rasp, growl, distortion fuzz.","Not measured yet."],
+ ["Sm","Swarm","irreg",0.02,0.005,0.1,"n",0,"","Many tiny events too dense to count: rain, crackle, vinyl dust, granular clouds.","Not measured yet."],
+ ["Cs","Consonant","irreg",0.06,0.02,0.15,"n",0,"","A short noise burst at a syllable edge: t, k, s.","Not measured yet."],
+ ["Wb","Warble","irreg",0.1,0.03,0.5,"n",1,"F0","A watery, swirling instability of pitch and phase in sustained notes; the underwater sound of some generated vocals and pads.","Not measured yet. A target for a future Antidote module."],
+ ["Sw","Swing","irreg",0.5,0.25,1,"n",0,"Pu","Uneven subdivisions: long-short instead of even. The deviation repeats every beat.","Not measured yet."],
+ ["Bp","Breath pulse","irreg",1,0.3,4,"n",0,"","Noise that pulses in time: breaths between phrases, a brushed snare, air through a pad that opens and closes.","Not measured yet."],
+ ["Df","Drift","irreg",4,1,30,"n",0,"F0","Slow wandering of pitch or color: tape wow, analogue oscillators, a tired singer.","Not measured yet."],
+ // Change
+ ["Ck","Click","change",2e-4,5e-5,1e-3,"p",0,"","A sub-millisecond spike: the beater hitting the kick skin, a pick on a string.","Seen inside kick attacks; no dedicated click detector yet."],
+ ["At","Attack","change",0.005,0.001,0.05,"m",0,"","How fast a sound reaches its peak. A kick takes a few milliseconds, a pad a second.","Kick onset detector: an 8 dB rise within 20 ms."],
+ ["Ex","Excitation","change",0.01,0.001,0.1,"p",0,"","How the vibration is started and fed: struck, plucked, bowed, blown, sung, or generated electronically. It shapes attack, decay and noise all at once.","Only the struck case is measured (kick onsets)."],
+ ["Sr","Smear","change",0.03,0.01,0.08,"n",1,"","Attacks blurred over tens of milliseconds, as if the transient were painted with a soft brush.","Not measured yet."],
+ ["Gl","Glide","change",0.1,0.03,0.5,"n",0,"F0","A pitch slide between notes; a kick's falling pitch is a fast glide.","Kick pitch fall measured in experiments only."],
+ ["Dc","Decay","change",0.2,0.05,2,"p",0,"","How a sound dies away after the hit.","Kick portrait captures it; no general decay meter."],
+ ["Tm","Timbre motion","change",0.2,0.05,1,"n",0,"Fm","How the color changes while a note holds; vowels move, a guitar string barely does.","Not measured yet."],
+ ["Kk","Kick hit","change",0.5,0.25,1,"m",0,"","The low drum onset on the pulse; the anchor of most club music.","Kick onsets and phase-free kick portrait (experiments)."],
+ ["Db","Downbeat","change",2,1,4,"m",0,"","Beat one of the bar.","Bar grid anchored to the first downbeat."],
+ ["Ps","Phrase boundary","change",16,8,32,"p",0,"","Where one musical sentence of 4, 8 or 16 bars ends and the next begins.","Phrase boundaries via bar novelty in the Track Map."],
+ ["Sx","Seam","change",16,4,60,"n",1,"","A false boundary: an audible join where two generated segments meet, with a sudden change of color, room or level mid-phrase.","Not measured yet. Section novelty could reveal it."],
+ ["Se","Section","change",60,20,180,"m",0,"","Intro, verse, chorus, breakdown, drop.","Sections v2: boundary F 0.97 on ground truth."],
+ ["Md","Modulation","change",120,30,240,"n",0,"Ky","A key change; the last chorus a step higher.","Not measured yet."],
+ // Makeup
+ ["Ax","Aliasing","makeup",5e-5,2e-5,2e-4,"m",1,"","Ghost tones folded back from frequencies above Nyquist: digital grit.","Measured on the bench; removed by 4x oversampled saturation."],
+ ["Rz","Resonance","makeup",3e-4,1e-4,2e-3,"m",1,"","A narrow bump that rings over every note: the metallic plastic of generated audio.","Auto Antidote v2: bump vs line detector with persistence, zero-phase correction."],
+ ["Fm","Formant","makeup",5e-4,2e-4,3e-3,"n",0,"","Resonances of the vocal tract or body that color the harmonics; they make an a sound different from an o.","Not measured yet. The key cue for telling a singer from a guitar."],
+ ["Tl","Spectral tilt","makeup",1e-3,5e-5,0.05,"m",0,"","How fast energy falls from low to high frequencies: dark or bright.","Tonal balance and tilt checks on the metrics bench."],
+ ["Gp","Ghost partials","makeup",1e-3,1e-4,0.01,"n",1,"","Faint tones that belong to no note and no instrument, left over from the generator's synthesis.","Partly overlaps with the resonance detector."],
+ ["Ih","Inharmonicity","makeup",1.5e-3,2e-4,0.01,"n",0,"","Overtones slightly off the exact multiples: bells, piano strings, metal.","Not measured yet."],
+ ["Bd","Body","makeup",0.004,0.001,0.01,"n",0,"","Fixed resonances of the instrument's body that ring under every note: a guitar's box, a drum shell. A voice has none; its resonances move with every vowel.","Not measured yet. Fixed body vs moving formants separates guitar from voice."],
+ ["Hs","Harmonic series","makeup",0.0045,2e-4,0.05,"p",0,"","Every pitched sound carries f, 2f, 3f, 4f ... The one law voice, string and synth share.","Basis of the resonance detector (lines vs bumps); bass harmonic masks are planned."],
+ ["Hp","Harmonic pattern","makeup",0.0045,2e-4,0.05,"n",0,"","Which harmonics a vibration carries and how fast they fall: all of them (a bowed string, a saw wave), only the odd ones (a clarinet, a square wave), or nearly none (a sine, a sub bass). The single strongest clue to an instrument.","Not measured yet. Planned as the first fingerprint element."],
+ ["Rg","Register","makeup",0.0045,2e-4,0.05,"n",0,"","The pitch range an instrument lives in, from sub bass to piccolo.","Implicit in band levels; no register readout yet."],
+ ["Im","Intermodulation","makeup",0.005,2e-4,0.05,"m",1,"","Sum and difference tones created when sounds pass through a nonlinearity together.","SMPTE IMD on the chain; reduced by calibrated tape saturation."],
+ ["Sh","Shimmer","makeup",0.2,0.05,1,"n",0,"","Several slightly detuned copies of one sound that sparkle and widen: chorus, supersaw, a choir in unison.","Not measured yet."],
+ ["Bn","Bass note","makeup",1,0.5,4,"n",0,"","The lowest note, usually one per beat or per bar.","Not tracked yet; planned for bass harmonic masks."],
+ ["Ch","Chord","makeup",2,0.5,4,"p",0,"","Pitch classes sounding together: the makeup of a bar.","Chroma per bar; no chord names yet."],
+ ["Ky","Key","makeup",16,8,60,"n",0,"","The home note and scale a phrase returns to: the makeup of a phrase.","Not measured yet."],
+ // Space
+ ["Ic","Channel correlation","space",1e-3,5e-5,0.05,"m",0,"","How alike the left and right channels are, from mono (1) to opposite (-1).","Low-end correlation check and mono-below-crossover treatment."],
+ ["Ph","Phase","space",1e-3,5e-5,0.05,"m",0,"","How two waves line up in their cycles. In opposite phase they cancel each other.","Sub-Sync kick/bass phase alignment and low-band L/R correlation in the diagnosis."],
+ ["Pn","Pan","space",0.02,0.001,0.05,"m",0,"","Where a sound sits between left and right.","Side ratio and stereo width; panning used in the current splitter."],
+ ["Kb","Kick-bass clash","space",0.02,0.01,0.05,"m",1,"","Kick and bass in opposite phase in the same low band: the punch disappears.","Sub-Sync alignment and the kick/bass correlation in stems mode."],
+ ["Ec","Echo","space",0.1,0.05,0.25,"n",0,"","A distinct copy of the sound returning from a surface, such as a slapback delay at 80 to 120 ms.","Not measured yet."],
+ ["Rv","Reverb tail","space",1,0.2,5,"n",0,"","The room answering the sound after it stops.","Not measured yet."],
+];
+const E = RAW.map(r => {
+  const z = zOf(r[3]);
+  return {s: r[0], name: r[1], g: r[2], tau: r[3], tmin: r[4], tmax: r[5], st: r[6], u: !!r[7], of: r[8], what: r[9], ph: r[10], z, p: periodOf(z)};
+});
+E.sort((a, b) => a.z - b.z || COLS.indexOf(a.g) - COLS.indexOf(b.g));
+E.forEach((e, i) => e.no = i + 1);
+const byS = Object.fromEntries(E.map(e => [e.s, e]));
+
+// predicted cells: [name, group, period, prediction, relatives]
+const GAPS = [
+ ["Variation","irreg",6,"How much each bar of a phrase differs from the others: fills, small changes, played rather than copied repeats.","Relatives: drum fills, humanization, call and response. Loop-based AI music often has almost none, so it may also be a fingerprint of generation."],
+ ["Novelty","irreg",7,"How much of a whole song is new material and how much is repeated.","Computable from the Track Map's repetition clusters as one minus the share of repeated sections."],
+ ["Tonal palette","makeup",7,"The pitch-class profile of the whole song: which notes the track uses and how much.","Relatives: key-finding profiles in music analysis. A natural next readout after chroma per bar."],
+ ["Spatial motion","space",5,"Position or width that moves in a pattern across a bar.","Relatives: tempo-synced auto-pan and rotating speakers. A known effect, not yet measured as an element."],
+ ["Width arc","space",6,"The stereo field opening or closing over a phrase.","Relatives: build-ups that widen into a drop, filtered intros that start in mono."],
+ ["Stereo form","space",7,"Width and depth that change by section.","Relatives: the common mixing practice of a narrow verse and a wide chorus."],
+];
+
+const gv = g => `var(${GRP[g][2]})`;
+const fmtT = t => t < 1e-3 ? `${+(t * 1e6).toPrecision(2)} µs` : t < 1 ? `${+(t * 1e3).toPrecision(3)} ms` : t < 60 ? `${+t.toPrecision(3)} s` : `${+(t / 60).toPrecision(2)} min`;
+const fmtZ = z => z.toFixed(1);
+
+document.getElementById("legend").innerHTML = COLS.map(g =>
+  `<span><i class="sw" style="background:${gv(g)}"></i><b>${GRP[g][0]}</b>&nbsp;<span style="color:var(--muted)">${GRP[g][1]}</span></span>`).join("");
+
+const tile = e => `<button class="el ${e.st}${e.u ? " u" : ""}" style="--fam:${gv(e.g)}" data-s="${e.s}" aria-pressed="false" aria-label="${e.name}, Z ${fmtZ(e.z)}">
+  <span class="num">${e.no}</span><span class="z">${fmtZ(e.z)}</span><span class="sym">${e.s}${e.of ? "<sup>2</sup>" : ""}</span><span class="nm">${e.name}</span></button>`;
+
+const T = document.getElementById("table");
+let html = `<div></div>` + COLS.map(g => `<div class="colhead" style="border-color:${gv(g)}"><b>${GRP[g][0]}</b><small>${GRP[g][1]}</small></div>`).join("");
+PERIODS.forEach(([pn, pt, pz, why], pi) => {
+  html += `<div class="rowhead"><b>${pi + 1}. ${pn}</b>${pt} · ${pz}<i>${why}</i></div>`;
+  COLS.forEach(g => {
+    const items = E.filter(e => e.g === g && e.p === pi + 1);
+    const gaps = GAPS.filter(x => x[1] === g && x[2] === pi + 1);
+    const n = items.length + gaps.length;
+    html += `<div class="cell${n <= 1 ? " one" : ""}">` + items.map(tile).join("") +
+      gaps.map(x => `<button class="el g" style="--fam:${gv(g)}" data-gap="${x[0]}" aria-pressed="false" aria-label="Predicted: ${x[0]}">
+        <span class="num">?</span><span class="sym">?</span><span class="nm">${x[0]}</span></button>`).join("") + `</div>`;
+  });
+});
+T.innerHTML = html;
+
+// time axis
+(() => {
+  const svg = document.getElementById("ruler"), x0 = 30, x1 = 980, zx = z => x0 + (x1 - x0) * z / 24;
+  const edges = [0, ...CUTS, 24];
+  let s = "";
+  for (let i = 0; i < 7; i++) {
+    const a = zx(edges[i]), b = zx(edges[i + 1]);
+    s += `<rect x="${a}" y="18" width="${b - a}" height="40" fill="${i % 2 ? "var(--panel)" : "var(--band)"}" stroke="var(--line)"/>`;
+    s += `<text x="${(a + b) / 2}" y="42" text-anchor="middle" font-size="11" fill="var(--ink)">${i + 1}. ${PERIODS[i][0]}</text>`;
+  }
+  for (let z = 0; z <= 24; z++) {
+    s += `<line x1="${zx(z)}" x2="${zx(z)}" y1="58" y2="${z % 2 ? 63 : 67}" stroke="var(--muted)"/>`;
+    if (z % 2 === 0) s += `<text x="${zx(z)}" y="80" text-anchor="middle" font-size="10" fill="var(--muted)">${z}</text>`;
+  }
+  s += `<text x="${x0 - 6}" y="80" text-anchor="end" font-size="10" fill="var(--muted)">Z</text>`;
+  const marks = [[0.6,"20 kHz"],[6.2,"A4 440 Hz"],[10.7,"20 Hz"],[14,"120 BPM"],[16,"bar"],[19,"8 bars"],[22.9,"4 min song"]];
+  marks.forEach(([z, l], i) => {
+    const y = i % 2 ? 128 : 106;
+    s += `<line x1="${zx(z)}" x2="${zx(z)}" y1="58" y2="${y - 10}" stroke="var(--period)" stroke-dasharray="2 2"/>`;
+    s += `<circle cx="${zx(z)}" cy="58" r="3" fill="var(--period)"/>`;
+    s += `<text x="${zx(z)}" y="${y}" text-anchor="${z < 2 ? "start" : z > 22 ? "end" : "middle"}" font-size="10.5" fill="var(--ink)">${l}</text>`;
+  });
+  s += `<text x="${x0}" y="12" font-size="10" fill="var(--muted)">faster</text><text x="${x1}" y="12" text-anchor="end" font-size="10" fill="var(--muted)">slower</text>`;
+  svg.innerHTML = s;
+})();
+
+const D = document.getElementById("drawer");
+const STATUS = {m: "Measured by PHARMAKON", p: "Partly measured", n: "Not measured yet"};
+function showEl(e) {
+  D.style.setProperty("--fam", gv(e.g));
+  const P = PERIODS[e.p - 1];
+  const inMols = [];
+  IFAMS.forEach(fm => fm[3].forEach(ins => { if (fm[1].includes(e.s) || ins[1].includes(e.s)) inMols.push(ins[0]); }));
+  const range = e.tmin === e.tmax ? "fixed window" : `${fmtT(e.tmin)} – ${fmtT(e.tmax)} (Z ${fmtZ(zOf(e.tmin))} – ${fmtZ(zOf(e.tmax))})`;
+  D.innerHTML = `<div><div class="big">${e.s}</div><div class="bigz">Z ${fmtZ(e.z)}</div></div><div>
+    <h3>${e.name}</h3>
+    <div class="meta">No. ${e.no} · ${GRP[e.g][0]} · Period ${e.p} (${P[0]}) · ${STATUS[e.st]}${e.u ? " · unstable" : ""}</div>
+    <dl><dt>What it is</dt><dd>${e.what}</dd>
+    <dt>Time τ</dt><dd>typical ${fmtT(e.tau)}; range ${range}</dd>
+    <dt>Question</dt><dd>${GRP[e.g][1]}${e.of && byS[e.of] ? ` Asked of the track of <b>${byS[e.of].name}</b> (${e.of}), not of the raw signal: a second-order element.` : ""}</dd>
+    ${e.u ? `<dt>Stability</dt><dd>Unstable: a corrupted form of a healthy ${GRP[e.g][0].toLowerCase()} element at this time scale.</dd>` : ""}
+    <dt>PHARMAKON</dt><dd>${e.ph}</dd>
+    <dt>Found in</dt><dd>${inMols.length ? inMols.join(", ") : "No instrument formula uses it yet."}</dd></dl></div>`;
+}
+function showGap(name) {
+  const g = GAPS.find(x => x[0] === name);
+  D.style.setProperty("--fam", gv(g[1]));
+  D.innerHTML = `<div><div class="big">?</div><div class="bigz">${PERIODS[g[2]-1][2]}</div></div><div><h3>${g[0]}</h3>
+    <div class="meta">Predicted cell · ${GRP[g[1]][0]} · Period ${g[2]} (${PERIODS[g[2]-1][0]}, ${PERIODS[g[2]-1][1]})</div>
+    <dl><dt>Prediction</dt><dd>${g[3]}</dd><dt>Relatives</dt><dd>${g[4]}</dd></dl></div>`;
+}
+const press = sel => { document.querySelectorAll(".el").forEach(x => x.setAttribute("aria-pressed", "false")); const b = T.querySelector(sel); if (b) b.setAttribute("aria-pressed", "true"); };
+T.addEventListener("click", ev => {
+  const b = ev.target.closest(".el"); if (!b) return;
+  if (b.dataset.gap) { press(`[data-gap="${b.dataset.gap}"]`); showGap(b.dataset.gap); }
+  else { press(`[data-s="${b.dataset.s}"]`); showEl(byS[b.dataset.s]); }
+});
+
+// column chains
+const TESTS = {
+  level:  "Speed a phrase's energy arc up to a single note and it becomes that note's envelope.",
+  period: "Speed a 120 BPM pulse up 32 times and it becomes a 64 Hz tone, five rows higher in the same column.",
+  irreg:  "Slow white noise down and its random wiggles become drift; speed drift up and it becomes noise.",
+  change: "A section boundary, a downbeat, an attack and a click are the same jump at shrinking scales.",
+  makeup: "The proportions of harmonics make a timbre; the proportions of pitch classes make a chord, then a key.",
+  space:  "Phase between channels at Z 5, position at Z 9, the room at Z 15. Longer scales are still predicted.",
+};
+document.getElementById("chains").innerHTML = COLS.map(g => {
+  const list = [];
+  for (let p = 1; p <= 7; p++) {
+    const first = E.filter(e => e.g === g && e.p === p && !e.u && !e.of)[0] || E.filter(e => e.g === g && e.p === p && !e.u)[0];
+    const gap = GAPS.find(x => x[1] === g && x[2] === p);
+    if (first) list.push(`<span class="s">${first.name} <small>${fmtZ(first.z)}</small></span>`);
+    else if (gap) list.push(`<span class="s" style="color:var(--muted)">? ${gap[0]}</span>`);
+  }
+  return `<div class="chain" style="--fam:${gv(g)}"><h4>${GRP[g][0]}</h4><p class="q">${GRP[g][1]}</p>
+    <div class="steps">${list.join('<span class="arr">→</span>')}</div><p class="test">${TESTS[g]}</p></div>`;
+}).join("");
+
+document.getElementById("gaps").innerHTML = GAPS.map(g =>
+  `<div class="gap" style="--fam:${gv(g[1])}"><h4>${g[0]}</h4><div class="where">${GRP[g[1]][0]} · period ${g[2]} (${PERIODS[g[2]-1][0]}, ${PERIODS[g[2]-1][2]})</div><p>${g[3]}</p><p>${g[4]}</p></div>`).join("");
+
+// instrument fingerprints (first edition, unchanged)
+var IFAMS = [
+ ["Struck", ["Ex","At","Ck","Dc"], "Energy arrives in one blow, then the body rings down.", [
+   ["Kick", ["Gl","Fq","Kk","Pu"], "A click, then a low tone whose pitch falls fast and dies within 300 ms, on the pulse."],
+   ["Snare", ["Wn","Bd","Pu"], "A short tonal body around 200 Hz from the shell and a long noise tail from the wires."],
+   ["Tom", ["Gl","Bd","Rg"], "Like a kick higher up: a pitched body that glides down, tuned in steps."],
+   ["Hi-hat and cymbal", ["Wn","Sb","Sd","Sh"], "Almost pure high noise; a cymbal adds a long shimmering wash."],
+   ["Piano", ["Hs","Ih","Bd","Ch"], "A struck string: harmonics slightly stretched (inharmonic) and a wooden body under them."],
+   ["Bell and mallet", ["Ih","Bt","Rv"], "Overtones far from the harmonic series; close pairs beat slowly as they ring."]]],
+ ["Plucked", ["Ex","At","Hs","Dc"], "A string is pulled and released; the tone starts bright and darkens as it decays.", [
+   ["Acoustic guitar", ["Bd","Gl","Ch","Pn"], "Fixed body resonances, slides, chords strummed as fast arpeggios."],
+   ["Electric guitar", ["Gt","Gl","Vb","Df"], "With distortion: grit added to every harmonic; bends and vibrato from the hand."],
+   ["Bass guitar", ["F0","Bn","Rg","Kb"], "One low line, plucked on the beat; the kick's nearest neighbour."],
+   ["Harp and pizzicato", ["Bd","Rv","Ch"], "Short plucks with a long room around them."]]],
+ ["Bowed", ["Ex","Hp","Hs","Bl"], "A bow feeds the string all the time: all harmonics, a soft start, a sound that can grow.", [
+   ["Violin and cello", ["Bd","Vb","Gt","Rg"], "Fixed body formants, vibrato from the hand, a little rasp from the bow."],
+   ["String section", ["Sh","Ch","Rv"], "Many players slightly apart in pitch and time: shimmer and width."]]],
+ ["Blown", ["Ex","Br","Hp","Bl"], "Air drives a tube or a reed; breath noise rides on top of the tone.", [
+   ["Flute", ["Br","Vb","Rg"], "Few harmonics, a lot of air, a soft attack."],
+   ["Clarinet", ["Hp","Rg"], "Odd harmonics dominate: a closed tube that skips the even ones."],
+   ["Brass", ["Hp","Bl","Gt","Ld"], "Harmonics multiply as it gets louder; a growl at full force."],
+   ["Saxophone", ["Gt","Vb","Fm"], "A reed with a voice-like edge: the hardest wind to tell from a singer."]]],
+ ["Sung", ["Ex","F0","Hs","Fm","Tm"], "The vocal tract shapes the harmonics and never holds still.", [
+   ["Lead vocal", ["Cs","Vb","Br","Pn","Gl"], "Moving formants, consonant bursts, breath, vibrato, centred in the stereo field."],
+   ["Backing and choir", ["Sh","Pn","Rv","Ch"], "Several voices spread wide; unison voices shimmer against each other."],
+   ["Whisper and spoken word", ["Br","Cs","Fm"], "Formants on noise instead of harmonics: a voice with no pitch."]]],
+ ["Electronic", ["Ex","Hp","Tl"], "A circuit or a program sets the waveform directly; anything is possible, so the pattern of harmonics tells most.", [
+   ["Sub bass", ["F0","Bn","Rg","Sc"], "Almost a pure sine: one harmonic, all body."],
+   ["Saw lead", ["Hp","Sh","Df","Pn"], "Every harmonic at 1/n; detuned copies make the supersaw shimmer."],
+   ["Pad", ["Ch","Bl","Rv","Lp"], "Slow-opening chords that repeat with the loop."],
+   ["FM bell and pluck", ["Ih","Bt","At"], "Inharmonic overtones from frequency modulation."],
+   ["Riser and noise sweep", ["Wn","Bl","Ar"], "Noise or tone that climbs and grows into a drop."]]],
+];
+const chip = s => byS[s] ? `<span class="chip" style="--fam:${gv(byS[s].g)}" title="${byS[s].name}, Z ${fmtZ(byS[s].z)}">${s}</span>` : "";
+document.getElementById("mols").innerHTML = IFAMS.map(fm =>
+  `<div class="ifam"><h4>${fm[0]}</h4><p class="why">${fm[2]}</p><div class="formula">${fm[1].map(chip).join("")}</div>` +
+  fm[3].map(ins => `<div class="inst"><b>${ins[0]}</b><div class="formula">${ins[1].map(chip).join("")}</div><p>${ins[2]}</p></div>`).join("") +
+  `</div>`).join("");
+
+showEl(byS["Pu"]); press(`[data-s="Pu"]`);
+</script>
