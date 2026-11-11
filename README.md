@@ -7,7 +7,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-0f9e8e.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-1f8fd0.svg)](requirements.txt)
 
-[The table](table/standalone/Periodic_Table_of_Sound_edition3.html) · [The collider](lab/collider.html) · [The article](articles/01_the_periodic_table_of_sound.md) · [How it is ordered](docs/ordering_criteria.md)
+**[Open the table](https://alex-gerek.github.io/periodic-table-of-sound/table/standalone/Periodic_Table_of_Sound_edition3.html)** · **[Open the collider](https://alex-gerek.github.io/periodic-table-of-sound/lab/collider.html)** · [Website](https://alex-gerek.github.io/periodic-table-of-sound/) · [The article](articles/01_the_periodic_table_of_sound.md) · [How it is ordered](docs/ordering_criteria.md)
 
 </div>
 
@@ -56,9 +56,10 @@ The third edition holds **59** stable elements.
 
 ## Open it
 
-- **The table:** open [`table/standalone/Periodic_Table_of_Sound_edition3.html`](table/standalone/Periodic_Table_of_Sound_edition3.html) in a browser. Click any tile for its time octave, its measured range and its metric interval.
-- **The collider:** open [`lab/collider.html`](lab/collider.html). Choose elements, set their dials and press *Collide*. The sound is synthesised from scratch, the detectors search the stems without seeing the recipe, and *Run controls* removes each element in turn.
-- **Everything at once:** [`index.html`](index.html) is the landing page, ready for GitHub Pages.
+- **The table:** [open it in your browser](https://alex-gerek.github.io/periodic-table-of-sound/table/standalone/Periodic_Table_of_Sound_edition3.html). Click any tile for its time octave, its measured range and its metric interval.
+- **The collider:** [open it in your browser](https://alex-gerek.github.io/periodic-table-of-sound/lab/collider.html). Use headphones. Choose elements, set their dials and press *Collide*. The sound is synthesised from scratch, the detectors search the stems without seeing the recipe, and *Run controls* removes each element in turn.
+- **Everything at once:** the [project website](https://alex-gerek.github.io/periodic-table-of-sound/).
+- **Offline:** clone the repository and open the same `.html` files by double-click. GitHub's file view shows HTML as source code, so use the links above to see the pages.
 
 ## Quick start
 
