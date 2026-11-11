@@ -42,6 +42,8 @@ h1 { margin: 0 0 4px; font-size: 26px; letter-spacing: .02em; }
 .row output { font-family: var(--mono); text-align: right; }
 input[type=range] { width: 100%; }
 .el.off { opacity: .5; }
+.presets { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+.presets button { font-size: 13px; padding: 6px 10px; border-color: color-mix(in srgb, var(--irreg) 60%, var(--line)); }
 .btns { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
 button { font: inherit; border-radius: 7px; padding: 8px 14px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); cursor: pointer; }
 button.main { background: var(--period); border-color: var(--period); color: #fff; font-weight: 600; }
@@ -75,6 +77,7 @@ canvas { width: 100%; height: 70px; display: block; margin-top: 8px; background:
 
     <section class="card">
       <h2>Collider · recipe</h2>
+      <div class="presets" id="presets" aria-label="Listening presets"></div>
       <div id="recipe"></div>
       <div class="btns">
         <button class="main" id="go">Collide</button>
@@ -476,6 +479,30 @@ document.getElementById("ctl").onclick = async () => {
 };
 document.getElementById("play").onclick = () => play(["Rhythm", "Melody", "Pad"]);
 document.getElementById("stop").onclick = stop;
+
+// listening presets: one click sets the recipe and collides
+const PRESETS = [
+  { name: "Variation · fill every 4 bars", hint: "Predicted cell Variation: a fill closes every 4-bar phrase. Expect 4 bars, 9.6 s, Z 18.26 (row 6, Phrase).",
+    on: ["Pu", "Me", "Va"], v: { "Pu.bpm": 100, "Me.beats": 4, "Va.bars": 4, "Va.fill": 2, "Va.random": 0 } },
+  { name: "Variation · random fills", hint: "The same fills in random bars. Expect variation without a period.",
+    on: ["Pu", "Me", "Va"], v: { "Pu.bpm": 100, "Me.beats": 4, "Va.bars": 4, "Va.fill": 2, "Va.random": 1 } },
+  { name: "No variation · loop", hint: "The control: every bar identical. Expect no variation.",
+    on: ["Pu", "Me"], v: { "Pu.bpm": 100, "Me.beats": 4 } },
+  { name: "Everything", hint: "All six elements at once.",
+    on: ["Pu", "Me", "Va", "Vb", "Sp", "Wa"], v: { "Pu.bpm": 120, "Me.beats": 3, "Va.bars": 4, "Va.fill": 2, "Va.random": 0, "Vb.rate": 5.5, "Vb.depth": 40, "Sp.bars": 2, "Wa.bars": 8 } },
+];
+function applyPreset(p) {
+  EL.forEach(e => {
+    e.on = p.on.includes(e.k); document.getElementById("on-" + e.k).checked = e.on;
+    e.dials.forEach(d => {
+      const key = e.k + "." + d[0];
+      if (key in p.v) { val[key] = p.v[key]; document.getElementById(`d-${e.k}-${d[0]}`).value = p.v[key]; document.getElementById(`o-${e.k}-${d[0]}`).textContent = `${p.v[key]} ${d[6]}`; }
+    });
+  });
+  refresh(); status(p.hint); document.getElementById("go").click();
+}
+document.getElementById("presets").innerHTML = PRESETS.map((p, i) => `<button data-i="${i}" title="${p.hint}">${p.name}</button>`).join("");
+document.querySelectorAll("#presets button").forEach(b => b.onclick = () => applyPreset(PRESETS[+b.dataset.i]));
 refresh(); showResults();
 </script>
 </body>
