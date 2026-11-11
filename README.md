@@ -4,6 +4,7 @@
 
 **The elements of music, ordered by a number you can measure.**
 
+[![Tests](https://github.com/alex-gerek/periodic-table-of-sound/actions/workflows/tests.yml/badge.svg)](https://github.com/alex-gerek/periodic-table-of-sound/actions/workflows/tests.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-0f9e8e.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-1f8fd0.svg)](requirements.txt)
 
