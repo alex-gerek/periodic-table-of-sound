@@ -68,7 +68,11 @@ def entry(tau, strength=None, lo=None, hi=None, extra=None):
 
 
 def per_entry(p):
-    return entry(p.tau, p.strength, extra={"candidates": p.candidates})
+    extra = {"candidates": p.candidates}
+    if p.confirmed is not None:                   # confirmation test (issue #7)
+        extra.update({"confirmed": p.confirmed, "significance": p.evidence.get("significance"),
+                      "confirmation": p.evidence.get("reason")})
+    return entry(p.tau, p.strength, extra=extra)
 
 
 def measure(folder):

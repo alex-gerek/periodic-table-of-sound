@@ -185,7 +185,7 @@ code, .mono { font-family: var(--font-data); font-size: .92em; }
   <ul class="moves">
     <li><b>The first measurements.</b> Pitch, Vibrato, Pulse, Sidechain pump, Meter and the new Harmonic rhythm carry a ✓. Their time octaves were measured on real stems, and the details are in each element's panel. All the code is our own (<span class="mono">pts/</span>), and each measurement has a control with a known answer.</li>
     <li><b>The Z 16 border stays; the bar crosses it.</b> The bar of a 4/4 track is at Z 16.58 at 80.5 BPM and at Z 15.46 at 174 BPM. Both 80.5 and 100 BPM landed exactly where they were predicted before measuring. Meter is an element whose Z depends on tempo.</li>
-    <li><b>A second coordinate: the metric interval.</b> The distance in Z from the pulse is log₂ of a whole number: 4 in 4/4, 3 in a waltz, 3 eighths per beat and 2 beats per bar in a real 6/8. Chord changes nest within 0.003 of log₂ 4 or log₂ 8 at every tempo.</li>
+    <li><b>A second coordinate: the metric interval.</b> The distance in Z from the pulse is log₂ of a whole number: 4 in 4/4, 3 in a waltz, 3 eighths per beat and 2 beats per bar in a real 6/8. Where the chord-change period is confirmed (4 of 7 tracks), it nests within 0.003 of log₂ 4 or log₂ 8.</li>
     <li><b>Borders are zones.</b> Each border of the time axis is drawn about ±0.3 Z wide.</li>
     <li><b>New element: Harmonic rhythm</b> (Change, about Z 17). It is how often chords change, measured independently of the drums.</li>
     <li><b>Open questions:</b> a pulse rule that returns the beat rather than the strongest repeat (breakbeat, fast waltz); meter in live music that bends the tempo; vibrato inside a mix.</li>
@@ -317,7 +317,7 @@ const CHECK = {
   Pu: [13.46, 14.58, "Six Suno tracks from 80.5 to 174 BPM, plus GRAVITY, Metro and Pure voltage. A breakbeat (174 BPM) and a fast waltz return the bar as the strongest repeat, so the pulse definition is still open.", "2026-11-10_tempo_series"],
   Sc: [14.01, 15.10, "Found freely in the bass level track. On GRAVITY it equals the drum pulse (0.3%); on Pure voltage its strongest repeat is two pulses (ΔZ = 1), with one pulse a close second. None on the track without pumping. Corrected in issue #5.", "2026-11-10_periodicity_column"],
   Me: [14.72, 16.58, "4/4 bars at Z 16.58 (80.5 BPM) and 16.26 (100 BPM) in row 5, and at 15.99 to 15.46 (121 to 174 BPM) in row 4. A waltz: 3 beats per bar. A real 6/8: 3 eighths per beat, 2 beats per bar.", "2026-11-10_tempo_series"],
-  Hr: [15.76, 17.97, "Chord changes every 1, 2 or 4 bars. ΔZ to the pulse is log₂ of a whole number within 0.003 at every tempo.", "2026-11-10_tempo_series"],
+  Hr: [15.76, 17.97, "Chord changes every 1, 2 or 4 bars. Confirmed at 100, 120, 140 and 160 BPM, where ΔZ to the pulse is log₂ of a whole number within 0.003; not confirmed on three other tracks (issue #7).", "2026-11-10_tempo_series"],
 };
 // metric interval: distance in Z from the pulse, for elements counted in pulses
 const METRIC = {

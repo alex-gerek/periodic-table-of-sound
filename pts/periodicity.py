@@ -34,9 +34,11 @@ _FLAT = 1e-20
 
 @dataclass
 class Periodicity:
-    tau: float | None                 # period in seconds, or None if nothing periodic was found
+    tau: float | None                 # candidate period in seconds, or None if there is no candidate
     strength: float                   # normalised autocorrelation at that lag, 0..1
     candidates: list = field(default_factory=list)  # [(tau, strength)] strongest local maxima
+    confirmed: bool | None = None     # None: not tested; False: the candidate is not proven
+    evidence: dict = field(default_factory=dict)    # what the confirmation test measured
 
     @property
     def z(self):
@@ -397,14 +399,101 @@ def compress_time(x: np.ndarray, k: int) -> np.ndarray:
 N_MULT = 4
 
 
-def envelope_periodicity(env, fs, tau_lo, tau_hi, n_mult=N_MULT):
+# ---------------------------------------------------------------- confirmation
+#
+# The peak rule always returns its best candidate, even in pure noise. Whether that
+# candidate is a real period is a separate question, answered here with three tests:
+#
+# 1. Significance. If a track has no periodicity, its autocorrelation at a long lag l is
+#    noise with standard deviation (Bartlett's formula for a correlated sequence)
+#        sigma(l) = sqrt((1 + 2 * sum_{k=1..K} rho(k)^2) / (n - l)),
+#    where rho(k) for k below the search range describes the track's own smoothness.
+#    The candidate's peak must stand Z_MIN standard deviations above zero.
+# 2. Repetitions. The period must fit into the track at least MIN_REPS times.
+# 3. Stability. The same lag must stay significant in each half of the track, at
+#    Z_MIN / sqrt(2) (each half has half the data).
+#
+# The thresholds were chosen on a training set and checked on independent signals:
+# experiments/2026-11-12_periodicity_confirmation/.
+
+# Chosen on the training set (largest share of true detections with at most 1% false
+# detections): 5 sigma and 4 repetitions. On the test set and on the real drum stems this
+# gave 0% false detections and 0% misses. The noisiest negative reached 5.2 sigma once and
+# was rejected by the stability test, so the three tests are meant to work together.
+Z_MIN = 5.0
+MIN_REPS = 4.0
+
+
+def _bartlett_sigma(r: np.ndarray, n: int, lag: int, k_short: int) -> float:
+    k_short = max(1, min(k_short, len(r) - 1))
+    s = 1.0 + 2.0 * float(np.sum(r[1:k_short] ** 2))
+    return float(np.sqrt(s / max(1, n - lag)))
+
+
+def _peak_near(r: np.ndarray, lag: float, tol: float = 0.02) -> tuple[int, float]:
+    lo, hi = max(1, int(np.floor(lag * (1 - tol)))), min(len(r) - 1, int(np.ceil(lag * (1 + tol))))
+    if hi < lo:
+        return int(round(lag)), 0.0
+    k = lo + int(np.argmax(r[lo:hi + 1]))
+    return k, float(r[k])
+
+
+def confirm_period(track, fs, cand: Periodicity, tau_lo: float, corr=None,
+                   z_min: float = None, min_reps: float = None) -> Periodicity:
+    """Mark a candidate period as confirmed or not, and record the evidence.
+
+    `track` is the sequence the candidate was found in (1-D envelope or 2-D frames) and
+    `corr` the function that autocorrelates it (autocorr or lag_similarity).
+    """
+    z_min = Z_MIN if z_min is None else z_min
+    min_reps = MIN_REPS if min_reps is None else min_reps
+    corr = corr or autocorr
+    track = np.asarray(track, dtype=np.float64)
+    n = len(track)
+    if cand.tau is None or n < 4:
+        cand.confirmed, cand.evidence = False, {"reason": "no candidate"}
+        return cand
+    lag = cand.tau * fs
+    k_short = int(tau_lo * fs)
+    reps = n / lag
+    ev = {"repetitions": reps}
+
+    def significance(seq):
+        m = len(seq)
+        if m <= lag + 2:
+            return 0.0
+        r = corr(seq, int(lag * 1.05) + 2)
+        k, val = _peak_near(r, lag)
+        return val / _bartlett_sigma(r, m, k, k_short)
+
+    ev["significance"] = significance(track)
+    half = n // 2
+    ev["significance_halves"] = (significance(track[:half]), significance(track[half:]))
+    reasons = []
+    if reps < min_reps:
+        reasons.append(f"only {reps:.1f} repetitions (need {min_reps:g})")
+    if ev["significance"] < z_min:
+        reasons.append(f"peak {ev['significance']:.1f} sigma (need {z_min:g})")
+    if min(ev["significance_halves"]) < z_min / np.sqrt(2):
+        reasons.append("not stable in both halves")
+    cand.confirmed = not reasons
+    ev["reason"] = "; ".join(reasons) if reasons else "confirmed"
+    cand.evidence = ev
+    return cand
+
+
+def envelope_periodicity(env, fs, tau_lo, tau_hi, n_mult=N_MULT, confirm=True):
+    """Best candidate period of an envelope in [tau_lo, tau_hi), with confirmation."""
     r = autocorr(env, int(n_mult * tau_hi * fs) + 2)
-    return pick_period(r, fs, tau_lo, tau_hi, n_mult=n_mult)
+    cand = pick_period(r, fs, tau_lo, tau_hi, n_mult=n_mult)
+    return confirm_period(env, fs, cand, tau_lo, autocorr) if confirm else cand
 
 
-def feature_periodicity(F, fs, tau_lo, tau_hi, n_mult=N_MULT):
+def feature_periodicity(F, fs, tau_lo, tau_hi, n_mult=N_MULT, confirm=True):
+    """Best candidate period of a sequence of frames in [tau_lo, tau_hi), with confirmation."""
     r = lag_similarity(F, int(n_mult * tau_hi * fs) + 2)
-    return pick_period(r, fs, tau_lo, tau_hi, n_mult=n_mult)
+    cand = pick_period(r, fs, tau_lo, tau_hi, n_mult=n_mult)
+    return confirm_period(F, fs, cand, tau_lo, lag_similarity) if confirm else cand
 
 
 # ---------------------------------------------------------------- harmonic change

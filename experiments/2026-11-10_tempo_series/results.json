@@ -50,6 +50,11 @@
     0.08384308220856525
    ]
   ],
+  "pulse_confirmed": true,
+  "pulse_significance": 87.46981731048206,
+  "harm_confirmed": false,
+  "harm_significance": 5.61508070526374,
+  "harm_confirmation": "not stable in both halves",
   "harm_z": 17.974108742760976,
   "harm_in_pulses": 15.983481507206871,
   "dz": 3.998509783886462
@@ -105,6 +110,11 @@
     0.07147166376766621
    ]
   ],
+  "pulse_confirmed": true,
+  "pulse_significance": 42.43637215859879,
+  "harm_confirmed": false,
+  "harm_significance": 4.800419910936314,
+  "harm_confirmation": "peak 4.8 sigma (need 5); not stable in both halves",
   "harm_z": 16.57527874449276,
   "harm_in_pulses": 3.9996054821611824,
   "dz": 1.9998577007500344
@@ -160,6 +170,11 @@
     0.17510480390613298
    ]
   ],
+  "pulse_confirmed": true,
+  "pulse_significance": 66.97622762519333,
+  "harm_confirmed": true,
+  "harm_significance": 16.063562220685093,
+  "harm_confirmation": "confirmed",
   "harm_z": 17.262879198384276,
   "harm_in_pulses": 7.9991541948840466,
   "dz": 2.9998474620804814
@@ -215,6 +230,11 @@
     0.19294263339903056
    ]
   ],
+  "pulse_confirmed": true,
+  "pulse_significance": 101.86236076838033,
+  "harm_confirmed": true,
+  "harm_significance": 17.978606460553895,
+  "harm_confirmation": "confirmed",
   "harm_z": 16.989262536014568,
   "harm_in_pulses": 8.010272529002325,
   "dz": 3.001851327471895
@@ -270,6 +290,11 @@
     0.22586583627255882
    ]
   ],
+  "pulse_confirmed": true,
+  "pulse_significance": 77.3924238745815,
+  "harm_confirmed": true,
+  "harm_significance": 17.97406204956892,
+  "harm_confirmation": "confirmed",
   "harm_z": 15.757618094422629,
   "harm_in_pulses": 3.9908057208893433,
   "dz": 1.9966800477462616
@@ -325,6 +350,11 @@
     0.10343185789729514
    ]
   ],
+  "pulse_confirmed": true,
+  "pulse_significance": 100.6234367690696,
+  "harm_confirmed": true,
+  "harm_significance": 7.877363999044792,
+  "harm_confirmation": "confirmed",
   "harm_z": 16.549986396705545,
   "harm_in_pulses": 8.007554953863504,
   "dz": 3.00136179389216
@@ -376,6 +406,11 @@
     0.01582014513207755
    ]
   ],
+  "pulse_confirmed": true,
+  "pulse_significance": 65.5293664885359,
+  "harm_confirmed": false,
+  "harm_significance": 2.1086795357286094,
+  "harm_confirmation": "peak 2.1 sigma (need 5); not stable in both halves",
   "harm_z": 17.465289418877276,
   "harm_in_pulses": 4.002487588864639,
   "dz": 2.0008969291597207
