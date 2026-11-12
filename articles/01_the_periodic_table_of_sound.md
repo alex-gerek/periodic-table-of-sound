@@ -2,6 +2,8 @@
 
 *Lex Gerek, with Claude. November 2026.*
 
+*Archived version: [doi:10.5281/zenodo.24161074](https://doi.org/10.5281/zenodo.24161074) (all versions; version 0.4.0 is [10.5281/zenodo.24161075](https://doi.org/10.5281/zenodo.24161075)).*
+
 Mendeleev did not set out to describe every substance in the world. He looked for the few numbers that put the elements in order, and then he trusted that order enough to leave gaps in it. Three of those gaps were later filled by gallium, scandium and germanium, with almost exactly the properties he had predicted.
 
 This project asks whether music can be ordered the same way. We do not mean genres, instruments or moods. We mean the elementary quantities that every piece of music is made of, such as a pitch, a pulse, a vibrato, a bar or a phrase. Can those be ordered by numbers that a machine can measure, and does the resulting order predict something we have not heard yet?
