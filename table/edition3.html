@@ -125,6 +125,28 @@ code, .mono { font-family: var(--font-data); font-size: .92em; }
 .note { color: var(--muted); font-size: 13px; max-width: 86ch; margin-top: 26px; }
 @media (max-width: 640px) { .drawer { grid-template-columns: 1fr; } .drawer .big { font-size: 40px; } .chains { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: no-preference) { .el { transition: transform .12s ease; } .el:hover { transform: translateY(-1px); } }
+
+/* element cards (issue #24) */
+.cardbg { position: fixed; inset: 0; z-index: 50; background: color-mix(in srgb, #000 55%, transparent); display: flex; align-items: flex-start; justify-content: center; overflow-y: auto; padding: 32px 16px; }
+.cardbg[hidden] { display: none; }
+.card { width: min(860px, 100%); background: var(--panel); color: var(--ink); border: 1px solid var(--line); border-top: 6px solid var(--fam); border-radius: 14px; padding: 22px 26px 26px; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,.35); }
+.card .x { position: absolute; top: 12px; right: 12px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 8px; width: 36px; height: 36px; font-size: 18px; cursor: pointer; }
+.card .hd { display: flex; gap: 18px; align-items: center; margin: 0 40px 12px 0; }
+.card .sym { font-family: var(--font-display); font-size: 44px; font-weight: 800; color: var(--fam); min-width: 86px; }
+.card h2 { margin: 0; font-family: var(--font-display); font-size: 24px; letter-spacing: .03em; }
+.card .meta { color: var(--muted); font-size: 13.5px; margin-top: 4px; }
+.card .badge { display: inline-block; font-size: 12.5px; padding: 2px 9px; border-radius: 99px; border: 1px solid var(--fam); color: var(--fam); margin-right: 6px; }
+.card .one { font-size: 18px; margin: 6px 0 4px; }
+.card h4 { font-family: var(--font-display); font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--fam); margin: 22px 0 8px; }
+.card ul { margin: 0; padding-left: 20px; } .card li { margin: 3px 0; }
+.card .typ { color: var(--muted); font-size: 12.5px; margin: -4px 0 6px; }
+.card .listen { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.card .btn { display: inline-block; background: var(--fam); color: var(--panel); text-decoration: none; font-weight: 700; padding: 9px 16px; border-radius: 8px; }
+.card .chart { width: 100%; height: auto; display: block; margin: 6px 0 4px; }
+.card .pred { border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; }
+.card .pred b { margin-right: 6px; } .card .pred small { display: block; color: var(--muted); margin-top: 3px; }
+.card a { color: var(--fam); }
+@media (max-width: 640px) { .card { padding: 18px 16px 20px; } .card .sym { font-size: 34px; min-width: 60px; } }
 </style>
 
 <div class="wrap" lang="en">
@@ -202,6 +224,7 @@ code, .mono { font-family: var(--font-data); font-size: .92em; }
   <p class="note">Fill and border show what PHARMAKON 3.2 measures; the ✓ shows what this project has checked. τ values are typical, with ranges in the detail panel. An element is placed by its typical τ, so elements near a border can belong to both neighbouring periods. The first and second editions are kept as separate pages.</p>
 </div>
 
+<div class="cardbg" id="cardbg" hidden><article class="card" id="card" role="dialog" aria-modal="true" aria-labelledby="cardname"></article></div>
 <script>
 const GRP = {
   level:  ["Level",        "How strong is it?",                         "--level"],
@@ -469,8 +492,154 @@ const press = sel => { document.querySelectorAll(".el").forEach(x => x.setAttrib
 T.addEventListener("click", ev => {
   const b = ev.target.closest(".el"); if (!b) return;
   if (b.dataset.gap) { press(`[data-gap="${b.dataset.gap}"]`); showGap(b.dataset.gap); }
-  else { press(`[data-s="${b.dataset.s}"]`); showEl(byS[b.dataset.s]); }
+  else { press(`[data-s="${b.dataset.s}"]`); showEl(byS[b.dataset.s]); openCard(byS[b.dataset.s]); }
 });
+
+// element cards (issue #24): the data is injected by table/build_cards.py
+// CARDS:BEGIN
+const CARDS = {
+ "Vb": {
+  "sentence": "A regular wobble in the pitch of a held note, about five to seven times a second.",
+  "where": [
+   "Classical and operatic singing, on long notes",
+   "Violin, viola and cello: the finger rocks on the string",
+   "Guitar, with a bending finger or a tremolo arm",
+   "Synthesizer leads, with a slow oscillator on the pitch"
+  ],
+  "place": [
+   "Column: Periodicity. It asks what repeats, and how often, but of the pitch track rather than of the raw sound. That makes it a second-order element, built on Pitch (F0).",
+   "Row: Event (Z 10.7 to 13). One wobble takes 0.15 to 0.18 s: too slow to be heard as a pitch of its own, too fast to tap along to.",
+   "Expected, not yet measured: played about five times faster, a vibrato crosses 20 wobbles a second and stops sounding like a wobble. It becomes a roughness of the tone, in the Tone row. Played much slower, it becomes a slow drift of pitch."
+  ],
+  "listen": {
+   "recipe": "vibrato",
+   "label": "A held melody with a 5.5 Hz vibrato of ±40 cents. Switch it off to hear the same notes straight."
+  },
+  "found": {
+   "summary": "We tracked the pitch of every held note, removed the note itself, and looked for a regular swing in what was left. Each one-second window was judged on its own, by the same gate for every recording.",
+   "chart": {
+    "title": "Vibrato rate found, median and 10–90% range",
+    "unit": "Hz",
+    "lo": 4,
+    "hi": 8,
+    "rows": [
+     {
+      "label": "Soprano (Suno)",
+      "median": 5.67,
+      "p10": 5.48,
+      "p90": 6.05
+     },
+     {
+      "label": "Baritone (Suno)",
+      "median": 5.84,
+      "p10": 5.5,
+      "p90": 6.47
+     },
+     {
+      "label": "Violin, Bach (Telmányi)",
+      "median": 6.54,
+      "p10": 6.05,
+      "p90": 6.96
+     },
+     {
+      "label": "Piano (control, no vibrato)",
+      "median": null,
+      "note": "nothing found"
+     },
+     {
+      "label": "Same piano, 5.5 Hz written in",
+      "median": 5.51,
+      "p10": 5.34,
+      "p90": 5.67,
+      "control": true
+     }
+    ]
+   },
+   "numbers": [
+    "Every solo recording lands in the Event row: Z 12.29 to 12.50.",
+    "The piano without vibrato gave no false alarms; a 5.5 Hz vibrato written into it was found at 5.51 Hz.",
+    "Voices swing wider than the violin: ±30 to 40 cents against ±13."
+   ],
+   "limits": [
+    "Inside a mix it is not solved yet: a violin with piano and a cello with orchestra gave no vibrato windows.",
+    "The Suno voices carry vibrato on only 11 to 16% of their held-note time, mostly late in long notes."
+   ],
+   "links": [
+    [
+     "The experiment",
+     "experiments/2026-11-10_vibrato_real/README.md"
+    ]
+   ]
+  },
+  "predictions": [
+   {
+    "status": "true",
+    "text": "Vibrato lives in the Event row (Z 10.7 to 13).",
+    "fail": "A natural vibrato read outside the row, slower than 4 or faster than 20 wobbles a second (the borders of the row).",
+    "evidence": "Predicted by the second edition of the table before the measurement; measured at Z 12.29 to 12.50.",
+    "link": "experiments/2026-11-10_vibrato_real/README.md"
+   },
+   {
+    "status": "waiting",
+    "text": "Generated singing starts its vibrato late in a long note, which makes it a fingerprint of generation.",
+    "fail": "A human reference singer shows the same late start.",
+    "evidence": "Seen in two Suno voices; no human reference recording yet."
+   },
+   {
+    "status": "waiting",
+    "text": "Vibrato can be read inside a full mix, not only on a solo stem.",
+    "fail": "No method finds it in a mix where it is known to be present.",
+    "evidence": "Not found yet in the two mixes tried."
+   }
+  ],
+  "pharmakon": "Not in PHARMAKON yet. Measured in this project."
+ }
+};
+// CARDS:END
+const REPO = "https://github.com/alex-gerek/periodic-table-of-sound/blob/main/";
+const LAB = location.pathname.includes("/standalone/") ? "../../lab/" : "../lab/";
+const STATUS_ICON = {true: "✓ came true", partly: "✓ partly", false: "✗ did not come true", waiting: "🔮 waiting for a test"};
+function cardChart(c) {
+  const W = 760, rowH = 34, top = 30, left = 250, right = 30, H = top + c.rows.length * rowH + 34;
+  const x = v => left + (v - c.lo) / (c.hi - c.lo) * (W - left - right);
+  let s = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="${c.title}"><text x="0" y="16" font-size="13" fill="var(--muted)">${c.title}</text>`;
+  for (let v = c.lo; v <= c.hi; v++) s += `<line x1="${x(v)}" x2="${x(v)}" y1="${top - 6}" y2="${H - 28}" stroke="var(--line)"/><text x="${x(v)}" y="${H - 10}" font-size="12" text-anchor="middle" fill="var(--muted)">${v} ${v === c.hi ? c.unit : ""}</text>`;
+  c.rows.forEach((r, i) => {
+    const y = top + i * rowH + rowH / 2;
+    s += `<text x="0" y="${y + 4}" font-size="13" fill="var(--ink)">${r.label}</text>`;
+    if (r.median == null) { s += `<text x="${left}" y="${y + 4}" font-size="13" fill="var(--muted)">${r.note || "none"}</text>`; return; }
+    s += `<line x1="${x(r.p10)}" x2="${x(r.p90)}" y1="${y}" y2="${y}" stroke="var(--fam)" stroke-width="8" stroke-linecap="round" opacity="${r.control ? 0.45 : 0.85}"${r.control ? ' stroke-dasharray="3 5"' : ""}/>`;
+    s += `<circle cx="${x(r.median)}" cy="${y}" r="7" fill="var(--panel)" stroke="var(--fam)" stroke-width="3"/><text x="${x(r.p90) + 12}" y="${y + 4}" font-size="12.5" fill="var(--muted)">${r.median.toFixed(2)} ${c.unit}</text>`;
+  });
+  return s + "</svg>";
+}
+function openCard(e) {
+  const k = CARDS[e.s], bg = document.getElementById("cardbg"), C = document.getElementById("card");
+  if (!k) return false;
+  const P = PERIODS[e.p - 1];
+  C.style.setProperty("--fam", gv(e.g));
+  const chk = CHECK[e.s];
+  const links = (k.found && k.found.links || []).map(([t, u]) => `<a href="${REPO}${u}" target="_blank" rel="noopener">${t}</a>`).join(" · ");
+  C.innerHTML = `<button class="x" id="cardx" aria-label="Close">✕</button>
+    <div class="hd"><div class="sym">${e.s}</div><div><h2 id="cardname">${e.name}</h2>
+      <div class="meta">${GRP[e.g][0]} · Period ${e.p} (${P[0]}, ${P[1]}) · Z ${fmtZ(e.z)}, range ${fmtZ(zOf(e.tmin))} – ${fmtZ(zOf(e.tmax))}</div>
+      <div style="margin-top:6px">${chk ? `<span class="badge">✓ measured in this project</span>` : `<span class="badge">not measured yet</span>`}${e.of && byS[e.of] ? `<span class="badge">built on ${byS[e.of].name}</span>` : ""}</div></div></div>
+    <p class="one">${k.sentence}</p>
+    <h4>Where you hear it</h4><p class="typ">Typical examples, a description rather than a measurement.</p><ul>${k.where.map(w => `<li>${w}</li>`).join("")}</ul>
+    <h4>Its place in the table</h4><ul>${k.place.map(w => `<li>${w}</li>`).join("")}</ul>
+    ${k.listen ? `<h4>Listen</h4><div class="listen"><a class="btn" href="${LAB}collider.html?recipe=${k.listen.recipe}" target="_blank" rel="noopener">▶ Open in the collider</a><span>${k.listen.label}</span></div>` : ""}
+    ${k.found ? `<h4>How we found it</h4><p>${k.found.summary}</p>${k.found.chart ? cardChart(k.found.chart) : ""}<ul>${k.found.numbers.map(w => `<li>${w}</li>`).join("")}</ul>
+      <p style="margin:10px 0 4px"><b>Where it does not work yet</b></p><ul>${k.found.limits.map(w => `<li>${w}</li>`).join("")}</ul><p>${links}</p>` : ""}
+    ${k.predictions ? `<h4>Our predictions</h4>${k.predictions.map(p => `<div class="pred"><b>${STATUS_ICON[p.status]}</b>${p.text}<small>Would fail if: ${p.fail}</small><small>${p.evidence}${p.link ? ` <a href="${REPO}${p.link}" target="_blank" rel="noopener">evidence</a>` : ""}</small></div>`).join("")}` : ""}
+    <h4>In PHARMAKON</h4><p>${k.pharmakon}</p>`;
+  bg.hidden = false;
+  document.getElementById("cardx").onclick = closeCard;
+  document.getElementById("cardx").focus();
+  return true;
+}
+function closeCard() { document.getElementById("cardbg").hidden = true; }
+document.getElementById("cardbg").addEventListener("click", ev => { if (ev.target.id === "cardbg") closeCard(); });
+document.addEventListener("keydown", ev => { if (ev.key === "Escape") closeCard(); });
 
 // column chains
 const TESTS = {

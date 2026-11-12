@@ -1,0 +1,49 @@
+{
+ "_note": "Element cards (issue #24). Every 'measured' item must link to its evidence; every prediction must link to the record written before its test. 'where' is description, not measurement. Built into the table by table/build_cards.py.",
+ "Vb": {
+  "sentence": "A regular wobble in the pitch of a held note, about five to seven times a second.",
+  "where": [
+   "Classical and operatic singing, on long notes",
+   "Violin, viola and cello: the finger rocks on the string",
+   "Guitar, with a bending finger or a tremolo arm",
+   "Synthesizer leads, with a slow oscillator on the pitch"
+  ],
+  "place": [
+   "Column: Periodicity. It asks what repeats, and how often, but of the pitch track rather than of the raw sound. That makes it a second-order element, built on Pitch (F0).",
+   "Row: Event (Z 10.7 to 13). One wobble takes 0.15 to 0.18 s: too slow to be heard as a pitch of its own, too fast to tap along to.",
+   "Expected, not yet measured: played about five times faster, a vibrato crosses 20 wobbles a second and stops sounding like a wobble. It becomes a roughness of the tone, in the Tone row. Played much slower, it becomes a slow drift of pitch."
+  ],
+  "listen": {"recipe": "vibrato", "label": "A held melody with a 5.5 Hz vibrato of ±40 cents. Switch it off to hear the same notes straight."},
+  "found": {
+   "summary": "We tracked the pitch of every held note, removed the note itself, and looked for a regular swing in what was left. Each one-second window was judged on its own, by the same gate for every recording.",
+   "chart": {
+    "title": "Vibrato rate found, median and 10–90% range",
+    "unit": "Hz",
+    "lo": 4, "hi": 8,
+    "rows": [
+     {"label": "Soprano (Suno)", "median": 5.67, "p10": 5.48, "p90": 6.05},
+     {"label": "Baritone (Suno)", "median": 5.84, "p10": 5.50, "p90": 6.47},
+     {"label": "Violin, Bach (Telmányi)", "median": 6.54, "p10": 6.05, "p90": 6.96},
+     {"label": "Piano (control, no vibrato)", "median": null, "note": "nothing found"},
+     {"label": "Same piano, 5.5 Hz written in", "median": 5.51, "p10": 5.34, "p90": 5.67, "control": true}
+    ]
+   },
+   "numbers": [
+    "Every solo recording lands in the Event row: Z 12.29 to 12.50.",
+    "The piano without vibrato gave no false alarms; a 5.5 Hz vibrato written into it was found at 5.51 Hz.",
+    "Voices swing wider than the violin: ±30 to 40 cents against ±13."
+   ],
+   "limits": [
+    "Inside a mix it is not solved yet: a violin with piano and a cello with orchestra gave no vibrato windows.",
+    "The Suno voices carry vibrato on only 11 to 16% of their held-note time, mostly late in long notes."
+   ],
+   "links": [["The experiment", "experiments/2026-11-10_vibrato_real/README.md"]]
+  },
+  "predictions": [
+   {"status": "true", "text": "Vibrato lives in the Event row (Z 10.7 to 13).", "fail": "A natural vibrato read outside the row, slower than 4 or faster than 20 wobbles a second (the borders of the row).", "evidence": "Predicted by the second edition of the table before the measurement; measured at Z 12.29 to 12.50.", "link": "experiments/2026-11-10_vibrato_real/README.md"},
+   {"status": "waiting", "text": "Generated singing starts its vibrato late in a long note, which makes it a fingerprint of generation.", "fail": "A human reference singer shows the same late start.", "evidence": "Seen in two Suno voices; no human reference recording yet."},
+   {"status": "waiting", "text": "Vibrato can be read inside a full mix, not only on a solo stem.", "fail": "No method finds it in a mix where it is known to be present.", "evidence": "Not found yet in the two mixes tried."}
+  ],
+  "pharmakon": "Not in PHARMAKON yet. Measured in this project."
+ }
+}

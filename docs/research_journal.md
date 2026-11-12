@@ -131,3 +131,18 @@ The entries below were **reconstructed on 2026-11-12** from commits, experiment 
   - It is **not checked for noise-like sounds** at its typical time; the reading needs a 10 ms window, so only changes of 40 ms and longer.
   - The analytic estimator is adopted as `pts.amplitude_envelope()`, with tests.
   - Next: real notes with known onsets; other envelope shapes; inharmonic sounds.
+
+### 2026-11-12-cards-001: the sample element card, Vibrato (issue #24)
+
+- **Before:** one sample card, shown to Lex before the other nine are built. Every "measured" line on it must link to evidence. Every prediction must have been written down before its test, and must say what would prove it wrong.
+- **Done:**
+  - `table/cards.json` holds the card data, and `table/build_cards.py` builds it into both copies of the third edition;
+  - the card opens on a click and holds its sections, a chart drawn from the vibrato experiment's numbers, and three predictions (one came true, two are waiting);
+  - the collider opens from `?recipe=vibrato` with a with/without button.
+- **Checks:**
+  - In the browser, the card opens and has all its sections. Elements without a card keep the old panel.
+  - The prediction "Vibrato lives in the Event row" is backed by the git history: the second edition placed Vibrato in row 3 (commit `3916a46`, 2026-11-10 21:32) before the measurement (`86ca8e1`, 23:11).
+  - The collider found vibrato at 5.49 Hz with it on, found nothing with it off, and found 5.49 Hz again after switching back.
+- **Corrections while building:**
+  - The draft condition for refuting the prediction said "faster than 8 wobbles a second". The Event row ends at 20 (Z 10.7), so the condition did not match the prediction. It was corrected before publishing.
+  - Locally, `edition3.html` shows broken characters, because the fragment has no charset and the local server sends none. The standalone copy and GitHub Pages are unaffected.
