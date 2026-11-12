@@ -6,7 +6,7 @@ Mendeleev did not set out to describe every substance in the world. He looked fo
 
 This project asks whether music can be ordered the same way. We do not mean genres, instruments or moods. We mean the elementary quantities that every piece of music is made of, such as a pitch, a pulse, a vibrato, a bar or a phrase. Can those be ordered by numbers that a machine can measure, and does the resulting order predict something we have not heard yet?
 
-After two days of measurement, our answer is a careful yes. This article describes the table, how we tested it, and what the tests showed. It also describes a small "collider" in which new elements can be built from scratch and checked. Finally, it tries to convey how large the space of possible combinations is.
+After three days of measurement, our answer is a careful yes. This article describes the table, how we tested it, and what the tests showed. It also describes a small "collider" in which new elements can be built from scratch and checked. Finally, it tries to convey how large the space of possible combinations is.
 
 ## 1. One number for order: the time octave Z
 
@@ -54,14 +54,42 @@ The rule of the project is *measure, don't guess*. Every claim needs a number, a
 |---|---|---|
 | The bar is an element whose Z moves with tempo | Six Suno tracks in 4/4. The Z values for 80.5 and 100 BPM were written down **before** measuring | Z 16.58 and 16.26 as predicted. Above about 120 BPM the bar falls below Z 16, into the Beat row |
 | Metric levels nest as logarithms of whole numbers | Chord changes, measured independently of the drums | ΔZ = log₂ 4 or log₂ 8 within 0.003, on the four of seven tracks where the chord-change period is confirmed |
-| A best peak is not yet a period | A confirmation test on held-out noise and on real drums whose beat was destroyed | 0% false periods, where the bare peak rule gave 100% |
+| A best peak is not yet a period | Four tests on every candidate: significance against the noise level, enough repetitions, stability in both halves, and a correlation that falls and then returns. Checked on held-out noise, on smooth swells, and on real drums whose beat was destroyed | 0% false periods and 0% misses on held-out signals, where the bare peak rule gave 100% false periods. Without the fourth test, 25 of 40 smooth swells passed as periods; with it, none |
 | The method has no hidden bias towards doubling | A waltz, and a real 6/8 march from Freesound | Three beats per bar in the waltz; three eighths per beat and two beats per bar in the march |
 | Natural vibrato lives in the Event row | Two operatic voices and a historic solo violin, with a piano as a control | Z 12.3 to 12.5. The piano gave no false alarms, and vibrato we wrote into it was found at the written rate |
 | The detector can say no | Two Suno tracks requested in 6/8 | Both came out binary, and the method said so |
 
 Some results surprised us. Asked for 80 BPM, Suno returned a track at 122 BPM; asked for a 6/8 jig, it twice returned a straight groove. In the Suno voices, vibrato often starts only at the end of a long note. This is a candidate fingerprint of generated singing, not yet a finding, because we still need a human reference recording.
 
-Some things did not work, and we have kept them in the record. A live violinist bends the tempo so much that our fixed-lag method cannot see the meter. Vibrato inside a mix, such as a violin over a piano, is still unsolved. The pulse itself still lacks a clean definition: in a breakbeat or a fast waltz the strongest repeat is the bar, not the beat.
+Some things did not work, and we have kept them in the record. A live violinist bends the tempo so much that our fixed-lag method cannot see the meter. Vibrato inside a mix, such as a violin over a piano, is still unsolved.
+
+Review found errors in our own checks, and we corrected them in public:
+- A single smooth swell in a long recording was accepted as periodic. That led to the fourth test above.
+- Reports printed rejected candidates as if they were measurements.
+- A rate of wrong periods on real recordings counted every result as right by default, where no independent labels existed.
+
+### Is the pulse the beat?
+
+A detector that finds a regular repetition can still pick the wrong level of it: the bar instead of the beat, or the eighth notes instead of the beat. Our first metric hid this, because it counted the beat or any multiple of it as right.
+
+We built a strict benchmark:
+- **Classes.** The returned period counts as the beat itself, a precision error, a subdivision (1/2, 1/3 or 1/4 of the beat) or a multiple (2 to 8 beats).
+- **Signals.** Synthetic drum patterns with a known beat: meters of 2 to 7 beats and compound meters, hats in eighths, triplets and sixteenths, accented downbeats, and several patterns.
+- **Honesty.** Every rule was tuned on development data only. It was then run once on two sets it had never seen. The second set came from a generator written after development had finished, with other timbres, patterns and noise.
+
+| Rule | First held-out set | Second held-out set |
+|---|---|---|
+| The rule in our core code | 80% of beats exact; the rest are multiples (bars and half bars) | 76.5% exact |
+| A candidate that reads only the strong events (kick and snare, below 2.5 kHz), takes each period from its first four multiples, and keeps the shortest level that repeats and is confirmed | 95% exact | 94% exact |
+
+The candidate is better, but it is not better everywhere, and we report where it is worse:
+- On the two held-out sets it improved 34 and 42 signals and made 4 and 7 worse.
+- In the first set, three of the four new errors came from heavy noise. The beat was found but failed the stability test, so a confirmed multiple won.
+- In the second set, all seven new errors are rock with a kick on the "and" between beats. That kick makes the half beat a regular period of strong events, and the candidate returns the eighths. The old rule is right there.
+- A second version of the candidate fixed the noise errors in development, but it gave no measurable gain on the second held-out set, so we report the first version.
+- On real recordings the two rules agree on 10 of 13 drum stems. They disagree on a waltz and on a 174 BPM breakbeat, where the candidate is probably right, and on an 80 BPM boom-bap track, where it is probably wrong.
+
+The candidate is not yet in the core code. First it has to pass a check on real recordings whose beats are verified independently. The tempo written in a generation prompt is not such a label, because the generated track can differ from it.
 
 ## 4. Predicted cells and the collider
 
@@ -74,7 +102,15 @@ Three predicted cells can already be heard:
 - **Spatial motion:** the melody travels from left to right once per cycle.
 - **Width arc:** the stereo image opens from mono to wide over a set number of bars.
 
-In the browser check, the pulse was correct at every setting without fills. The meter was correct at 8 of 8 settings (2 to 7 beats), the variation period at 6 of 7, and every control passed. The collider is a sandbox. Official results come only from the Python code, and the provisional rules inside the page are marked as provisional.
+The browser check is a battery of 360 settings: 15 tempos from 60 to 200 BPM, meters of 2 to 7 beats, and four kinds of fills. Pulse, meter and variation must all be right for a setting to pass. **359 of 360 pass, up from 304.**
+
+The earlier failures had four causes, two in the sound and two in the detector:
+- **The same hit did not render the same.** Web Audio renders in blocks of 128 frames, so a hit sounded slightly different depending on where it fell inside its block. Every distinct hit is now rendered once and copied, which makes bars written the same equal sample for sample.
+- **The bar grid drifted.** It now comes from a robust fit.
+- **The pulse depended on how a beat fell on the analysis frames.** The onset curve is now smoothed before the pulse search.
+- **The meter used a biased median.** It now uses a true one.
+
+When any element is removed, it disappears from the results. The collider is a sandbox. Official results come only from the Python code, and the provisional rules inside the page are marked as provisional.
 
 ## 5. How large is the space?
 
@@ -125,7 +161,7 @@ What is our own is the combination: a single measured axis, six questions, defec
 
 - Most τ values in the table are typical estimates. Only the elements marked ✓ have been measured.
 - The period borders are drawn as zones about ±0.3 Z wide, and they need checking against the perception literature.
-- The pulse needs a definition that returns the beat rather than the strongest repeat.
+- The pulse rule in the core code returns a bar or a half bar for about one signal in five on our strict benchmark. A better candidate exists (94 to 95%), but it fails when a kick falls between the beats, and it has not yet been checked on real recordings with verified beat labels.
 - Meter in live, tempo-bending performance, and vibrato inside a mix, are open problems.
 - The idea that generated audio has its own fingerprints (late vibrato, rigid harmonic rhythm, little variation) is a set of hypotheses to test, not results.
 

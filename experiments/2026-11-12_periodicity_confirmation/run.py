@@ -26,7 +26,6 @@ import os
 import sys
 
 import numpy as np
-import soundfile as sf
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
@@ -143,6 +142,7 @@ def groove(rng, dur):
 # ---------------------------------------------------------------- real material
 
 def drum_stems():
+    import soundfile as sf          # only the real material needs it; the generators run without it
     out = []
     for folder in sorted(glob.glob(os.path.join(ROOT, "data", "stems", "*"))) + \
             sorted(glob.glob(os.path.join(ROOT, "data", "material", "tempo_series", "*"))) + \

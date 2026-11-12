@@ -1,0 +1,124 @@
+[
+ {
+  "track": "gravity",
+  "label": {
+   "status": "unverified"
+  },
+  "old": 0.5043409505228824,
+  "new": 0.5042905028586191
+ },
+ {
+  "track": "pure_voltage",
+  "label": {
+   "status": "unverified"
+  },
+  "old": 0.5383279077182617,
+  "new": 0.5386379997325971
+ },
+ {
+  "track": "tempo_080_4-4",
+  "label": {
+   "status": "unverified",
+   "note": "requested 80 BPM; came out near 122 BPM"
+  },
+  "old": 0.4916143587993006,
+  "new": 0.49238769483712347
+ },
+ {
+  "track": "tempo_080_4-4_retake",
+  "label": {
+   "status": "unverified",
+   "note": "requested 80 BPM"
+  },
+  "old": 0.7450561409552843,
+  "new": 0.372956537653234
+ },
+ {
+  "track": "tempo_100_4-4",
+  "label": {
+   "status": "unverified",
+   "note": "requested 100 BPM"
+  },
+  "old": 0.5999988897747116,
+  "new": 0.6000030483687847
+ },
+ {
+  "track": "tempo_120_4-4",
+  "label": {
+   "status": "unverified",
+   "note": "requested 120 BPM"
+  },
+  "old": 0.4956560373699849,
+  "new": 0.4958534266069647
+ },
+ {
+  "track": "tempo_140_4-4",
+  "label": {
+   "status": "unverified",
+   "note": "requested 140 BPM"
+  },
+  "old": 0.4236480244620784,
+  "new": 0.42501653091434854
+ },
+ {
+  "track": "tempo_160_4-4",
+  "label": {
+   "status": "unverified",
+   "note": "requested 160 BPM"
+  },
+  "old": 0.36567264276233485,
+  "new": 0.3657622002245679
+ },
+ {
+  "track": "tempo_174_4-4",
+  "label": {
+   "status": "ambiguous",
+   "beats_s": [
+    0.3449,
+    0.6898
+   ],
+   "note": "breakbeat: tapping at 174 or at 87 BPM are both readings of the genre (tempo-series README)"
+  },
+  "old": 1.3797362323484736,
+  "new": 0.34491870048310935
+ },
+ {
+  "track": "meter_3-4",
+  "label": {
+   "status": "unverified",
+   "note": "requested 120 BPM waltz; the meter README reads a waltz at 182.4 BPM"
+  },
+  "old": 0.9869267725172237,
+  "new": 0.329762609050362
+ },
+ {
+  "track": "meter_6-8",
+  "label": {
+   "status": "unverified",
+   "note": "requested 6/8; the meter README reads a binary groove near 128 BPM"
+  },
+  "old": 0.4689438934228744,
+  "new": 0.46799675464125606
+ },
+ {
+  "track": "meter_6-8_retake",
+  "label": {
+   "status": "ambiguous",
+   "beats_s": [
+    0.5715,
+    0.2856
+   ],
+   "note": "jig prompt; the meter README reads a binary, reel-like groove: a beat of 0.5715 s or its half"
+  },
+  "old": 0.28563410867529304,
+  "new": 0.28564295458259303
+ },
+ {
+  "track": "metro",
+  "label": {
+   "status": "unverified"
+  },
+  "old": 0.45439189809697716,
+  "new": 0.45429948341193976
+ }
+]

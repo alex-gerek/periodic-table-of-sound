@@ -1,0 +1,6202 @@
+[
+ {
+  "desc": {
+   "seed": 70000,
+   "bpm": 198.49969961185894,
+   "beats_per_bar": 3,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 3.0,
+   "duration_s": 30.464184225244406
+  },
+  "beat_s": 0.30226745993733195,
+  "old": {
+   "found_s": 0.9075104139226382,
+   "class": "multiple",
+   "ratio": 3.0023424093046245
+  },
+  "v1": {
+   "found_s": 0.903110067834741,
+   "class": "multiple",
+   "ratio": 2.9877846196940276
+  },
+  "v2": {
+   "found_s": 0.903110067834741,
+   "class": "multiple",
+   "ratio": 2.9877846196940276
+  }
+ },
+ {
+  "desc": {
+   "seed": 70001,
+   "bpm": 165.5115551592216,
+   "beats_per_bar": 5,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "march",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 12.0,
+   "duration_s": 28.752027795481233
+  },
+  "beat_s": 0.36251245384215136,
+  "old": {
+   "found_s": 1.8069046532318405,
+   "class": "multiple",
+   "ratio": 4.984393319680598
+  },
+  "v1": {
+   "found_s": 0.3623959140398577,
+   "class": "exact",
+   "ratio": 0.9996785219347405
+  },
+  "v2": {
+   "found_s": 0.3623959140398577,
+   "class": "exact",
+   "ratio": 0.9996785219347405
+  }
+ },
+ {
+  "desc": {
+   "seed": 70002,
+   "bpm": 54.80760138332291,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "waltz",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 24.0,
+   "duration_s": 37.66923111473228
+  },
+  "beat_s": 1.0947386582448955,
+  "old": {
+   "found_s": 1.0948710587090327,
+   "class": "exact",
+   "ratio": 1.0001209425310233
+  },
+  "v1": {
+   "found_s": 1.0949209870487557,
+   "class": "exact",
+   "ratio": 1.0001665500733778
+  },
+  "v2": {
+   "found_s": 1.0949209870487557,
+   "class": "exact",
+   "ratio": 1.0001665500733778
+  }
+ },
+ {
+  "desc": {
+   "seed": 70003,
+   "bpm": 58.83912867570754,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 6.0,
+   "duration_s": 30.537411224860065
+  },
+  "beat_s": 1.0197295804751054,
+  "old": {
+   "found_s": 1.0188541739454706,
+   "class": "exact",
+   "ratio": 0.9991415307093211
+  },
+  "v1": {
+   "found_s": 1.0199895526852096,
+   "class": "exact",
+   "ratio": 1.000254942305374
+  },
+  "v2": {
+   "found_s": 1.0199895526852096,
+   "class": "exact",
+   "ratio": 1.000254942305374
+  }
+ },
+ {
+  "desc": {
+   "seed": 70004,
+   "bpm": 181.271040710661,
+   "beats_per_bar": 7,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 6.0,
+   "duration_s": 15.096166613335521
+  },
+  "beat_s": 0.33099605852525593,
+  "old": {
+   "found_s": 0.33080391700432754,
+   "class": "exact",
+   "ratio": 0.9994195051089597
+  },
+  "v1": {
+   "found_s": 0.33096135991890746,
+   "class": "exact",
+   "ratio": 0.9998951691252668
+  },
+  "v2": {
+   "found_s": 0.33096135991890746,
+   "class": "exact",
+   "ratio": 0.9998951691252668
+  }
+ },
+ {
+  "desc": {
+   "seed": 70005,
+   "bpm": 107.78640435539108,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "march",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 3.0,
+   "duration_s": 25.430631942277167
+  },
+  "beat_s": 0.5566564759148033,
+  "old": {
+   "found_s": 1.6703158407707117,
+   "class": "multiple",
+   "ratio": 3.000622310242116
+  },
+  "v1": {
+   "found_s": 0.5567110815845869,
+   "class": "exact",
+   "ratio": 1.00009809581339
+  },
+  "v2": {
+   "found_s": 0.5567110815845869,
+   "class": "exact",
+   "ratio": 1.00009809581339
+  }
+ },
+ {
+  "desc": {
+   "seed": 70006,
+   "bpm": 166.45715858776174,
+   "beats_per_bar": 2,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 6.0,
+   "duration_s": 26.40409887566228
+  },
+  "beat_s": 0.36045310702793243,
+  "old": {
+   "found_s": 1.0803735061372142,
+   "class": "multiple",
+   "ratio": 2.997265067418307
+  },
+  "v1": {
+   "found_s": 0.36087191127554036,
+   "class": "exact",
+   "ratio": 1.0011618827510216
+  },
+  "v2": {
+   "found_s": 0.36087191127554036,
+   "class": "exact",
+   "ratio": 1.0011618827510216
+  }
+ },
+ {
+  "desc": {
+   "seed": 70007,
+   "bpm": 80.06508032444,
+   "beats_per_bar": 6,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 6.0,
+   "duration_s": 36.99518341310808
+  },
+  "beat_s": 0.7493903678965634,
+  "old": {
+   "found_s": 0.7494403494247621,
+   "class": "exact",
+   "ratio": 1.0000666962511662
+  },
+  "v1": {
+   "found_s": 0.7493465000061572,
+   "class": "exact",
+   "ratio": 0.9999414618971827
+  },
+  "v2": {
+   "found_s": 0.7493465000061572,
+   "class": "exact",
+   "ratio": 0.9999414618971827
+  }
+ },
+ {
+  "desc": {
+   "seed": 70008,
+   "bpm": 60.14511249253927,
+   "beats_per_bar": 6,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 3.0,
+   "duration_s": 38.69079096876743
+  },
+  "beat_s": 0.9975872936881235,
+  "old": {
+   "found_s": 0.9976998625513953,
+   "class": "exact",
+   "ratio": 1.000112841115744
+  },
+  "v1": {
+   "found_s": 0.9976369495121608,
+   "class": "exact",
+   "ratio": 1.0000497759187106
+  },
+  "v2": {
+   "found_s": 0.9976369495121608,
+   "class": "exact",
+   "ratio": 1.0000497759187106
+  }
+ },
+ {
+  "desc": {
+   "seed": 70009,
+   "bpm": 118.79451146272528,
+   "beats_per_bar": 2,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 6.0,
+   "duration_s": 32.61810242761516
+  },
+  "beat_s": 0.5050738393652681,
+  "old": {
+   "found_s": 1.0102514995511878,
+   "class": "multiple",
+   "ratio": 2.000205555727816
+  },
+  "v1": {
+   "found_s": 0.5052300108585196,
+   "class": "exact",
+   "ratio": 1.0003092052707536
+  },
+  "v2": {
+   "found_s": 0.5052300108585196,
+   "class": "exact",
+   "ratio": 1.0003092052707536
+  }
+ },
+ {
+  "desc": {
+   "seed": 70010,
+   "bpm": 122.1436018100708,
+   "beats_per_bar": 7,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "march",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 3.0,
+   "duration_s": 18.950975011709673
+  },
+  "beat_s": 0.4912250753281206,
+  "old": {
+   "found_s": 0.48885296223134445,
+   "class": "exact",
+   "ratio": 0.995171026040982
+  },
+  "v1": {
+   "found_s": 0.4906471473507142,
+   "class": "exact",
+   "ratio": 0.9988234965875462
+  },
+  "v2": {
+   "found_s": 0.4906471473507142,
+   "class": "exact",
+   "ratio": 0.9988234965875462
+  }
+ },
+ {
+  "desc": {
+   "seed": 70011,
+   "bpm": 67.82858635622983,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "rock",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 24.0,
+   "duration_s": 30.89207329095987
+  },
+  "beat_s": 0.8845827876300594,
+  "old": {
+   "found_s": 0.8847219968947331,
+   "class": "exact",
+   "ratio": 1.0001573727938418
+  },
+  "v1": {
+   "found_s": 0.44213722284357676,
+   "class": "subdivision",
+   "ratio": 0.49982571334915304
+  },
+  "v2": {
+   "found_s": 0.44213722284357676,
+   "class": "subdivision",
+   "ratio": 0.49982571334915304
+  }
+ },
+ {
+  "desc": {
+   "seed": 70012,
+   "bpm": 173.58538828957006,
+   "beats_per_bar": 7,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "march",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 12.0,
+   "duration_s": 27.202656104518212
+  },
+  "beat_s": 0.34565121287691425,
+  "old": {
+   "found_s": 0.34581367122629264,
+   "class": "exact",
+   "ratio": 1.0004700065942955
+  },
+  "v1": {
+   "found_s": 0.34562651481680706,
+   "class": "exact",
+   "ratio": 0.9999285462941049
+  },
+  "v2": {
+   "found_s": 0.34562651481680706,
+   "class": "exact",
+   "ratio": 0.9999285462941049
+  }
+ },
+ {
+  "desc": {
+   "seed": 70013,
+   "bpm": 80.16315131050669,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "waltz",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 12.0,
+   "duration_s": 27.812285132490103
+  },
+  "beat_s": 0.7484735694533009,
+  "old": {
+   "found_s": 0.7472288994270755,
+   "class": "exact",
+   "ratio": 0.9983370554726007
+  },
+  "v1": {
+   "found_s": 0.7488990358953987,
+   "class": "exact",
+   "ratio": 1.0005684455129238
+  },
+  "v2": {
+   "found_s": 0.7488990358953987,
+   "class": "exact",
+   "ratio": 1.0005684455129238
+  }
+ },
+ {
+  "desc": {
+   "seed": 70014,
+   "bpm": 95.03815819197693,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "hat",
+   "swing": 0.5905693279681793,
+   "jitter_s": 0.01,
+   "snr_db": 3.0,
+   "duration_s": 21.468748738052827
+  },
+  "beat_s": 0.631325365952485,
+  "old": {
+   "found_s": 0.6345419718722488,
+   "class": "exact",
+   "ratio": 1.0050950050373961
+  },
+  "v1": {
+   "found_s": 0.6312391744923497,
+   "class": "exact",
+   "ratio": 0.9998634753729477
+  },
+  "v2": {
+   "found_s": 0.6312391744923497,
+   "class": "exact",
+   "ratio": 0.9998634753729477
+  }
+ },
+ {
+  "desc": {
+   "seed": 70015,
+   "bpm": 118.89536781110345,
+   "beats_per_bar": 2,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 3.0,
+   "duration_s": 19.11030911338065
+  },
+  "beat_s": 0.5046453962388658,
+  "old": {
+   "found_s": 0.5046845406193189,
+   "class": "exact",
+   "ratio": 1.0000775680918617
+  },
+  "v1": {
+   "found_s": 0.5045482364202158,
+   "class": "exact",
+   "ratio": 0.9998074691270858
+  },
+  "v2": {
+   "found_s": 0.5045482364202158,
+   "class": "exact",
+   "ratio": 0.9998074691270858
+  }
+ },
+ {
+  "desc": {
+   "seed": 70016,
+   "bpm": 184.88032577459973,
+   "beats_per_bar": 6,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 12.0,
+   "duration_s": 44.816730990219526
+  },
+  "beat_s": 0.3245342615479276,
+  "old": {
+   "found_s": 0.6459816974489083,
+   "class": "multiple",
+   "ratio": 1.990488444479718
+  },
+  "v1": {
+   "found_s": 0.6471305182278848,
+   "class": "multiple",
+   "ratio": 1.9940283504776146
+  },
+  "v2": {
+   "found_s": 0.6471305182278848,
+   "class": "multiple",
+   "ratio": 1.9940283504776146
+  }
+ },
+ {
+  "desc": {
+   "seed": 70017,
+   "bpm": 81.41021070642432,
+   "beats_per_bar": 5,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 3.0,
+   "duration_s": 23.94326543388245
+  },
+  "beat_s": 0.7370082877732341,
+  "old": {
+   "found_s": 0.7370450881040737,
+   "class": "exact",
+   "ratio": 1.0000499320447953
+  },
+  "v1": {
+   "found_s": 0.7369896559834436,
+   "class": "exact",
+   "ratio": 0.9999747197011218
+  },
+  "v2": {
+   "found_s": 0.7369896559834436,
+   "class": "exact",
+   "ratio": 0.9999747197011218
+  }
+ },
+ {
+  "desc": {
+   "seed": 70018,
+   "bpm": 128.74962718416532,
+   "beats_per_bar": 6,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 24.0,
+   "duration_s": 24.537763345967534
+  },
+  "beat_s": 0.4660207669120093,
+  "old": {
+   "found_s": 0.46586395854881585,
+   "class": "exact",
+   "ratio": 0.9996635163616581
+  },
+  "v1": {
+   "found_s": 0.4660522494373495,
+   "class": "exact",
+   "ratio": 1.000067556056673
+  },
+  "v2": {
+   "found_s": 0.4660522494373495,
+   "class": "exact",
+   "ratio": 1.000067556056673
+  }
+ },
+ {
+  "desc": {
+   "seed": 70019,
+   "bpm": 84.75724857498776,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "march",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 12.0,
+   "duration_s": 34.901749592221464
+  },
+  "beat_s": 0.7079040555087848,
+  "old": {
+   "found_s": 0.7079253888167835,
+   "class": "exact",
+   "ratio": 1.0000301358748163
+  },
+  "v1": {
+   "found_s": 0.7079327724081415,
+   "class": "exact",
+   "ratio": 1.0000405660896179
+  },
+  "v2": {
+   "found_s": 0.7079327724081415,
+   "class": "exact",
+   "ratio": 1.0000405660896179
+  }
+ },
+ {
+  "desc": {
+   "seed": 70020,
+   "bpm": 157.35208323281847,
+   "beats_per_bar": 6,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "shaker",
+   "swing": 0.583479261261023,
+   "jitter_s": 0.004,
+   "snr_db": 24.0,
+   "duration_s": 20.60742049357994
+  },
+  "beat_s": 0.3813104902540367,
+  "old": {
+   "found_s": 0.3814085665653141,
+   "class": "exact",
+   "ratio": 1.0002572085315882
+  },
+  "v1": {
+   "found_s": 0.3812321078222737,
+   "class": "exact",
+   "ratio": 0.9997944393512206
+  },
+  "v2": {
+   "found_s": 0.3812321078222737,
+   "class": "exact",
+   "ratio": 0.9997944393512206
+  }
+ },
+ {
+  "desc": {
+   "seed": 70021,
+   "bpm": 49.46425044092584,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "march",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 24.0,
+   "duration_s": 42.44259389656712
+  },
+  "beat_s": 1.2129972548893022,
+  "old": {
+   "found_s": 1.2110200771982236,
+   "class": "exact",
+   "ratio": 0.9983700064587046
+  },
+  "v1": {
+   "found_s": 1.2133791605442938,
+   "class": "exact",
+   "ratio": 1.0003148446160552
+  },
+  "v2": {
+   "found_s": 1.2133791605442938,
+   "class": "exact",
+   "ratio": 1.0003148446160552
+  }
+ },
+ {
+  "desc": {
+   "seed": 70022,
+   "bpm": 198.83085707931173,
+   "beats_per_bar": 6,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 12.0,
+   "duration_s": 22.21667522662762
+  },
+  "beat_s": 0.30176402637577815,
+  "old": {
+   "found_s": 0.6018265769856225,
+   "class": "multiple",
+   "ratio": 1.994361568585995
+  },
+  "v1": {
+   "found_s": 0.3007722520811857,
+   "class": "exact",
+   "ratio": 0.9967134111162825
+  },
+  "v2": {
+   "found_s": 0.3007722520811857,
+   "class": "exact",
+   "ratio": 0.9967134111162825
+  }
+ },
+ {
+  "desc": {
+   "seed": 70023,
+   "bpm": 84.03915490932363,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "rock",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 6.0,
+   "duration_s": 44.836310545140236
+  },
+  "beat_s": 0.7139529195020899,
+  "old": {
+   "found_s": 0.7138991229659398,
+   "class": "exact",
+   "ratio": 0.9999246497427483
+  },
+  "v1": {
+   "found_s": 0.35689849657422906,
+   "class": "subdivision",
+   "ratio": 0.4998908006751058
+  },
+  "v2": {
+   "found_s": 0.35689849657422906,
+   "class": "subdivision",
+   "ratio": 0.4998908006751058
+  }
+ },
+ {
+  "desc": {
+   "seed": 70024,
+   "bpm": 61.99978107490508,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "march",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 12.0,
+   "duration_s": 24.43657717449865
+  },
+  "beat_s": 0.9677453526410191,
+  "old": {
+   "found_s": 0.9680553528696095,
+   "class": "exact",
+   "ratio": 1.0003203324384295
+  },
+  "v1": {
+   "found_s": 0.9676032283552517,
+   "class": "exact",
+   "ratio": 0.9998531387566165
+  },
+  "v2": {
+   "found_s": 0.9676032283552517,
+   "class": "exact",
+   "ratio": 0.9998531387566165
+  }
+ },
+ {
+  "desc": {
+   "seed": 70025,
+   "bpm": 96.20421178221551,
+   "beats_per_bar": 5,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 12.0,
+   "duration_s": 42.368569818854084
+  },
+  "beat_s": 0.6236733183348186,
+  "old": {
+   "found_s": 0.6237704046476369,
+   "class": "exact",
+   "ratio": 1.0001556685366586
+  },
+  "v1": {
+   "found_s": 0.6237606268607668,
+   "class": "exact",
+   "ratio": 1.0001399907986785
+  },
+  "v2": {
+   "found_s": 0.6237606268607668,
+   "class": "exact",
+   "ratio": 1.0001399907986785
+  }
+ },
+ {
+  "desc": {
+   "seed": 70026,
+   "bpm": 184.31343010639227,
+   "beats_per_bar": 6,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "march",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 12.0,
+   "duration_s": 23.267864460581183
+  },
+  "beat_s": 0.3255324365965403,
+  "old": {
+   "found_s": 0.6479695071894503,
+   "class": "multiple",
+   "ratio": 1.9904913745739365
+  },
+  "v1": {
+   "found_s": 0.3249395217694121,
+   "class": "exact",
+   "ratio": 0.9981786305741844
+  },
+  "v2": {
+   "found_s": 0.3249395217694121,
+   "class": "exact",
+   "ratio": 0.9981786305741844
+  }
+ },
+ {
+  "desc": {
+   "seed": 70027,
+   "bpm": 131.6291963893023,
+   "beats_per_bar": 7,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "march",
+   "weak": "hat",
+   "swing": 0.5488307091300921,
+   "jitter_s": 0.01,
+   "snr_db": 6.0,
+   "duration_s": 28.18723720133241
+  },
+  "beat_s": 0.4558259234717647,
+  "old": {
+   "found_s": 0.45647776627296494,
+   "class": "exact",
+   "ratio": 1.0014300257349023
+  },
+  "v1": {
+   "found_s": 0.4560458726700297,
+   "class": "exact",
+   "ratio": 1.0004825289369015
+  },
+  "v2": {
+   "found_s": 0.4560458726700297,
+   "class": "exact",
+   "ratio": 1.0004825289369015
+  }
+ },
+ {
+  "desc": {
+   "seed": 70028,
+   "bpm": 127.76700913769909,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "ride",
+   "swing": 0.5565165236791838,
+   "jitter_s": 0.018,
+   "snr_db": 24.0,
+   "duration_s": 28.383095655578753
+  },
+  "beat_s": 0.4696047939522154,
+  "old": {
+   "found_s": 1.8860320587466135,
+   "class": "multiple",
+   "ratio": 4.0162112547312
+  },
+  "v1": {
+   "found_s": 0.4695159365239018,
+   "class": "exact",
+   "ratio": 0.9998107825357451
+  },
+  "v2": {
+   "found_s": 0.4695159365239018,
+   "class": "exact",
+   "ratio": 0.9998107825357451
+  }
+ },
+ {
+  "desc": {
+   "seed": 70029,
+   "bpm": 189.93003879302427,
+   "beats_per_bar": 3,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 3.0,
+   "duration_s": 43.658367789894584
+  },
+  "beat_s": 0.31590579553024173,
+  "old": {
+   "found_s": 0.31581404685368486,
+   "class": "exact",
+   "ratio": 0.9997095695050391
+  },
+  "v1": {
+   "found_s": 0.31589855870312067,
+   "class": "exact",
+   "ratio": 0.9999770918190694
+  },
+  "v2": {
+   "found_s": 0.31589855870312067,
+   "class": "exact",
+   "ratio": 0.9999770918190694
+  }
+ },
+ {
+  "desc": {
+   "seed": 70030,
+   "bpm": 56.6583708552011,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "march",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 3.0,
+   "duration_s": 26.94609452485341
+  },
+  "beat_s": 1.0589785603496955,
+  "old": {
+   "found_s": 1.058517306923122,
+   "class": "exact",
+   "ratio": 0.9995644355383161
+  },
+  "v1": {
+   "found_s": 1.0588455740664315,
+   "class": "exact",
+   "ratio": 0.9998744202307362
+  },
+  "v2": {
+   "found_s": 1.0588455740664315,
+   "class": "exact",
+   "ratio": 0.9998744202307362
+  }
+ },
+ {
+  "desc": {
+   "seed": 70031,
+   "bpm": 92.56774484481973,
+   "beats_per_bar": 7,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "march",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 12.0,
+   "duration_s": 39.58566312167014
+  },
+  "beat_s": 0.6481739411561102,
+  "old": {
+   "found_s": 1.298055554903567,
+   "class": "multiple",
+   "ratio": 2.0026345900119047
+  },
+  "v1": {
+   "found_s": 0.648118095747598,
+   "class": "exact",
+   "ratio": 0.9999138419412349
+  },
+  "v2": {
+   "found_s": 0.648118095747598,
+   "class": "exact",
+   "ratio": 0.9999138419412349
+  }
+ },
+ {
+  "desc": {
+   "seed": 70032,
+   "bpm": 123.29859788034467,
+   "beats_per_bar": 2,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 6.0,
+   "duration_s": 33.84640755183807
+  },
+  "beat_s": 0.4866235385598391,
+  "old": {
+   "found_s": 0.9663558450862173,
+   "class": "multiple",
+   "ratio": 1.9858386792101026
+  },
+  "v1": {
+   "found_s": 0.9720141171341159,
+   "class": "multiple",
+   "ratio": 1.9974662960422933
+  },
+  "v2": {
+   "found_s": 0.9720141171341159,
+   "class": "multiple",
+   "ratio": 1.9974662960422933
+  }
+ },
+ {
+  "desc": {
+   "seed": 70033,
+   "bpm": 45.714775389446075,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "march",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 3.0,
+   "duration_s": 34.9489054772516
+  },
+  "beat_s": 1.3124859411176693,
+  "old": {
+   "found_s": 1.3122290283384195,
+   "class": "exact",
+   "ratio": 0.9998042548333653
+  },
+  "v1": {
+   "found_s": 1.3123998034264794,
+   "class": "exact",
+   "ratio": 0.9999343705799115
+  },
+  "v2": {
+   "found_s": 1.3123998034264794,
+   "class": "exact",
+   "ratio": 0.9999343705799115
+  }
+ },
+ {
+  "desc": {
+   "seed": 70034,
+   "bpm": 53.81180858028165,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "march",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 12.0,
+   "duration_s": 26.933528791251558
+  },
+  "beat_s": 1.1149969046382489,
+  "old": {
+   "found_s": 1.106085806798494,
+   "class": "exact",
+   "ratio": 0.9920079618134492
+  },
+  "v1": {
+   "found_s": 1.1136695372562606,
+   "class": "exact",
+   "ratio": 0.9988095326754123
+  },
+  "v2": {
+   "found_s": 1.1136695372562606,
+   "class": "exact",
+   "ratio": 0.9988095326754123
+  }
+ },
+ {
+  "desc": {
+   "seed": 70035,
+   "bpm": 183.21158777073632,
+   "beats_per_bar": 5,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "shaker",
+   "swing": 0.5401499530935574,
+   "jitter_s": 0.018,
+   "snr_db": 12.0,
+   "duration_s": 34.43292241595934
+  },
+  "beat_s": 0.3274902026125204,
+  "old": {
+   "found_s": 0.3283921413509491,
+   "class": "exact",
+   "ratio": 1.0027540938056576
+  },
+  "v1": {
+   "found_s": 0.3281324440876927,
+   "class": "exact",
+   "ratio": 1.0019611013399756
+  },
+  "v2": {
+   "found_s": 0.3281324440876927,
+   "class": "exact",
+   "ratio": 1.0019611013399756
+  }
+ },
+ {
+  "desc": {
+   "seed": 70036,
+   "bpm": 48.230680368765526,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "rock",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 3.0,
+   "duration_s": 31.596790801702458
+  },
+  "beat_s": 1.2440214307832231,
+  "old": {
+   "found_s": 1.2443392187509796,
+   "class": "exact",
+   "ratio": 1.0002554521649651
+  },
+  "v1": {
+   "found_s": 1.2438287421515253,
+   "class": "exact",
+   "ratio": 0.9998451082698981
+  },
+  "v2": {
+   "found_s": 1.2438287421515253,
+   "class": "exact",
+   "ratio": 0.9998451082698981
+  }
+ },
+ {
+  "desc": {
+   "seed": 70037,
+   "bpm": 196.20013026133404,
+   "beats_per_bar": 6,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 12.0,
+   "duration_s": 42.420601768342934
+  },
+  "beat_s": 0.3058101945196539,
+  "old": {
+   "found_s": 0.30561857170430745,
+   "class": "exact",
+   "ratio": 0.9993733929777997
+  },
+  "v1": {
+   "found_s": 0.30579600217044445,
+   "class": "exact",
+   "ratio": 0.9999535909872731
+  },
+  "v2": {
+   "found_s": 0.30579600217044445,
+   "class": "exact",
+   "ratio": 0.9999535909872731
+  }
+ },
+ {
+  "desc": {
+   "seed": 70038,
+   "bpm": 200.2735274186469,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "shaker",
+   "swing": 0.5897895945146958,
+   "jitter_s": 0.01,
+   "snr_db": 12.0,
+   "duration_s": 25.312605156508994
+  },
+  "beat_s": 0.2995902692350221,
+  "old": {
+   "found_s": 0.29907601337011364,
+   "class": "exact",
+   "ratio": 0.9982834693989843
+  },
+  "v1": {
+   "found_s": 0.29961599824656177,
+   "class": "exact",
+   "ratio": 1.0000858806649675
+  },
+  "v2": {
+   "found_s": 0.29961599824656177,
+   "class": "exact",
+   "ratio": 1.0000858806649675
+  }
+ },
+ {
+  "desc": {
+   "seed": 70039,
+   "bpm": 123.14377248874148,
+   "beats_per_bar": 6,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "march",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 12.0,
+   "duration_s": 37.18008763710911
+  },
+  "beat_s": 0.4872353573988936,
+  "old": {
+   "found_s": 0.9743183819595497,
+   "class": "multiple",
+   "ratio": 1.999687352660425
+  },
+  "v1": {
+   "found_s": 0.48723768176235993,
+   "class": "exact",
+   "ratio": 1.0000047705147646
+  },
+  "v2": {
+   "found_s": 0.48723768176235993,
+   "class": "exact",
+   "ratio": 1.0000047705147646
+  }
+ },
+ {
+  "desc": {
+   "seed": 70040,
+   "bpm": 58.30926243361046,
+   "beats_per_bar": 4,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 24.0,
+   "duration_s": 26.811037374868157
+  },
+  "beat_s": 1.0289960376074825,
+  "old": {
+   "found_s": 1.0282923076222736,
+   "class": "exact",
+   "ratio": 0.9993161003935009
+  },
+  "v1": {
+   "found_s": 1.0288543571648014,
+   "class": "exact",
+   "ratio": 0.9998623119647667
+  },
+  "v2": {
+   "found_s": 1.0288543571648014,
+   "class": "exact",
+   "ratio": 0.9998623119647667
+  }
+ },
+ {
+  "desc": {
+   "seed": 70041,
+   "bpm": 160.49146421638486,
+   "beats_per_bar": 7,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 24.0,
+   "duration_s": 44.78371889665037
+  },
+  "beat_s": 0.3738516580489549,
+  "old": {
+   "found_s": 1.1218797719969438,
+   "class": "multiple",
+   "ratio": 3.0008687880422253
+  },
+  "v1": {
+   "found_s": 0.3744547598752821,
+   "class": "exact",
+   "ratio": 1.0016132115863137
+  },
+  "v2": {
+   "found_s": 0.3744547598752821,
+   "class": "exact",
+   "ratio": 1.0016132115863137
+  }
+ },
+ {
+  "desc": {
+   "seed": 70042,
+   "bpm": 178.30573704304146,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 6.0,
+   "duration_s": 29.999117389296025
+  },
+  "beat_s": 0.3365006701131356,
+  "old": {
+   "found_s": 0.33530132510347127,
+   "class": "exact",
+   "ratio": 0.9964358317347151
+  },
+  "v1": {
+   "found_s": 0.3355647733336002,
+   "class": "exact",
+   "ratio": 0.9972187372488122
+  },
+  "v2": {
+   "found_s": 0.3355647733336002,
+   "class": "exact",
+   "ratio": 0.9972187372488122
+  }
+ },
+ {
+  "desc": {
+   "seed": 70043,
+   "bpm": 95.56738413125461,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "march",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 12.0,
+   "duration_s": 36.867078380323136
+  },
+  "beat_s": 0.6278292593799001,
+  "old": {
+   "found_s": 1.883621801494229,
+   "class": "multiple",
+   "ratio": 3.0002134710234136
+  },
+  "v1": {
+   "found_s": 0.6287523450743957,
+   "class": "exact",
+   "ratio": 1.001470281419199
+  },
+  "v2": {
+   "found_s": 0.6287523450743957,
+   "class": "exact",
+   "ratio": 1.001470281419199
+  }
+ },
+ {
+  "desc": {
+   "seed": 70044,
+   "bpm": 161.4279972564704,
+   "beats_per_bar": 7,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 3.0,
+   "duration_s": 28.972343501920847
+  },
+  "beat_s": 0.3716827379371769,
+  "old": {
+   "found_s": 0.3716435077065104,
+   "class": "exact",
+   "ratio": 0.99989445237386
+  },
+  "v1": {
+   "found_s": 0.37168323510335305,
+   "class": "exact",
+   "ratio": 1.000001337609002
+  },
+  "v2": {
+   "found_s": 0.37168323510335305,
+   "class": "exact",
+   "ratio": 1.000001337609002
+  }
+ },
+ {
+  "desc": {
+   "seed": 70045,
+   "bpm": 91.46836560865049,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "waltz",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 12.0,
+   "duration_s": 26.134912389813504
+  },
+  "beat_s": 0.6559644922126562,
+  "old": {
+   "found_s": 0.6557089378873211,
+   "class": "exact",
+   "ratio": 0.9996104143922896
+  },
+  "v1": {
+   "found_s": 0.6559583691428795,
+   "class": "exact",
+   "ratio": 0.9999906655469171
+  },
+  "v2": {
+   "found_s": 0.6559583691428795,
+   "class": "exact",
+   "ratio": 0.9999906655469171
+  }
+ },
+ {
+  "desc": {
+   "seed": 70046,
+   "bpm": 75.11927877742347,
+   "beats_per_bar": 6,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 24.0,
+   "duration_s": 41.26758758140553
+  },
+  "beat_s": 0.7987297132841022,
+  "old": {
+   "found_s": 0.7986371759071639,
+   "class": "exact",
+   "ratio": 0.9998841443164073
+  },
+  "v1": {
+   "found_s": 0.7986840700045083,
+   "class": "exact",
+   "ratio": 0.9999428551625977
+  },
+  "v2": {
+   "found_s": 0.7986840700045083,
+   "class": "exact",
+   "ratio": 0.9999428551625977
+  }
+ },
+ {
+  "desc": {
+   "seed": 70047,
+   "bpm": 66.13645906881027,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "march",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 3.0,
+   "duration_s": 38.09484709791808
+  },
+  "beat_s": 0.9072151857657557,
+  "old": {
+   "found_s": 0.9072561991434478,
+   "class": "exact",
+   "ratio": 1.0000452079929167
+  },
+  "v1": {
+   "found_s": 0.9072103207851799,
+   "class": "exact",
+   "ratio": 0.9999946374568547
+  },
+  "v2": {
+   "found_s": 0.9072103207851799,
+   "class": "exact",
+   "ratio": 0.9999946374568547
+  }
+ },
+ {
+  "desc": {
+   "seed": 70048,
+   "bpm": 71.81232418290345,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "march",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 6.0,
+   "duration_s": 31.411271920123735
+  },
+  "beat_s": 0.835511183946395,
+  "old": {
+   "found_s": 0.8300737381758189,
+   "class": "exact",
+   "ratio": 0.9934920730266071
+  },
+  "v1": {
+   "found_s": 0.83815683357665,
+   "class": "exact",
+   "ratio": 1.0031665041487041
+  },
+  "v2": {
+   "found_s": 0.83815683357665,
+   "class": "exact",
+   "ratio": 1.0031665041487041
+  }
+ },
+ {
+  "desc": {
+   "seed": 70049,
+   "bpm": 179.59943485769674,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 24.0,
+   "duration_s": 17.938662866123007
+  },
+  "beat_s": 0.33407677506079136,
+  "old": {
+   "found_s": 0.3340115046988753,
+   "class": "exact",
+   "ratio": 0.9998046246647819
+  },
+  "v1": {
+   "found_s": 0.33405300659118337,
+   "class": "exact",
+   "ratio": 0.9999288532715161
+  },
+  "v2": {
+   "found_s": 0.33405300659118337,
+   "class": "exact",
+   "ratio": 0.9999288532715161
+  }
+ },
+ {
+  "desc": {
+   "seed": 70050,
+   "bpm": 56.8723887409166,
+   "beats_per_bar": 7,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 6.0,
+   "duration_s": 33.421639576175416
+  },
+  "beat_s": 1.0549934920675006,
+  "old": {
+   "found_s": 1.0547697575504524,
+   "class": "exact",
+   "ratio": 0.999787928059528
+  },
+  "v1": {
+   "found_s": 1.0548451404105104,
+   "class": "exact",
+   "ratio": 0.9998593814482215
+  },
+  "v2": {
+   "found_s": 1.0548451404105104,
+   "class": "exact",
+   "ratio": 0.9998593814482215
+  }
+ },
+ {
+  "desc": {
+   "seed": 70051,
+   "bpm": 133.527881271613,
+   "beats_per_bar": 2,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 24.0,
+   "duration_s": 15.530880564423592
+  },
+  "beat_s": 0.44934435736273104,
+  "old": {
+   "found_s": 0.8944501120743974,
+   "class": "multiple",
+   "ratio": 1.9905671394741848
+  },
+  "v1": {
+   "found_s": 0.45149142277355675,
+   "class": "exact",
+   "ratio": 1.0047782182543188
+  },
+  "v2": {
+   "found_s": 0.45149142277355675,
+   "class": "exact",
+   "ratio": 1.0047782182543188
+  }
+ },
+ {
+  "desc": {
+   "seed": 70052,
+   "bpm": 66.65223854710572,
+   "beats_per_bar": 7,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 12.0,
+   "duration_s": 32.41326487337888
+  },
+  "beat_s": 0.9001948217777512,
+  "old": {
+   "found_s": 0.9001123390182604,
+   "class": "exact",
+   "ratio": 0.9999083723239732
+  },
+  "v1": {
+   "found_s": 0.4500746168635536,
+   "class": "subdivision",
+   "ratio": 0.49997467878644647
+  },
+  "v2": {
+   "found_s": 0.4500746168635536,
+   "class": "subdivision",
+   "ratio": 0.49997467878644647
+  }
+ },
+ {
+  "desc": {
+   "seed": 70053,
+   "bpm": 100.93959425491374,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "march",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 6.0,
+   "duration_s": 28.311799643054314
+  },
+  "beat_s": 0.594414911639881,
+  "old": {
+   "found_s": 1.7875728446694625,
+   "class": "multiple",
+   "ratio": 3.0072812940339584
+  },
+  "v1": {
+   "found_s": 0.594130935273541,
+   "class": "exact",
+   "ratio": 0.9995222590133942
+  },
+  "v2": {
+   "found_s": 0.594130935273541,
+   "class": "exact",
+   "ratio": 0.9995222590133942
+  }
+ },
+ {
+  "desc": {
+   "seed": 70054,
+   "bpm": 90.63033744720623,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "march",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 3.0,
+   "duration_s": 18.491702486233056
+  },
+  "beat_s": 0.662029974620265,
+  "old": {
+   "found_s": 1.3237937158197108,
+   "class": "multiple",
+   "ratio": 1.9995978529205238
+  },
+  "v1": {
+   "found_s": 0.6619554669940301,
+   "class": "exact",
+   "ratio": 0.9998874558115323
+  },
+  "v2": {
+   "found_s": 0.6619554669940301,
+   "class": "exact",
+   "ratio": 0.9998874558115323
+  }
+ },
+ {
+  "desc": {
+   "seed": 70055,
+   "bpm": 112.8886681768612,
+   "beats_per_bar": 5,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 12.0,
+   "duration_s": 16.148641697422757
+  },
+  "beat_s": 0.5314971021360513,
+  "old": {
+   "found_s": 0.5315110247835687,
+   "class": "exact",
+   "ratio": 1.0000261951522622
+  },
+  "v1": {
+   "found_s": 0.5314813899716225,
+   "class": "exact",
+   "ratio": 0.9999704379113911
+  },
+  "v2": {
+   "found_s": 0.5314813899716225,
+   "class": "exact",
+   "ratio": 0.9999704379113911
+  }
+ },
+ {
+  "desc": {
+   "seed": 70056,
+   "bpm": 153.7103098720485,
+   "beats_per_bar": 5,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "ride",
+   "swing": 0.5640474161870068,
+   "jitter_s": 0.0,
+   "snr_db": 6.0,
+   "duration_s": 24.02213067852339
+  },
+  "beat_s": 0.3903446688120347,
+  "old": {
+   "found_s": 0.39029696836533084,
+   "class": "exact",
+   "ratio": 0.9998777991592686
+  },
+  "v1": {
+   "found_s": 0.39036001215306776,
+   "class": "exact",
+   "ratio": 1.0000393071617444
+  },
+  "v2": {
+   "found_s": 0.39036001215306776,
+   "class": "exact",
+   "ratio": 1.0000393071617444
+  }
+ },
+ {
+  "desc": {
+   "seed": 70057,
+   "bpm": 165.10538623110895,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 24.0,
+   "duration_s": 41.53544294715385
+  },
+  "beat_s": 0.3634042557279992,
+  "old": {
+   "found_s": 0.36320106465664903,
+   "class": "exact",
+   "ratio": 0.9994408676614336
+  },
+  "v1": {
+   "found_s": 0.3634571783714659,
+   "class": "exact",
+   "ratio": 1.0001456302248324
+  },
+  "v2": {
+   "found_s": 0.3634571783714659,
+   "class": "exact",
+   "ratio": 1.0001456302248324
+  }
+ },
+ {
+  "desc": {
+   "seed": 70058,
+   "bpm": 75.9487892664907,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "disco",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 12.0,
+   "duration_s": 26.07729206810115
+  },
+  "beat_s": 0.7900060103587793,
+  "old": {
+   "found_s": 0.7899164294212613,
+   "class": "exact",
+   "ratio": 0.9998866072709025
+  },
+  "v1": {
+   "found_s": 0.7899647209927644,
+   "class": "exact",
+   "ratio": 0.9999477353773598
+  },
+  "v2": {
+   "found_s": 0.7899647209927644,
+   "class": "exact",
+   "ratio": 0.9999477353773598
+  }
+ },
+ {
+  "desc": {
+   "seed": 70059,
+   "bpm": 93.9441534859006,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "disco",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 24.0,
+   "duration_s": 19.6200951947478
+  },
+  "beat_s": 0.6386773181047927,
+  "old": {
+   "found_s": 0.637247134239516,
+   "class": "exact",
+   "ratio": 0.9977607097907898
+  },
+  "v1": {
+   "found_s": 0.6393565065631507,
+   "class": "exact",
+   "ratio": 1.0010634297462973
+  },
+  "v2": {
+   "found_s": 0.6393565065631507,
+   "class": "exact",
+   "ratio": 1.0010634297462973
+  }
+ },
+ {
+  "desc": {
+   "seed": 70060,
+   "bpm": 75.81771492148386,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "rock",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 24.0,
+   "duration_s": 36.97384412669197
+  },
+  "beat_s": 0.791371779829232,
+  "old": {
+   "found_s": 0.7911741700937769,
+   "class": "exact",
+   "ratio": 0.9997502946901925
+  },
+  "v1": {
+   "found_s": 0.791318131519338,
+   "class": "exact",
+   "ratio": 0.9999322084622406
+  },
+  "v2": {
+   "found_s": 0.791318131519338,
+   "class": "exact",
+   "ratio": 0.9999322084622406
+  }
+ },
+ {
+  "desc": {
+   "seed": 70061,
+   "bpm": 81.68047348598199,
+   "beats_per_bar": 3,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 6.0,
+   "duration_s": 29.79725608730296
+  },
+  "beat_s": 0.7345696889269038,
+  "old": {
+   "found_s": 0.7344360120070461,
+   "class": "exact",
+   "ratio": 0.999818020098198
+  },
+  "v1": {
+   "found_s": 0.7346555072046173,
+   "class": "exact",
+   "ratio": 1.0001168279592898
+  },
+  "v2": {
+   "found_s": 0.7346555072046173,
+   "class": "exact",
+   "ratio": 1.0001168279592898
+  }
+ },
+ {
+  "desc": {
+   "seed": 70062,
+   "bpm": 157.61555411146702,
+   "beats_per_bar": 6,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "march",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 24.0,
+   "duration_s": 32.81304610585829
+  },
+  "beat_s": 0.38067308990055326,
+  "old": {
+   "found_s": 0.380568889181787,
+   "class": "exact",
+   "ratio": 0.9997262724328807
+  },
+  "v1": {
+   "found_s": 0.38067244455662924,
+   "class": "exact",
+   "ratio": 0.9999983047293304
+  },
+  "v2": {
+   "found_s": 0.38067244455662924,
+   "class": "exact",
+   "ratio": 0.9999983047293304
+  }
+ },
+ {
+  "desc": {
+   "seed": 70063,
+   "bpm": 191.8507608024271,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 3.0,
+   "duration_s": 24.935870285331298
+  },
+  "beat_s": 0.3127430912916189,
+  "old": {
+   "found_s": 0.3127509609557139,
+   "class": "exact",
+   "ratio": 1.0000251633507313
+  },
+  "v1": {
+   "found_s": 0.31273507086737345,
+   "class": "exact",
+   "ratio": 0.9999743545917759
+  },
+  "v2": {
+   "found_s": 0.31273507086737345,
+   "class": "exact",
+   "ratio": 0.9999743545917759
+  }
+ },
+ {
+  "desc": {
+   "seed": 70064,
+   "bpm": 99.36768346699185,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "disco",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 6.0,
+   "duration_s": 26.332244471727236
+  },
+  "beat_s": 0.603818041304454,
+  "old": {
+   "found_s": 0.6044751713365871,
+   "class": "exact",
+   "ratio": 1.0010882914838275
+  },
+  "v1": {
+   "found_s": 0.6041443905164634,
+   "class": "exact",
+   "ratio": 1.000540476086644
+  },
+  "v2": {
+   "found_s": 0.6041443905164634,
+   "class": "exact",
+   "ratio": 1.000540476086644
+  }
+ },
+ {
+  "desc": {
+   "seed": 70065,
+   "bpm": 79.09223255839723,
+   "beats_per_bar": 5,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "march",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 12.0,
+   "duration_s": 30.475100288856837
+  },
+  "beat_s": 0.7586079954905736,
+  "old": {
+   "found_s": 1.5159228208262068,
+   "class": "multiple",
+   "ratio": 1.9982953380894646
+  },
+  "v1": {
+   "found_s": 0.7591431039877646,
+   "class": "exact",
+   "ratio": 1.0007053820950635
+  },
+  "v2": {
+   "found_s": 0.7591431039877646,
+   "class": "exact",
+   "ratio": 1.0007053820950635
+  }
+ },
+ {
+  "desc": {
+   "seed": 70066,
+   "bpm": 98.17578216025589,
+   "beats_per_bar": 7,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "march",
+   "weak": "ride",
+   "swing": 0.5812394815447828,
+   "jitter_s": 0.01,
+   "snr_db": 24.0,
+   "duration_s": 24.14884304901529
+  },
+  "beat_s": 0.6111486833082707,
+  "old": {
+   "found_s": 0.6125422974064331,
+   "class": "exact",
+   "ratio": 1.0022803192352776
+  },
+  "v1": {
+   "found_s": 0.6115484086483317,
+   "class": "exact",
+   "ratio": 1.0006540557984962
+  },
+  "v2": {
+   "found_s": 0.6115484086483317,
+   "class": "exact",
+   "ratio": 1.0006540557984962
+  }
+ },
+ {
+  "desc": {
+   "seed": 70067,
+   "bpm": 63.86788484978075,
+   "beats_per_bar": 6,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "march",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 6.0,
+   "duration_s": 37.523695195645594
+  },
+  "beat_s": 0.9394392837827942,
+  "old": {
+   "found_s": 0.9320729871336482,
+   "class": "exact",
+   "ratio": 0.9921588368973836
+  },
+  "v1": {
+   "found_s": 0.9387152001315804,
+   "class": "exact",
+   "ratio": 0.9992292384790444
+  },
+  "v2": {
+   "found_s": 0.9387152001315804,
+   "class": "exact",
+   "ratio": 0.9992292384790444
+  }
+ },
+ {
+  "desc": {
+   "seed": 70068,
+   "bpm": 185.5825201383331,
+   "beats_per_bar": 7,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 24.0,
+   "duration_s": 23.27763721558002
+  },
+  "beat_s": 0.32330631115083486,
+  "old": {
+   "found_s": 0.3237640544311447,
+   "class": "exact",
+   "ratio": 1.0014158191922715
+  },
+  "v1": {
+   "found_s": 0.32335339615227293,
+   "class": "exact",
+   "ratio": 1.0001456358871266
+  },
+  "v2": {
+   "found_s": 0.32335339615227293,
+   "class": "exact",
+   "ratio": 1.0001456358871266
+  }
+ },
+ {
+  "desc": {
+   "seed": 70069,
+   "bpm": 71.99096583189396,
+   "beats_per_bar": 6,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "hat",
+   "swing": 0.5140164220413256,
+   "jitter_s": 0.01,
+   "snr_db": 24.0,
+   "duration_s": 25.684720200621204
+  },
+  "beat_s": 0.8334379085857238,
+  "old": {
+   "found_s": 0.832550489680191,
+   "class": "exact",
+   "ratio": 0.9989352309315536
+  },
+  "v1": {
+   "found_s": 0.8328642488369468,
+   "class": "exact",
+   "ratio": 0.999311694677111
+  },
+  "v2": {
+   "found_s": 0.8328642488369468,
+   "class": "exact",
+   "ratio": 0.999311694677111
+  }
+ },
+ {
+  "desc": {
+   "seed": 70070,
+   "bpm": 46.61640258682761,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "waltz",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 3.0,
+   "duration_s": 20.037104527764477
+  },
+  "beat_s": 1.287100605591436,
+  "old": {
+   "found_s": 1.2873140059770818,
+   "class": "exact",
+   "ratio": 1.000165799304824
+  },
+  "v1": {
+   "found_s": 1.2871059767961457,
+   "class": "exact",
+   "ratio": 1.0000041731040188
+  },
+  "v2": {
+   "found_s": 1.2871059767961457,
+   "class": "exact",
+   "ratio": 1.0000041731040188
+  }
+ },
+ {
+  "desc": {
+   "seed": 70071,
+   "bpm": 174.04536241524488,
+   "beats_per_bar": 7,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "march",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 3.0,
+   "duration_s": 20.959170394387467
+  },
+  "beat_s": 0.3447377118664583,
+  "old": {
+   "found_s": 0.3446956763840827,
+   "class": "exact",
+   "ratio": 0.9998780653205941
+  },
+  "v1": {
+   "found_s": 0.3446937942717984,
+   "class": "exact",
+   "ratio": 0.9998726057720169
+  },
+  "v2": {
+   "found_s": 0.3446937942717984,
+   "class": "exact",
+   "ratio": 0.9998726057720169
+  }
+ },
+ {
+  "desc": {
+   "seed": 70072,
+   "bpm": 79.76862706318559,
+   "beats_per_bar": 6,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "march",
+   "weak": "ride",
+   "swing": 0.5209196681292032,
+   "jitter_s": 0.01,
+   "snr_db": 12.0,
+   "duration_s": 37.483625178531156
+  },
+  "beat_s": 0.752175412928611,
+  "old": {
+   "found_s": 0.7514188068713363,
+   "class": "exact",
+   "ratio": 0.9989941095597251
+  },
+  "v1": {
+   "found_s": 0.752028029015638,
+   "class": "exact",
+   "ratio": 0.9998040564601824
+  },
+  "v2": {
+   "found_s": 0.752028029015638,
+   "class": "exact",
+   "ratio": 0.9998040564601824
+  }
+ },
+ {
+  "desc": {
+   "seed": 70073,
+   "bpm": 163.75063772791032,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 3.0,
+   "duration_s": 24.02262490348575
+  },
+  "beat_s": 0.36641078674573835,
+  "old": {
+   "found_s": 0.3661654633561179,
+   "class": "exact",
+   "ratio": 0.9993304689750012
+  },
+  "v1": {
+   "found_s": 0.3664181369722133,
+   "class": "exact",
+   "ratio": 1.000020060071212
+  },
+  "v2": {
+   "found_s": 0.3664181369722133,
+   "class": "exact",
+   "ratio": 1.000020060071212
+  }
+ },
+ {
+  "desc": {
+   "seed": 70074,
+   "bpm": 202.9054852211832,
+   "beats_per_bar": 4,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 6.0,
+   "duration_s": 17.130810578207534
+  },
+  "beat_s": 0.2957041793847771,
+  "old": {
+   "found_s": 0.2961935954431526,
+   "class": "exact",
+   "ratio": 1.0016550867133287
+  },
+  "v1": {
+   "found_s": 0.2958164525444821,
+   "class": "exact",
+   "ratio": 1.0003796806657876
+  },
+  "v2": {
+   "found_s": 0.2958164525444821,
+   "class": "exact",
+   "ratio": 1.0003796806657876
+  }
+ },
+ {
+  "desc": {
+   "seed": 70075,
+   "bpm": 56.49988582058417,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "rock",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 24.0,
+   "duration_s": 34.366812460699805
+  },
+  "beat_s": 1.061949048720744,
+  "old": {
+   "found_s": 1.0620608387210067,
+   "class": "exact",
+   "ratio": 1.0001052687041787
+  },
+  "v1": {
+   "found_s": 1.0618871056806618,
+   "class": "exact",
+   "ratio": 0.9999416704217997
+  },
+  "v2": {
+   "found_s": 1.0618871056806618,
+   "class": "exact",
+   "ratio": 0.9999416704217997
+  }
+ },
+ {
+  "desc": {
+   "seed": 70076,
+   "bpm": 67.2349655609274,
+   "beats_per_bar": 6,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 24.0,
+   "duration_s": 44.04981782098293
+  },
+  "beat_s": 0.8923928122730846,
+  "old": {
+   "found_s": 0.8924590409240978,
+   "class": "exact",
+   "ratio": 1.0000742146845003
+  },
+  "v1": {
+   "found_s": 0.8923857163551123,
+   "class": "exact",
+   "ratio": 0.9999920484366585
+  },
+  "v2": {
+   "found_s": 0.8923857163551123,
+   "class": "exact",
+   "ratio": 0.9999920484366585
+  }
+ },
+ {
+  "desc": {
+   "seed": 70077,
+   "bpm": 145.03588923741003,
+   "beats_per_bar": 5,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 3.0,
+   "duration_s": 40.52872691402598
+  },
+  "beat_s": 0.41369071004064156,
+  "old": {
+   "found_s": 0.4134344110891402,
+   "class": "exact",
+   "ratio": 0.999380457560973
+  },
+  "v1": {
+   "found_s": 0.4137150660696983,
+   "class": "exact",
+   "ratio": 1.000058874972209
+  },
+  "v2": {
+   "found_s": 0.4137150660696983,
+   "class": "exact",
+   "ratio": 1.000058874972209
+  }
+ },
+ {
+  "desc": {
+   "seed": 70078,
+   "bpm": 139.19934989399877,
+   "beats_per_bar": 6,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "march",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 24.0,
+   "duration_s": 24.527203586394652
+  },
+  "beat_s": 0.43103649582911413,
+  "old": {
+   "found_s": 0.4266769564736781,
+   "class": "exact",
+   "ratio": 0.9898859159314334
+  },
+  "v1": {
+   "found_s": 0.4323032561046123,
+   "class": "exact",
+   "ratio": 1.0029388701136814
+  },
+  "v2": {
+   "found_s": 0.4323032561046123,
+   "class": "exact",
+   "ratio": 1.0029388701136814
+  }
+ },
+ {
+  "desc": {
+   "seed": 70079,
+   "bpm": 104.37099394498725,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 12.0,
+   "duration_s": 30.395881477634248
+  },
+  "beat_s": 0.5748723637874457,
+  "old": {
+   "found_s": 0.5745045219322773,
+   "class": "exact",
+   "ratio": 0.9993601329993586
+  },
+  "v1": {
+   "found_s": 0.5754754652840063,
+   "class": "exact",
+   "ratio": 1.0010491050440957
+  },
+  "v2": {
+   "found_s": 0.5754754652840063,
+   "class": "exact",
+   "ratio": 1.0010491050440957
+  }
+ },
+ {
+  "desc": {
+   "seed": 70080,
+   "bpm": 199.10405950960123,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 6.0,
+   "duration_s": 31.00627967601422
+  },
+  "beat_s": 0.30134995814641674,
+  "old": {
+   "found_s": 1.2086288216556895,
+   "class": "multiple",
+   "ratio": 4.01071508053256
+  },
+  "v1": {
+   "found_s": 0.2945190534003025,
+   "class": "exact",
+   "ratio": 0.9773323189154208
+  },
+  "v2": {
+   "found_s": 0.2945190534003025,
+   "class": "exact",
+   "ratio": 0.9773323189154208
+  }
+ },
+ {
+  "desc": {
+   "seed": 70081,
+   "bpm": 116.6686293522041,
+   "beats_per_bar": 6,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 6.0,
+   "duration_s": 31.879046800572162
+  },
+  "beat_s": 0.5142770625929743,
+  "old": {
+   "found_s": 0.5135314937800597,
+   "class": "exact",
+   "ratio": 0.9985502584751583
+  },
+  "v1": {
+   "found_s": 0.5144164916663307,
+   "class": "exact",
+   "ratio": 1.0002711166480056
+  },
+  "v2": {
+   "found_s": 0.5144164916663307,
+   "class": "exact",
+   "ratio": 1.0002711166480056
+  }
+ },
+ {
+  "desc": {
+   "seed": 70082,
+   "bpm": 189.07723701414346,
+   "beats_per_bar": 2,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 6.0,
+   "duration_s": 21.136938652263467
+  },
+  "beat_s": 0.3173306366620528,
+  "old": {
+   "found_s": 0.3164727689432397,
+   "class": "exact",
+   "ratio": 0.99729661236672
+  },
+  "v1": {
+   "found_s": 0.31632729644894947,
+   "class": "exact",
+   "ratio": 0.996838186745354
+  },
+  "v2": {
+   "found_s": 0.31632729644894947,
+   "class": "exact",
+   "ratio": 0.996838186745354
+  }
+ },
+ {
+  "desc": {
+   "seed": 70083,
+   "bpm": 68.0650407487548,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "waltz",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 24.0,
+   "duration_s": 35.75569849934183
+  },
+  "beat_s": 0.8815097932795649,
+  "old": {
+   "found_s": 0.8815836951963866,
+   "class": "exact",
+   "ratio": 1.0000838356163313
+  },
+  "v1": {
+   "found_s": 0.8815045285895976,
+   "class": "exact",
+   "ratio": 0.9999940276443807
+  },
+  "v2": {
+   "found_s": 0.8815045285895976,
+   "class": "exact",
+   "ratio": 0.9999940276443807
+  }
+ },
+ {
+  "desc": {
+   "seed": 70084,
+   "bpm": 62.53485208410116,
+   "beats_per_bar": 6,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 3.0,
+   "duration_s": 19.325110397800735
+  },
+  "beat_s": 0.9594649703385862,
+  "old": {
+   "found_s": 0.9595044583346402,
+   "class": "exact",
+   "ratio": 1.0000411562665388
+  },
+  "v1": {
+   "found_s": 0.9594124986319517,
+   "class": "exact",
+   "ratio": 0.9999453114931167
+  },
+  "v2": {
+   "found_s": 0.9594124986319517,
+   "class": "exact",
+   "ratio": 0.9999453114931167
+  }
+ },
+ {
+  "desc": {
+   "seed": 70085,
+   "bpm": 169.33610171148422,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 6.0,
+   "duration_s": 37.8098488834507
+  },
+  "beat_s": 0.35432491591325477,
+  "old": {
+   "found_s": 0.7086206177783997,
+   "class": "multiple",
+   "ratio": 1.9999175501162978
+  },
+  "v1": {
+   "found_s": 0.3540357211828906,
+   "class": "exact",
+   "ratio": 0.9991838148620772
+  },
+  "v2": {
+   "found_s": 0.3540357211828906,
+   "class": "exact",
+   "ratio": 0.9991838148620772
+  }
+ },
+ {
+  "desc": {
+   "seed": 70086,
+   "bpm": 173.95315472483048,
+   "beats_per_bar": 6,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 12.0,
+   "duration_s": 17.802826203521718
+  },
+  "beat_s": 0.3449204476625422,
+  "old": {
+   "found_s": 0.34483626448311266,
+   "class": "exact",
+   "ratio": 0.9997559345060577
+  },
+  "v1": {
+   "found_s": 0.34491042647149117,
+   "class": "exact",
+   "ratio": 0.9999709463700429
+  },
+  "v2": {
+   "found_s": 0.34491042647149117,
+   "class": "exact",
+   "ratio": 0.9999709463700429
+  }
+ },
+ {
+  "desc": {
+   "seed": 70087,
+   "bpm": 62.94269384601935,
+   "beats_per_bar": 6,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 6.0,
+   "duration_s": 21.4114419769436
+  },
+  "beat_s": 0.9532480472917437,
+  "old": {
+   "found_s": 0.9531001301199191,
+   "class": "exact",
+   "ratio": 0.9998448282456546
+  },
+  "v1": {
+   "found_s": 0.9532007179400537,
+   "class": "exact",
+   "ratio": 0.9999503493851107
+  },
+  "v2": {
+   "found_s": 0.9532007179400537,
+   "class": "exact",
+   "ratio": 0.9999503493851107
+  }
+ },
+ {
+  "desc": {
+   "seed": 70088,
+   "bpm": 156.9145874601691,
+   "beats_per_bar": 3,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 12.0,
+   "duration_s": 39.44946732251837
+  },
+  "beat_s": 0.3823736274056119,
+  "old": {
+   "found_s": 1.147145875179972,
+   "class": "multiple",
+   "ratio": 3.0000653626749987
+  },
+  "v1": {
+   "found_s": 0.38234626023297935,
+   "class": "exact",
+   "ratio": 0.9999284281899401
+  },
+  "v2": {
+   "found_s": 0.38234626023297935,
+   "class": "exact",
+   "ratio": 0.9999284281899401
+  }
+ },
+ {
+  "desc": {
+   "seed": 70089,
+   "bpm": 48.93556225211429,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "rock",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 24.0,
+   "duration_s": 31.612973121833544
+  },
+  "beat_s": 1.2261021890559287,
+  "old": {
+   "found_s": 1.226167255456145,
+   "class": "exact",
+   "ratio": 1.000053067681305
+  },
+  "v1": {
+   "found_s": 0.6130647669679904,
+   "class": "subdivision",
+   "ratio": 0.5000111511423339
+  },
+  "v2": {
+   "found_s": 0.6130647669679904,
+   "class": "subdivision",
+   "ratio": 0.5000111511423339
+  }
+ },
+ {
+  "desc": {
+   "seed": 70090,
+   "bpm": 192.80008274499613,
+   "beats_per_bar": 2,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 12.0,
+   "duration_s": 39.32741775790021
+  },
+  "beat_s": 0.31120318594135676,
+  "old": {
+   "found_s": 0.6223233737527307,
+   "class": "multiple",
+   "ratio": 1.9997332992278607
+  },
+  "v1": {
+   "found_s": 0.31040859626530687,
+   "class": "exact",
+   "ratio": 0.997446717411821
+  },
+  "v2": {
+   "found_s": 0.31040859626530687,
+   "class": "exact",
+   "ratio": 0.997446717411821
+  }
+ },
+ {
+  "desc": {
+   "seed": 70091,
+   "bpm": 56.632163637730045,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 6.0,
+   "duration_s": 32.511472181309756
+  },
+  "beat_s": 1.0594686154640611,
+  "old": {
+   "found_s": 1.063455708212487,
+   "class": "exact",
+   "ratio": 1.0037632948161277
+  },
+  "v1": {
+   "found_s": 1.0583904620794289,
+   "class": "exact",
+   "ratio": 0.9989823640182489
+  },
+  "v2": {
+   "found_s": 1.0583904620794289,
+   "class": "exact",
+   "ratio": 0.9989823640182489
+  }
+ },
+ {
+  "desc": {
+   "seed": 70092,
+   "bpm": 166.29787654293614,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 24.0,
+   "duration_s": 44.83877536880622
+  },
+  "beat_s": 0.36079835321594567,
+  "old": {
+   "found_s": 0.36224471290832716,
+   "class": "exact",
+   "ratio": 1.004008775759339
+  },
+  "v1": {
+   "found_s": 0.36045359118388254,
+   "class": "exact",
+   "ratio": 0.9990444467692545
+  },
+  "v2": {
+   "found_s": 0.36045359118388254,
+   "class": "exact",
+   "ratio": 0.9990444467692545
+  }
+ },
+ {
+  "desc": {
+   "seed": 70093,
+   "bpm": 123.71162924888527,
+   "beats_per_bar": 3,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "march",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 3.0,
+   "duration_s": 43.56224802675058
+  },
+  "beat_s": 0.48499886683483023,
+  "old": {
+   "found_s": 1.451608067235913,
+   "class": "multiple",
+   "ratio": 2.9930133171430033
+  },
+  "v1": {
+   "found_s": 0.4847036226936982,
+   "class": "exact",
+   "ratio": 0.9993912477712394
+  },
+  "v2": {
+   "found_s": 0.4847036226936982,
+   "class": "exact",
+   "ratio": 0.9993912477712394
+  }
+ },
+ {
+  "desc": {
+   "seed": 70094,
+   "bpm": 162.9239076883686,
+   "beats_per_bar": 2,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 6.0,
+   "duration_s": 37.191522351744574
+  },
+  "beat_s": 0.3682700768187105,
+  "old": {
+   "found_s": 0.7367805872869995,
+   "class": "multiple",
+   "ratio": 2.0006528731621516
+  },
+  "v1": {
+   "found_s": 0.3682975878598343,
+   "class": "exact",
+   "ratio": 1.0000747034387412
+  },
+  "v2": {
+   "found_s": 0.3682975878598343,
+   "class": "exact",
+   "ratio": 1.0000747034387412
+  }
+ },
+ {
+  "desc": {
+   "seed": 70095,
+   "bpm": 129.80844853389004,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 6.0,
+   "duration_s": 21.697235430257173
+  },
+  "beat_s": 0.4622195294502373,
+  "old": {
+   "found_s": 0.924363484096949,
+   "class": "multiple",
+   "ratio": 1.999836495866768
+  },
+  "v1": {
+   "found_s": 0.46223100023246,
+   "class": "exact",
+   "ratio": 1.00002481674073
+  },
+  "v2": {
+   "found_s": 0.46223100023246,
+   "class": "exact",
+   "ratio": 1.00002481674073
+  }
+ },
+ {
+  "desc": {
+   "seed": 70096,
+   "bpm": 46.513010055090405,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "waltz",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 3.0,
+   "duration_s": 29.00247614296075
+  },
+  "beat_s": 1.2899616672611705,
+  "old": {
+   "found_s": 1.289502901463081,
+   "class": "exact",
+   "ratio": 0.9996443570303423
+  },
+  "v1": {
+   "found_s": 1.289416320557757,
+   "class": "exact",
+   "ratio": 0.9995772380550102
+  },
+  "v2": {
+   "found_s": 1.289416320557757,
+   "class": "exact",
+   "ratio": 0.9995772380550102
+  }
+ },
+ {
+  "desc": {
+   "seed": 70097,
+   "bpm": 55.85916136126334,
+   "beats_per_bar": 6,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 12.0,
+   "duration_s": 24.402659437782738
+  },
+  "beat_s": 1.0741299822236179,
+  "old": {
+   "found_s": 1.0759626122533232,
+   "class": "exact",
+   "ratio": 1.0017061529424134
+  },
+  "v1": {
+   "found_s": 1.074276843258251,
+   "class": "exact",
+   "ratio": 1.000136725570521
+  },
+  "v2": {
+   "found_s": 1.074276843258251,
+   "class": "exact",
+   "ratio": 1.000136725570521
+  }
+ },
+ {
+  "desc": {
+   "seed": 70098,
+   "bpm": 64.79303464450172,
+   "beats_per_bar": 7,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "march",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 12.0,
+   "duration_s": 39.085838081708445
+  },
+  "beat_s": 0.9260254644530923,
+  "old": {
+   "found_s": 0.9260965372458652,
+   "class": "exact",
+   "ratio": 1.0000767503654069
+  },
+  "v1": {
+   "found_s": 0.9260268548044108,
+   "class": "exact",
+   "ratio": 1.0000015014180192
+  },
+  "v2": {
+   "found_s": 0.9260268548044108,
+   "class": "exact",
+   "ratio": 1.0000015014180192
+  }
+ },
+ {
+  "desc": {
+   "seed": 70099,
+   "bpm": 66.9343198295615,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "march",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 24.0,
+   "duration_s": 23.678652768473224
+  },
+  "beat_s": 0.8964011310308563,
+  "old": {
+   "found_s": 0.8964574935910545,
+   "class": "exact",
+   "ratio": 1.0000628764938453
+  },
+  "v1": {
+   "found_s": 0.8963945942840358,
+   "class": "exact",
+   "ratio": 0.9999927077882945
+  },
+  "v2": {
+   "found_s": 0.8963945942840358,
+   "class": "exact",
+   "ratio": 0.9999927077882945
+  }
+ },
+ {
+  "desc": {
+   "seed": 70100,
+   "bpm": 82.5311074629309,
+   "beats_per_bar": 7,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 6.0,
+   "duration_s": 33.88130751849714
+  },
+  "beat_s": 0.7269986050647531,
+  "old": {
+   "found_s": 0.7266255024622649,
+   "class": "exact",
+   "ratio": 0.9994867904836557
+  },
+  "v1": {
+   "found_s": 0.727249489344711,
+   "class": "exact",
+   "ratio": 1.0003450959578328
+  },
+  "v2": {
+   "found_s": 0.363221123490926,
+   "class": "subdivision",
+   "ratio": 0.49961735959393516
+  }
+ },
+ {
+  "desc": {
+   "seed": 70101,
+   "bpm": 184.74634474115075,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 3.0,
+   "duration_s": 33.866874234919536
+  },
+  "beat_s": 0.3247696190366655,
+  "old": {
+   "found_s": 0.3246857822781992,
+   "class": "exact",
+   "ratio": 0.9997418577553068
+  },
+  "v1": {
+   "found_s": 0.32474526501033607,
+   "class": "exact",
+   "ratio": 0.9999250113775985
+  },
+  "v2": {
+   "found_s": 0.32474526501033607,
+   "class": "exact",
+   "ratio": 0.9999250113775985
+  }
+ },
+ {
+  "desc": {
+   "seed": 70102,
+   "bpm": 153.94505154827456,
+   "beats_per_bar": 2,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 12.0,
+   "duration_s": 28.951491420591562
+  },
+  "beat_s": 0.3897494553839882,
+  "old": {
+   "found_s": 0.3896703432872857,
+   "class": "exact",
+   "ratio": 0.9997970180699174
+  },
+  "v1": {
+   "found_s": 0.3897134901539649,
+   "class": "exact",
+   "ratio": 0.9999077221801687
+  },
+  "v2": {
+   "found_s": 0.3897134901539649,
+   "class": "exact",
+   "ratio": 0.9999077221801687
+  }
+ },
+ {
+  "desc": {
+   "seed": 70103,
+   "bpm": 90.62965488899336,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "rock",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 3.0,
+   "duration_s": 22.55349228013519
+  },
+  "beat_s": 0.6620349605599876,
+  "old": {
+   "found_s": 0.6535786043703461,
+   "class": "exact",
+   "ratio": 0.9872267226152398
+  },
+  "v1": {
+   "found_s": 0.6587998932884077,
+   "class": "exact",
+   "ratio": 0.9951134494939007
+  },
+  "v2": {
+   "found_s": 0.6587998932884077,
+   "class": "exact",
+   "ratio": 0.9951134494939007
+  }
+ },
+ {
+  "desc": {
+   "seed": 70104,
+   "bpm": 169.06202654213757,
+   "beats_per_bar": 2,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 6.0,
+   "duration_s": 28.27040816855979
+  },
+  "beat_s": 0.35489933030611936,
+  "old": {
+   "found_s": 0.7090075373690969,
+   "class": "multiple",
+   "ratio": 1.997770851687831
+  },
+  "v1": {
+   "found_s": 0.35448410460292296,
+   "class": "exact",
+   "ratio": 0.9988300183524205
+  },
+  "v2": {
+   "found_s": 0.35448410460292296,
+   "class": "exact",
+   "ratio": 0.9988300183524205
+  }
+ },
+ {
+  "desc": {
+   "seed": 70105,
+   "bpm": 181.99019484448246,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "march",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 12.0,
+   "duration_s": 41.76916496670125
+  },
+  "beat_s": 0.32968809144510386,
+  "old": {
+   "found_s": 0.9868321893514346,
+   "class": "multiple",
+   "ratio": 2.9932297069812464
+  },
+  "v1": {
+   "found_s": 0.32935453605596526,
+   "class": "exact",
+   "ratio": 0.9989882698289874
+  },
+  "v2": {
+   "found_s": 0.32935453605596526,
+   "class": "exact",
+   "ratio": 0.9989882698289874
+  }
+ },
+ {
+  "desc": {
+   "seed": 70106,
+   "bpm": 208.24638783178798,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 24.0,
+   "duration_s": 31.670732844108404
+  },
+  "beat_s": 0.28812024364362704,
+  "old": {
+   "found_s": 0.2882512002205981,
+   "class": "exact",
+   "ratio": 1.0004545205686173
+  },
+  "v1": {
+   "found_s": 0.2881805254915919,
+   "class": "exact",
+   "ratio": 1.000209224618175
+  },
+  "v2": {
+   "found_s": 0.2881805254915919,
+   "class": "exact",
+   "ratio": 1.000209224618175
+  }
+ },
+ {
+  "desc": {
+   "seed": 70107,
+   "bpm": 91.00790218249743,
+   "beats_per_bar": 7,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 24.0,
+   "duration_s": 17.328336300595335
+  },
+  "beat_s": 0.659283409034992,
+  "old": {
+   "found_s": 0.6591882894246128,
+   "class": "exact",
+   "ratio": 0.9998557227300495
+  },
+  "v1": {
+   "found_s": 0.6592779306802543,
+   "class": "exact",
+   "ratio": 0.9999916904404651
+  },
+  "v2": {
+   "found_s": 0.6592779306802543,
+   "class": "exact",
+   "ratio": 0.9999916904404651
+  }
+ },
+ {
+  "desc": {
+   "seed": 70108,
+   "bpm": 70.28810906519908,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "waltz",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 3.0,
+   "duration_s": 34.48383034320497
+  },
+  "beat_s": 0.8536294516664852,
+  "old": {
+   "found_s": 0.8535645153607446,
+   "class": "exact",
+   "ratio": 0.9999239291643303
+  },
+  "v1": {
+   "found_s": 0.8535854961053592,
+   "class": "exact",
+   "ratio": 0.9999485074454258
+  },
+  "v2": {
+   "found_s": 0.8535854961053592,
+   "class": "exact",
+   "ratio": 0.9999485074454258
+  }
+ },
+ {
+  "desc": {
+   "seed": 70109,
+   "bpm": 118.2468509882421,
+   "beats_per_bar": 2,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 24.0,
+   "duration_s": 20.372784162893545
+  },
+  "beat_s": 0.5074130896387771,
+  "old": {
+   "found_s": 0.507520999229616,
+   "class": "exact",
+   "ratio": 1.0002126661551356
+  },
+  "v1": {
+   "found_s": 0.5074088453432166,
+   "class": "exact",
+   "ratio": 0.9999916354235886
+  },
+  "v2": {
+   "found_s": 0.5074088453432166,
+   "class": "exact",
+   "ratio": 0.9999916354235886
+  }
+ },
+ {
+  "desc": {
+   "seed": 70110,
+   "bpm": 155.178305338483,
+   "beats_per_bar": 5,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "march",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 3.0,
+   "duration_s": 43.388215009606895
+  },
+  "beat_s": 0.3866519863657802,
+  "old": {
+   "found_s": 0.7726658690691218,
+   "class": "multiple",
+   "ratio": 1.9983496692505418
+  },
+  "v1": {
+   "found_s": 0.3864762515879871,
+   "class": "exact",
+   "ratio": 0.9995454962498839
+  },
+  "v2": {
+   "found_s": 0.3864762515879871,
+   "class": "exact",
+   "ratio": 0.9995454962498839
+  }
+ },
+ {
+  "desc": {
+   "seed": 70111,
+   "bpm": 80.47998703882449,
+   "beats_per_bar": 4,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "march",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 24.0,
+   "duration_s": 24.304481704548223
+  },
+  "beat_s": 0.7455269590321293,
+  "old": {
+   "found_s": 0.7454563921032917,
+   "class": "exact",
+   "ratio": 0.9999053462413631
+  },
+  "v1": {
+   "found_s": 0.7455233677207109,
+   "class": "exact",
+   "ratio": 0.99999518285506
+  },
+  "v2": {
+   "found_s": 0.7455233677207109,
+   "class": "exact",
+   "ratio": 0.99999518285506
+  }
+ },
+ {
+  "desc": {
+   "seed": 70112,
+   "bpm": 101.28705098305267,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "waltz",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 12.0,
+   "duration_s": 16.694222802102225
+  },
+  "beat_s": 0.5923758211702619,
+  "old": {
+   "found_s": 0.5939861790599252,
+   "class": "exact",
+   "ratio": 1.0027184733611882
+  },
+  "v1": {
+   "found_s": 0.5948261635220845,
+   "class": "exact",
+   "ratio": 1.0041364658452498
+  },
+  "v2": {
+   "found_s": 0.5948261635220845,
+   "class": "exact",
+   "ratio": 1.0041364658452498
+  }
+ },
+ {
+  "desc": {
+   "seed": 70113,
+   "bpm": 80.2746358053305,
+   "beats_per_bar": 5,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 6.0,
+   "duration_s": 22.29720772601585
+  },
+  "beat_s": 0.7474340979322861,
+  "old": {
+   "found_s": 0.7478566234531491,
+   "class": "exact",
+   "ratio": 1.0005653013717621
+  },
+  "v1": {
+   "found_s": 0.7476315198113291,
+   "class": "exact",
+   "ratio": 1.0002641328240032
+  },
+  "v2": {
+   "found_s": 0.7476315198113291,
+   "class": "exact",
+   "ratio": 1.0002641328240032
+  }
+ },
+ {
+  "desc": {
+   "seed": 70114,
+   "bpm": 89.84964125143304,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "rock",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 6.0,
+   "duration_s": 41.23665621416358
+  },
+  "beat_s": 0.6677822990088237,
+  "old": {
+   "found_s": 0.66806682680974,
+   "class": "exact",
+   "ratio": 1.0004260786806398
+  },
+  "v1": {
+   "found_s": 0.33397099437725525,
+   "class": "subdivision",
+   "ratio": 0.5001195672196791
+  },
+  "v2": {
+   "found_s": 0.33397099437725525,
+   "class": "subdivision",
+   "ratio": 0.5001195672196791
+  }
+ },
+ {
+  "desc": {
+   "seed": 70115,
+   "bpm": 70.65450352520428,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "rock",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 6.0,
+   "duration_s": 30.185657477792304
+  },
+  "beat_s": 0.8492027684915577,
+  "old": {
+   "found_s": 1.6954997880523313,
+   "class": "multiple",
+   "ratio": 1.9965782625321091
+  },
+  "v1": {
+   "found_s": 0.8482359845009099,
+   "class": "exact",
+   "ratio": 0.998861539285411
+  },
+  "v2": {
+   "found_s": 0.8482359845009099,
+   "class": "exact",
+   "ratio": 0.998861539285411
+  }
+ },
+ {
+  "desc": {
+   "seed": 70116,
+   "bpm": 188.24134560430804,
+   "beats_per_bar": 7,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "march",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 24.0,
+   "duration_s": 16.56789108808388
+  },
+  "beat_s": 0.31873975298775625,
+  "old": {
+   "found_s": 0.3186111128818554,
+   "class": "exact",
+   "ratio": 0.9995964102227757
+  },
+  "v1": {
+   "found_s": 0.3186611251141424,
+   "class": "exact",
+   "ratio": 0.9997533163878154
+  },
+  "v2": {
+   "found_s": 0.3186611251141424,
+   "class": "exact",
+   "ratio": 0.9997533163878154
+  }
+ },
+ {
+  "desc": {
+   "seed": 70117,
+   "bpm": 161.0665125023512,
+   "beats_per_bar": 3,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 3.0,
+   "duration_s": 36.1743635476902
+  },
+  "beat_s": 0.37251691284446314,
+  "old": {
+   "found_s": 0.37215627177282035,
+   "class": "exact",
+   "ratio": 0.9990318800054231
+  },
+  "v1": {
+   "found_s": 0.3725798099696081,
+   "class": "exact",
+   "ratio": 1.0001688436765588
+  },
+  "v2": {
+   "found_s": 0.3725798099696081,
+   "class": "exact",
+   "ratio": 1.0001688436765588
+  }
+ },
+ {
+  "desc": {
+   "seed": 70118,
+   "bpm": 119.63854070496723,
+   "beats_per_bar": 6,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 3.0,
+   "duration_s": 35.407956530044835
+  },
+  "beat_s": 0.5015106306584103,
+  "old": {
+   "found_s": 0.5016396598512465,
+   "class": "exact",
+   "ratio": 1.000257281072321
+  },
+  "v1": {
+   "found_s": 0.5015397915427896,
+   "class": "exact",
+   "ratio": 1.0000581460942135
+  },
+  "v2": {
+   "found_s": 0.5015397915427896,
+   "class": "exact",
+   "ratio": 1.0000581460942135
+  }
+ },
+ {
+  "desc": {
+   "seed": 70119,
+   "bpm": 95.23404027060134,
+   "beats_per_bar": 5,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 6.0,
+   "duration_s": 18.75258619670667
+  },
+  "beat_s": 0.6300268247520938,
+  "old": {
+   "found_s": 0.6302531343642132,
+   "class": "exact",
+   "ratio": 1.0003592063119033
+  },
+  "v1": {
+   "found_s": 0.6299484457881911,
+   "class": "exact",
+   "ratio": 0.9998755942432553
+  },
+  "v2": {
+   "found_s": 0.6299484457881911,
+   "class": "exact",
+   "ratio": 0.9998755942432553
+  }
+ },
+ {
+  "desc": {
+   "seed": 70120,
+   "bpm": 119.88218429816298,
+   "beats_per_bar": 5,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "march",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 6.0,
+   "duration_s": 29.33671088380347
+  },
+  "beat_s": 0.5004913811944901,
+  "old": {
+   "found_s": 0.500420671476863,
+   "class": "exact",
+   "ratio": 0.9998587194099959
+  },
+  "v1": {
+   "found_s": 0.5003696381850712,
+   "class": "exact",
+   "ratio": 0.9997567530351305
+  },
+  "v2": {
+   "found_s": 0.5003696381850712,
+   "class": "exact",
+   "ratio": 0.9997567530351305
+  }
+ },
+ {
+  "desc": {
+   "seed": 70121,
+   "bpm": 63.36609119390802,
+   "beats_per_bar": 7,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "march",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 6.0,
+   "duration_s": 31.012918613510443
+  },
+  "beat_s": 0.9468786675888313,
+  "old": {
+   "found_s": 0.9418842791516995,
+   "class": "exact",
+   "ratio": 0.9947254187805817
+  },
+  "v1": {
+   "found_s": 0.945313987837232,
+   "class": "exact",
+   "ratio": 0.9983475393361816
+  },
+  "v2": {
+   "found_s": 0.945313987837232,
+   "class": "exact",
+   "ratio": 0.9983475393361816
+  }
+ },
+ {
+  "desc": {
+   "seed": 70122,
+   "bpm": 188.2903846843378,
+   "beats_per_bar": 4,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 12.0,
+   "duration_s": 37.52179274141483
+  },
+  "beat_s": 0.3186567391669409,
+  "old": {
+   "found_s": 0.3186938967628796,
+   "class": "exact",
+   "ratio": 1.0001166069672207
+  },
+  "v1": {
+   "found_s": 0.3186662624045167,
+   "class": "exact",
+   "ratio": 1.0000298855677763
+  },
+  "v2": {
+   "found_s": 0.3186662624045167,
+   "class": "exact",
+   "ratio": 1.0000298855677763
+  }
+ },
+ {
+  "desc": {
+   "seed": 70123,
+   "bpm": 114.73202189736412,
+   "beats_per_bar": 6,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 6.0,
+   "duration_s": 44.92961404537788
+  },
+  "beat_s": 0.522957749787363,
+  "old": {
+   "found_s": 0.5228081864789497,
+   "class": "exact",
+   "ratio": 0.999714004987068
+  },
+  "v1": {
+   "found_s": 0.5230599841095712,
+   "class": "exact",
+   "ratio": 1.0001954925082377
+  },
+  "v2": {
+   "found_s": 0.5230599841095712,
+   "class": "exact",
+   "ratio": 1.0001954925082377
+  }
+ },
+ {
+  "desc": {
+   "seed": 70124,
+   "bpm": 99.43846870876045,
+   "beats_per_bar": 3,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 3.0,
+   "duration_s": 19.306972859781915
+  },
+  "beat_s": 0.6033882136271679,
+  "old": {
+   "found_s": 0.603374890623253,
+   "class": "exact",
+   "ratio": 0.999977919681535
+  },
+  "v1": {
+   "found_s": 0.6033865798731644,
+   "class": "exact",
+   "ratio": 0.9999972923667274
+  },
+  "v2": {
+   "found_s": 0.6033865798731644,
+   "class": "exact",
+   "ratio": 0.9999972923667274
+  }
+ },
+ {
+  "desc": {
+   "seed": 70125,
+   "bpm": 113.2079792004127,
+   "beats_per_bar": 5,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "march",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 12.0,
+   "duration_s": 25.41522401326027
+  },
+  "beat_s": 0.5299979773844534,
+  "old": {
+   "found_s": 1.0607303404107913,
+   "class": "multiple",
+   "ratio": 2.0013856385745257
+  },
+  "v1": {
+   "found_s": 0.5297240062442592,
+   "class": "exact",
+   "ratio": 0.9994830713476563
+  },
+  "v2": {
+   "found_s": 0.5297240062442592,
+   "class": "exact",
+   "ratio": 0.9994830713476563
+  }
+ },
+ {
+  "desc": {
+   "seed": 70126,
+   "bpm": 129.4863374792356,
+   "beats_per_bar": 6,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 12.0,
+   "duration_s": 26.48989744596478
+  },
+  "beat_s": 0.46336934975569594,
+  "old": {
+   "found_s": 0.9339770527291567,
+   "class": "multiple",
+   "ratio": 2.01562113079249
+  },
+  "v1": {
+   "found_s": 0.932941103603123,
+   "class": "multiple",
+   "ratio": 2.0133854431567415
+  },
+  "v2": {
+   "found_s": 0.932941103603123,
+   "class": "multiple",
+   "ratio": 2.0133854431567415
+  }
+ },
+ {
+  "desc": {
+   "seed": 70127,
+   "bpm": 198.43104576831595,
+   "beats_per_bar": 6,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 3.0,
+   "duration_s": 37.0031513435752
+  },
+  "beat_s": 0.3023720394542232,
+  "old": {
+   "found_s": 1.8112898261908794,
+   "class": "multiple",
+   "ratio": 5.990268906676124
+  },
+  "v1": {
+   "found_s": 1.812909603437808,
+   "class": "multiple",
+   "ratio": 5.995625808226453
+  },
+  "v2": {
+   "found_s": 1.812909603437808,
+   "class": "multiple",
+   "ratio": 5.995625808226453
+  }
+ },
+ {
+  "desc": {
+   "seed": 70128,
+   "bpm": 91.2137236040248,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "rock",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 12.0,
+   "duration_s": 24.869497071455378
+  },
+  "beat_s": 0.657795752977598,
+  "old": {
+   "found_s": 0.66376740523562,
+   "class": "exact",
+   "ratio": 1.0090782773087095
+  },
+  "v1": {
+   "found_s": 0.657494048398656,
+   "class": "exact",
+   "ratio": 0.9995413400321053
+  },
+  "v2": {
+   "found_s": 0.657494048398656,
+   "class": "exact",
+   "ratio": 0.9995413400321053
+  }
+ },
+ {
+  "desc": {
+   "seed": 70129,
+   "bpm": 172.97260240270742,
+   "beats_per_bar": 2,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 6.0,
+   "duration_s": 28.426903631288248
+  },
+  "beat_s": 0.3468757431324908,
+  "old": {
+   "found_s": 0.6936942310596186,
+   "class": "multiple",
+   "ratio": 1.999834940302121
+  },
+  "v1": {
+   "found_s": 0.3468628522798345,
+   "class": "exact",
+   "ratio": 0.9999628372611474
+  },
+  "v2": {
+   "found_s": 0.3468628522798345,
+   "class": "exact",
+   "ratio": 0.9999628372611474
+  }
+ },
+ {
+  "desc": {
+   "seed": 70130,
+   "bpm": 134.61736067946174,
+   "beats_per_bar": 2,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 12.0,
+   "duration_s": 23.706992465393984
+  },
+  "beat_s": 0.44570774302184085,
+  "old": {
+   "found_s": 0.8905212231009423,
+   "class": "multiple",
+   "ratio": 1.9979936113815828
+  },
+  "v1": {
+   "found_s": 0.44636541001160746,
+   "class": "exact",
+   "ratio": 1.0014755565728064
+  },
+  "v2": {
+   "found_s": 0.44636541001160746,
+   "class": "exact",
+   "ratio": 1.0014755565728064
+  }
+ },
+ {
+  "desc": {
+   "seed": 70131,
+   "bpm": 58.48103845016149,
+   "beats_per_bar": 6,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 6.0,
+   "duration_s": 38.420445398628274
+  },
+  "beat_s": 1.0259735734879776,
+  "old": {
+   "found_s": 1.0260420404758417,
+   "class": "exact",
+   "ratio": 1.0000667336758309
+  },
+  "v1": {
+   "found_s": 1.0259665324152962,
+   "class": "exact",
+   "ratio": 0.9999931371792965
+  },
+  "v2": {
+   "found_s": 1.0259665324152962,
+   "class": "exact",
+   "ratio": 0.9999931371792965
+  }
+ },
+ {
+  "desc": {
+   "seed": 70132,
+   "bpm": 75.48580784511928,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "waltz",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 3.0,
+   "duration_s": 28.03262957030568
+  },
+  "beat_s": 0.7948513993929449,
+  "old": {
+   "found_s": 0.7893048584320871,
+   "class": "exact",
+   "ratio": 0.9930219145803934
+  },
+  "v1": {
+   "found_s": 0.7939886232387516,
+   "class": "exact",
+   "ratio": 0.9989145440835202
+  },
+  "v2": {
+   "found_s": 0.7939886232387516,
+   "class": "exact",
+   "ratio": 0.9989145440835202
+  }
+ },
+ {
+  "desc": {
+   "seed": 70133,
+   "bpm": 190.31454730749715,
+   "beats_per_bar": 4,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 6.0,
+   "duration_s": 23.042710041383547
+  },
+  "beat_s": 0.3152675444355608,
+  "old": {
+   "found_s": 0.31517489011363853,
+   "class": "exact",
+   "ratio": 0.9997061089111212
+  },
+  "v1": {
+   "found_s": 0.3152660521596539,
+   "class": "exact",
+   "ratio": 0.9999952666364387
+  },
+  "v2": {
+   "found_s": 0.3152660521596539,
+   "class": "exact",
+   "ratio": 0.9999952666364387
+  }
+ },
+ {
+  "desc": {
+   "seed": 70134,
+   "bpm": 202.19004791446227,
+   "beats_per_bar": 7,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "hat",
+   "swing": 0.5058320856433519,
+   "jitter_s": 0.0,
+   "snr_db": 6.0,
+   "duration_s": 21.80417107199052
+  },
+  "beat_s": 0.29675051081338766,
+  "old": {
+   "found_s": 0.2967486126761969,
+   "class": "exact",
+   "ratio": 0.9999936035925076
+  },
+  "v1": {
+   "found_s": 0.2967546890939209,
+   "class": "exact",
+   "ratio": 1.0000140801123536
+  },
+  "v2": {
+   "found_s": 0.2967546890939209,
+   "class": "exact",
+   "ratio": 1.0000140801123536
+  }
+ },
+ {
+  "desc": {
+   "seed": 70135,
+   "bpm": 82.9888793599453,
+   "beats_per_bar": 5,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 6.0,
+   "duration_s": 20.078234434271998
+  },
+  "beat_s": 0.7229884348692517,
+  "old": {
+   "found_s": 0.7227229294872257,
+   "class": "exact",
+   "ratio": 0.9996327667646938
+  },
+  "v1": {
+   "found_s": 0.7230483969079001,
+   "class": "exact",
+   "ratio": 1.000082936373193
+  },
+  "v2": {
+   "found_s": 0.7230483969079001,
+   "class": "exact",
+   "ratio": 1.000082936373193
+  }
+ },
+ {
+  "desc": {
+   "seed": 70136,
+   "bpm": 147.77012510927628,
+   "beats_per_bar": 6,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 24.0,
+   "duration_s": 24.74453359927893
+  },
+  "beat_s": 0.40603606416134447,
+  "old": {
+   "found_s": 0.4045056965742522,
+   "class": "exact",
+   "ratio": 0.9962309565032033
+  },
+  "v1": {
+   "found_s": 0.4069428762829715,
+   "class": "exact",
+   "ratio": 1.0022333290110572
+  },
+  "v2": {
+   "found_s": 0.4069428762829715,
+   "class": "exact",
+   "ratio": 1.0022333290110572
+  }
+ },
+ {
+  "desc": {
+   "seed": 70137,
+   "bpm": 59.87112144597345,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "shaker",
+   "swing": 0.5645393371515366,
+   "jitter_s": 0.004,
+   "snr_db": 3.0,
+   "duration_s": 32.54519720037983
+  },
+  "beat_s": 1.0021525996325766,
+  "old": {
+   "found_s": 1.0022317356202,
+   "class": "exact",
+   "ratio": 1.000078966005429
+  },
+  "v1": {
+   "found_s": 1.0021389185505036,
+   "class": "exact",
+   "ratio": 0.9999863483045616
+  },
+  "v2": {
+   "found_s": 1.0021389185505036,
+   "class": "exact",
+   "ratio": 0.9999863483045616
+  }
+ },
+ {
+  "desc": {
+   "seed": 70138,
+   "bpm": 95.50635214359559,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "march",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 6.0,
+   "duration_s": 27.600546127143197
+  },
+  "beat_s": 0.6282304648154593,
+  "old": {
+   "found_s": 0.6283160098335784,
+   "class": "exact",
+   "ratio": 1.0001361682104102
+  },
+  "v1": {
+   "found_s": 0.6282247694156363,
+   "class": "exact",
+   "ratio": 0.9999909342189818
+  },
+  "v2": {
+   "found_s": 0.6282247694156363,
+   "class": "exact",
+   "ratio": 0.9999909342189818
+  }
+ },
+ {
+  "desc": {
+   "seed": 70139,
+   "bpm": 204.08278174505494,
+   "beats_per_bar": 6,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 12.0,
+   "duration_s": 26.016197357287616
+  },
+  "beat_s": 0.2939983446273945,
+  "old": {
+   "found_s": 0.5889155413625111,
+   "class": "multiple",
+   "ratio": 2.003125364902604
+  },
+  "v1": {
+   "found_s": 0.29388747307600427,
+   "class": "exact",
+   "ratio": 0.9996228837562648
+  },
+  "v2": {
+   "found_s": 0.29388747307600427,
+   "class": "exact",
+   "ratio": 0.9996228837562648
+  }
+ },
+ {
+  "desc": {
+   "seed": 70140,
+   "bpm": 175.3977579862124,
+   "beats_per_bar": 3,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 3.0,
+   "duration_s": 38.75730603373633
+  },
+  "beat_s": 0.342079629117702,
+  "old": {
+   "found_s": 1.0257000512513692,
+   "class": "multiple",
+   "ratio": 2.9984248225972223
+  },
+  "v1": {
+   "found_s": 0.34200116318999585,
+   "class": "exact",
+   "ratio": 0.9997706208700339
+  },
+  "v2": {
+   "found_s": 0.34200116318999585,
+   "class": "exact",
+   "ratio": 0.9997706208700339
+  }
+ },
+ {
+  "desc": {
+   "seed": 70141,
+   "bpm": 178.31174944085546,
+   "beats_per_bar": 7,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 12.0,
+   "duration_s": 37.97932205790312
+  },
+  "beat_s": 0.3364893238283297,
+  "old": {
+   "found_s": 0.33644485218256276,
+   "class": "exact",
+   "ratio": 0.9998678363840464
+  },
+  "v1": {
+   "found_s": 0.336494017357281,
+   "class": "exact",
+   "ratio": 1.0000139485226394
+  },
+  "v2": {
+   "found_s": 0.336494017357281,
+   "class": "exact",
+   "ratio": 1.0000139485226394
+  }
+ },
+ {
+  "desc": {
+   "seed": 70142,
+   "bpm": 95.08160311355954,
+   "beats_per_bar": 2,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 12.0,
+   "duration_s": 27.249075541872095
+  },
+  "beat_s": 0.6310368992026748,
+  "old": {
+   "found_s": 0.630991853828121,
+   "class": "exact",
+   "ratio": 0.9999286168929095
+  },
+  "v1": {
+   "found_s": 0.6310277540555175,
+   "class": "exact",
+   "ratio": 0.9999855077457929
+  },
+  "v2": {
+   "found_s": 0.6310277540555175,
+   "class": "exact",
+   "ratio": 0.9999855077457929
+  }
+ },
+ {
+  "desc": {
+   "seed": 70143,
+   "bpm": 94.54170727379406,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "disco",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 12.0,
+   "duration_s": 20.81959863319537
+  },
+  "beat_s": 0.6346405383418684,
+  "old": {
+   "found_s": 0.6347645357749074,
+   "class": "exact",
+   "ratio": 1.0001953821502847
+  },
+  "v1": {
+   "found_s": 0.6346384996970226,
+   "class": "exact",
+   "ratio": 0.9999967877172625
+  },
+  "v2": {
+   "found_s": 0.6346384996970226,
+   "class": "exact",
+   "ratio": 0.9999967877172625
+  }
+ },
+ {
+  "desc": {
+   "seed": 70144,
+   "bpm": 199.30243416190137,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 24.0,
+   "duration_s": 24.623154726065763
+  },
+  "beat_s": 0.30105001101622064,
+  "old": {
+   "found_s": 0.6022485632528611,
+   "class": "multiple",
+   "ratio": 2.0004934104467176
+  },
+  "v1": {
+   "found_s": 0.30103171666883866,
+   "class": "exact",
+   "ratio": 0.9999392315339227
+  },
+  "v2": {
+   "found_s": 0.30103171666883866,
+   "class": "exact",
+   "ratio": 0.9999392315339227
+  }
+ },
+ {
+  "desc": {
+   "seed": 70145,
+   "bpm": 142.86683038922666,
+   "beats_per_bar": 3,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "march",
+   "weak": "shaker",
+   "swing": 0.5277444144699639,
+   "jitter_s": 0.018,
+   "snr_db": 24.0,
+   "duration_s": 21.241527843386628
+  },
+  "beat_s": 0.4199715205869402,
+  "old": {
+   "found_s": 1.262797746525445,
+   "class": "multiple",
+   "ratio": 3.0068651911458066
+  },
+  "v1": {
+   "found_s": 0.41870017763805517,
+   "class": "exact",
+   "ratio": 0.9969727877092517
+  },
+  "v2": {
+   "found_s": 0.41870017763805517,
+   "class": "exact",
+   "ratio": 0.9969727877092517
+  }
+ },
+ {
+  "desc": {
+   "seed": 70146,
+   "bpm": 202.6752501044171,
+   "beats_per_bar": 5,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 24.0,
+   "duration_s": 33.943447929471645
+  },
+  "beat_s": 0.29604009354417155,
+  "old": {
+   "found_s": 1.4809346131119208,
+   "class": "multiple",
+   "ratio": 5.002479885012445
+  },
+  "v1": {
+   "found_s": 0.2959433478597602,
+   "class": "exact",
+   "ratio": 0.9996732007369233
+  },
+  "v2": {
+   "found_s": 0.2959433478597602,
+   "class": "exact",
+   "ratio": 0.9996732007369233
+  }
+ },
+ {
+  "desc": {
+   "seed": 70147,
+   "bpm": 109.91945198947698,
+   "beats_per_bar": 7,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 6.0,
+   "duration_s": 24.07986894850161
+  },
+  "beat_s": 0.5458542497623081,
+  "old": {
+   "found_s": 0.5458146341762796,
+   "class": "exact",
+   "ratio": 0.9999274246082251
+  },
+  "v1": {
+   "found_s": 0.5458664735816673,
+   "class": "exact",
+   "ratio": 1.0000223939254196
+  },
+  "v2": {
+   "found_s": 0.5458664735816673,
+   "class": "exact",
+   "ratio": 1.0000223939254196
+  }
+ },
+ {
+  "desc": {
+   "seed": 70148,
+   "bpm": 168.90426625096853,
+   "beats_per_bar": 5,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "march",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 6.0,
+   "duration_s": 37.55708491912808
+  },
+  "beat_s": 0.3552308140686526,
+  "old": {
+   "found_s": 1.775176939480703,
+   "class": "multiple",
+   "ratio": 4.997249307143803
+  },
+  "v1": {
+   "found_s": 0.3551084886663962,
+   "class": "exact",
+   "ratio": 0.9996556452948006
+  },
+  "v2": {
+   "found_s": 0.3551084886663962,
+   "class": "exact",
+   "ratio": 0.9996556452948006
+  }
+ },
+ {
+  "desc": {
+   "seed": 70149,
+   "bpm": 150.28415796479484,
+   "beats_per_bar": 5,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 6.0,
+   "duration_s": 24.575222300029456
+  },
+  "beat_s": 0.3992436781929832,
+  "old": {
+   "found_s": 0.39903696326251703,
+   "class": "exact",
+   "ratio": 0.9994822336789357
+  },
+  "v1": {
+   "found_s": 0.39925728605079025,
+   "class": "exact",
+   "ratio": 1.0000340840908706
+  },
+  "v2": {
+   "found_s": 0.39925728605079025,
+   "class": "exact",
+   "ratio": 1.0000340840908706
+  }
+ },
+ {
+  "desc": {
+   "seed": 70150,
+   "bpm": 64.2960443887272,
+   "beats_per_bar": 2,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "march",
+   "weak": "ride",
+   "swing": 0.506916384655163,
+   "jitter_s": 0.0,
+   "snr_db": 6.0,
+   "duration_s": 30.85513105762614
+  },
+  "beat_s": 0.9331833796375752,
+  "old": {
+   "found_s": 0.9331292698723974,
+   "class": "exact",
+   "ratio": 0.9999420159356044
+  },
+  "v1": {
+   "found_s": 0.9331419120360847,
+   "class": "exact",
+   "ratio": 0.9999555632875644
+  },
+  "v2": {
+   "found_s": 0.9331419120360847,
+   "class": "exact",
+   "ratio": 0.9999555632875644
+  }
+ },
+ {
+  "desc": {
+   "seed": 70151,
+   "bpm": 130.6629124276997,
+   "beats_per_bar": 5,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 24.0,
+   "duration_s": 30.41483208307589
+  },
+  "beat_s": 0.4591968668477375,
+  "old": {
+   "found_s": 0.45915900759323763,
+   "class": "exact",
+   "ratio": 0.9999175533257452
+  },
+  "v1": {
+   "found_s": 0.4591675295633077,
+   "class": "exact",
+   "ratio": 0.9999361117495614
+  },
+  "v2": {
+   "found_s": 0.4591675295633077,
+   "class": "exact",
+   "ratio": 0.9999361117495614
+  }
+ },
+ {
+  "desc": {
+   "seed": 70152,
+   "bpm": 198.61979496709935,
+   "beats_per_bar": 3,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "march",
+   "weak": "ride",
+   "swing": 0.5661523346271505,
+   "jitter_s": 0.018,
+   "snr_db": 3.0,
+   "duration_s": 23.76809999488542
+  },
+  "beat_s": 0.30208469407562716,
+  "old": {
+   "found_s": 0.9038595506011483,
+   "class": "multiple",
+   "ratio": 2.992073310324244
+  },
+  "v1": {
+   "found_s": 0.3012162290744891,
+   "class": "exact",
+   "ratio": 0.9971250943256309
+  },
+  "v2": {
+   "found_s": 0.3012162290744891,
+   "class": "exact",
+   "ratio": 0.9971250943256309
+  }
+ },
+ {
+  "desc": {
+   "seed": 70153,
+   "bpm": 188.80321824184153,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 3.0,
+   "duration_s": 41.375755690153824
+  },
+  "beat_s": 0.3177911931731211,
+  "old": {
+   "found_s": 0.31670722802393114,
+   "class": "exact",
+   "ratio": 0.9965890648561823
+  },
+  "v1": {
+   "found_s": 0.31749314134695206,
+   "class": "exact",
+   "ratio": 0.9990621142669405
+  },
+  "v2": {
+   "found_s": 0.31749314134695206,
+   "class": "exact",
+   "ratio": 0.9990621142669405
+  }
+ },
+ {
+  "desc": {
+   "seed": 70154,
+   "bpm": 175.10570678465277,
+   "beats_per_bar": 7,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "march",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 12.0,
+   "duration_s": 36.95817818835715
+  },
+  "beat_s": 0.34265016887078825,
+  "old": {
+   "found_s": 0.3412619711152594,
+   "class": "exact",
+   "ratio": 0.9959486441810209
+  },
+  "v1": {
+   "found_s": 0.34309385596447023,
+   "class": "exact",
+   "ratio": 1.0012948690355068
+  },
+  "v2": {
+   "found_s": 0.34309385596447023,
+   "class": "exact",
+   "ratio": 1.0012948690355068
+  }
+ },
+ {
+  "desc": {
+   "seed": 70155,
+   "bpm": 156.45630091477176,
+   "beats_per_bar": 5,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 12.0,
+   "duration_s": 20.503076809247066
+  },
+  "beat_s": 0.3834936634011595,
+  "old": {
+   "found_s": 1.9176268835237538,
+   "class": "multiple",
+   "ratio": 5.000413478847473
+  },
+  "v1": {
+   "found_s": 0.38273669645142694,
+   "class": "exact",
+   "ratio": 0.9980261291855018
+  },
+  "v2": {
+   "found_s": 0.38273669645142694,
+   "class": "exact",
+   "ratio": 0.9980261291855018
+  }
+ },
+ {
+  "desc": {
+   "seed": 70156,
+   "bpm": 138.20088917091257,
+   "beats_per_bar": 6,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 3.0,
+   "duration_s": 44.82447317987183
+  },
+  "beat_s": 0.4341506075680758,
+  "old": {
+   "found_s": 0.4341142754776556,
+   "class": "exact",
+   "ratio": 0.9999163145466415
+  },
+  "v1": {
+   "found_s": 0.43413028523849445,
+   "class": "exact",
+   "ratio": 0.9999531905996972
+  },
+  "v2": {
+   "found_s": 0.43413028523849445,
+   "class": "exact",
+   "ratio": 0.9999531905996972
+  }
+ },
+ {
+  "desc": {
+   "seed": 70157,
+   "bpm": 209.9523247297439,
+   "beats_per_bar": 7,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 12.0,
+   "duration_s": 42.59527453800227
+  },
+  "beat_s": 0.28577916475673015,
+  "old": {
+   "found_s": 0.28567921328928053,
+   "class": "exact",
+   "ratio": 0.9996502492841467
+  },
+  "v1": {
+   "found_s": 0.2857890555280907,
+   "class": "exact",
+   "ratio": 1.0000346098406754
+  },
+  "v2": {
+   "found_s": 0.2857890555280907,
+   "class": "exact",
+   "ratio": 1.0000346098406754
+  }
+ },
+ {
+  "desc": {
+   "seed": 70158,
+   "bpm": 179.72244426945724,
+   "beats_per_bar": 3,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 12.0,
+   "duration_s": 15.829311749703601
+  },
+  "beat_s": 0.33384811921454954,
+  "old": {
+   "found_s": 0.33393186191009633,
+   "class": "exact",
+   "ratio": 1.0002508406988897
+  },
+  "v1": {
+   "found_s": 0.33386828922524436,
+   "class": "exact",
+   "ratio": 1.0000604167270501
+  },
+  "v2": {
+   "found_s": 0.33386828922524436,
+   "class": "exact",
+   "ratio": 1.0000604167270501
+  }
+ },
+ {
+  "desc": {
+   "seed": 70159,
+   "bpm": 76.28766255271739,
+   "beats_per_bar": 3,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 12.0,
+   "duration_s": 25.1986028392463
+  },
+  "beat_s": 0.7864967675282742,
+  "old": {
+   "found_s": 0.7904485362156866,
+   "class": "exact",
+   "ratio": 1.005024519935195
+  },
+  "v1": {
+   "found_s": 0.7865868304782805,
+   "class": "exact",
+   "ratio": 1.0001145115323096
+  },
+  "v2": {
+   "found_s": 0.7865868304782805,
+   "class": "exact",
+   "ratio": 1.0001145115323096
+  }
+ },
+ {
+  "desc": {
+   "seed": 70160,
+   "bpm": 107.31612705245799,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "march",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 24.0,
+   "duration_s": 21.763437925559238
+  },
+  "beat_s": 0.5590958381368996,
+  "old": {
+   "found_s": 0.5590415698591223,
+   "class": "exact",
+   "ratio": 0.9999029356434523
+  },
+  "v1": {
+   "found_s": 0.5591863468987579,
+   "class": "exact",
+   "ratio": 1.000161884163116
+  },
+  "v2": {
+   "found_s": 0.5591863468987579,
+   "class": "exact",
+   "ratio": 1.000161884163116
+  }
+ },
+ {
+  "desc": {
+   "seed": 70161,
+   "bpm": 116.1261280596406,
+   "beats_per_bar": 5,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 6.0,
+   "duration_s": 23.3476026380299
+  },
+  "beat_s": 0.5166795879837216,
+  "old": {
+   "found_s": 0.5166594315587664,
+   "class": "exact",
+   "ratio": 0.9999609885402404
+  },
+  "v1": {
+   "found_s": 0.5166688842370448,
+   "class": "exact",
+   "ratio": 0.9999792835890449
+  },
+  "v2": {
+   "found_s": 0.5166688842370448,
+   "class": "exact",
+   "ratio": 0.9999792835890449
+  }
+ },
+ {
+  "desc": {
+   "seed": 70162,
+   "bpm": 58.244883071879435,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "waltz",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 6.0,
+   "duration_s": 30.385048273823784
+  },
+  "beat_s": 1.0301334097615853,
+  "old": {
+   "found_s": 1.0300844136249505,
+   "class": "exact",
+   "ratio": 0.9999524370958456
+  },
+  "v1": {
+   "found_s": 1.0301346536274842,
+   "class": "exact",
+   "ratio": 1.0000012074803974
+  },
+  "v2": {
+   "found_s": 1.0301346536274842,
+   "class": "exact",
+   "ratio": 1.0000012074803974
+  }
+ },
+ {
+  "desc": {
+   "seed": 70163,
+   "bpm": 60.18032606496619,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "march",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 3.0,
+   "duration_s": 15.18325378142909
+  },
+  "beat_s": 0.9970035711542752,
+  "old": {
+   "found_s": 1.9959184716625658,
+   "class": "multiple",
+   "ratio": 2.0019170737290364
+  },
+  "v1": {
+   "found_s": 0.9972382641836779,
+   "class": "exact",
+   "ratio": 1.0002353983839105
+  },
+  "v2": {
+   "found_s": 0.9972382641836779,
+   "class": "exact",
+   "ratio": 1.0002353983839105
+  }
+ },
+ {
+  "desc": {
+   "seed": 70164,
+   "bpm": 208.32129676040375,
+   "beats_per_bar": 5,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "hat",
+   "swing": 0.5157286433535543,
+   "jitter_s": 0.018,
+   "snr_db": 6.0,
+   "duration_s": 43.539621545212
+  },
+  "beat_s": 0.2880166403198215,
+  "old": {
+   "found_s": 1.4391438879958118,
+   "class": "multiple",
+   "ratio": 4.99673868286828
+  },
+  "v1": {
+   "found_s": 0.29016564580796955,
+   "class": "exact",
+   "ratio": 1.0074613935006038
+  },
+  "v2": {
+   "found_s": 0.29016564580796955,
+   "class": "exact",
+   "ratio": 1.0074613935006038
+  }
+ },
+ {
+  "desc": {
+   "seed": 70165,
+   "bpm": 56.43737371449856,
+   "beats_per_bar": 7,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 12.0,
+   "duration_s": 42.418585332556546
+  },
+  "beat_s": 1.063125302455139,
+  "old": {
+   "found_s": 1.0596964789133416,
+   "class": "exact",
+   "ratio": 0.9967747700728418
+  },
+  "v1": {
+   "found_s": 1.0621024652394067,
+   "class": "exact",
+   "ratio": 0.9990378958967769
+  },
+  "v2": {
+   "found_s": 1.0621024652394067,
+   "class": "exact",
+   "ratio": 0.9990378958967769
+  }
+ },
+ {
+  "desc": {
+   "seed": 70166,
+   "bpm": 87.57974814159452,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "disco",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 6.0,
+   "duration_s": 39.16216946262572
+  },
+  "beat_s": 0.6850898897653259,
+  "old": {
+   "found_s": 0.6850672739551702,
+   "class": "exact",
+   "ratio": 0.9999669885507091
+  },
+  "v1": {
+   "found_s": 0.6850611157296149,
+   "class": "exact",
+   "ratio": 0.9999579996199902
+  },
+  "v2": {
+   "found_s": 0.6850611157296149,
+   "class": "exact",
+   "ratio": 0.9999579996199902
+  }
+ },
+ {
+  "desc": {
+   "seed": 70167,
+   "bpm": 114.11632951812192,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 12.0,
+   "duration_s": 15.542175832458048
+  },
+  "beat_s": 0.5257792662396478,
+  "old": {
+   "found_s": 0.5261032285950302,
+   "class": "exact",
+   "ratio": 1.0006161565816383
+  },
+  "v1": {
+   "found_s": 0.525748079726971,
+   "class": "exact",
+   "ratio": 0.9999406851607143
+  },
+  "v2": {
+   "found_s": 0.525748079726971,
+   "class": "exact",
+   "ratio": 0.9999406851607143
+  }
+ },
+ {
+  "desc": {
+   "seed": 70168,
+   "bpm": 95.63162630113112,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 6.0,
+   "duration_s": 18.16939487568461
+  },
+  "beat_s": 0.6274075044072562,
+  "old": {
+   "found_s": 0.6275921961750175,
+   "class": "exact",
+   "ratio": 1.000294372901924
+  },
+  "v1": {
+   "found_s": 0.6272933638783267,
+   "class": "exact",
+   "ratio": 0.9998180759265266
+  },
+  "v2": {
+   "found_s": 0.6272933638783267,
+   "class": "exact",
+   "ratio": 0.9998180759265266
+  }
+ },
+ {
+  "desc": {
+   "seed": 70169,
+   "bpm": 120.93979292533419,
+   "beats_per_bar": 7,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 6.0,
+   "duration_s": 43.07212538614355
+  },
+  "beat_s": 0.4961146248782053,
+  "old": {
+   "found_s": 0.4980928777907175,
+   "class": "exact",
+   "ratio": 1.0039874916265528
+  },
+  "v1": {
+   "found_s": 0.495938387780188,
+   "class": "exact",
+   "ratio": 0.9996447653643338
+  },
+  "v2": {
+   "found_s": 0.495938387780188,
+   "class": "exact",
+   "ratio": 0.9996447653643338
+  }
+ },
+ {
+  "desc": {
+   "seed": 70170,
+   "bpm": 95.60163740735163,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 24.0,
+   "duration_s": 17.371932751720436
+  },
+  "beat_s": 0.6276043133481528,
+  "old": {
+   "found_s": 0.639954481732122,
+   "class": "exact",
+   "ratio": 1.019678271996066
+  },
+  "v1": {
+   "found_s": 1.255351113406235,
+   "class": "multiple",
+   "ratio": 2.000227032712967
+  },
+  "v2": {
+   "found_s": 0.6264516940435083,
+   "class": "exact",
+   "ratio": 0.9981634617861443
+  }
+ },
+ {
+  "desc": {
+   "seed": 70171,
+   "bpm": 94.90567238554263,
+   "beats_per_bar": 2,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 6.0,
+   "duration_s": 15.522970117800611
+  },
+  "beat_s": 0.6322066794517547,
+  "old": {
+   "found_s": 0.632362536128947,
+   "class": "exact",
+   "ratio": 1.0002465280457453
+  },
+  "v1": {
+   "found_s": 0.6322725666188337,
+   "class": "exact",
+   "ratio": 1.000104217764887
+  },
+  "v2": {
+   "found_s": 0.6322725666188337,
+   "class": "exact",
+   "ratio": 1.000104217764887
+  }
+ },
+ {
+  "desc": {
+   "seed": 70172,
+   "bpm": 65.37335256072652,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "rock",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 6.0,
+   "duration_s": 26.367657232877626
+  },
+  "beat_s": 0.9178051553079657,
+  "old": {
+   "found_s": 0.9191677667995343,
+   "class": "exact",
+   "ratio": 1.0014846413573602
+  },
+  "v1": {
+   "found_s": 0.9181689046788105,
+   "class": "exact",
+   "ratio": 1.0003963252643997
+  },
+  "v2": {
+   "found_s": 0.9181689046788105,
+   "class": "exact",
+   "ratio": 1.0003963252643997
+  }
+ },
+ {
+  "desc": {
+   "seed": 70173,
+   "bpm": 136.83344730071673,
+   "beats_per_bar": 5,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 24.0,
+   "duration_s": 27.49591373946497
+  },
+  "beat_s": 0.4384892815580312,
+  "old": {
+   "found_s": 0.4371196403912936,
+   "class": "exact",
+   "ratio": 0.9968764546265053
+  },
+  "v1": {
+   "found_s": 0.4384930626149897,
+   "class": "exact",
+   "ratio": 1.0000086229176346
+  },
+  "v2": {
+   "found_s": 0.4384930626149897,
+   "class": "exact",
+   "ratio": 1.0000086229176346
+  }
+ },
+ {
+  "desc": {
+   "seed": 70174,
+   "bpm": 113.80392363811147,
+   "beats_per_bar": 7,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 24.0,
+   "duration_s": 18.340229115985434
+  },
+  "beat_s": 0.5272225955125749,
+  "old": {
+   "found_s": 0.5219413919126779,
+   "class": "exact",
+   "ratio": 0.9899829718133333
+  },
+  "v1": {
+   "found_s": 0.5282580105912603,
+   "class": "exact",
+   "ratio": 1.0019639049758078
+  },
+  "v2": {
+   "found_s": 0.5282580105912603,
+   "class": "exact",
+   "ratio": 1.0019639049758078
+  }
+ },
+ {
+  "desc": {
+   "seed": 70175,
+   "bpm": 163.63679595771953,
+   "beats_per_bar": 3,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "march",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 24.0,
+   "duration_s": 15.7077463175588
+  },
+  "beat_s": 0.36666569794915077,
+  "old": {
+   "found_s": 0.36430620942908437,
+   "class": "exact",
+   "ratio": 0.9935650143079552
+  },
+  "v1": {
+   "found_s": 0.36789728750284134,
+   "class": "exact",
+   "ratio": 1.0033588894750154
+  },
+  "v2": {
+   "found_s": 0.36789728750284134,
+   "class": "exact",
+   "ratio": 1.0033588894750154
+  }
+ },
+ {
+  "desc": {
+   "seed": 70176,
+   "bpm": 177.69150948285863,
+   "beats_per_bar": 3,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 12.0,
+   "duration_s": 35.69452028853029
+  },
+  "beat_s": 0.3376638544780218,
+  "old": {
+   "found_s": 0.33871687771651293,
+   "class": "exact",
+   "ratio": 1.0031185548128003
+  },
+  "v1": {
+   "found_s": 0.3379069607885356,
+   "class": "exact",
+   "ratio": 1.0007199654546668
+  },
+  "v2": {
+   "found_s": 0.3379069607885356,
+   "class": "exact",
+   "ratio": 1.0007199654546668
+  }
+ },
+ {
+  "desc": {
+   "seed": 70177,
+   "bpm": 83.59346765167585,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 12.0,
+   "duration_s": 24.773235354874593
+  },
+  "beat_s": 0.7177594336678668,
+  "old": {
+   "found_s": 0.717877363214765,
+   "class": "exact",
+   "ratio": 1.000164302329397
+  },
+  "v1": {
+   "found_s": 0.717761197067775,
+   "class": "exact",
+   "ratio": 1.0000024568118864
+  },
+  "v2": {
+   "found_s": 0.717761197067775,
+   "class": "exact",
+   "ratio": 1.0000024568118864
+  }
+ },
+ {
+  "desc": {
+   "seed": 70178,
+   "bpm": 84.44100640332803,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "rock",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 24.0,
+   "duration_s": 22.254778346802468
+  },
+  "beat_s": 0.7105552450833326,
+  "old": {
+   "found_s": 1.422899509850511,
+   "class": "multiple",
+   "ratio": 2.0025177770429887
+  },
+  "v1": {
+   "found_s": 0.7093504186527961,
+   "class": "exact",
+   "ratio": 0.9983043873944029
+  },
+  "v2": {
+   "found_s": 0.7093504186527961,
+   "class": "exact",
+   "ratio": 0.9983043873944029
+  }
+ },
+ {
+  "desc": {
+   "seed": 70179,
+   "bpm": 189.0677935209752,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 3.0,
+   "duration_s": 29.73880322048025
+  },
+  "beat_s": 0.3173464865836264,
+  "old": {
+   "found_s": 0.3173275873849314,
+   "class": "exact",
+   "ratio": 0.999940446170057
+  },
+  "v1": {
+   "found_s": 0.31733968786896954,
+   "class": "exact",
+   "ratio": 0.9999785763670175
+  },
+  "v2": {
+   "found_s": 0.31733968786896954,
+   "class": "exact",
+   "ratio": 0.9999785763670175
+  }
+ },
+ {
+  "desc": {
+   "seed": 70180,
+   "bpm": 177.76278901782013,
+   "beats_per_bar": 5,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "march",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 24.0,
+   "duration_s": 26.01824498562491
+  },
+  "beat_s": 0.3375284576232948,
+  "old": {
+   "found_s": 0.33821751913121345,
+   "class": "exact",
+   "ratio": 1.002041491590874
+  },
+  "v1": {
+   "found_s": 0.3371908784457584,
+   "class": "exact",
+   "ratio": 0.9989998497314464
+  },
+  "v2": {
+   "found_s": 0.3371908784457584,
+   "class": "exact",
+   "ratio": 0.9989998497314464
+  }
+ },
+ {
+  "desc": {
+   "seed": 70181,
+   "bpm": 45.829072612297814,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "march",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 3.0,
+   "duration_s": 27.17704265646216
+  },
+  "beat_s": 1.3092126150486307,
+  "old": {
+   "found_s": 1.315812683132561,
+   "class": "exact",
+   "ratio": 1.0050412499910757
+  },
+  "v1": {
+   "found_s": 1.3106432700648052,
+   "class": "exact",
+   "ratio": 1.00109275987699
+  },
+  "v2": {
+   "found_s": 1.3106432700648052,
+   "class": "exact",
+   "ratio": 1.00109275987699
+  }
+ },
+ {
+  "desc": {
+   "seed": 70182,
+   "bpm": 98.30298114992563,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 3.0,
+   "duration_s": 24.342113552800754
+  },
+  "beat_s": 0.610357888419393,
+  "old": {
+   "found_s": 0.6110723454022602,
+   "class": "exact",
+   "ratio": 1.0011705541886537
+  },
+  "v1": {
+   "found_s": 0.6122451869873339,
+   "class": "exact",
+   "ratio": 1.0030921179258097
+  },
+  "v2": {
+   "found_s": 0.6122451869873339,
+   "class": "exact",
+   "ratio": 1.0030921179258097
+  }
+ },
+ {
+  "desc": {
+   "seed": 70183,
+   "bpm": 50.97855748283169,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "disco",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 12.0,
+   "duration_s": 42.009564818515216
+  },
+  "beat_s": 1.1769654333629684,
+  "old": {
+   "found_s": 1.16451391593514,
+   "class": "exact",
+   "ratio": 0.9894206600509495
+  },
+  "v1": {
+   "found_s": 1.1741234613635634,
+   "class": "exact",
+   "ratio": 0.9975853394510622
+  },
+  "v2": {
+   "found_s": 1.1741234613635634,
+   "class": "exact",
+   "ratio": 0.9975853394510622
+  }
+ },
+ {
+  "desc": {
+   "seed": 70184,
+   "bpm": 53.25239399790183,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "march",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 3.0,
+   "duration_s": 21.03394564197072
+  },
+  "beat_s": 1.1267099090862287,
+  "old": {
+   "found_s": 0.748717591036669,
+   "class": "other",
+   "ratio": 0.6645167358507438
+  },
+  "v1": {
+   "found_s": 1.1274454199066581,
+   "class": "exact",
+   "ratio": 1.000652795199987
+  },
+  "v2": {
+   "found_s": 1.1274454199066581,
+   "class": "exact",
+   "ratio": 1.000652795199987
+  }
+ },
+ {
+  "desc": {
+   "seed": 70185,
+   "bpm": 187.46107476095966,
+   "beats_per_bar": 3,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 3.0,
+   "duration_s": 37.920079114942865
+  },
+  "beat_s": 0.3200664462022785,
+  "old": {
+   "found_s": 0.319246004652124,
+   "class": "exact",
+   "ratio": 0.9974366524204915
+  },
+  "v1": {
+   "found_s": 0.320076979454204,
+   "class": "exact",
+   "ratio": 1.000032909578778
+  },
+  "v2": {
+   "found_s": 0.320076979454204,
+   "class": "exact",
+   "ratio": 1.000032909578778
+  }
+ },
+ {
+  "desc": {
+   "seed": 70186,
+   "bpm": 100.97547281533778,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 24.0,
+   "duration_s": 32.65619162174217
+  },
+  "beat_s": 0.5942037043958881,
+  "old": {
+   "found_s": 0.5941391426299849,
+   "class": "exact",
+   "ratio": 0.9998913474193689
+  },
+  "v1": {
+   "found_s": 0.594106671467013,
+   "class": "exact",
+   "ratio": 0.9998367009021364
+  },
+  "v2": {
+   "found_s": 0.594106671467013,
+   "class": "exact",
+   "ratio": 0.9998367009021364
+  }
+ },
+ {
+  "desc": {
+   "seed": 70187,
+   "bpm": 73.63173386542435,
+   "beats_per_bar": 5,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 6.0,
+   "duration_s": 22.322619762569488
+  },
+  "beat_s": 0.8148660482403026,
+  "old": {
+   "found_s": 0.8146580727539795,
+   "class": "exact",
+   "ratio": 0.9997447734056754
+  },
+  "v1": {
+   "found_s": 0.8148557694454768,
+   "class": "exact",
+   "ratio": 0.999987385908582
+  },
+  "v2": {
+   "found_s": 0.8148557694454768,
+   "class": "exact",
+   "ratio": 0.999987385908582
+  }
+ },
+ {
+  "desc": {
+   "seed": 70188,
+   "bpm": 98.74574378875928,
+   "beats_per_bar": 5,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "waltz",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 12.0,
+   "duration_s": 33.48646222542463
+  },
+  "beat_s": 0.6076211257100288,
+  "old": {
+   "found_s": 0.6106316244128862,
+   "class": "exact",
+   "ratio": 1.0049545655598124
+  },
+  "v1": {
+   "found_s": 0.6069949066681016,
+   "class": "exact",
+   "ratio": 0.998969392248837
+  },
+  "v2": {
+   "found_s": 0.6069949066681016,
+   "class": "exact",
+   "ratio": 0.998969392248837
+  }
+ },
+ {
+  "desc": {
+   "seed": 70189,
+   "bpm": 83.98380018639165,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "rock",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 3.0,
+   "duration_s": 30.529068030988483
+  },
+  "beat_s": 0.7144234943743606,
+  "old": {
+   "found_s": 1.4289183463792643,
+   "class": "multiple",
+   "ratio": 2.0000998814164217
+  },
+  "v1": {
+   "found_s": 0.7144175484535804,
+   "class": "exact",
+   "ratio": 0.9999916773162879
+  },
+  "v2": {
+   "found_s": 0.7144175484535804,
+   "class": "exact",
+   "ratio": 0.9999916773162879
+  }
+ },
+ {
+  "desc": {
+   "seed": 70190,
+   "bpm": 71.83417230784012,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "march",
+   "weak": "ride",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 24.0,
+   "duration_s": 19.97586861332062
+  },
+  "beat_s": 0.8352570659946406,
+  "old": {
+   "found_s": 0.8363568225616704,
+   "class": "exact",
+   "ratio": 1.0013166683788783
+  },
+  "v1": {
+   "found_s": 0.8354117153041016,
+   "class": "exact",
+   "ratio": 1.0001851517523852
+  },
+  "v2": {
+   "found_s": 0.8354117153041016,
+   "class": "exact",
+   "ratio": 1.0001851517523852
+  }
+ },
+ {
+  "desc": {
+   "seed": 70191,
+   "bpm": 178.6793125947223,
+   "beats_per_bar": 7,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "hat",
+   "swing": 0.5803314797289084,
+   "jitter_s": 0.018,
+   "snr_db": 12.0,
+   "duration_s": 25.242757197172164
+  },
+  "beat_s": 0.3357971279870048,
+  "old": {
+   "found_s": 0.3323152518548635,
+   "class": "exact",
+   "ratio": 0.9896310127694837
+  },
+  "v1": {
+   "found_s": 0.33482601401874695,
+   "class": "exact",
+   "ratio": 0.9971080337283427
+  },
+  "v2": {
+   "found_s": 0.33482601401874695,
+   "class": "exact",
+   "ratio": 0.9971080337283427
+  }
+ },
+ {
+  "desc": {
+   "seed": 70192,
+   "bpm": 166.94390062129176,
+   "beats_per_bar": 6,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "march",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 12.0,
+   "duration_s": 22.735621235415703
+  },
+  "beat_s": 0.35940216909217043,
+  "old": {
+   "found_s": 0.359377745089031,
+   "class": "exact",
+   "ratio": 0.9999320426941185
+  },
+  "v1": {
+   "found_s": 0.359373083511959,
+   "class": "exact",
+   "ratio": 0.9999190723297945
+  },
+  "v2": {
+   "found_s": 0.359373083511959,
+   "class": "exact",
+   "ratio": 0.9999190723297945
+  }
+ },
+ {
+  "desc": {
+   "seed": 70193,
+   "bpm": 156.53968618681125,
+   "beats_per_bar": 6,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "disco",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 24.0,
+   "duration_s": 15.281767568051894
+  },
+  "beat_s": 0.3832893847020827,
+  "old": {
+   "found_s": 0.3833407245484095,
+   "class": "exact",
+   "ratio": 1.000133945390548
+  },
+  "v1": {
+   "found_s": 0.3832225430963691,
+   "class": "exact",
+   "ratio": 0.9998256106002896
+  },
+  "v2": {
+   "found_s": 0.3832225430963691,
+   "class": "exact",
+   "ratio": 0.9998256106002896
+  }
+ },
+ {
+  "desc": {
+   "seed": 70194,
+   "bpm": 101.54468928071702,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "rock",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 6.0,
+   "duration_s": 34.67960780254313
+  },
+  "beat_s": 0.5908728504169424,
+  "old": {
+   "found_s": 0.5854255794346959,
+   "class": "exact",
+   "ratio": 0.9907809760113319
+  },
+  "v1": {
+   "found_s": 0.588546538457523,
+   "class": "exact",
+   "ratio": 0.9960629229151791
+  },
+  "v2": {
+   "found_s": 0.588546538457523,
+   "class": "exact",
+   "ratio": 0.9960629229151791
+  }
+ },
+ {
+  "desc": {
+   "seed": 70195,
+   "bpm": 60.73833542840703,
+   "beats_per_bar": 3,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "rock",
+   "weak": "ride",
+   "swing": 0.5697012566106158,
+   "jitter_s": 0.01,
+   "snr_db": 24.0,
+   "duration_s": 35.77906763080446
+  },
+  "beat_s": 0.9878439963295124,
+  "old": {
+   "found_s": 0.9876716684821366,
+   "class": "exact",
+   "ratio": 0.9998255515567073
+  },
+  "v1": {
+   "found_s": 0.4942929736402601,
+   "class": "subdivision",
+   "ratio": 0.5003755405477811
+  },
+  "v2": {
+   "found_s": 0.4942929736402601,
+   "class": "subdivision",
+   "ratio": 0.5003755405477811
+  }
+ },
+ {
+  "desc": {
+   "seed": 70196,
+   "bpm": 132.90436106450852,
+   "beats_per_bar": 7,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "march",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.018,
+   "snr_db": 6.0,
+   "duration_s": 25.033274572148574
+  },
+  "beat_s": 0.45145245437715525,
+  "old": {
+   "found_s": 0.4528705437908839,
+   "class": "exact",
+   "ratio": 1.0031411711243992
+  },
+  "v1": {
+   "found_s": 0.4504857945743373,
+   "class": "exact",
+   "ratio": 0.9978587782756623
+  },
+  "v2": {
+   "found_s": 0.4504857945743373,
+   "class": "exact",
+   "ratio": 0.9978587782756623
+  }
+ },
+ {
+  "desc": {
+   "seed": 70197,
+   "bpm": 121.74559140648714,
+   "beats_per_bar": 5,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "march",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 6.0,
+   "duration_s": 28.471939535801113
+  },
+  "beat_s": 0.492830987199122,
+  "old": {
+   "found_s": 0.4928696054463849,
+   "class": "exact",
+   "ratio": 1.0000783600225351
+  },
+  "v1": {
+   "found_s": 0.4928025506135136,
+   "class": "exact",
+   "ratio": 0.999942299517792
+  },
+  "v2": {
+   "found_s": 0.4928025506135136,
+   "class": "exact",
+   "ratio": 0.999942299517792
+  }
+ },
+ {
+  "desc": {
+   "seed": 70198,
+   "bpm": 120.03788766921444,
+   "beats_per_bar": 7,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "march",
+   "weak": "shaker",
+   "swing": 0.5,
+   "jitter_s": 0.01,
+   "snr_db": 24.0,
+   "duration_s": 16.958298314872607
+  },
+  "beat_s": 0.4998421845387731,
+  "old": {
+   "found_s": 0.5012827651211641,
+   "class": "exact",
+   "ratio": 1.0028820708354584
+  },
+  "v1": {
+   "found_s": 0.5001877815426427,
+   "class": "exact",
+   "ratio": 1.0006914122388217
+  },
+  "v2": {
+   "found_s": 0.5001877815426427,
+   "class": "exact",
+   "ratio": 1.0006914122388217
+  }
+ },
+ {
+  "desc": {
+   "seed": 70199,
+   "bpm": 79.01235341257922,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "march",
+   "weak": "hat",
+   "swing": 0.5,
+   "jitter_s": 0.004,
+   "snr_db": 12.0,
+   "duration_s": 37.992969246424565
+  },
+  "beat_s": 0.7593749256739346,
+  "old": {
+   "found_s": 0.7588952176601438,
+   "class": "exact",
+   "ratio": 0.9993682856813252
+  },
+  "v1": {
+   "found_s": 0.759342115323452,
+   "class": "exact",
+   "ratio": 0.999956792949868
+  },
+  "v2": {
+   "found_s": 0.759342115323452,
+   "class": "exact",
+   "ratio": 0.999956792949868
+  }
+ }
+]
