@@ -192,46 +192,87 @@ function seeded(seed) {
 }
 const noiseBuf = ctx => { const g = seeded(NOISE_SEED), b = ctx.createBuffer(1, Math.floor(0.06 * SR), SR), d = b.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = g() * 2 - 1; return b; };
 
-async function renderStem(kind, v, active) {
-  const P = plan(v, active), len = Math.ceil(P.dur * SR) + SR;
-  const ctx = new OfflineAudioContext(2, len, SR);
-  if (kind === "rhythm" && active("Pu")) {
-    const nz = noiseBuf(ctx);
-    const total = P.bars * P.nb;
-    for (let i = 0; i < total; i++) {
-      const t = i * P.beat, down = active("Me") && i % P.nb === 0;
-      const amp = active("Me") ? (down ? 1.0 : 0.42) : 0.75;
-      const o = ctx.createOscillator(), g = ctx.createGain();
-      o.frequency.setValueAtTime(130, t); o.frequency.exponentialRampToValueAtTime(45, t + 0.12);
-      g.gain.setValueAtTime(amp, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.32);
-      o.connect(g).connect(ctx.destination); o.start(t); o.stop(t + 0.35);
-      for (const h of [t, t + P.beat / 2]) {
-        const s = ctx.createBufferSource(), f = ctx.createBiquadFilter(), hg = ctx.createGain();
-        s.buffer = nz; f.type = "highpass"; f.frequency.value = 6000;
-        hg.gain.setValueAtTime(0.12, h); hg.gain.exponentialRampToValueAtTime(0.001, h + 0.045);
-        s.connect(f).connect(hg).connect(ctx.destination); s.start(h);
-      }
-      const barI = Math.floor(i / P.nb), beatI = i % P.nb, ph = v["Va.bars"];
-      const fillBar = active("Va") && (v["Va.random"] ? rand(barI) < 1 / ph : barI % ph === ph - 1);
-      if (fillBar && beatI >= P.nb - Math.min(v["Va.fill"], P.nb)) {
-        for (let q = 0; q < 4; q++) {
-          const ts = t + q * P.beat / 4, sn = ctx.createBufferSource(), bp = ctx.createBiquadFilter(), sg = ctx.createGain();
-          sn.buffer = nz; bp.type = "bandpass"; bp.frequency.value = 1800; bp.Q.value = 0.8;
-          const lv = 0.35 + 0.15 * q / 3;
-          sg.gain.setValueAtTime(lv, ts); sg.gain.exponentialRampToValueAtTime(0.001, ts + 0.055);
-          sn.connect(bp).connect(sg).connect(ctx.destination); sn.start(ts);
-          const tn = ctx.createOscillator(), tg = ctx.createGain();
-          tn.frequency.value = 190 - 25 * (beatI - (P.nb - v["Va.fill"])); tg.gain.setValueAtTime(lv * 0.8, ts); tg.gain.exponentialRampToValueAtTime(0.001, ts + 0.08);
-          tn.connect(tg).connect(ctx.destination); tn.start(ts); tn.stop(ts + 0.09);
-        }
-      }
-      if (down) {
-        const b = ctx.createOscillator(), bg = ctx.createGain();
-        b.frequency.value = 55; bg.gain.setValueAtTime(0.5, t); bg.gain.exponentialRampToValueAtTime(0.001, t + 0.6);
-        b.connect(bg).connect(ctx.destination); b.start(t); b.stop(t + 0.65);
+// One-shot hits (issue #10). Web Audio evaluates parameter automation in render blocks of 128
+// frames, and the result depends on where a hit falls inside its block. The same kick, scheduled
+// on two downbeats, could differ by 1.9 at a peak of 1.5, and the detector then heard bars that
+// differ where none were written. So every distinct hit is rendered once, starting at frame 0,
+// and copied into the stem at a whole-sample offset: bars that are written the same are the same
+// sample for sample.
+async function oneShot(dur, build) {
+  const ctx = new OfflineAudioContext(1, Math.ceil(dur * SR), SR);
+  build(ctx);
+  return (await ctx.startRendering()).getChannelData(0);
+}
+const HITS = {
+  kick: amp => ctx => {
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.frequency.setValueAtTime(130, 0); o.frequency.exponentialRampToValueAtTime(45, 0.12);
+    g.gain.setValueAtTime(amp, 0); g.gain.exponentialRampToValueAtTime(0.001, 0.32);
+    o.connect(g).connect(ctx.destination); o.start(0); o.stop(0.35);
+  },
+  hat: () => ctx => {
+    const s = ctx.createBufferSource(), f = ctx.createBiquadFilter(), hg = ctx.createGain();
+    s.buffer = noiseBuf(ctx); f.type = "highpass"; f.frequency.value = 6000;
+    hg.gain.setValueAtTime(0.12, 0); hg.gain.exponentialRampToValueAtTime(0.001, 0.045);
+    s.connect(f).connect(hg).connect(ctx.destination); s.start(0);
+  },
+  snare: lv => ctx => {
+    const sn = ctx.createBufferSource(), bp = ctx.createBiquadFilter(), sg = ctx.createGain();
+    sn.buffer = noiseBuf(ctx); bp.type = "bandpass"; bp.frequency.value = 1800; bp.Q.value = 0.8;
+    sg.gain.setValueAtTime(lv, 0); sg.gain.exponentialRampToValueAtTime(0.001, 0.055);
+    sn.connect(bp).connect(sg).connect(ctx.destination); sn.start(0);
+  },
+  tom: (lv, fr) => ctx => {
+    const tn = ctx.createOscillator(), tg = ctx.createGain();
+    tn.frequency.value = fr; tg.gain.setValueAtTime(lv * 0.8, 0); tg.gain.exponentialRampToValueAtTime(0.001, 0.08);
+    tn.connect(tg).connect(ctx.destination); tn.start(0); tn.stop(0.09);
+  },
+  bass: () => ctx => {
+    const b = ctx.createOscillator(), bg = ctx.createGain();
+    b.frequency.value = 55; bg.gain.setValueAtTime(0.5, 0); bg.gain.exponentialRampToValueAtTime(0.001, 0.6);
+    b.connect(bg).connect(ctx.destination); b.start(0); b.stop(0.65);
+  },
+};
+const HIT_DUR = { kick: 0.35, hat: 0.08, snare: 0.08, tom: 0.09, bass: 0.65 };
+
+async function renderRhythm(v, active, P, len) {
+  const shots = new Map(), hits = [];
+  const hit = (name, t, ...args) => {
+    const key = name + ":" + args.join(",");
+    if (!shots.has(key)) shots.set(key, oneShot(HIT_DUR[name], HITS[name](...args)));
+    hits.push([key, t]);
+  };
+  const total = P.bars * P.nb;
+  for (let i = 0; i < total; i++) {
+    const t = i * P.beat, down = active("Me") && i % P.nb === 0;
+    hit("kick", t, active("Me") ? (down ? 1.0 : 0.42) : 0.75);
+    hit("hat", t); hit("hat", t + P.beat / 2);
+    const barI = Math.floor(i / P.nb), beatI = i % P.nb, ph = v["Va.bars"];
+    const fillBar = active("Va") && (v["Va.random"] ? rand(barI) < 1 / ph : barI % ph === ph - 1);
+    if (fillBar && beatI >= P.nb - Math.min(v["Va.fill"], P.nb)) {
+      for (let q = 0; q < 4; q++) {
+        const ts = t + q * P.beat / 4, lv = 0.35 + 0.15 * q / 3;
+        hit("snare", ts, lv); hit("tom", ts, lv, 190 - 25 * (beatI - (P.nb - v["Va.fill"])));
       }
     }
+    if (down) hit("bass", t);
   }
+  const out = new Float32Array(len), wave = new Map();
+  for (const [key, p] of shots) wave.set(key, await p);
+  for (const [key, t] of hits) {
+    const s = wave.get(key), o = Math.round(t * SR), n = Math.min(s.length, len - o);
+    for (let i = 0; i < n; i++) out[o + i] += s[i];
+  }
+  return out;
+}
+
+async function renderStem(kind, v, active) {
+  const P = plan(v, active), len = Math.ceil(P.dur * SR) + SR;
+  if (kind === "rhythm") {
+    const x = active("Pu") ? await renderRhythm(v, active, P, len) : new Float32Array(len);
+    return { L: x, R: x, dur: P.dur, P };   // mono: both channels share one read-only array
+  }
+  const ctx = new OfflineAudioContext(2, len, SR);
   if (kind === "melody") {
     const noteLen = 2 * P.bar, n = Math.ceil(P.dur / noteLen);
     const pan = ctx.createStereoPanner(); pan.connect(ctx.destination);
@@ -303,7 +344,13 @@ function detectRhythm(st) {
   const cs = new Float64Array(x.length + 1); for (let i = 0; i < x.length; i++) cs[i + 1] = cs[i] + x[i] * x[i];
   const e = []; for (let i = 0; i + W <= x.length; i += hop) e.push(Math.pow(cs[i + W] - cs[i], 0.3));
   const env = e.map((v, i) => i ? Math.max(v - e[i - 1], 0) : 0);
-  const r = autocorr(env, Math.round(8.5 * fs));
+  // The pulse is searched on a smoothed copy (triangle of ±15 ms). A beat is rarely a whole
+  // number of 5 ms frames (at 110 BPM it is 109.3), so each hit lands at its own phase in the
+  // frames and the raw rise is spiky: the beat then correlated at 0.71 while the bar, almost a
+  // whole number of frames, reached 0.995, and the pulse rule picked the bar (issue #10).
+  const TRI = [1, 2, 3, 4, 3, 2, 1];
+  const envS = env.map((_, i) => { let s = 0; for (let j = 0; j < 7; j++) s += (env[i + j - 3] || 0) * TRI[j]; return s / 16; });
+  const r = autocorr(envS, Math.round(8.5 * fs));
   // PROVISIONAL rule, sandbox only (not used for official results):
   // pulse = the shortest peak between 0.25 and 2 s whose comb score (mean over its first
   //         four multiples) is at least 0.8 of the best comb score. A fill raises the
@@ -340,7 +387,10 @@ function detectRhythm(st) {
   if (sd / mean > 0.15 && str.length > 16) {
     // for each n: the median strength at every position of an n-beat cycle. Medians ignore
     // the occasional loud fill. Score = share of the variance the median profile explains.
-    const medv = a => { const c = [...a].sort((x, y) => x - y); return c[c.length >> 1]; };
+    // a true median: with an even count, the mean of the two middle values. Taking the upper
+    // one made a position that mixes strong and weak beats in equal numbers look strong, and
+    // a 4-beat bar at 90 BPM read as 6 beats (issue #10).
+    const medv = a => { const c = [...a].sort((x, y) => x - y), h = c.length >> 1; return c.length % 2 ? c[h] : (c[h - 1] + c[h]) / 2; };
     const vAll = sd * sd, sc = [];
     for (let n = 2; n <= 7; n++) {
       const prof = Array.from({ length: n }, (_, p) => medv(str.filter((_, i) => i % n === p)));
@@ -350,18 +400,26 @@ function detectRhythm(st) {
     const best = Math.max(...sc.map(x => x[1])), n = sc.find(x => x[1] >= 0.9 * best)[0];
     if (best >= 0.3) Me = { tau: n * pu, r: Math.min(1, best), extra: `${n} beats` };
   }
-  return { Pu: { tau: pu, r: Bv, extra: `${(60 / pu).toFixed(1)} BPM` }, Me, beatT, env, fs, nb: Me ? Math.round(Me.tau / pu) : 4 };
+  return { Pu: { tau: pu, r: Bv, extra: `${(60 / pu).toFixed(1)} BPM` }, Me, beatT, str, env, fs, nb: Me ? Math.round(Me.tau / pu) : 4 };
 }
 // Variation: cut the rhythm into bars on the followed beats, compare each bar with the
 // median bar, then look for a period in that "how different is this bar" series (in bars).
 function detectVariation(rd) {
   if (!rd.beatT || rd.beatT.length < 2 * rd.nb * 4) return null;
-  // one straight grid fitted to all beats (least squares), so every bar is cut the same way;
-  // each bar is then lightly smoothed so that a shift of one cell does not count as a change
-  const n = rd.beatT.length, idx = rd.beatT.map((_, i) => i);
-  const mi = (n - 1) / 2, mt = rd.beatT.reduce((s, t) => s + t, 0) / n;
-  let sxy = 0, sxx = 0; idx.forEach(i => { sxy += (i - mi) * (rd.beatT[i] - mt); sxx += (i - mi) ** 2; });
-  const beat = sxy / sxx, t0 = mt - beat * mi, L = beat * rd.nb;
+  // one straight grid fitted to all beats, so every bar is cut the same way. The fit is robust
+  // (Theil-Sen: the median slope over all pairs of beats, then the median offset). A least-squares
+  // fit was pulled by the first beats, which the tracker places before it locks on, and the grid
+  // then drifted by about 14 ms over the sound: identical bars were cut differently and looked
+  // like variation (issue #10). Each bar is then lightly smoothed so that a shift of one cell
+  // does not count as a change.
+  const n = rd.beatT.length, med1 = a => { const c = Float64Array.from(a).sort(); const h = c.length >> 1; return c.length % 2 ? c[h] : (c[h - 1] + c[h]) / 2; };
+  const slopes = []; for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) slopes.push((rd.beatT[j] - rd.beatT[i]) / (j - i));
+  const beat = med1(slopes), L = beat * rd.nb;
+  // bars start on the downbeat: the position of the n-beat cycle with the strongest median beat.
+  // Cut from any other beat, a fill is split between two bars and its period is lost (issue #10).
+  let down = 0, bestS = -Infinity;
+  for (let p = 0; p < rd.nb; p++) { const s = med1(rd.str.filter((_, i) => i % rd.nb === p)); if (s > bestS) { bestS = s; down = p; } }
+  const t0 = med1(rd.beatT.map((t, i) => t - beat * i)) + down * beat;
   const B = 32, vecs = [], starts = [];
   // the first bar (sound starting from silence) and the last one are left out
   for (let j = 1; t0 + (j + 2) * L < rd.beatT[n - 1] + beat; j++) starts.push(t0 + j * L);
@@ -378,8 +436,10 @@ function detectVariation(rd) {
   // variation exists if some bars clearly stand out; it has a period only if those bars sit on
   // an exact grid: at least 80% of them on one arithmetic step, and that step filled for 80%
   const mx = Math.max(...d), thr = 0.5 * mx, H = d.map((x, i) => x > thr ? i : -1).filter(i => i >= 0);
-  // 0.1: fills give 0.17-0.19, timing noise without fills reaches about 0.07 at slow tempos
-  if (mx < 0.1 || H.length < 2) return null;
+  // 0.02, measured on 270 settings (60-200 BPM, 2-7 beats): bars without fills differ by at most
+  // 0.0035, and the weakest fill (one beat at 200 BPM in 3/4) gives 0.081. The old value 0.1 was
+  // set when render and grid errors made plain bars differ by up to 0.07 (issue #10).
+  if (mx < 0.02 || H.length < 2) return null;
   const extraA = `${H.length} of ${d.length} bars differ`;
   let bestP = null;
   for (let p = 2; p <= Math.min(12, Math.floor(d.length / 3)); p++) for (let o = 0; o < p; o++) {
