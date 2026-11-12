@@ -150,7 +150,19 @@ function expected() {
   if (on("Wa")) x.Wa = val["Wa.bars"] * p.bar;
   return x;
 }
+// every change of the recipe gets a new version; a run remembers the version it started
+// with, and its result is dropped if the recipe changed before the run finished
+let recipeVersion = 0, running = false;
+function snapshot() {
+  const on_ = new Set(EL.filter(e => e.on).map(e => e.k));
+  return { v: { ...val }, active: k => on_.has(k), version: recipeVersion };
+}
+function setRunning(flag) {
+  running = flag;
+  document.querySelectorAll("#go, #ctl, #presets button").forEach(b => { b.disabled = flag; });
+}
 function refresh() {
+  recipeVersion++;
   const x = expected();
   EL.forEach(e => {
     document.getElementById("el-" + e.k).classList.toggle("off", !e.on);
@@ -160,6 +172,8 @@ function refresh() {
   if (Object.keys(lastFound).length || Object.keys(controls).length) {
     lastFound = {}; controls = {};
     document.getElementById("res").innerHTML = `<tr><td colspan="5" class="mut">The recipe changed. Press Collide to measure it.</td></tr>`;
+  } else if (typeof lastFound !== "undefined") {
+    showResults();          // no results yet: still show the expectations of the new recipe
   }
   drawMini(x, lastFound);
 }
@@ -168,7 +182,15 @@ const fmtT = t => t < 1 ? (t * 1000).toFixed(0) + " ms" : t.toFixed(2) + " s";
 // ---------------------------------------------------------------- synthesis
 const rand = n => { let t = (n + 1) * 0x6D2B79F5 >>> 0; t = Math.imul(t ^ t >>> 15, t | 1); t ^= t + Math.imul(t ^ t >>> 7, t | 61); return ((t ^ t >>> 14) >>> 0) / 4294967296; };
 const MELODY = [220.0, 246.9, 196.0, 261.6, 220.0, 293.7, 246.9, 196.0];
-const noiseBuf = ctx => { const b = ctx.createBuffer(1, Math.floor(0.06 * SR), SR), d = b.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1; return b; };
+// Noise comes from a seeded generator (mulberry32), not Math.random(): every render of the
+// same recipe gives the same samples, so a control that removes one element changes only
+// that element, never the random part of the sound.
+const NOISE_SEED = 20261112;
+function seeded(seed) {
+  let a = seed >>> 0;
+  return () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ t >>> 15, t | 1); t ^= t + Math.imul(t ^ t >>> 7, t | 61); return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+}
+const noiseBuf = ctx => { const g = seeded(NOISE_SEED), b = ctx.createBuffer(1, Math.floor(0.06 * SR), SR), d = b.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = g() * 2 - 1; return b; };
 
 async function renderStem(kind, v, active) {
   const P = plan(v, active), len = Math.ceil(P.dur * SR) + SR;
@@ -465,9 +487,19 @@ function play(parts) {
   player = p;
   document.getElementById("stop").disabled = false;
 }
+const stale = snap => {
+  if (snap.version === recipeVersion) return false;
+  status("The recipe changed during the run, so its result was dropped. Press Collide again.");
+  return true;
+};
 document.getElementById("go").onclick = async () => {
-  status("Colliding…"); controls = {};
-  const t0 = performance.now(), res = await collide();
+  if (running) return;
+  const snap = snapshot();
+  setRunning(true); status("Colliding…");
+  let res, t0 = performance.now();
+  try { res = await collide(snap.v, snap.active); } finally { setRunning(false); }
+  if (stale(snap)) return;
+  controls = {};
   lastFound = res.found; lastStems = res.stems; showResults(); drawWave(res.stems);
   document.getElementById("play").disabled = false;
   document.getElementById("solo").innerHTML = ["Rhythm", "Melody", "Pad"].map(p => `<button data-p="${p}">Solo ${p.toLowerCase()}</button>`).join("");
@@ -476,17 +508,24 @@ document.getElementById("go").onclick = async () => {
   play(["Rhythm", "Melody", "Pad"]);
 };
 document.getElementById("ctl").onclick = async () => {
-  const act = EL.filter(e => e.on).map(e => e.k);
-  status("Measuring the full recipe first…");
-  const full = await collide(); lastFound = full.found; lastStems = full.stems; controls = {}; showResults(); drawWave(full.stems);
-  document.getElementById("play").disabled = false;
-  for (const k of act) {
-    status(`Control: everything except ${k}…`);
-    const res = await collide(val, j => on(j) && j !== k);
-    controls[k] = !res.found[k];
-    showResults();
-  }
-  status("Controls done: each element removed in turn; the detector must stop finding it.");
+  if (running) return;
+  const snap = snapshot(), act = EL.filter(e => snap.active(e.k)).map(e => e.k);
+  setRunning(true);
+  try {
+    status("Measuring the full recipe first…");
+    const full = await collide(snap.v, snap.active);
+    if (stale(snap)) return;
+    lastFound = full.found; lastStems = full.stems; controls = {}; showResults(); drawWave(full.stems);
+    document.getElementById("play").disabled = false;
+    for (const k of act) {
+      status(`Control: everything except ${k}…`);
+      const res = await collide(snap.v, j => snap.active(j) && j !== k);
+      if (stale(snap)) return;
+      controls[k] = !res.found[k];
+      showResults();
+    }
+    status("Controls done: each element removed in turn; the detector must stop finding it.");
+  } finally { setRunning(false); }
 };
 document.getElementById("play").onclick = () => play(["Rhythm", "Melody", "Pad"]);
 document.getElementById("stop").onclick = stop;

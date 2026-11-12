@@ -26,6 +26,9 @@ A battery of 18 settings, from 60 to 200 BPM in 2 to 7 beats per bar, with no fi
 - **Vibrato, Spatial motion and Width arc** are found at the set rate or length.
 - **Controls:** with all six elements on, each one disappears when it is removed.
 - **Results follow the recipe.** Changing any dial or checkbox clears the old results, and *Run controls* measures the full recipe first.
+- **No race (issue #8).** Each run works on a snapshot of the recipe and remembers its version. If the recipe changes before the run finishes, the result is dropped with a message, and the run buttons are disabled while a run is in progress. Checked by moving the tempo slider in the middle of a run.
+- **Deterministic controls (issue #8).** The noise of hats and fills comes from a seeded generator instead of `Math.random()`. Two renders of the same recipe agree to 1.2·10⁻⁷ (one float32 rounding step), and a control without Variation matches the full sound up to the first fill.
+- **Known false Variation at 150 BPM in 3/4** without fills (issue #10). It is older than #8 and comes from the synthesis: the downbeat renders differently from bar to bar.
 
 Known limits:
 - An 8-bar phrase needs at least three phrases in the sound to be proven.
