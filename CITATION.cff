@@ -8,6 +8,7 @@ authors:
 version: "0.4.0"
 date-released: "2026-11-12"
 license: MIT
+doi: "10.5281/zenodo.24161074"
 repository-code: "https://github.com/alex-gerek/periodic-table-of-sound"
 url: "https://alex-gerek.github.io/periodic-table-of-sound/"
 keywords:

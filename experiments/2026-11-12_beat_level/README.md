@@ -110,7 +110,7 @@ After its run, the first final set (seeds 50000–50199) became development data
 
 The remaining errors in development are mostly oom-pah: the beat is carried by soft snares and the bar by an accented kick. In 5/4 the beat is confirmed but its comb is 0.48 of the best, below the 0.5 rule. In 2/4 the beat reaches only 3.9 σ. The 0.5 rule was not moved: it sits on a plateau, and moving it for these cases would be fitting.
 
-`rule_v2.py` holds version 2. Version 1 in `bench.py` is unchanged, because the Ballroom adapter is pinned to it.
+`rule_v2.py` holds version 2. Version 1 in `bench.py` is unchanged, because a separate evaluation is pinned to its exact code.
 
 **Development data** (520 signals: seeds 0–199, the 120 investigated examples, seeds 50000–50199):
 
@@ -150,7 +150,7 @@ Seeds 70000–70199. It was run once.
 
 ### Still open
 
-- **Real recordings with verified labels.** No real track is scored yet. The Ballroom adapter (`experiments/2026-11-12_ballroom_eval/`, internal) is ready, but its use waits until the terms are clear.
+- **Real recordings with verified labels.** No real track is scored yet.
 - **A kick on the "and".** Rock and boom-bap patterns are the main error of both candidates. The old rule gets them right, because it prefers the higher comb.
 
 ## Regression tests

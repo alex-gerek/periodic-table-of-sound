@@ -7,6 +7,7 @@
 [![Tests](https://github.com/alex-gerek/periodic-table-of-sound/actions/workflows/tests.yml/badge.svg)](https://github.com/alex-gerek/periodic-table-of-sound/actions/workflows/tests.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-0f9e8e.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-1f8fd0.svg)](requirements.txt)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24161074.svg)](https://doi.org/10.5281/zenodo.24161074)
 
 **[Open the table](https://alex-gerek.github.io/periodic-table-of-sound/table/standalone/Periodic_Table_of_Sound_edition3.html)** · **[Open the collider](https://alex-gerek.github.io/periodic-table-of-sound/lab/collider.html)** · [Website](https://alex-gerek.github.io/periodic-table-of-sound/) · [The article](articles/01_the_periodic_table_of_sound.md) · [How it is ordered](docs/ordering_criteria.md)
 
@@ -107,4 +108,4 @@ Recordings used in the experiments keep their own licences. The full list is in 
 
 Created by **Lex Gerek** together with **Claude** (Anthropic), who is credited as co-author in the commits.
 
-Released under the [MIT licence](LICENSE). To cite the project, see [`CITATION.cff`](CITATION.cff).
+Released under the [MIT licence](LICENSE). Archived on Zenodo: [doi:10.5281/zenodo.24161074](https://doi.org/10.5281/zenodo.24161074) (all versions). To cite the project, see [`CITATION.cff`](CITATION.cff).
