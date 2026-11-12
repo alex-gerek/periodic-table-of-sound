@@ -459,7 +459,7 @@ def confirm_period(track, fs, cand: Periodicity, tau_lo: float, corr=None,
     corr = corr or autocorr
     track = np.asarray(track, dtype=np.float64)
     n = len(track)
-    if cand.tau is None or n < 4:
+    if cand.tau is None or not np.isfinite(cand.tau) or cand.tau <= 0 or n < 4:
         cand.confirmed, cand.evidence = False, {"reason": "no candidate"}
         return cand
     lag = cand.tau * fs

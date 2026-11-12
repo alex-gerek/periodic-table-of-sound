@@ -1,0 +1,7162 @@
+[
+ {
+  "desc": {
+   "seed": 0,
+   "bpm": 65.73629335106726,
+   "beats_per_bar": 5,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 0.0,
+   "duration_s": 30.87249982930846
+  },
+  "beat_s": 0.9127378034469884,
+  "old": {
+   "found_s": 0.9127957751496488,
+   "class": "exact",
+   "ratio": 1.0000635140808691
+  },
+  "new": {
+   "found_s": 0.9127589542622562,
+   "class": "exact",
+   "ratio": 1.0000231729366176
+  }
+ },
+ {
+  "desc": {
+   "seed": 1,
+   "bpm": 80.18234578074872,
+   "beats_per_bar": 6,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 15.0,
+   "duration_s": 28.183982727383224
+  },
+  "beat_s": 0.7482943959268105,
+  "old": {
+   "found_s": 0.7592392303802751,
+   "class": "exact",
+   "ratio": 1.0146263750110125
+  },
+  "new": {
+   "found_s": 0.7482356158465479,
+   "class": "exact",
+   "ratio": 0.9999214479213228
+  }
+ },
+ {
+  "desc": {
+   "seed": 2,
+   "bpm": 173.99160368319923,
+   "beats_per_bar": 2,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 0.0,
+   "duration_s": 25.499387358120764
+  },
+  "beat_s": 0.3448442265596156,
+  "old": {
+   "found_s": 0.3447032392685831,
+   "class": "exact",
+   "ratio": 0.9995911565855717
+  },
+  "new": {
+   "found_s": 0.3448123695338331,
+   "class": "exact",
+   "ratio": 0.9999076190832588
+  }
+ },
+ {
+  "desc": {
+   "seed": 3,
+   "bpm": 96.08921256444779,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 6.0,
+   "duration_s": 29.581025962816682
+  },
+  "beat_s": 0.6244197282786299,
+  "old": {
+   "found_s": 0.6225634699889437,
+   "class": "exact",
+   "ratio": 0.9970272267104638
+  },
+  "new": {
+   "found_s": 0.6206623203032497,
+   "class": "exact",
+   "ratio": 0.9939825604393724
+  }
+ },
+ {
+  "desc": {
+   "seed": 4,
+   "bpm": 196.67411879907857,
+   "beats_per_bar": 7,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 6.0,
+   "duration_s": 23.49055632288057
+  },
+  "beat_s": 0.30507318586893345,
+  "old": {
+   "found_s": 0.305043228194179,
+   "class": "exact",
+   "ratio": 0.9999018016786066
+  },
+  "new": {
+   "found_s": 0.3050648137441526,
+   "class": "exact",
+   "ratio": 0.9999725569956043
+  }
+ },
+ {
+  "desc": {
+   "seed": 5,
+   "bpm": 132.14557854589987,
+   "beats_per_bar": 2,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 6.0,
+   "duration_s": 20.905503878048904
+  },
+  "beat_s": 0.45404470327517926,
+  "old": {
+   "found_s": 0.45347758279676914,
+   "class": "exact",
+   "ratio": 0.9987509589379211
+  },
+  "new": {
+   "found_s": 0.4543381433754591,
+   "class": "exact",
+   "ratio": 1.0006462801970006
+  }
+ },
+ {
+  "desc": {
+   "seed": 6,
+   "bpm": 111.66941357135295,
+   "beats_per_bar": 5,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 0.0,
+   "duration_s": 33.59835322328045
+  },
+  "beat_s": 0.5373002157091301,
+  "old": {
+   "found_s": 0.5376655315845442,
+   "class": "exact",
+   "ratio": 1.0006799101595967
+  },
+  "new": {
+   "found_s": 0.537390016687135,
+   "class": "exact",
+   "ratio": 1.000167133709199
+  }
+ },
+ {
+  "desc": {
+   "seed": 7,
+   "bpm": 168.5959966343271,
+   "beats_per_bar": 6,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 0.0,
+   "duration_s": 36.424568367655326
+  },
+  "beat_s": 0.35588033641235145,
+  "old": {
+   "found_s": 0.3557533021738826,
+   "class": "exact",
+   "ratio": 0.9996430422659778
+  },
+  "new": {
+   "found_s": 0.3558614215063774,
+   "class": "exact",
+   "ratio": 0.9999468503762676
+  }
+ },
+ {
+  "desc": {
+   "seed": 8,
+   "bpm": 104.61951738797234,
+   "beats_per_bar": 3,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 6.0,
+   "duration_s": 27.45497806178706
+  },
+  "beat_s": 0.5735067556992759,
+  "old": {
+   "found_s": 1.7233104076227472,
+   "class": "multiple",
+   "ratio": 3.0048650525860285
+  },
+  "new": {
+   "found_s": 0.5749575808260243,
+   "class": "exact",
+   "ratio": 1.0025297437429128
+  }
+ },
+ {
+  "desc": {
+   "seed": 9,
+   "bpm": 144.44074100721866,
+   "beats_per_bar": 7,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 6.0,
+   "duration_s": 20.531754689351946
+  },
+  "beat_s": 0.4153952657789356,
+  "old": {
+   "found_s": 0.417919559944121,
+   "class": "exact",
+   "ratio": 1.0060768486623264
+  },
+  "new": {
+   "found_s": 0.4124117820762968,
+   "class": "exact",
+   "ratio": 0.9928177233867982
+  }
+ },
+ {
+  "desc": {
+   "seed": 10,
+   "bpm": 175.9822839384343,
+   "beats_per_bar": 3,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 15.0,
+   "duration_s": 28.510179948099534
+  },
+  "beat_s": 0.34094341008206497,
+  "old": {
+   "found_s": 0.34086377015010066,
+   "class": "exact",
+   "ratio": 0.9997664130480036
+  },
+  "new": {
+   "found_s": 0.34093190636131016,
+   "class": "exact",
+   "ratio": 0.9999662591491296
+  }
+ },
+ {
+  "desc": {
+   "seed": 11,
+   "bpm": 82.10488503363501,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 30.0,
+   "duration_s": 21.408411523083938
+  },
+  "beat_s": 0.730772596239803,
+  "old": {
+   "found_s": 0.7264122009104862,
+   "class": "exact",
+   "ratio": 0.9940331707130875
+  },
+  "new": {
+   "found_s": 0.7291915873024186,
+   "class": "exact",
+   "ratio": 0.9978365240493152
+  }
+ },
+ {
+  "desc": {
+   "seed": 12,
+   "bpm": 86.50485383556658,
+   "beats_per_bar": 7,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 0.0,
+   "duration_s": 22.30158764246895
+  },
+  "beat_s": 0.6936026978792597,
+  "old": {
+   "found_s": 0.6935428921123155,
+   "class": "exact",
+   "ratio": 0.9999137751811995
+  },
+  "new": {
+   "found_s": 0.6935649612881397,
+   "class": "exact",
+   "ratio": 0.999945593361682
+  }
+ },
+ {
+  "desc": {
+   "seed": 13,
+   "bpm": 173.5432758298079,
+   "beats_per_bar": 6,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 6.0,
+   "duration_s": 20.052615072525995
+  },
+  "beat_s": 0.3457350894934205,
+  "old": {
+   "found_s": 0.34544205515672,
+   "class": "exact",
+   "ratio": 0.9991524310213062
+  },
+  "new": {
+   "found_s": 0.34577015208450235,
+   "class": "exact",
+   "ratio": 1.000101414615257
+  }
+ },
+ {
+  "desc": {
+   "seed": 14,
+   "bpm": 158.38350278148766,
+   "beats_per_bar": 5,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 30.0,
+   "duration_s": 29.34337507821704
+  },
+  "beat_s": 0.37882733331626367,
+  "old": {
+   "found_s": 0.3803171617535685,
+   "class": "exact",
+   "ratio": 1.00393273744073
+  },
+  "new": {
+   "found_s": 0.37582844937945054,
+   "class": "exact",
+   "ratio": 0.9920837709608733
+  }
+ },
+ {
+  "desc": {
+   "seed": 15,
+   "bpm": 108.21694609099993,
+   "beats_per_bar": 6,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 0.0,
+   "duration_s": 26.907130081516794
+  },
+  "beat_s": 0.5544418149588682,
+  "old": {
+   "found_s": 0.5543116604778402,
+   "class": "exact",
+   "ratio": 0.9997652513257181
+  },
+  "new": {
+   "found_s": 0.5544103817925955,
+   "class": "exact",
+   "ratio": 0.9999433066456666
+  }
+ },
+ {
+  "desc": {
+   "seed": 16,
+   "bpm": 73.17033556461344,
+   "beats_per_bar": 6,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 30.0,
+   "duration_s": 20.886084315765697
+  },
+  "beat_s": 0.8200044394632671,
+  "old": {
+   "found_s": 0.8200463124595632,
+   "class": "exact",
+   "ratio": 1.000051064353168
+  },
+  "new": {
+   "found_s": 0.8201531217900695,
+   "class": "exact",
+   "ratio": 1.0001813189290776
+  }
+ },
+ {
+  "desc": {
+   "seed": 17,
+   "bpm": 138.08423663119692,
+   "beats_per_bar": 2,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5462988845107039,
+   "jitter_s": 0.005,
+   "snr_db": 30.0,
+   "duration_s": 20.30579313193423
+  },
+  "beat_s": 0.43451737478370794,
+  "old": {
+   "found_s": 0.4340879931572292,
+   "class": "exact",
+   "ratio": 0.9990118194314036
+  },
+  "new": {
+   "found_s": 0.4344213962461666,
+   "class": "exact",
+   "ratio": 0.9997791146151771
+  }
+ },
+ {
+  "desc": {
+   "seed": 18,
+   "bpm": 99.31526592504048,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 6.0,
+   "duration_s": 31.537429270052183
+  },
+  "beat_s": 0.6041367300499986,
+  "old": {
+   "found_s": 0.6041790681122958,
+   "class": "exact",
+   "ratio": 1.0000700802652633
+  },
+  "new": {
+   "found_s": 0.6040926416926391,
+   "class": "exact",
+   "ratio": 0.9999270225510775
+  }
+ },
+ {
+  "desc": {
+   "seed": 19,
+   "bpm": 98.3417983057595,
+   "beats_per_bar": 4,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 0.0,
+   "duration_s": 30.773996721591857
+  },
+  "beat_s": 0.6101169699322656,
+  "old": {
+   "found_s": 0.6100208902496873,
+   "class": "exact",
+   "ratio": 0.9998425225205767
+  },
+  "new": {
+   "found_s": 0.6100925105232045,
+   "class": "exact",
+   "ratio": 0.9999599102954572
+  }
+ },
+ {
+  "desc": {
+   "seed": 20,
+   "bpm": 77.04075696070186,
+   "beats_per_bar": 3,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 6.0,
+   "duration_s": 33.88135764715173
+  },
+  "beat_s": 0.778808547151292,
+  "old": {
+   "found_s": 0.7800924871304136,
+   "class": "exact",
+   "ratio": 1.0016485951313938
+  },
+  "new": {
+   "found_s": 0.7793493761283796,
+   "class": "exact",
+   "ratio": 1.0006944312296853
+  }
+ },
+ {
+  "desc": {
+   "seed": 21,
+   "bpm": 159.37216665717952,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 30.0,
+   "duration_s": 22.248061666946846
+  },
+  "beat_s": 0.37647728118714807,
+  "old": {
+   "found_s": 0.3764314766355354,
+   "class": "exact",
+   "ratio": 0.9998783338227788
+  },
+  "new": {
+   "found_s": 0.3764782728631817,
+   "class": "exact",
+   "ratio": 1.000002634092635
+  }
+ },
+ {
+  "desc": {
+   "seed": 22,
+   "bpm": 72.39817225657904,
+   "beats_per_bar": 5,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 15.0,
+   "duration_s": 21.028775349505185
+  },
+  "beat_s": 0.8287502036288992,
+  "old": {
+   "found_s": 0.8269072962930529,
+   "class": "exact",
+   "ratio": 0.9977762812874416
+  },
+  "new": {
+   "found_s": 0.8277705843204919,
+   "class": "exact",
+   "ratio": 0.9988179558760676
+  }
+ },
+ {
+  "desc": {
+   "seed": 23,
+   "bpm": 78.01019140446907,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 15.0,
+   "duration_s": 24.36037274171472
+  },
+  "beat_s": 0.7691302754137673,
+  "old": {
+   "found_s": 0.7690158231951791,
+   "class": "exact",
+   "ratio": 0.9998511926753545
+  },
+  "new": {
+   "found_s": 0.769122609733229,
+   "class": "exact",
+   "ratio": 0.9999900333132327
+  }
+ },
+ {
+  "desc": {
+   "seed": 24,
+   "bpm": 140.4632947058069,
+   "beats_per_bar": 6,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 15.0,
+   "duration_s": 34.84950541373125
+  },
+  "beat_s": 0.427157857329681,
+  "old": {
+   "found_s": 0.42681089789078863,
+   "class": "exact",
+   "ratio": 0.9991877489013984
+  },
+  "new": {
+   "found_s": 0.4272431798599945,
+   "class": "exact",
+   "ratio": 1.0001997447286746
+  }
+ },
+ {
+  "desc": {
+   "seed": 25,
+   "bpm": 55.16189251239719,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 15.0,
+   "duration_s": 39.81724357818414
+  },
+  "beat_s": 1.0877074238617808,
+  "old": {
+   "found_s": 1.086321207587001,
+   "class": "exact",
+   "ratio": 0.9987255614475278
+  },
+  "new": {
+   "found_s": 1.087509609809191,
+   "class": "exact",
+   "ratio": 0.9998181367082267
+  }
+ },
+ {
+  "desc": {
+   "seed": 26,
+   "bpm": 69.46508614692566,
+   "beats_per_bar": 5,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 6.0,
+   "duration_s": 31.08663500718052
+  },
+  "beat_s": 0.8637432605077888,
+  "old": {
+   "found_s": 0.8622433782004416,
+   "class": "exact",
+   "ratio": 0.9982635091051646
+  },
+  "new": {
+   "found_s": 0.8640631377216228,
+   "class": "exact",
+   "ratio": 1.0003703383035902
+  }
+ },
+ {
+  "desc": {
+   "seed": 27,
+   "bpm": 76.96759384062783,
+   "beats_per_bar": 3,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 0.0,
+   "duration_s": 25.862273868724728
+  },
+  "beat_s": 0.7795488595400084,
+  "old": {
+   "found_s": 0.78003448775885,
+   "class": "exact",
+   "ratio": 1.0006229605917558
+  },
+  "new": {
+   "found_s": 0.7797913865856543,
+   "class": "exact",
+   "ratio": 1.0003111120524106
+  }
+ },
+ {
+  "desc": {
+   "seed": 28,
+   "bpm": 167.19919371805918,
+   "beats_per_bar": 3,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 15.0,
+   "duration_s": 39.01759020647438
+  },
+  "beat_s": 0.35885340512571745,
+  "old": {
+   "found_s": 0.358840823356585,
+   "class": "exact",
+   "ratio": 0.9999649389724252
+  },
+  "new": {
+   "found_s": 0.35889017073100904,
+   "class": "exact",
+   "ratio": 1.0001024529926885
+  }
+ },
+ {
+  "desc": {
+   "seed": 29,
+   "bpm": 76.3463820740798,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 15.0,
+   "duration_s": 27.876559218473165
+  },
+  "beat_s": 0.785891857217036,
+  "old": {
+   "found_s": 0.784653245740794,
+   "class": "exact",
+   "ratio": 0.9984239415832248
+  },
+  "new": {
+   "found_s": 0.7856955846592288,
+   "class": "exact",
+   "ratio": 0.9997502550051832
+  }
+ },
+ {
+  "desc": {
+   "seed": 30,
+   "bpm": 72.9182223174609,
+   "beats_per_bar": 6,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 0.0,
+   "duration_s": 27.97618964293939
+  },
+  "beat_s": 0.822839587871199,
+  "old": {
+   "found_s": 0.816873997012498,
+   "class": "exact",
+   "ratio": 0.9927499953251704
+  },
+  "new": {
+   "found_s": 0.8219007217126565,
+   "class": "exact",
+   "ratio": 0.9988589924787509
+  }
+ },
+ {
+  "desc": {
+   "seed": 31,
+   "bpm": 154.182313974051,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 0.0,
+   "duration_s": 39.573393170207765
+  },
+  "beat_s": 0.38914969203340694,
+  "old": {
+   "found_s": 0.38942323017346864,
+   "class": "exact",
+   "ratio": 1.0007029123899145
+  },
+  "new": {
+   "found_s": 0.38913206584626436,
+   "class": "exact",
+   "ratio": 0.9999547058946636
+  }
+ },
+ {
+  "desc": {
+   "seed": 32,
+   "bpm": 66.3994887773029,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 15.0,
+   "duration_s": 39.33660492203577
+  },
+  "beat_s": 0.903621414936399,
+  "old": {
+   "found_s": 0.9038969242711682,
+   "class": "exact",
+   "ratio": 1.0003048946497008
+  },
+  "new": {
+   "found_s": 0.9038270561846613,
+   "class": "exact",
+   "ratio": 1.0002275745626024
+  }
+ },
+ {
+  "desc": {
+   "seed": 33,
+   "bpm": 187.13452849451474,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 0.0,
+   "duration_s": 30.861177238888658
+  },
+  "beat_s": 0.3206249561889842,
+  "old": {
+   "found_s": 0.31956770207777735,
+   "class": "exact",
+   "ratio": 0.9967025208400071
+  },
+  "new": {
+   "found_s": 0.3206630766055698,
+   "class": "exact",
+   "ratio": 1.0001188941030628
+  }
+ },
+ {
+  "desc": {
+   "seed": 34,
+   "bpm": 56.991967132309,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 6.0,
+   "duration_s": 37.614451307379476
+  },
+  "beat_s": 1.0527799445965382,
+  "old": {
+   "found_s": 1.0526356866500357,
+   "class": "exact",
+   "ratio": 0.9998629742642392
+  },
+  "new": {
+   "found_s": 1.052748113429464,
+   "class": "exact",
+   "ratio": 0.9999697646528721
+  }
+ },
+ {
+  "desc": {
+   "seed": 35,
+   "bpm": 190.9009591189738,
+   "beats_per_bar": 6,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5001070425897687,
+   "jitter_s": 0.02,
+   "snr_db": 15.0,
+   "duration_s": 38.087380349538556
+  },
+  "beat_s": 0.3142991018845885,
+  "old": {
+   "found_s": 0.3120251204355914,
+   "class": "exact",
+   "ratio": 0.992764912672795
+  },
+  "new": {
+   "found_s": 0.3136578727983273,
+   "class": "exact",
+   "ratio": 0.997959812540296
+  }
+ },
+ {
+  "desc": {
+   "seed": 36,
+   "bpm": 102.56826824989145,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 15.0,
+   "duration_s": 30.7085310616461
+  },
+  "beat_s": 0.5849762409346665,
+  "old": {
+   "found_s": 1.1707639691397334,
+   "class": "multiple",
+   "ratio": 2.0013872140671967
+  },
+  "new": {
+   "found_s": 0.5887835929068568,
+   "class": "exact",
+   "ratio": 1.0065085583067561
+  }
+ },
+ {
+  "desc": {
+   "seed": 37,
+   "bpm": 69.65905307248315,
+   "beats_per_bar": 5,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 0.0,
+   "duration_s": 21.288641934369043
+  },
+  "beat_s": 0.8613381513752061,
+  "old": {
+   "found_s": 0.8548336034837122,
+   "class": "exact",
+   "ratio": 0.9924483225535653
+  },
+  "new": {
+   "found_s": 0.8598643177036652,
+   "class": "exact",
+   "ratio": 0.9982889023675687
+  }
+ },
+ {
+  "desc": {
+   "seed": 38,
+   "bpm": 160.8533632975541,
+   "beats_per_bar": 3,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 6.0,
+   "duration_s": 28.763025672439372
+  },
+  "beat_s": 0.37301054059410116,
+  "old": {
+   "found_s": 1.1205100998174171,
+   "class": "multiple",
+   "ratio": 3.00396363607516
+  },
+  "new": {
+   "found_s": 0.37272603589583353,
+   "class": "exact",
+   "ratio": 0.999237274373495
+  }
+ },
+ {
+  "desc": {
+   "seed": 39,
+   "bpm": 79.02238827374038,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 0.0,
+   "duration_s": 24.583277333985322
+  },
+  "beat_s": 0.7592784944964561,
+  "old": {
+   "found_s": 0.759280411012009,
+   "class": "exact",
+   "ratio": 1.0000025241272692
+  },
+  "new": {
+   "found_s": 0.7592201692213818,
+   "class": "exact",
+   "ratio": 0.9999231832911151
+  }
+ },
+ {
+  "desc": {
+   "seed": 40,
+   "bpm": 191.86894241284156,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 6.0,
+   "duration_s": 26.76781381972247
+  },
+  "beat_s": 0.31271345557791674,
+  "old": {
+   "found_s": 0.31285232044853645,
+   "class": "exact",
+   "ratio": 1.0004440642644017
+  },
+  "new": {
+   "found_s": 0.3127257497613732,
+   "class": "exact",
+   "ratio": 1.0000393145329602
+  }
+ },
+ {
+  "desc": {
+   "seed": 41,
+   "bpm": 77.6359045503483,
+   "beats_per_bar": 6,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 0.0,
+   "duration_s": 32.049998169932856
+  },
+  "beat_s": 0.7728382936671898,
+  "old": {
+   "found_s": 0.7740578323212425,
+   "class": "exact",
+   "ratio": 1.0015779997756915
+  },
+  "new": {
+   "found_s": 0.7724498548294625,
+   "class": "exact",
+   "ratio": 0.9994973866578426
+  }
+ },
+ {
+  "desc": {
+   "seed": 42,
+   "bpm": 180.20370878759354,
+   "beats_per_bar": 5,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.6170746821964107,
+   "jitter_s": 0.012,
+   "snr_db": 6.0,
+   "duration_s": 29.00771875791134
+  },
+  "beat_s": 0.33295652128182396,
+  "old": {
+   "found_s": 0.3340933868592191,
+   "class": "exact",
+   "ratio": 1.0034144565573258
+  },
+  "new": {
+   "found_s": 0.3328857289005634,
+   "class": "exact",
+   "ratio": 0.9997873825057156
+  }
+ },
+ {
+  "desc": {
+   "seed": 43,
+   "bpm": 62.80414216239036,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 15.0,
+   "duration_s": 28.39955819432536
+  },
+  "beat_s": 0.955350999697762,
+  "old": {
+   "found_s": 1.910655934123732,
+   "class": "multiple",
+   "ratio": 1.9999517818353603
+  },
+  "new": {
+   "found_s": 0.9545790866198558,
+   "class": "exact",
+   "ratio": 0.9991920110219694
+  }
+ },
+ {
+  "desc": {
+   "seed": 44,
+   "bpm": 68.40395094747917,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 0.0,
+   "duration_s": 23.26090542142131
+  },
+  "beat_s": 0.8771423166195216,
+  "old": {
+   "found_s": 0.8770997212850881,
+   "class": "exact",
+   "ratio": 0.9999514385138804
+  },
+  "new": {
+   "found_s": 0.8771170113153419,
+   "class": "exact",
+   "ratio": 0.9999711502869031
+  }
+ },
+ {
+  "desc": {
+   "seed": 45,
+   "bpm": 166.91103357226964,
+   "beats_per_bar": 6,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 6.0,
+   "duration_s": 31.895100086817354
+  },
+  "beat_s": 0.3594729402596445,
+  "old": {
+   "found_s": 0.3568200854452385,
+   "class": "exact",
+   "ratio": 0.9926201543501721
+  },
+  "new": {
+   "found_s": 0.3589475491146887,
+   "class": "exact",
+   "ratio": 0.9985384403494284
+  }
+ },
+ {
+  "desc": {
+   "seed": 46,
+   "bpm": 98.15976582860928,
+   "beats_per_bar": 3,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 0.0,
+   "duration_s": 30.228870242064193
+  },
+  "beat_s": 0.6112484019650404,
+  "old": {
+   "found_s": 1.832459172086121,
+   "class": "multiple",
+   "ratio": 2.9978960537076813
+  },
+  "new": {
+   "found_s": 0.6105782745773624,
+   "class": "exact",
+   "ratio": 0.9989036742091698
+  }
+ },
+ {
+  "desc": {
+   "seed": 47,
+   "bpm": 125.12527535212769,
+   "beats_per_bar": 5,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 0.0,
+   "duration_s": 37.15518378386189
+  },
+  "beat_s": 0.47951942428216787,
+  "old": {
+   "found_s": 0.47948760214946007,
+   "class": "exact",
+   "ratio": 0.9999336374480441
+  },
+  "new": {
+   "found_s": 0.4794901691507799,
+   "class": "exact",
+   "ratio": 0.9999389907271603
+  }
+ },
+ {
+  "desc": {
+   "seed": 48,
+   "bpm": 131.93207630756143,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 6.0,
+   "duration_s": 30.559466514441205
+  },
+  "beat_s": 0.454779471977136,
+  "old": {
+   "found_s": 0.4536511730937149,
+   "class": "exact",
+   "ratio": 0.9975190197602459
+  },
+  "new": {
+   "found_s": 0.45522120109883935,
+   "class": "exact",
+   "ratio": 1.0009713040031973
+  }
+ },
+ {
+  "desc": {
+   "seed": 49,
+   "bpm": 114.87302967498619,
+   "beats_per_bar": 7,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 15.0,
+   "duration_s": 39.91508971110783
+  },
+  "beat_s": 0.5223158139883649,
+  "old": {
+   "found_s": 0.5225118079681578,
+   "class": "exact",
+   "ratio": 1.0003752403709478
+  },
+  "new": {
+   "found_s": 0.5226655182655182,
+   "class": "exact",
+   "ratio": 1.0006695264967818
+  }
+ },
+ {
+  "desc": {
+   "seed": 50,
+   "bpm": 136.70662442579152,
+   "beats_per_bar": 6,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 6.0,
+   "duration_s": 31.111552133037222
+  },
+  "beat_s": 0.43889606851180657,
+  "old": {
+   "found_s": 0.8806176124967033,
+   "class": "multiple",
+   "ratio": 2.0064376869054006
+  },
+  "new": {
+   "found_s": 0.4373465928658584,
+   "class": "exact",
+   "ratio": 0.9964696069135409
+  }
+ },
+ {
+  "desc": {
+   "seed": 51,
+   "bpm": 95.6869288180101,
+   "beats_per_bar": 7,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 15.0,
+   "duration_s": 28.435494667088363
+  },
+  "beat_s": 0.6270448925591063,
+  "old": {
+   "found_s": 0.6271313125279685,
+   "class": "exact",
+   "ratio": 1.0001378210234828
+  },
+  "new": {
+   "found_s": 0.6270424037907919,
+   "class": "exact",
+   "ratio": 0.9999960309567242
+  }
+ },
+ {
+  "desc": {
+   "seed": 52,
+   "bpm": 132.73610108659,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 0.0,
+   "duration_s": 20.316748084078405
+  },
+  "beat_s": 0.45202472807950855,
+  "old": {
+   "found_s": 0.45187535412755353,
+   "class": "exact",
+   "ratio": 0.99966954473356
+  },
+  "new": {
+   "found_s": 0.4519761828163361,
+   "class": "exact",
+   "ratio": 0.9998926048506711
+  }
+ },
+ {
+  "desc": {
+   "seed": 53,
+   "bpm": 63.178903380569665,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 0.0,
+   "duration_s": 36.385078536124055
+  },
+  "beat_s": 0.9496841000638938,
+  "old": {
+   "found_s": 0.9487236677114241,
+   "class": "exact",
+   "ratio": 0.9989886822866624
+  },
+  "new": {
+   "found_s": 0.9493204117115057,
+   "class": "exact",
+   "ratio": 0.9996170428120639
+  }
+ },
+ {
+  "desc": {
+   "seed": 54,
+   "bpm": 71.15155607249736,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 15.0,
+   "duration_s": 22.571435996286308
+  },
+  "beat_s": 0.8432703838390425,
+  "old": {
+   "found_s": 0.8426582024614236,
+   "class": "exact",
+   "ratio": 0.9992740390397302
+  },
+  "new": {
+   "found_s": 0.8426958657551262,
+   "class": "exact",
+   "ratio": 0.9993187024056261
+  }
+ },
+ {
+  "desc": {
+   "seed": 55,
+   "bpm": 90.57066583796721,
+   "beats_per_bar": 6,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 6.0,
+   "duration_s": 38.94171978867339
+  },
+  "beat_s": 0.6624661466808827,
+  "old": {
+   "found_s": 0.6625230242390304,
+   "class": "exact",
+   "ratio": 1.0000858573052114
+  },
+  "new": {
+   "found_s": 0.6624508997967371,
+   "class": "exact",
+   "ratio": 0.999976984659183
+  }
+ },
+ {
+  "desc": {
+   "seed": 56,
+   "bpm": 197.3121494876986,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 30.0,
+   "duration_s": 31.780004752754476
+  },
+  "beat_s": 0.30408669793413146,
+  "old": {
+   "found_s": 0.6097604052160484,
+   "class": "multiple",
+   "ratio": 2.005218937094477
+  },
+  "new": {
+   "found_s": 0.3042300109160078,
+   "class": "exact",
+   "ratio": 1.0004712898750585
+  }
+ },
+ {
+  "desc": {
+   "seed": 57,
+   "bpm": 177.77271376526295,
+   "beats_per_bar": 6,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 15.0,
+   "duration_s": 25.81747130864376
+  },
+  "beat_s": 0.33750961398511364,
+  "old": {
+   "found_s": 0.337645577616204,
+   "class": "exact",
+   "ratio": 1.0004028437278718
+  },
+  "new": {
+   "found_s": 0.3376131908493092,
+   "class": "exact",
+   "ratio": 1.0003068856705224
+  }
+ },
+ {
+  "desc": {
+   "seed": 58,
+   "bpm": 94.03280330200965,
+   "beats_per_bar": 5,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 15.0,
+   "duration_s": 22.769623754438314
+  },
+  "beat_s": 0.6380752024088352,
+  "old": {
+   "found_s": 0.6380745379395542,
+   "class": "exact",
+   "ratio": 0.9999989586348466
+  },
+  "new": {
+   "found_s": 0.6380843143708146,
+   "class": "exact",
+   "ratio": 1.0000142803888084
+  }
+ },
+ {
+  "desc": {
+   "seed": 59,
+   "bpm": 76.37212923461499,
+   "beats_per_bar": 6,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 0.0,
+   "duration_s": 39.453013878593204
+  },
+  "beat_s": 0.7856269113000653,
+  "old": {
+   "found_s": 0.7849554654484997,
+   "class": "exact",
+   "ratio": 0.9991453375108363
+  },
+  "new": {
+   "found_s": 0.7855237313086904,
+   "class": "exact",
+   "ratio": 0.9998686654060713
+  }
+ },
+ {
+  "desc": {
+   "seed": 60,
+   "bpm": 67.66092424191127,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 0.0,
+   "duration_s": 27.86508997926239
+  },
+  "beat_s": 0.8867747621282734,
+  "old": {
+   "found_s": 0.8993229572835568,
+   "class": "exact",
+   "ratio": 1.014150374696239
+  },
+  "new": {
+   "found_s": 0.8890953209645689,
+   "class": "exact",
+   "ratio": 1.0026168525936914
+  }
+ },
+ {
+  "desc": {
+   "seed": 61,
+   "bpm": 153.96003449007907,
+   "beats_per_bar": 6,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 6.0,
+   "duration_s": 38.95465602768949
+  },
+  "beat_s": 0.389711526103005,
+  "old": {
+   "found_s": 0.3872222020259552,
+   "class": "exact",
+   "ratio": 0.9936123929873404
+  },
+  "new": {
+   "found_s": 0.3898139769962367,
+   "class": "exact",
+   "ratio": 1.0002628890509249
+  }
+ },
+ {
+  "desc": {
+   "seed": 62,
+   "bpm": 169.29763380731612,
+   "beats_per_bar": 5,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 30.0,
+   "duration_s": 37.478997753584224
+  },
+  "beat_s": 0.3544054258211796,
+  "old": {
+   "found_s": 0.35447042923326333,
+   "class": "exact",
+   "ratio": 1.0001834153975862
+  },
+  "new": {
+   "found_s": 0.3543729335660171,
+   "class": "exact",
+   "ratio": 0.9999083189680654
+  }
+ },
+ {
+  "desc": {
+   "seed": 63,
+   "bpm": 87.5362326880531,
+   "beats_per_bar": 7,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 15.0,
+   "duration_s": 25.756256692717038
+  },
+  "beat_s": 0.6854304572806772,
+  "old": {
+   "found_s": 0.6843922213663879,
+   "class": "exact",
+   "ratio": 0.9984852789903613
+  },
+  "new": {
+   "found_s": 0.6850366002689505,
+   "class": "exact",
+   "ratio": 0.9994253873495945
+  }
+ },
+ {
+  "desc": {
+   "seed": 64,
+   "bpm": 69.19953124006616,
+   "beats_per_bar": 7,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 15.0,
+   "duration_s": 32.507629034818336
+  },
+  "beat_s": 0.8670578965607257,
+  "old": {
+   "found_s": 0.8671233279836112,
+   "class": "exact",
+   "ratio": 1.0000754637298674
+  },
+  "new": {
+   "found_s": 0.8669752200012405,
+   "class": "exact",
+   "ratio": 0.9999046470139846
+  }
+ },
+ {
+  "desc": {
+   "seed": 65,
+   "bpm": 66.2400994359906,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 30.0,
+   "duration_s": 25.577016878612657
+  },
+  "beat_s": 0.9057957417165329,
+  "old": {
+   "found_s": 0.9061653023315853,
+   "class": "exact",
+   "ratio": 1.0004079955314784
+  },
+  "new": {
+   "found_s": 0.9062944370211247,
+   "class": "exact",
+   "ratio": 1.0005505604427403
+  }
+ },
+ {
+  "desc": {
+   "seed": 66,
+   "bpm": 70.21086867209954,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 6.0,
+   "duration_s": 28.750497646742524
+  },
+  "beat_s": 0.854568546647862,
+  "old": {
+   "found_s": 0.857370343208628,
+   "class": "exact",
+   "ratio": 1.0032786095062314
+  },
+  "new": {
+   "found_s": 0.8554806435986917,
+   "class": "exact",
+   "ratio": 1.0010673186538488
+  }
+ },
+ {
+  "desc": {
+   "seed": 67,
+   "bpm": 131.95790501363837,
+   "beats_per_bar": 5,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 30.0,
+   "duration_s": 21.770331009453052
+  },
+  "beat_s": 0.45469045597381047,
+  "old": {
+   "found_s": 0.45461002141729173,
+   "class": "exact",
+   "ratio": 0.9998231004071848
+  },
+  "new": {
+   "found_s": 0.4547858009064384,
+   "class": "exact",
+   "ratio": 1.0002096919593875
+  }
+ },
+ {
+  "desc": {
+   "seed": 68,
+   "bpm": 154.29311807793317,
+   "beats_per_bar": 5,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 30.0,
+   "duration_s": 30.520936201706988
+  },
+  "beat_s": 0.38887022796243,
+  "old": {
+   "found_s": 0.38895465187014516,
+   "class": "exact",
+   "ratio": 1.0002171004660283
+  },
+  "new": {
+   "found_s": 0.38884792937467494,
+   "class": "exact",
+   "ratio": 0.9999426580227757
+  }
+ },
+ {
+  "desc": {
+   "seed": 69,
+   "bpm": 181.09463223017528,
+   "beats_per_bar": 6,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 6.0,
+   "duration_s": 28.74831529236822
+  },
+  "beat_s": 0.33131848946101655,
+  "old": {
+   "found_s": 0.3323691741370533,
+   "class": "exact",
+   "ratio": 1.0031712225832792
+  },
+  "new": {
+   "found_s": 0.3312778661884743,
+   "class": "exact",
+   "ratio": 0.9998773890566497
+  }
+ },
+ {
+  "desc": {
+   "seed": 70,
+   "bpm": 105.10650567443702,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 15.0,
+   "duration_s": 20.05833214437486
+  },
+  "beat_s": 0.5708495360491527,
+  "old": {
+   "found_s": 0.5644869871425268,
+   "class": "exact",
+   "ratio": 0.988854245287364
+  },
+  "new": {
+   "found_s": 0.5684655929746254,
+   "class": "exact",
+   "ratio": 0.9958238678951611
+  }
+ },
+ {
+  "desc": {
+   "seed": 71,
+   "bpm": 166.53811822506123,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 0.0,
+   "duration_s": 24.02823681235815
+  },
+  "beat_s": 0.3602778789593108,
+  "old": {
+   "found_s": 0.7186618924200913,
+   "class": "multiple",
+   "ratio": 1.9947433200617233
+  },
+  "new": {
+   "found_s": 0.35910622438621903,
+   "class": "exact",
+   "ratio": 0.9967479142031251
+  }
+ },
+ {
+  "desc": {
+   "seed": 72,
+   "bpm": 92.40275577976027,
+   "beats_per_bar": 5,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 0.0,
+   "duration_s": 25.826338383193047
+  },
+  "beat_s": 0.6493312833981765,
+  "old": {
+   "found_s": 0.6492081211620744,
+   "class": "exact",
+   "ratio": 0.9998103244996028
+  },
+  "new": {
+   "found_s": 0.6493273492248497,
+   "class": "exact",
+   "ratio": 0.9999939411923815
+  }
+ },
+ {
+  "desc": {
+   "seed": 73,
+   "bpm": 97.59948936853142,
+   "beats_per_bar": 6,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5038410019177864,
+   "jitter_s": 0.02,
+   "snr_db": 0.0,
+   "duration_s": 34.46476663554563
+  },
+  "beat_s": 0.614757314697033,
+  "old": {
+   "found_s": 0.6166385162378104,
+   "class": "exact",
+   "ratio": 1.003060071829653
+  },
+  "new": {
+   "found_s": 0.616056985361743,
+   "class": "exact",
+   "ratio": 1.0021141198870493
+  }
+ },
+ {
+  "desc": {
+   "seed": 74,
+   "bpm": 154.6965795248617,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 15.0,
+   "duration_s": 34.96751033222269
+  },
+  "beat_s": 0.38785602231339084,
+  "old": {
+   "found_s": 0.7767888422144548,
+   "class": "multiple",
+   "ratio": 2.0027762817275607
+  },
+  "new": {
+   "found_s": 0.3875024934113394,
+   "class": "exact",
+   "ratio": 0.999088504801491
+  }
+ },
+ {
+  "desc": {
+   "seed": 75,
+   "bpm": 152.99506335337776,
+   "beats_per_bar": 3,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 0.0,
+   "duration_s": 37.335559673122795
+  },
+  "beat_s": 0.3921695163550213,
+  "old": {
+   "found_s": 0.7872184703356797,
+   "class": "multiple",
+   "ratio": 2.0073423290326073
+  },
+  "new": {
+   "found_s": 0.3925054359378881,
+   "class": "exact",
+   "ratio": 1.000856567297706
+  }
+ },
+ {
+  "desc": {
+   "seed": 76,
+   "bpm": 155.5359638055495,
+   "beats_per_bar": 4,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 15.0,
+   "duration_s": 39.334897954315835
+  },
+  "beat_s": 0.3857628713768848,
+  "old": {
+   "found_s": 0.3870510513360044,
+   "class": "exact",
+   "ratio": 1.003339305191611
+  },
+  "new": {
+   "found_s": 0.38563844981112166,
+   "class": "exact",
+   "ratio": 0.9996774661975139
+  }
+ },
+ {
+  "desc": {
+   "seed": 77,
+   "bpm": 94.14434757348135,
+   "beats_per_bar": 5,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 15.0,
+   "duration_s": 21.816032799833597
+  },
+  "beat_s": 0.63731919702528,
+  "old": {
+   "found_s": 0.6374892789685648,
+   "class": "exact",
+   "ratio": 1.0002668708930764
+  },
+  "new": {
+   "found_s": 0.6372514887755841,
+   "class": "exact",
+   "ratio": 0.9998937608501174
+  }
+ },
+ {
+  "desc": {
+   "seed": 78,
+   "bpm": 132.53631283813493,
+   "beats_per_bar": 3,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 15.0,
+   "duration_s": 26.482821494009237
+  },
+  "beat_s": 0.4527061204220862,
+  "old": {
+   "found_s": 0.904386421740428,
+   "class": "multiple",
+   "ratio": 1.99773402863918
+  },
+  "new": {
+   "found_s": 0.4540698720300303,
+   "class": "exact",
+   "ratio": 1.0030124434957333
+  }
+ },
+ {
+  "desc": {
+   "seed": 79,
+   "bpm": 189.2313895603064,
+   "beats_per_bar": 7,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5150842443257274,
+   "jitter_s": 0.0,
+   "snr_db": 6.0,
+   "duration_s": 32.426299162244
+  },
+  "beat_s": 0.317072131317191,
+  "old": {
+   "found_s": 0.3171975803231039,
+   "class": "exact",
+   "ratio": 1.0003956481617977
+  },
+  "new": {
+   "found_s": 0.31706520276032385,
+   "class": "exact",
+   "ratio": 0.9999781483259398
+  }
+ },
+ {
+  "desc": {
+   "seed": 80,
+   "bpm": 65.12871931271653,
+   "beats_per_bar": 2,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 0.0,
+   "duration_s": 34.90532911956646
+  },
+  "beat_s": 0.9212525692683914,
+  "old": {
+   "found_s": 0.9280795473698904,
+   "class": "exact",
+   "ratio": 1.0074105390087764
+  },
+  "new": {
+   "found_s": 0.921286368474567,
+   "class": "exact",
+   "ratio": 1.0000366883168668
+  }
+ },
+ {
+  "desc": {
+   "seed": 81,
+   "bpm": 187.68522468650326,
+   "beats_per_bar": 2,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 0.0,
+   "duration_s": 25.56461003870691
+  },
+  "beat_s": 0.31968419517423363,
+  "old": {
+   "found_s": 0.6378151385274807,
+   "class": "multiple",
+   "ratio": 1.9951412930497237
+  },
+  "new": {
+   "found_s": 0.31938524416983105,
+   "class": "exact",
+   "ratio": 0.9990648552261407
+  }
+ },
+ {
+  "desc": {
+   "seed": 82,
+   "bpm": 90.47609590703152,
+   "beats_per_bar": 5,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 6.0,
+   "duration_s": 26.10676256961617
+  },
+  "beat_s": 0.6631585878954463,
+  "old": {
+   "found_s": 1.3293731075434718,
+   "class": "multiple",
+   "ratio": 2.0046081462388616
+  },
+  "new": {
+   "found_s": 0.6637790808341943,
+   "class": "exact",
+   "ratio": 1.0009356629772632
+  }
+ },
+ {
+  "desc": {
+   "seed": 83,
+   "bpm": 148.0730521777648,
+   "beats_per_bar": 5,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 15.0,
+   "duration_s": 27.434749846635214
+  },
+  "beat_s": 0.4052053977246903,
+  "old": {
+   "found_s": 0.4049316578309864,
+   "class": "exact",
+   "ratio": 0.9993244416406075
+  },
+  "new": {
+   "found_s": 0.40527216104703206,
+   "class": "exact",
+   "ratio": 1.0001647641485447
+  }
+ },
+ {
+  "desc": {
+   "seed": 84,
+   "bpm": 164.90045362047687,
+   "beats_per_bar": 3,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 15.0,
+   "duration_s": 25.657044751084527
+  },
+  "beat_s": 0.36385588203469543,
+  "old": {
+   "found_s": 1.0932441545340938,
+   "class": "multiple",
+   "ratio": 3.00460761667678
+  },
+  "new": {
+   "found_s": 0.36484859193974317,
+   "class": "exact",
+   "ratio": 1.0027283052275986
+  }
+ },
+ {
+  "desc": {
+   "seed": 85,
+   "bpm": 72.40338421557736,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 15.0,
+   "duration_s": 24.625770021458816
+  },
+  "beat_s": 0.8286905460296314,
+  "old": {
+   "found_s": 1.6556940765191734,
+   "class": "multiple",
+   "ratio": 1.9979642394278876
+  },
+  "new": {
+   "found_s": 0.8292034208111921,
+   "class": "exact",
+   "ratio": 1.0006188978310637
+  }
+ },
+ {
+  "desc": {
+   "seed": 86,
+   "bpm": 146.181858414791,
+   "beats_per_bar": 3,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 30.0,
+   "duration_s": 28.081015999583375
+  },
+  "beat_s": 0.41044764822834584,
+  "old": {
+   "found_s": 0.4103959382682542,
+   "class": "exact",
+   "ratio": 0.9998740156989209
+  },
+  "new": {
+   "found_s": 0.4104342017547417,
+   "class": "exact",
+   "ratio": 0.999967239491657
+  }
+ },
+ {
+  "desc": {
+   "seed": 87,
+   "bpm": 84.13487903866579,
+   "beats_per_bar": 2,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 6.0,
+   "duration_s": 30.042329834402423
+  },
+  "beat_s": 0.7131406223621699,
+  "old": {
+   "found_s": 0.7131062398111627,
+   "class": "exact",
+   "ratio": 0.9999517871371661
+  },
+  "new": {
+   "found_s": 0.7131821324165548,
+   "class": "exact",
+   "ratio": 1.0000582073900761
+  }
+ },
+ {
+  "desc": {
+   "seed": 88,
+   "bpm": 156.39132994134042,
+   "beats_per_bar": 7,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 6.0,
+   "duration_s": 26.287914382787797
+  },
+  "beat_s": 0.3836529814185027,
+  "old": {
+   "found_s": 0.38349196413940867,
+   "class": "exact",
+   "ratio": 0.9995803048929826
+  },
+  "new": {
+   "found_s": 0.3834777685714704,
+   "class": "exact",
+   "ratio": 0.9995433038304969
+  }
+ },
+ {
+  "desc": {
+   "seed": 89,
+   "bpm": 162.35668974501147,
+   "beats_per_bar": 3,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 30.0,
+   "duration_s": 33.22129442856075
+  },
+  "beat_s": 0.36955668469363795,
+  "old": {
+   "found_s": 0.3695120371016963,
+   "class": "exact",
+   "ratio": 0.9998791860794544
+  },
+  "new": {
+   "found_s": 0.36952104398891467,
+   "class": "exact",
+   "ratio": 0.9999035582193492
+  }
+ },
+ {
+  "desc": {
+   "seed": 90,
+   "bpm": 132.59374053036376,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 15.0,
+   "duration_s": 37.14270663351601
+  },
+  "beat_s": 0.45251004881531415,
+  "old": {
+   "found_s": 0.4525308897366928,
+   "class": "exact",
+   "ratio": 1.0000460562620284
+  },
+  "new": {
+   "found_s": 0.4525175205209551,
+   "class": "exact",
+   "ratio": 1.0000165116899846
+  }
+ },
+ {
+  "desc": {
+   "seed": 91,
+   "bpm": 174.7040886233446,
+   "beats_per_bar": 4,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 0.0,
+   "duration_s": 37.86074388227681
+  },
+  "beat_s": 0.34343786955872413,
+  "old": {
+   "found_s": 0.3438290539320045,
+   "class": "exact",
+   "ratio": 1.0011390251569607
+  },
+  "new": {
+   "found_s": 0.3434411422535818,
+   "class": "exact",
+   "ratio": 1.0000095292195408
+  }
+ },
+ {
+  "desc": {
+   "seed": 92,
+   "bpm": 109.04490888320089,
+   "beats_per_bar": 7,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.6028965055670723,
+   "jitter_s": 0.005,
+   "snr_db": 6.0,
+   "duration_s": 20.844219736820733
+  },
+  "beat_s": 0.5502320155475264,
+  "old": {
+   "found_s": 0.5504966674739662,
+   "class": "exact",
+   "ratio": 1.000480982420073
+  },
+  "new": {
+   "found_s": 0.5503064772563828,
+   "class": "exact",
+   "ratio": 1.0001353278376255
+  }
+ },
+ {
+  "desc": {
+   "seed": 93,
+   "bpm": 124.30995601177331,
+   "beats_per_bar": 5,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 15.0,
+   "duration_s": 28.809410660500305
+  },
+  "beat_s": 0.4826644777697246,
+  "old": {
+   "found_s": 0.48274700723046343,
+   "class": "exact",
+   "ratio": 1.0001709872272353
+  },
+  "new": {
+   "found_s": 0.48275994930816607,
+   "class": "exact",
+   "ratio": 1.000197801045734
+  }
+ },
+ {
+  "desc": {
+   "seed": 94,
+   "bpm": 161.08623712463927,
+   "beats_per_bar": 7,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 6.0,
+   "duration_s": 37.736261930402584
+  },
+  "beat_s": 0.3724712990444705,
+  "old": {
+   "found_s": 0.37257679495938506,
+   "class": "exact",
+   "ratio": 1.0002832323327602
+  },
+  "new": {
+   "found_s": 0.37248189374586704,
+   "class": "exact",
+   "ratio": 1.0000284443430238
+  }
+ },
+ {
+  "desc": {
+   "seed": 95,
+   "bpm": 91.66247659550787,
+   "beats_per_bar": 2,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 30.0,
+   "duration_s": 35.56516980632355
+  },
+  "beat_s": 0.6545753750989142,
+  "old": {
+   "found_s": 0.6546239843884488,
+   "class": "exact",
+   "ratio": 1.0000742607977382
+  },
+  "new": {
+   "found_s": 0.6542663974125955,
+   "class": "exact",
+   "ratio": 0.9995279723343213
+  }
+ },
+ {
+  "desc": {
+   "seed": 96,
+   "bpm": 136.76144967053938,
+   "beats_per_bar": 6,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 30.0,
+   "duration_s": 39.22518996651142
+  },
+  "beat_s": 0.4387201228455899,
+  "old": {
+   "found_s": 0.43881355938187117,
+   "class": "exact",
+   "ratio": 1.0002129752692337
+  },
+  "new": {
+   "found_s": 0.4386752369176916,
+   "class": "exact",
+   "ratio": 0.999897688923847
+  }
+ },
+ {
+  "desc": {
+   "seed": 97,
+   "bpm": 132.72747741538944,
+   "beats_per_bar": 2,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5895897066384902,
+   "jitter_s": 0.02,
+   "snr_db": 30.0,
+   "duration_s": 33.740848898781124
+  },
+  "beat_s": 0.452054097375945,
+  "old": {
+   "found_s": 0.9047058354359765,
+   "class": "multiple",
+   "ratio": 2.001322055673327
+  },
+  "new": {
+   "found_s": 0.45111759085066955,
+   "class": "exact",
+   "ratio": 0.9979283308552857
+  }
+ },
+ {
+  "desc": {
+   "seed": 98,
+   "bpm": 70.10793036595122,
+   "beats_per_bar": 6,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 15.0,
+   "duration_s": 20.91623962654378
+  },
+  "beat_s": 0.8558232954076724,
+  "old": {
+   "found_s": 0.8557336490223364,
+   "class": "exact",
+   "ratio": 0.9998952512909883
+  },
+  "new": {
+   "found_s": 0.855635988527691,
+   "class": "exact",
+   "ratio": 0.9997811383716866
+  }
+ },
+ {
+  "desc": {
+   "seed": 99,
+   "bpm": 131.66823435688724,
+   "beats_per_bar": 6,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 6.0,
+   "duration_s": 31.090229064977933
+  },
+  "beat_s": 0.45569077684576353,
+  "old": {
+   "found_s": 0.9120582363426084,
+   "class": "multiple",
+   "ratio": 2.001484960164797
+  },
+  "new": {
+   "found_s": 0.4560449878115261,
+   "class": "exact",
+   "ratio": 1.0007773055408633
+  }
+ },
+ {
+  "desc": {
+   "seed": 100,
+   "bpm": 100.4408538367685,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 15.0,
+   "duration_s": 38.20678762590906
+  },
+  "beat_s": 0.5973664869228316,
+  "old": {
+   "found_s": 0.5974129280549486,
+   "class": "exact",
+   "ratio": 1.0000777431160497
+  },
+  "new": {
+   "found_s": 0.5973518945406371,
+   "class": "exact",
+   "ratio": 0.9999755721445479
+  }
+ },
+ {
+  "desc": {
+   "seed": 101,
+   "bpm": 169.87275767579678,
+   "beats_per_bar": 6,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.6107270823707497,
+   "jitter_s": 0.012,
+   "snr_db": 30.0,
+   "duration_s": 24.490486614702625
+  },
+  "beat_s": 0.35320554526176806,
+  "old": {
+   "found_s": 0.34938719757027137,
+   "class": "exact",
+   "ratio": 0.9891894457980074
+  },
+  "new": {
+   "found_s": 0.35319083650377253,
+   "class": "exact",
+   "ratio": 0.9999583563786218
+  }
+ },
+ {
+  "desc": {
+   "seed": 102,
+   "bpm": 97.66857440279924,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 15.0,
+   "duration_s": 37.827148597447746
+  },
+  "beat_s": 0.6143224713463246,
+  "old": {
+   "found_s": 0.6150776884272717,
+   "class": "exact",
+   "ratio": 1.0012293495943458
+  },
+  "new": {
+   "found_s": 0.6144054019386594,
+   "class": "exact",
+   "ratio": 1.0001349952121288
+  }
+ },
+ {
+  "desc": {
+   "seed": 103,
+   "bpm": 85.48136193320272,
+   "beats_per_bar": 2,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 6.0,
+   "duration_s": 34.025915272584825
+  },
+  "beat_s": 0.7019073941157548,
+  "old": {
+   "found_s": 0.6909829619058312,
+   "class": "exact",
+   "ratio": 0.9844360776058131
+  },
+  "new": {
+   "found_s": 0.702301218486612,
+   "class": "exact",
+   "ratio": 1.000561077393056
+  }
+ },
+ {
+  "desc": {
+   "seed": 104,
+   "bpm": 90.25243595175544,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 15.0,
+   "duration_s": 28.257789650810345
+  },
+  "beat_s": 0.6648020008243665,
+  "old": {
+   "found_s": 0.6646741169949397,
+   "class": "exact",
+   "ratio": 0.99980763621459
+  },
+  "new": {
+   "found_s": 0.664803749766493,
+   "class": "exact",
+   "ratio": 1.0000026307714545
+  }
+ },
+ {
+  "desc": {
+   "seed": 105,
+   "bpm": 73.54212376252732,
+   "beats_per_bar": 7,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 6.0,
+   "duration_s": 30.80965759766581
+  },
+  "beat_s": 0.8158589517178509,
+  "old": {
+   "found_s": 0.819675486064024,
+   "class": "exact",
+   "ratio": 1.0046779340205032
+  },
+  "new": {
+   "found_s": 0.8159616695227192,
+   "class": "exact",
+   "ratio": 1.0001259014253039
+  }
+ },
+ {
+  "desc": {
+   "seed": 106,
+   "bpm": 77.19013657633103,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 15.0,
+   "duration_s": 26.432866503974942
+  },
+  "beat_s": 0.7773013841045324,
+  "old": {
+   "found_s": 0.7778909310326061,
+   "class": "exact",
+   "ratio": 1.000758453464936
+  },
+  "new": {
+   "found_s": 0.38867956670484965,
+   "class": "subdivision",
+   "ratio": 0.5000371473062751
+  }
+ },
+ {
+  "desc": {
+   "seed": 107,
+   "bpm": 130.38323346869453,
+   "beats_per_bar": 7,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 30.0,
+   "duration_s": 23.344135982886694
+  },
+  "beat_s": 0.4601818685100045,
+  "old": {
+   "found_s": 0.45932781145172713,
+   "class": "exact",
+   "ratio": 0.9981440879862506
+  },
+  "new": {
+   "found_s": 0.45935708949452214,
+   "class": "exact",
+   "ratio": 0.9982077107510714
+  }
+ },
+ {
+  "desc": {
+   "seed": 108,
+   "bpm": 76.50677797434972,
+   "beats_per_bar": 7,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 30.0,
+   "duration_s": 37.87600634688725
+  },
+  "beat_s": 0.7842442406882706,
+  "old": {
+   "found_s": 0.7843494916857242,
+   "class": "exact",
+   "ratio": 1.0001342069115626
+  },
+  "new": {
+   "found_s": 0.7842670855675056,
+   "class": "exact",
+   "ratio": 1.0000291298017248
+  }
+ },
+ {
+  "desc": {
+   "seed": 109,
+   "bpm": 165.0106505902212,
+   "beats_per_bar": 3,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 0.0,
+   "duration_s": 30.077725199030013
+  },
+  "beat_s": 0.3636128927762418,
+  "old": {
+   "found_s": 0.36369209761679794,
+   "class": "exact",
+   "ratio": 1.0002178273711677
+  },
+  "new": {
+   "found_s": 0.36352838035260154,
+   "class": "exact",
+   "ratio": 0.9997675758332027
+  }
+ },
+ {
+  "desc": {
+   "seed": 110,
+   "bpm": 159.75326627313586,
+   "beats_per_bar": 5,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 0.0,
+   "duration_s": 34.052525276870995
+  },
+  "beat_s": 0.3755791753103555,
+  "old": {
+   "found_s": 1.8790905580189996,
+   "class": "multiple",
+   "ratio": 5.003180904442412
+  },
+  "new": {
+   "found_s": 0.37528782047609627,
+   "class": "exact",
+   "ratio": 0.9992242518930436
+  }
+ },
+ {
+  "desc": {
+   "seed": 111,
+   "bpm": 75.4175020148786,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 6.0,
+   "duration_s": 35.95193052730468
+  },
+  "beat_s": 0.7955712983991835,
+  "old": {
+   "found_s": 0.7954145767668188,
+   "class": "exact",
+   "ratio": 0.9998030074329227
+  },
+  "new": {
+   "found_s": 0.7955711770087358,
+   "class": "exact",
+   "ratio": 0.9999998474172611
+  }
+ },
+ {
+  "desc": {
+   "seed": 112,
+   "bpm": 95.90713970272597,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 30.0,
+   "duration_s": 36.541976265213776
+  },
+  "beat_s": 0.625605144580228,
+  "old": {
+   "found_s": 0.6231886629194374,
+   "class": "exact",
+   "ratio": 0.9961373692628247
+  },
+  "new": {
+   "found_s": 0.623441948377635,
+   "class": "exact",
+   "ratio": 0.9965422339932252
+  }
+ },
+ {
+  "desc": {
+   "seed": 113,
+   "bpm": 50.13339305161627,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 6.0,
+   "duration_s": 29.934589983698075
+  },
+  "beat_s": 1.1968070850146784,
+  "old": {
+   "found_s": 1.1964542499296897,
+   "class": "exact",
+   "ratio": 0.9997051863333645
+  },
+  "new": {
+   "found_s": 1.1968627450020524,
+   "class": "exact",
+   "ratio": 1.0000465070670712
+  }
+ },
+ {
+  "desc": {
+   "seed": 114,
+   "bpm": 120.67379160080688,
+   "beats_per_bar": 7,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 15.0,
+   "duration_s": 37.85122239040954
+  },
+  "beat_s": 0.49720821069816135,
+  "old": {
+   "found_s": 0.9960550562141693,
+   "class": "multiple",
+   "ratio": 2.003295671275311
+  },
+  "new": {
+   "found_s": 0.49679644001086815,
+   "class": "exact",
+   "ratio": 0.9991718344982377
+  }
+ },
+ {
+  "desc": {
+   "seed": 115,
+   "bpm": 136.183668532696,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 6.0,
+   "duration_s": 28.19477160924201
+  },
+  "beat_s": 0.4405814635959432,
+  "old": {
+   "found_s": 0.4404861093021425,
+   "class": "exact",
+   "ratio": 0.9997835717076646
+  },
+  "new": {
+   "found_s": 0.4390401743039469,
+   "class": "exact",
+   "ratio": 0.9965016928324296
+  }
+ },
+ {
+  "desc": {
+   "seed": 116,
+   "bpm": 107.0024711602697,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 0.0,
+   "duration_s": 26.003263519751915
+  },
+  "beat_s": 0.5607347134079849,
+  "old": {
+   "found_s": 1.679904630248309,
+   "class": "multiple",
+   "ratio": 2.9958991125024705
+  },
+  "new": {
+   "found_s": 0.5587951226356053,
+   "class": "exact",
+   "ratio": 0.9965409832385954
+  }
+ },
+ {
+  "desc": {
+   "seed": 117,
+   "bpm": 144.56855963554145,
+   "beats_per_bar": 3,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 30.0,
+   "duration_s": 23.626065083760604
+  },
+  "beat_s": 0.4150279988350199,
+  "old": {
+   "found_s": 0.41514156053017953,
+   "class": "exact",
+   "ratio": 1.0002736241783166
+  },
+  "new": {
+   "found_s": 0.41508185314592205,
+   "class": "exact",
+   "ratio": 1.000129760669288
+  }
+ },
+ {
+  "desc": {
+   "seed": 118,
+   "bpm": 98.85759206057992,
+   "beats_per_bar": 5,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 6.0,
+   "duration_s": 38.562565469238294
+  },
+  "beat_s": 0.6069336582994254,
+  "old": {
+   "found_s": 0.607039821598557,
+   "class": "exact",
+   "ratio": 1.0001749174686225
+  },
+  "new": {
+   "found_s": 0.6069377640131584,
+   "class": "exact",
+   "ratio": 1.000006764682889
+  }
+ },
+ {
+  "desc": {
+   "seed": 119,
+   "bpm": 174.66245150955382,
+   "beats_per_bar": 5,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 0.0,
+   "duration_s": 20.333567216014238
+  },
+  "beat_s": 0.343519740398915,
+  "old": {
+   "found_s": 1.7174608533395417,
+   "class": "multiple",
+   "ratio": 4.99959871693291
+  },
+  "new": {
+   "found_s": 0.3435254675612144,
+   "class": "exact",
+   "ratio": 1.000016672003457
+  }
+ },
+ {
+  "desc": {
+   "seed": 120,
+   "bpm": 95.15131440997753,
+   "beats_per_bar": 3,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 0.0,
+   "duration_s": 39.58866376576752
+  },
+  "beat_s": 0.6305745787333908,
+  "old": {
+   "found_s": 0.6325243188499409,
+   "class": "exact",
+   "ratio": 1.0030920055807933
+  },
+  "new": {
+   "found_s": 0.6302549618904805,
+   "class": "exact",
+   "ratio": 0.9994931339548252
+  }
+ },
+ {
+  "desc": {
+   "seed": 121,
+   "bpm": 175.39643656162627,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 0.0,
+   "duration_s": 24.284444125976854
+  },
+  "beat_s": 0.3420822063218984,
+  "old": {
+   "found_s": 1.0289568703527587,
+   "class": "multiple",
+   "ratio": 3.0079228072579527
+  },
+  "new": {
+   "found_s": 0.3421470868763217,
+   "class": "exact",
+   "ratio": 1.0001896636341332
+  }
+ },
+ {
+  "desc": {
+   "seed": 122,
+   "bpm": 112.86182343426592,
+   "beats_per_bar": 3,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 15.0,
+   "duration_s": 38.13573588871115
+  },
+  "beat_s": 0.5316235213490573,
+  "old": {
+   "found_s": 0.5316856423227725,
+   "class": "exact",
+   "ratio": 1.00011685143945
+  },
+  "new": {
+   "found_s": 0.5316133679617941,
+   "class": "exact",
+   "ratio": 0.9999809011699907
+  }
+ },
+ {
+  "desc": {
+   "seed": 123,
+   "bpm": 90.8503821881656,
+   "beats_per_bar": 5,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5974513407986928,
+   "jitter_s": 0.0,
+   "snr_db": 0.0,
+   "duration_s": 37.79785386222372
+  },
+  "beat_s": 0.660426500746364,
+  "old": {
+   "found_s": 0.6603734146937245,
+   "class": "exact",
+   "ratio": 0.9999196185304806
+  },
+  "new": {
+   "found_s": 0.6604133319067151,
+   "class": "exact",
+   "ratio": 0.9999800600980822
+  }
+ },
+ {
+  "desc": {
+   "seed": 124,
+   "bpm": 195.67904245319934,
+   "beats_per_bar": 6,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 30.0,
+   "duration_s": 31.772944196023477
+  },
+  "beat_s": 0.30662455850043435,
+  "old": {
+   "found_s": 0.30604674278208416,
+   "class": "exact",
+   "ratio": 0.9981155595586471
+  },
+  "new": {
+   "found_s": 0.30640384379936075,
+   "class": "exact",
+   "ratio": 0.999280179310643
+  }
+ },
+ {
+  "desc": {
+   "seed": 125,
+   "bpm": 114.62264864859236,
+   "beats_per_bar": 2,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5936287993628202,
+   "jitter_s": 0.0,
+   "snr_db": 15.0,
+   "duration_s": 22.376877562479073
+  },
+  "beat_s": 0.5234567575204679,
+  "old": {
+   "found_s": 0.5234612685806438,
+   "class": "exact",
+   "ratio": 1.0000086178277594
+  },
+  "new": {
+   "found_s": 0.5234877788238759,
+   "class": "exact",
+   "ratio": 1.0000592623993525
+  }
+ },
+ {
+  "desc": {
+   "seed": 126,
+   "bpm": 44.6289483196871,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 0.0,
+   "duration_s": 36.34150209230967
+  },
+  "beat_s": 1.3444188639670969,
+  "old": {
+   "found_s": 1.3387723562245792,
+   "class": "exact",
+   "ratio": 0.9958000382962078
+  },
+  "new": {
+   "found_s": 1.3437159653334767,
+   "class": "exact",
+   "ratio": 0.9994771728867697
+  }
+ },
+ {
+  "desc": {
+   "seed": 127,
+   "bpm": 60.95327360312187,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 0.0,
+   "duration_s": 39.195813018975656
+  },
+  "beat_s": 0.9843605839888303,
+  "old": {
+   "found_s": 1.9657422185200812,
+   "class": "multiple",
+   "ratio": 1.9969737213110381
+  },
+  "new": {
+   "found_s": 0.9846993250465528,
+   "class": "exact",
+   "ratio": 1.000344122939533
+  }
+ },
+ {
+  "desc": {
+   "seed": 128,
+   "bpm": 120.69937052325655,
+   "beats_per_bar": 6,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5703796764349435,
+   "jitter_s": 0.005,
+   "snr_db": 0.0,
+   "duration_s": 28.255150490229425
+  },
+  "beat_s": 0.49710284104952396,
+  "old": {
+   "found_s": 0.49750289115557633,
+   "class": "exact",
+   "ratio": 1.0008047632663046
+  },
+  "new": {
+   "found_s": 0.49715301831161757,
+   "class": "exact",
+   "ratio": 1.0001009393991547
+  }
+ },
+ {
+  "desc": {
+   "seed": 129,
+   "bpm": 185.73789562102382,
+   "beats_per_bar": 3,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 6.0,
+   "duration_s": 38.3512299552193
+  },
+  "beat_s": 0.3230358554423535,
+  "old": {
+   "found_s": 1.9378605758189589,
+   "class": "multiple",
+   "ratio": 5.998902422659315
+  },
+  "new": {
+   "found_s": 0.32518635924554357,
+   "class": "exact",
+   "ratio": 1.006657167515492
+  }
+ },
+ {
+  "desc": {
+   "seed": 130,
+   "bpm": 102.83181172160246,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 0.0,
+   "duration_s": 34.3011823430749
+  },
+  "beat_s": 0.5834770290971686,
+  "old": {
+   "found_s": 0.5840546392714697,
+   "class": "exact",
+   "ratio": 1.000989945011537
+  },
+  "new": {
+   "found_s": 0.5834741154664125,
+   "class": "exact",
+   "ratio": 0.999995006434511
+  }
+ },
+ {
+  "desc": {
+   "seed": 131,
+   "bpm": 134.5267721941952,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 15.0,
+   "duration_s": 31.551103493627622
+  },
+  "beat_s": 0.44600787650942386,
+  "old": {
+   "found_s": 0.4458375513553608,
+   "class": "exact",
+   "ratio": 0.9996181117800069
+  },
+  "new": {
+   "found_s": 0.44601208620827626,
+   "class": "exact",
+   "ratio": 1.0000094386199754
+  }
+ },
+ {
+  "desc": {
+   "seed": 132,
+   "bpm": 92.16288304211398,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 0.0,
+   "duration_s": 30.763695081129125
+  },
+  "beat_s": 0.6510213007614237,
+  "old": {
+   "found_s": 0.6545417607555216,
+   "class": "exact",
+   "ratio": 1.005407595711508
+  },
+  "new": {
+   "found_s": 0.6511956484635737,
+   "class": "exact",
+   "ratio": 1.0002678064480317
+  }
+ },
+ {
+  "desc": {
+   "seed": 133,
+   "bpm": 110.51887145568185,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 6.0,
+   "duration_s": 37.460971114804565
+  },
+  "beat_s": 0.5428937086464917,
+  "old": {
+   "found_s": 1.0824681706337833,
+   "class": "multiple",
+   "ratio": 1.9938860100857028
+  },
+  "new": {
+   "found_s": 0.5428210769635848,
+   "class": "exact",
+   "ratio": 0.9998662138062202
+  }
+ },
+ {
+  "desc": {
+   "seed": 134,
+   "bpm": 136.18596064335793,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 15.0,
+   "duration_s": 33.19073474402889
+  },
+  "beat_s": 0.44057404828334135,
+  "old": {
+   "found_s": 0.8780733830729499,
+   "class": "multiple",
+   "ratio": 1.9930211198192151
+  },
+  "new": {
+   "found_s": 0.43697331930086963,
+   "class": "exact",
+   "ratio": 0.9918271877417618
+  }
+ },
+ {
+  "desc": {
+   "seed": 135,
+   "bpm": 186.1054105639157,
+   "beats_per_bar": 7,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5221230185832769,
+   "jitter_s": 0.02,
+   "snr_db": 30.0,
+   "duration_s": 31.769708278215244
+  },
+  "beat_s": 0.3223979346876307,
+  "old": {
+   "found_s": 0.3272369174162778,
+   "class": "exact",
+   "ratio": 1.0150093477904427
+  },
+  "new": {
+   "found_s": 0.32212006358303175,
+   "class": "exact",
+   "ratio": 0.9991381113999126
+  }
+ },
+ {
+  "desc": {
+   "seed": 136,
+   "bpm": 48.1536611099709,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 15.0,
+   "duration_s": 38.911936080321155
+  },
+  "beat_s": 1.2460111779034835,
+  "old": {
+   "found_s": 1.2455654759268264,
+   "class": "exact",
+   "ratio": 0.9996422969676668
+  },
+  "new": {
+   "found_s": 1.2457337069194088,
+   "class": "exact",
+   "ratio": 0.9997773126044169
+  }
+ },
+ {
+  "desc": {
+   "seed": 137,
+   "bpm": 119.7730092510919,
+   "beats_per_bar": 3,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 30.0,
+   "duration_s": 21.351782713047072
+  },
+  "beat_s": 0.5009475872332482,
+  "old": {
+   "found_s": 0.5047627398000611,
+   "class": "exact",
+   "ratio": 1.007615871727987
+  },
+  "new": {
+   "found_s": 0.501604732258071,
+   "class": "exact",
+   "ratio": 1.0013118039522901
+  }
+ },
+ {
+  "desc": {
+   "seed": 138,
+   "bpm": 138.46681364755665,
+   "beats_per_bar": 6,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 15.0,
+   "duration_s": 23.378179714776696
+  },
+  "beat_s": 0.4333168245838287,
+  "old": {
+   "found_s": 1.2960983306307006,
+   "class": "multiple",
+   "ratio": 2.991110100272508
+  },
+  "new": {
+   "found_s": 0.8649770254162252,
+   "class": "multiple",
+   "ratio": 1.9961768764621055
+  }
+ },
+ {
+  "desc": {
+   "seed": 139,
+   "bpm": 79.85806917023939,
+   "beats_per_bar": 6,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 30.0,
+   "duration_s": 24.60098836778662
+  },
+  "beat_s": 0.7513329663918312,
+  "old": {
+   "found_s": 0.7513826623510081,
+   "class": "exact",
+   "ratio": 1.0000661437224239
+  },
+  "new": {
+   "found_s": 0.7513204465580614,
+   "class": "exact",
+   "ratio": 0.9999833365041468
+  }
+ },
+ {
+  "desc": {
+   "seed": 140,
+   "bpm": 158.9917014067271,
+   "beats_per_bar": 6,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 6.0,
+   "duration_s": 24.38233372644816
+  },
+  "beat_s": 0.3773781868432873,
+  "old": {
+   "found_s": 0.37748916109062786,
+   "class": "exact",
+   "ratio": 1.0002940664066169
+  },
+  "new": {
+   "found_s": 0.37739129628719004,
+   "class": "exact",
+   "ratio": 1.0000347382131767
+  }
+ },
+ {
+  "desc": {
+   "seed": 141,
+   "bpm": 60.25857267374084,
+   "beats_per_bar": 6,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 30.0,
+   "duration_s": 25.885152877756042
+  },
+  "beat_s": 0.9957089479178203,
+  "old": {
+   "found_s": 0.9957162920782955,
+   "class": "exact",
+   "ratio": 1.000007375810462
+  },
+  "new": {
+   "found_s": 0.9956753255172353,
+   "class": "exact",
+   "ratio": 0.9999662327021813
+  }
+ },
+ {
+  "desc": {
+   "seed": 142,
+   "bpm": 85.34817472833839,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 0.0,
+   "duration_s": 24.558835323388877
+  },
+  "beat_s": 0.7030027319386601,
+  "old": {
+   "found_s": 0.7012018992853887,
+   "class": "exact",
+   "ratio": 0.9974383703342015
+  },
+  "new": {
+   "found_s": 0.7030569431331655,
+   "class": "exact",
+   "ratio": 1.0000771137750146
+  }
+ },
+ {
+  "desc": {
+   "seed": 143,
+   "bpm": 130.79153672668974,
+   "beats_per_bar": 6,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 30.0,
+   "duration_s": 22.327401947441963
+  },
+  "beat_s": 0.45874527895011885,
+  "old": {
+   "found_s": 0.4603509774119023,
+   "class": "exact",
+   "ratio": 1.0035001961556056
+  },
+  "new": {
+   "found_s": 0.4574657236994551,
+   "class": "exact",
+   "ratio": 0.9972107500406497
+  }
+ },
+ {
+  "desc": {
+   "seed": 144,
+   "bpm": 101.95451523978889,
+   "beats_per_bar": 3,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5086769627042422,
+   "jitter_s": 0.0,
+   "snr_db": 15.0,
+   "duration_s": 23.087071746015773
+  },
+  "beat_s": 0.5884977223312257,
+  "old": {
+   "found_s": 0.5885760698401653,
+   "class": "exact",
+   "ratio": 1.0001331313715698
+  },
+  "new": {
+   "found_s": 0.5885155764439012,
+   "class": "exact",
+   "ratio": 1.0000303384567144
+  }
+ },
+ {
+  "desc": {
+   "seed": 145,
+   "bpm": 181.85151924157148,
+   "beats_per_bar": 2,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 30.0,
+   "duration_s": 25.274644180636813
+  },
+  "beat_s": 0.3299395036689027,
+  "old": {
+   "found_s": 0.32986052502215635,
+   "class": "exact",
+   "ratio": 0.9997606268850256
+  },
+  "new": {
+   "found_s": 0.32992738743168293,
+   "class": "exact",
+   "ratio": 0.9999632773975683
+  }
+ },
+ {
+  "desc": {
+   "seed": 146,
+   "bpm": 119.49152630672617,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 6.0,
+   "duration_s": 21.68171784725216
+  },
+  "beat_s": 0.5021276558639338,
+  "old": {
+   "found_s": 0.5026834699886162,
+   "class": "exact",
+   "ratio": 1.0011069179683523
+  },
+  "new": {
+   "found_s": 0.5023013257765133,
+   "class": "exact",
+   "ratio": 1.0003458680487947
+  }
+ },
+ {
+  "desc": {
+   "seed": 147,
+   "bpm": 148.62379903941982,
+   "beats_per_bar": 4,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 15.0,
+   "duration_s": 33.902367924233445
+  },
+  "beat_s": 0.4037038508488541,
+  "old": {
+   "found_s": 0.4025876300469902,
+   "class": "exact",
+   "ratio": 0.9972350503976695
+  },
+  "new": {
+   "found_s": 0.4035455173584769,
+   "class": "exact",
+   "ratio": 0.9996077979190828
+  }
+ },
+ {
+  "desc": {
+   "seed": 148,
+   "bpm": 163.4109305257411,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 30.0,
+   "duration_s": 24.390451329591357
+  },
+  "beat_s": 0.3671725006825573,
+  "old": {
+   "found_s": 0.36769261174967316,
+   "class": "exact",
+   "ratio": 1.001416530557569
+  },
+  "new": {
+   "found_s": 0.3666753384957824,
+   "class": "exact",
+   "ratio": 0.9986459710739483
+  }
+ },
+ {
+  "desc": {
+   "seed": 149,
+   "bpm": 55.51009735160521,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 6.0,
+   "duration_s": 29.794557988867457
+  },
+  "beat_s": 1.0808844311685386,
+  "old": {
+   "found_s": 1.0769763194334692,
+   "class": "exact",
+   "ratio": 0.9963843389520891
+  },
+  "new": {
+   "found_s": 1.0819627392735849,
+   "class": "exact",
+   "ratio": 1.0009976164647691
+  }
+ },
+ {
+  "desc": {
+   "seed": 150,
+   "bpm": 94.92075476872054,
+   "beats_per_bar": 3,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 15.0,
+   "duration_s": 36.492944829044745
+  },
+  "beat_s": 0.6321062253054476,
+  "old": {
+   "found_s": 0.6320340839559105,
+   "class": "exact",
+   "ratio": 0.9998858714775318
+  },
+  "new": {
+   "found_s": 0.631990418346761,
+   "class": "exact",
+   "ratio": 0.9998167919345666
+  }
+ },
+ {
+  "desc": {
+   "seed": 151,
+   "bpm": 159.31740682866428,
+   "beats_per_bar": 7,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 30.0,
+   "duration_s": 28.674798952641353
+  },
+  "beat_s": 0.3766066821846164,
+  "old": {
+   "found_s": 0.3796212263824048,
+   "class": "exact",
+   "ratio": 1.008004489406034
+  },
+  "new": {
+   "found_s": 0.3777347500465953,
+   "class": "exact",
+   "ratio": 1.0029953474416204
+  }
+ },
+ {
+  "desc": {
+   "seed": 152,
+   "bpm": 66.92328101877418,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 15.0,
+   "duration_s": 26.51550945134389
+  },
+  "beat_s": 0.8965489899272576,
+  "old": {
+   "found_s": 0.8995449561891738,
+   "class": "exact",
+   "ratio": 1.0033416648678164
+  },
+  "new": {
+   "found_s": 0.8974302616130472,
+   "class": "exact",
+   "ratio": 1.000982959878033
+  }
+ },
+ {
+  "desc": {
+   "seed": 153,
+   "bpm": 75.5373786053915,
+   "beats_per_bar": 5,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 6.0,
+   "duration_s": 31.62316166768172
+  },
+  "beat_s": 0.7943087396961573,
+  "old": {
+   "found_s": 0.7920743904726898,
+   "class": "exact",
+   "ratio": 0.9971870519461712
+  },
+  "new": {
+   "found_s": 0.7891722041379907,
+   "class": "exact",
+   "ratio": 0.9935333261470451
+  }
+ },
+ {
+  "desc": {
+   "seed": 154,
+   "bpm": 88.61118997973644,
+   "beats_per_bar": 5,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 30.0,
+   "duration_s": 37.51087553870396
+  },
+  "beat_s": 0.6771153847919295,
+  "old": {
+   "found_s": 0.6772155258928814,
+   "class": "exact",
+   "ratio": 1.0001478937020205
+  },
+  "new": {
+   "found_s": 0.67710629711981,
+   "class": "exact",
+   "ratio": 0.9999865788426557
+  }
+ },
+ {
+  "desc": {
+   "seed": 155,
+   "bpm": 110.66533377029366,
+   "beats_per_bar": 7,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 6.0,
+   "duration_s": 37.30469379051187
+  },
+  "beat_s": 0.5421752047894337,
+  "old": {
+   "found_s": 0.5417929899916802,
+   "class": "exact",
+   "ratio": 0.9992950345305778
+  },
+  "new": {
+   "found_s": 0.5425840689274243,
+   "class": "exact",
+   "ratio": 1.000754118104957
+  }
+ },
+ {
+  "desc": {
+   "seed": 156,
+   "bpm": 46.810561446509894,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 30.0,
+   "duration_s": 38.64847932801733
+  },
+  "beat_s": 1.281762024336358,
+  "old": {
+   "found_s": 1.2817835779861706,
+   "class": "exact",
+   "ratio": 1.0000168156408158
+  },
+  "new": {
+   "found_s": 1.2817860027661134,
+   "class": "exact",
+   "ratio": 1.000018707395991
+  }
+ },
+ {
+  "desc": {
+   "seed": 157,
+   "bpm": 115.15225632105273,
+   "beats_per_bar": 7,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 15.0,
+   "duration_s": 34.379478944717505
+  },
+  "beat_s": 0.5210492778597035,
+  "old": {
+   "found_s": 0.5210017397885109,
+   "class": "exact",
+   "ratio": 0.9999087647306839
+  },
+  "new": {
+   "found_s": 0.5210546406965424,
+   "class": "exact",
+   "ratio": 1.0000102923793714
+  }
+ },
+ {
+  "desc": {
+   "seed": 158,
+   "bpm": 143.30405234660964,
+   "beats_per_bar": 2,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 15.0,
+   "duration_s": 39.792202929662096
+  },
+  "beat_s": 0.41869018368634786,
+  "old": {
+   "found_s": 0.41730435975592706,
+   "class": "exact",
+   "ratio": 0.9966900969155299
+  },
+  "new": {
+   "found_s": 0.4190711838463286,
+   "class": "exact",
+   "ratio": 1.000909981114499
+  }
+ },
+ {
+  "desc": {
+   "seed": 159,
+   "bpm": 110.53469672780986,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 30.0,
+   "duration_s": 38.18532594679443
+  },
+  "beat_s": 0.5428159824579711,
+  "old": {
+   "found_s": 0.5426451961840347,
+   "class": "exact",
+   "ratio": 0.9996853698500862
+  },
+  "new": {
+   "found_s": 0.5427790694627252,
+   "class": "exact",
+   "ratio": 0.9999319972210864
+  }
+ },
+ {
+  "desc": {
+   "seed": 160,
+   "bpm": 109.86983537736059,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 15.0,
+   "duration_s": 20.188049061001724
+  },
+  "beat_s": 0.5461007545330627,
+  "old": {
+   "found_s": 0.546932763678208,
+   "class": "exact",
+   "ratio": 1.0015235451301594
+  },
+  "new": {
+   "found_s": 0.5465221383011656,
+   "class": "exact",
+   "ratio": 1.0007716227538692
+  }
+ },
+ {
+  "desc": {
+   "seed": 161,
+   "bpm": 93.29079668864563,
+   "beats_per_bar": 5,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 30.0,
+   "duration_s": 24.858171038697023
+  },
+  "beat_s": 0.6431502584359703,
+  "old": {
+   "found_s": 0.6432198592579997,
+   "class": "exact",
+   "ratio": 1.0001082186022885
+  },
+  "new": {
+   "found_s": 0.6431898082514872,
+   "class": "exact",
+   "ratio": 1.000061493896641
+  }
+ },
+ {
+  "desc": {
+   "seed": 162,
+   "bpm": 85.13874809179973,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 0.0,
+   "duration_s": 24.82990611314313
+  },
+  "beat_s": 0.7047319974132787,
+  "old": {
+   "found_s": 0.7086449448009356,
+   "class": "exact",
+   "ratio": 1.005552390698903
+  },
+  "new": {
+   "found_s": 0.703138027841714,
+   "class": "exact",
+   "ratio": 0.9977381904363426
+  }
+ },
+ {
+  "desc": {
+   "seed": 163,
+   "bpm": 139.51296158375743,
+   "beats_per_bar": 2,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5603674345920059,
+   "jitter_s": 0.02,
+   "snr_db": 15.0,
+   "duration_s": 37.748491482989905
+  },
+  "beat_s": 0.4300675673348003,
+  "old": {
+   "found_s": 0.4284952109144739,
+   "class": "exact",
+   "ratio": 0.9963439316522505
+  },
+  "new": {
+   "found_s": 0.43046926927999435,
+   "class": "exact",
+   "ratio": 1.0009340438007996
+  }
+ },
+ {
+  "desc": {
+   "seed": 164,
+   "bpm": 65.65682464488467,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 30.0,
+   "duration_s": 30.68947277264825
+  },
+  "beat_s": 0.9138425491107666,
+  "old": {
+   "found_s": 1.8262169580361904,
+   "class": "multiple",
+   "ratio": 1.9983934429549475
+  },
+  "new": {
+   "found_s": 0.9173851518223454,
+   "class": "exact",
+   "ratio": 1.0038766007503437
+  }
+ },
+ {
+  "desc": {
+   "seed": 165,
+   "bpm": 167.9243584240761,
+   "beats_per_bar": 7,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 15.0,
+   "duration_s": 39.68108310090511
+  },
+  "beat_s": 0.35730373224637263,
+  "old": {
+   "found_s": 0.3582024845335325,
+   "class": "exact",
+   "ratio": 1.0025153733533916
+  },
+  "new": {
+   "found_s": 0.3561029422448127,
+   "class": "exact",
+   "ratio": 0.9966393018231001
+  }
+ },
+ {
+  "desc": {
+   "seed": 166,
+   "bpm": 158.73871835071498,
+   "beats_per_bar": 2,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 0.0,
+   "duration_s": 26.743143210086085
+  },
+  "beat_s": 0.3779796172187613,
+  "old": {
+   "found_s": 0.37796795966899105,
+   "class": "exact",
+   "ratio": 0.9999691582581728
+  },
+  "new": {
+   "found_s": 0.37795761648819914,
+   "class": "exact",
+   "ratio": 0.9999417938704631
+  }
+ },
+ {
+  "desc": {
+   "seed": 167,
+   "bpm": 80.18625755703712,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 30.0,
+   "duration_s": 27.442763386665092
+  },
+  "beat_s": 0.7482578914138938,
+  "old": {
+   "found_s": 1.4851404049590469,
+   "class": "multiple",
+   "ratio": 1.984797517006809
+  },
+  "new": {
+   "found_s": 0.7465600871690323,
+   "class": "exact",
+   "ratio": 0.9977309905256685
+  }
+ },
+ {
+  "desc": {
+   "seed": 168,
+   "bpm": 174.40790306616015,
+   "beats_per_bar": 2,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 15.0,
+   "duration_s": 22.048080860455862
+  },
+  "beat_s": 0.3440211076744585,
+  "old": {
+   "found_s": 0.3417622528322069,
+   "class": "exact",
+   "ratio": 0.9934339643938677
+  },
+  "new": {
+   "found_s": 0.34313961603255627,
+   "class": "exact",
+   "ratio": 0.9974376815194248
+  }
+ },
+ {
+  "desc": {
+   "seed": 169,
+   "bpm": 124.4558893729307,
+   "beats_per_bar": 5,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 0.0,
+   "duration_s": 34.30347696176852
+  },
+  "beat_s": 0.48209851942169374,
+  "old": {
+   "found_s": 0.48393645204880437,
+   "class": "exact",
+   "ratio": 1.003812358995243
+  },
+  "new": {
+   "found_s": 0.481903372099986,
+   "class": "exact",
+   "ratio": 0.999595212775302
+  }
+ },
+ {
+  "desc": {
+   "seed": 170,
+   "bpm": 180.2811016659739,
+   "beats_per_bar": 5,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 6.0,
+   "duration_s": 21.10570344174008
+  },
+  "beat_s": 0.33281358636896075,
+  "old": {
+   "found_s": 0.3328714323394677,
+   "class": "exact",
+   "ratio": 1.0001738089214989
+  },
+  "new": {
+   "found_s": 0.33320844363912433,
+   "class": "exact",
+   "ratio": 1.001186421727765
+  }
+ },
+ {
+  "desc": {
+   "seed": 171,
+   "bpm": 77.96791906563672,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 15.0,
+   "duration_s": 27.859079687502952
+  },
+  "beat_s": 0.7695472794328324,
+  "old": {
+   "found_s": 0.7691063710794055,
+   "class": "exact",
+   "ratio": 0.9994270548864108
+  },
+  "new": {
+   "found_s": 0.7694460584077685,
+   "class": "exact",
+   "ratio": 0.9998684667885013
+  }
+ },
+ {
+  "desc": {
+   "seed": 172,
+   "bpm": 81.14103670097643,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 15.0,
+   "duration_s": 28.42963939166405
+  },
+  "beat_s": 0.7394532093682009,
+  "old": {
+   "found_s": 0.7393340656316674,
+   "class": "exact",
+   "ratio": 0.9998388758950206
+  },
+  "new": {
+   "found_s": 0.7394389861334311,
+   "class": "exact",
+   "ratio": 0.9999807651997589
+  }
+ },
+ {
+  "desc": {
+   "seed": 173,
+   "bpm": 59.6053545357798,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 15.0,
+   "duration_s": 35.88240459126047
+  },
+  "beat_s": 1.0066209733553937,
+  "old": {
+   "found_s": 0.9999692676379046,
+   "class": "exact",
+   "ratio": 0.9933920453740231
+  },
+  "new": {
+   "found_s": 1.0043013464216188,
+   "class": "exact",
+   "ratio": 0.9976956302370268
+  }
+ },
+ {
+  "desc": {
+   "seed": 174,
+   "bpm": 189.16989614755641,
+   "beats_per_bar": 2,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 6.0,
+   "duration_s": 37.916577005313876
+  },
+  "beat_s": 0.31717520187883785,
+  "old": {
+   "found_s": 0.316725015053814,
+   "class": "exact",
+   "ratio": 0.998580636751054
+  },
+  "new": {
+   "found_s": 0.3171596595826803,
+   "class": "exact",
+   "ratio": 0.9999509977574996
+  }
+ },
+ {
+  "desc": {
+   "seed": 175,
+   "bpm": 70.41370511874403,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 30.0,
+   "duration_s": 24.53162299518425
+  },
+  "beat_s": 0.8521068433881926,
+  "old": {
+   "found_s": 0.8521833218683613,
+   "class": "exact",
+   "ratio": 1.0000897522191754
+  },
+  "new": {
+   "found_s": 0.8520838057139032,
+   "class": "exact",
+   "ratio": 0.9999729638665993
+  }
+ },
+ {
+  "desc": {
+   "seed": 176,
+   "bpm": 190.42704533227845,
+   "beats_per_bar": 5,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.02,
+   "snr_db": 0.0,
+   "duration_s": 24.25241923243057
+  },
+  "beat_s": 0.3150812947567677,
+  "old": {
+   "found_s": 0.31411683714423494,
+   "class": "exact",
+   "ratio": 0.9969390197749527
+  },
+  "new": {
+   "found_s": 0.314928908669243,
+   "class": "exact",
+   "ratio": 0.9995163594600487
+  }
+ },
+ {
+  "desc": {
+   "seed": 177,
+   "bpm": 142.99964282735237,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 30.0,
+   "duration_s": 23.026383572063256
+  },
+  "beat_s": 0.4195814675735921,
+  "old": {
+   "found_s": 0.4196377332589483,
+   "class": "exact",
+   "ratio": 1.0001340995484895
+  },
+  "new": {
+   "found_s": 0.41912207932527223,
+   "class": "exact",
+   "ratio": 0.9989051274095196
+  }
+ },
+ {
+  "desc": {
+   "seed": 178,
+   "bpm": 60.457924194635204,
+   "beats_per_bar": 2,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5713460413240953,
+   "jitter_s": 0.02,
+   "snr_db": 6.0,
+   "duration_s": 24.877937384322735
+  },
+  "beat_s": 0.992425737391165,
+  "old": {
+   "found_s": 0.9976496840617832,
+   "class": "exact",
+   "ratio": 1.0052638161968175
+  },
+  "new": {
+   "found_s": 0.9944695900043442,
+   "class": "exact",
+   "ratio": 1.0020594514392098
+  }
+ },
+ {
+  "desc": {
+   "seed": 179,
+   "bpm": 194.5602422154754,
+   "beats_per_bar": 2,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 6.0,
+   "duration_s": 37.56626955355772
+  },
+  "beat_s": 0.30838777397054234,
+  "old": {
+   "found_s": 0.30840178467133594,
+   "class": "exact",
+   "ratio": 1.0000454320890002
+  },
+  "new": {
+   "found_s": 0.30836745955562245,
+   "class": "exact",
+   "ratio": 0.9999341270418787
+  }
+ },
+ {
+  "desc": {
+   "seed": 180,
+   "bpm": 137.45773564042452,
+   "beats_per_bar": 5,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 15.0,
+   "duration_s": 39.2433149128662
+  },
+  "beat_s": 0.4364978058197751,
+  "old": {
+   "found_s": 0.43651173774543955,
+   "class": "exact",
+   "ratio": 1.0000319175159158
+  },
+  "new": {
+   "found_s": 0.4364987779712496,
+   "class": "exact",
+   "ratio": 1.0000022271623397
+  }
+ },
+ {
+  "desc": {
+   "seed": 181,
+   "bpm": 122.89443328724218,
+   "beats_per_bar": 7,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 15.0,
+   "duration_s": 29.16377402568386
+  },
+  "beat_s": 0.48822390400516763,
+  "old": {
+   "found_s": 0.4893210888557788,
+   "class": "exact",
+   "ratio": 1.00224729850712
+  },
+  "new": {
+   "found_s": 0.4865520581981094,
+   "class": "exact",
+   "ratio": 0.9965756576166321
+  }
+ },
+ {
+  "desc": {
+   "seed": 182,
+   "bpm": 73.25587291435507,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 15.0,
+   "duration_s": 31.424025489744835
+  },
+  "beat_s": 0.8190469598273332,
+  "old": {
+   "found_s": 1.63731248705971,
+   "class": "multiple",
+   "ratio": 1.9990459245522123
+  },
+  "new": {
+   "found_s": 0.8191090953030788,
+   "class": "exact",
+   "ratio": 1.0000758631419115
+  }
+ },
+ {
+  "desc": {
+   "seed": 183,
+   "bpm": 156.4188083064957,
+   "beats_per_bar": 7,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "boombap",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 30.0,
+   "duration_s": 27.248977298676795
+  },
+  "beat_s": 0.38358558442941637,
+  "old": {
+   "found_s": 0.38359556029633723,
+   "class": "exact",
+   "ratio": 1.0000260068869264
+  },
+  "new": {
+   "found_s": 0.383622949606733,
+   "class": "exact",
+   "ratio": 1.0000974102751339
+  }
+ },
+ {
+  "desc": {
+   "seed": 184,
+   "bpm": 101.60110615265167,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 6.0,
+   "duration_s": 27.8304159398348
+  },
+  "beat_s": 0.590544751647215,
+  "old": {
+   "found_s": 1.1806227862166012,
+   "class": "multiple",
+   "ratio": 1.9992096838105378
+  },
+  "new": {
+   "found_s": 0.5903131923241159,
+   "class": "exact",
+   "ratio": 0.9996078886105529
+  }
+ },
+ {
+  "desc": {
+   "seed": 185,
+   "bpm": 110.52661866980726,
+   "beats_per_bar": 7,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 6.0,
+   "duration_s": 26.09321153819715
+  },
+  "beat_s": 0.5428556552448871,
+  "old": {
+   "found_s": 0.5424151533815217,
+   "class": "exact",
+   "ratio": 0.9991885469754078
+  },
+  "new": {
+   "found_s": 0.5427589472855003,
+   "class": "exact",
+   "ratio": 0.999821853270842
+  }
+ },
+ {
+  "desc": {
+   "seed": 186,
+   "bpm": 182.12125345106855,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 6.0,
+   "duration_s": 30.18024981728938
+  },
+  "beat_s": 0.32945084037718037,
+  "old": {
+   "found_s": 0.6609836644986772,
+   "class": "multiple",
+   "ratio": 2.0063195581529945
+  },
+  "new": {
+   "found_s": 0.33011999187537,
+   "class": "exact",
+   "ratio": 1.0020311118266494
+  }
+ },
+ {
+  "desc": {
+   "seed": 187,
+   "bpm": 130.69617540333397,
+   "beats_per_bar": 5,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 6.0,
+   "duration_s": 29.89207974581421
+  },
+  "beat_s": 0.4590799984378842,
+  "old": {
+   "found_s": 0.45867827797480326,
+   "class": "exact",
+   "ratio": 0.9991249445315677
+  },
+  "new": {
+   "found_s": 0.45918673532018933,
+   "class": "exact",
+   "ratio": 1.0002325017048626
+  }
+ },
+ {
+  "desc": {
+   "seed": 188,
+   "bpm": 98.62206720562565,
+   "beats_per_bar": 4,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 6.0,
+   "duration_s": 33.65552041513102
+  },
+  "beat_s": 0.6083831103935473,
+  "old": {
+   "found_s": 0.6095966687499706,
+   "class": "exact",
+   "ratio": 1.0019947272297522
+  },
+  "new": {
+   "found_s": 0.6077565061909311,
+   "class": "exact",
+   "ratio": 0.9989700499703044
+  }
+ },
+ {
+  "desc": {
+   "seed": 189,
+   "bpm": 124.46310727801894,
+   "beats_per_bar": 7,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.503304842905073,
+   "jitter_s": 0.02,
+   "snr_db": 30.0,
+   "duration_s": 27.96316564536077
+  },
+  "beat_s": 0.48207056140720683,
+  "old": {
+   "found_s": 1.9320893787676185,
+   "class": "multiple",
+   "ratio": 4.007897460337918
+  },
+  "new": {
+   "found_s": 0.4823081866081944,
+   "class": "exact",
+   "ratio": 1.0004929261813746
+  }
+ },
+ {
+  "desc": {
+   "seed": 190,
+   "bpm": 198.65066327843675,
+   "beats_per_bar": 2,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 6.0,
+   "duration_s": 34.896518379255255
+  },
+  "beat_s": 0.3020377531581739,
+  "old": {
+   "found_s": 0.30010906953238703,
+   "class": "exact",
+   "ratio": 0.9936144286413864
+  },
+  "new": {
+   "found_s": 0.3023056264926292,
+   "class": "exact",
+   "ratio": 1.0008868869260692
+  }
+ },
+ {
+  "desc": {
+   "seed": 191,
+   "bpm": 74.13881421978493,
+   "beats_per_bar": 2,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 30.0,
+   "duration_s": 35.34050605496182
+  },
+  "beat_s": 0.809292684694547,
+  "old": {
+   "found_s": 0.8086309519666223,
+   "class": "exact",
+   "ratio": 0.9991823320036873
+  },
+  "new": {
+   "found_s": 0.8094364964222204,
+   "class": "exact",
+   "ratio": 1.0001777005160102
+  }
+ },
+ {
+  "desc": {
+   "seed": 192,
+   "bpm": 61.29420849603813,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "oompah",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 30.0,
+   "duration_s": 32.75283691840719
+  },
+  "beat_s": 0.9788853053527596,
+  "old": {
+   "found_s": 0.9787655961180495,
+   "class": "exact",
+   "ratio": 0.9998777086201462
+  },
+  "new": {
+   "found_s": 0.9788851724623926,
+   "class": "exact",
+   "ratio": 0.9999998642431689
+  }
+ },
+ {
+  "desc": {
+   "seed": 193,
+   "bpm": 158.52947765526923,
+   "beats_per_bar": 7,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5655729324179506,
+   "jitter_s": 0.0,
+   "snr_db": 0.0,
+   "duration_s": 35.51180913463956
+  },
+  "beat_s": 0.378478506883579,
+  "old": {
+   "found_s": 0.37862064511335536,
+   "class": "exact",
+   "ratio": 1.000375551655355
+  },
+  "new": {
+   "found_s": 0.3784955069798865,
+   "class": "exact",
+   "ratio": 1.0000449169397954
+  }
+ },
+ {
+  "desc": {
+   "seed": 194,
+   "bpm": 96.79847918205793,
+   "beats_per_bar": 3,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 0.0,
+   "duration_s": 26.12807192135735
+  },
+  "beat_s": 0.6198444490760273,
+  "old": {
+   "found_s": 0.6187470245163564,
+   "class": "exact",
+   "ratio": 0.998229516193447
+  },
+  "new": {
+   "found_s": 0.6197954217447077,
+   "class": "exact",
+   "ratio": 0.9999209038148318
+  }
+ },
+ {
+  "desc": {
+   "seed": 195,
+   "bpm": 94.8588821891913,
+   "beats_per_bar": 2,
+   "subdivision": 3,
+   "compound": true,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.005,
+   "snr_db": 15.0,
+   "duration_s": 23.322797978946834
+  },
+  "beat_s": 0.6325185224124084,
+  "old": {
+   "found_s": 0.6330112546551467,
+   "class": "exact",
+   "ratio": 1.000779000496079
+  },
+  "new": {
+   "found_s": 0.6325347305955629,
+   "class": "exact",
+   "ratio": 1.0000256248356059
+  }
+ },
+ {
+  "desc": {
+   "seed": 196,
+   "bpm": 161.8042520910601,
+   "beats_per_bar": 4,
+   "subdivision": 2,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.501566325928831,
+   "jitter_s": 0.02,
+   "snr_db": 15.0,
+   "duration_s": 39.28350146709154
+  },
+  "beat_s": 0.3708184378630126,
+  "old": {
+   "found_s": 0.3707041166817948,
+   "class": "exact",
+   "ratio": 0.9996917057795814
+  },
+  "new": {
+   "found_s": 0.36985397673329246,
+   "class": "exact",
+   "ratio": 0.9973991014705789
+  }
+ },
+ {
+  "desc": {
+   "seed": 197,
+   "bpm": 171.93887146453767,
+   "beats_per_bar": 7,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 30.0,
+   "duration_s": 20.44141776324144
+  },
+  "beat_s": 0.3489612295866149,
+  "old": {
+   "found_s": 0.3514814365241635,
+   "class": "exact",
+   "ratio": 1.0072220256116535
+  },
+  "new": {
+   "found_s": 0.3487505863134921,
+   "class": "exact",
+   "ratio": 0.9993963705556278
+  }
+ },
+ {
+  "desc": {
+   "seed": 198,
+   "bpm": 72.22867114900482,
+   "beats_per_bar": 7,
+   "subdivision": 4,
+   "compound": false,
+   "pattern": "four",
+   "swing": 0.5,
+   "jitter_s": 0.012,
+   "snr_db": 15.0,
+   "duration_s": 23.6070715251398
+  },
+  "beat_s": 0.8306950556548719,
+  "old": {
+   "found_s": 0.8301414898736119,
+   "class": "exact",
+   "ratio": 0.9993336113204339
+  },
+  "new": {
+   "found_s": 0.8310187553997239,
+   "class": "exact",
+   "ratio": 1.000389673373699
+  }
+ },
+ {
+  "desc": {
+   "seed": 199,
+   "bpm": 70.58237727276648,
+   "beats_per_bar": 7,
+   "subdivision": 3,
+   "compound": false,
+   "pattern": "backbeat",
+   "swing": 0.5,
+   "jitter_s": 0.0,
+   "snr_db": 15.0,
+   "duration_s": 21.395646930549088
+  },
+  "beat_s": 0.8500705461949695,
+  "old": {
+   "found_s": 0.8499571365836179,
+   "class": "exact",
+   "ratio": 0.9998665880004205
+  },
+  "new": {
+   "found_s": 0.8500557540601938,
+   "class": "exact",
+   "ratio": 0.9999825989327099
+  }
+ },
+ {
+  "desc": {
+   "seed": 0,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.3962951692674913,
+  "old": {
+   "found_s": 0.396249918760091,
+   "class": "exact",
+   "ratio": 0.9998858161519255
+  },
+  "new": {
+   "found_s": 0.3962983064339666,
+   "class": "exact",
+   "ratio": 1.0000079162369833
+  }
+ },
+ {
+  "desc": {
+   "seed": 1,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.45906319937544987,
+  "old": {
+   "found_s": 0.45896934973250786,
+   "class": "exact",
+   "ratio": 0.9997955626957907
+  },
+  "new": {
+   "found_s": 0.4590417169414843,
+   "class": "exact",
+   "ratio": 0.9999532037549628
+  }
+ },
+ {
+  "desc": {
+   "seed": 2,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.36634993187372555,
+  "old": {
+   "found_s": 0.36666018642183096,
+   "class": "exact",
+   "ratio": 1.000846880321551
+  },
+  "new": {
+   "found_s": 0.3655836739906551,
+   "class": "exact",
+   "ratio": 0.997908399002147
+  }
+ },
+ {
+  "desc": {
+   "seed": 3,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.9840213559652566,
+  "old": {
+   "found_s": 0.9812911248020654,
+   "class": "exact",
+   "ratio": 0.9972254350511396
+  },
+  "new": {
+   "found_s": 0.9843501646443946,
+   "class": "exact",
+   "ratio": 1.000334147909641
+  }
+ },
+ {
+  "desc": {
+   "seed": 4,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.3294820702138306,
+  "old": {
+   "found_s": 0.32811754571341434,
+   "class": "exact",
+   "ratio": 0.9958585773740869
+  },
+  "new": {
+   "found_s": 0.32954251674887264,
+   "class": "exact",
+   "ratio": 1.000183459254711
+  }
+ },
+ {
+  "desc": {
+   "seed": 5,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.5424112261678187,
+  "old": {
+   "found_s": 0.5330812656652893,
+   "class": "exact",
+   "ratio": 0.9827991013968381
+  },
+  "new": {
+   "found_s": 0.5404140695223473,
+   "class": "exact",
+   "ratio": 0.9963180027456632
+  }
+ },
+ {
+  "desc": {
+   "seed": 6,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.33083881007251126,
+  "old": {
+   "found_s": 0.33169523593318667,
+   "class": "exact",
+   "ratio": 1.0025886499243777
+  },
+  "new": {
+   "found_s": 0.3303763798339392,
+   "class": "exact",
+   "ratio": 0.99860224911802
+  }
+ },
+ {
+  "desc": {
+   "seed": 7,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.4746412066948141,
+  "old": {
+   "found_s": 0.4745437061792407,
+   "class": "exact",
+   "ratio": 0.9997945805922491
+  },
+  "new": {
+   "found_s": 0.47462613591899955,
+   "class": "exact",
+   "ratio": 0.9999682480669567
+  }
+ },
+ {
+  "desc": {
+   "seed": 8,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.5360439010374207,
+  "old": {
+   "found_s": 0.5390047404092219,
+   "class": "exact",
+   "ratio": 1.005523501649904
+  },
+  "new": {
+   "found_s": 0.5358586432324146,
+   "class": "exact",
+   "ratio": 0.999654398073278
+  }
+ },
+ {
+  "desc": {
+   "seed": 9,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.4949464339006237,
+  "old": {
+   "found_s": 0.4967138857552352,
+   "class": "exact",
+   "ratio": 1.003570996240305
+  },
+  "new": {
+   "found_s": 0.49631719061297386,
+   "class": "exact",
+   "ratio": 1.0027695051796763
+  }
+ },
+ {
+  "desc": {
+   "seed": 10,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.4004326482419151,
+  "old": {
+   "found_s": 0.40027333081938454,
+   "class": "exact",
+   "ratio": 0.9996021367807294
+  },
+  "new": {
+   "found_s": 0.40043697272930456,
+   "class": "exact",
+   "ratio": 1.0000107995374714
+  }
+ },
+ {
+  "desc": {
+   "seed": 11,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.570298498809562,
+  "old": {
+   "found_s": 1.1402570004932158,
+   "class": "multiple",
+   "ratio": 1.9994038260198512
+  },
+  "new": {
+   "found_s": 1.1427703233556235,
+   "class": "multiple",
+   "ratio": 2.003810856491883
+  }
+ },
+ {
+  "desc": {
+   "seed": 12,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.3575142981442902,
+  "old": {
+   "found_s": 0.35767526165624186,
+   "class": "exact",
+   "ratio": 1.0004502295790327
+  },
+  "new": {
+   "found_s": 0.35752621787890154,
+   "class": "exact",
+   "ratio": 1.0000333405815465
+  }
+ },
+ {
+  "desc": {
+   "seed": 13,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.46468518861587665,
+  "old": {
+   "found_s": 0.4631717257786253,
+   "class": "exact",
+   "ratio": 0.9967430362010045
+  },
+  "new": {
+   "found_s": 0.46441629029442233,
+   "class": "exact",
+   "ratio": 0.9994213322738879
+  }
+ },
+ {
+  "desc": {
+   "seed": 14,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.3389808458526025,
+  "old": {
+   "found_s": 0.6735923597571968,
+   "class": "multiple",
+   "ratio": 1.9871103869098605
+  },
+  "new": {
+   "found_s": 0.33428480513047354,
+   "class": "exact",
+   "ratio": 0.9861465897569595
+  }
+ },
+ {
+  "desc": {
+   "seed": 15,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.45735521236363463,
+  "old": {
+   "found_s": 1.3752652080462968,
+   "class": "multiple",
+   "ratio": 3.006995811721173
+  },
+  "new": {
+   "found_s": 0.4572780977431449,
+   "class": "exact",
+   "ratio": 0.9998313900915412
+  }
+ },
+ {
+  "desc": {
+   "seed": 16,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.4179209701487709,
+  "old": {
+   "found_s": 0.4209141627222071,
+   "class": "exact",
+   "ratio": 1.0071621018978079
+  },
+  "new": {
+   "found_s": 0.4181027429424137,
+   "class": "exact",
+   "ratio": 1.0004349453763426
+  }
+ },
+ {
+  "desc": {
+   "seed": 17,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.3297012100828225,
+  "old": {
+   "found_s": 0.3338398345734646,
+   "class": "exact",
+   "ratio": 1.0125526518073817
+  },
+  "new": {
+   "found_s": 0.32749553362070505,
+   "class": "exact",
+   "ratio": 0.9933100747141226
+  }
+ },
+ {
+  "desc": {
+   "seed": 18,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.41160353709078856,
+  "old": {
+   "found_s": 0.412474664825816,
+   "class": "exact",
+   "ratio": 1.0021164243174017
+  },
+  "new": {
+   "found_s": 0.411747209994874,
+   "class": "exact",
+   "ratio": 1.0003490565341127
+  }
+ },
+ {
+  "desc": {
+   "seed": 19,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.3167077415674769,
+  "old": {
+   "found_s": 0.3166740788807714,
+   "class": "exact",
+   "ratio": 0.99989371056565
+  },
+  "new": {
+   "found_s": 0.316706519138165,
+   "class": "exact",
+   "ratio": 0.9999961401975657
+  }
+ },
+ {
+  "desc": {
+   "seed": 20,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.38569382449135964,
+  "old": {
+   "found_s": 1.1544192209589803,
+   "class": "multiple",
+   "ratio": 2.9930974976884595
+  },
+  "new": {
+   "found_s": 1.1547232328302564,
+   "class": "multiple",
+   "ratio": 2.99388571842722
+  }
+ },
+ {
+  "desc": {
+   "seed": 21,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.30295195939072567,
+  "old": {
+   "found_s": 0.6106387965143946,
+   "class": "multiple",
+   "ratio": 2.0156291371822306
+  },
+  "new": {
+   "found_s": 0.301031886554289,
+   "class": "exact",
+   "ratio": 0.9936621210825036
+  }
+ },
+ {
+  "desc": {
+   "seed": 22,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.6310603749880416,
+  "old": {
+   "found_s": 1.2620385318146132,
+   "class": "multiple",
+   "ratio": 1.9998697142702526
+  },
+  "new": {
+   "found_s": 0.6310538024019338,
+   "class": "exact",
+   "ratio": 0.9999895848537346
+  }
+ },
+ {
+  "desc": {
+   "seed": 23,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.39481227572425787,
+  "old": {
+   "found_s": 0.3947119080703188,
+   "class": "exact",
+   "ratio": 0.9997457838570117
+  },
+  "new": {
+   "found_s": 0.3947927374621869,
+   "class": "exact",
+   "ratio": 0.9999505125264023
+  }
+ },
+ {
+  "desc": {
+   "seed": 24,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.322658642353898,
+  "old": {
+   "found_s": 0.32180304753399447,
+   "class": "exact",
+   "ratio": 0.9973482972169544
+  },
+  "new": {
+   "found_s": 0.3221619183942523,
+   "class": "exact",
+   "ratio": 0.9984605279560406
+  }
+ },
+ {
+  "desc": {
+   "seed": 25,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.6656389242096555,
+  "old": {
+   "found_s": 0.665653533238809,
+   "class": "exact",
+   "ratio": 1.0000219473781087
+  },
+  "new": {
+   "found_s": 0.6656432360014479,
+   "class": "exact",
+   "ratio": 1.0000064776737592
+  }
+ },
+ {
+  "desc": {
+   "seed": 26,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.8079752457707929,
+  "old": {
+   "found_s": 0.814409558996296,
+   "class": "exact",
+   "ratio": 1.0079635029156924
+  },
+  "new": {
+   "found_s": 0.8100815206242759,
+   "class": "exact",
+   "ratio": 1.0026068556734973
+  }
+ },
+ {
+  "desc": {
+   "seed": 27,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.41853168177908406,
+  "old": {
+   "found_s": 0.8373929842218731,
+   "class": "multiple",
+   "ratio": 2.0007875644259565
+  },
+  "new": {
+   "found_s": 0.4185032158931975,
+   "class": "exact",
+   "ratio": 0.9999319863056351
+  }
+ },
+ {
+  "desc": {
+   "seed": 28,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.6773090860437997,
+  "old": {
+   "found_s": 0.676040769180918,
+   "class": "exact",
+   "ratio": 0.9981274179115329
+  },
+  "new": {
+   "found_s": 0.6740579485691095,
+   "class": "exact",
+   "ratio": 0.9951999204769565
+  }
+ },
+ {
+  "desc": {
+   "seed": 29,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.30562238176131723,
+  "old": {
+   "found_s": 1.5302296437087346,
+   "class": "multiple",
+   "ratio": 5.006929253315624
+  },
+  "new": {
+   "found_s": 0.30667182653296793,
+   "class": "exact",
+   "ratio": 1.0034337955407673
+  }
+ },
+ {
+  "desc": {
+   "seed": 30,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.9026876203043721,
+  "old": {
+   "found_s": 0.9133594888386941,
+   "class": "exact",
+   "ratio": 1.0118223273414602
+  },
+  "new": {
+   "found_s": 0.9018183827738117,
+   "class": "exact",
+   "ratio": 0.9990370561077736
+  }
+ },
+ {
+  "desc": {
+   "seed": 31,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.7307183852488983,
+  "old": {
+   "found_s": 0.7306672472593397,
+   "class": "exact",
+   "ratio": 0.9999300168292041
+  },
+  "new": {
+   "found_s": 0.7306926206419059,
+   "class": "exact",
+   "ratio": 0.9999647407161055
+  }
+ },
+ {
+  "desc": {
+   "seed": 32,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.3587823510589011,
+  "old": {
+   "found_s": 0.357516218043002,
+   "class": "exact",
+   "ratio": 0.9964710275960835
+  },
+  "new": {
+   "found_s": 0.35894486482039056,
+   "class": "exact",
+   "ratio": 1.0004529591854499
+  }
+ },
+ {
+  "desc": {
+   "seed": 33,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.33597788871716056,
+  "old": {
+   "found_s": 0.6718835519842453,
+   "class": "multiple",
+   "ratio": 1.9997850291566759
+  },
+  "new": {
+   "found_s": 0.3382592385932287,
+   "class": "exact",
+   "ratio": 1.0067901786179407
+  }
+ },
+ {
+  "desc": {
+   "seed": 34,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.5683724916067305,
+  "old": {
+   "found_s": 0.576251255866605,
+   "class": "exact",
+   "ratio": 1.0138619732239362
+  },
+  "new": {
+   "found_s": 0.5722213040652039,
+   "class": "exact",
+   "ratio": 1.0067716374654114
+  }
+ },
+ {
+  "desc": {
+   "seed": 35,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.506847337391497,
+  "old": {
+   "found_s": 1.01747319056076,
+   "class": "multiple",
+   "ratio": 2.0074549385959335
+  },
+  "new": {
+   "found_s": 0.5076095587008019,
+   "class": "exact",
+   "ratio": 1.0015038479105518
+  }
+ },
+ {
+  "desc": {
+   "seed": 36,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.3150722749612377,
+  "old": {
+   "found_s": 0.3143088088991733,
+   "class": "exact",
+   "ratio": 0.9975768541927139
+  },
+  "new": {
+   "found_s": 0.314647557447892,
+   "class": "exact",
+   "ratio": 0.9986519997248317
+  }
+ },
+ {
+  "desc": {
+   "seed": 37,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.9198588342310252,
+  "old": {
+   "found_s": 0.9201540890559017,
+   "class": "exact",
+   "ratio": 1.0003209784087395
+  },
+  "new": {
+   "found_s": 0.9199016294209151,
+   "class": "exact",
+   "ratio": 1.0000465236493876
+  }
+ },
+ {
+  "desc": {
+   "seed": 38,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.35977743305845344,
+  "old": {
+   "found_s": 0.7194668097766407,
+   "class": "multiple",
+   "ratio": 1.9997552477388099
+  },
+  "new": {
+   "found_s": 0.3600375212574235,
+   "class": "exact",
+   "ratio": 1.000722914154896
+  }
+ },
+ {
+  "desc": {
+   "seed": 39,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.5741326168547968,
+  "old": {
+   "found_s": 0.5740296705181805,
+   "class": "exact",
+   "ratio": 0.9998206924086979
+  },
+  "new": {
+   "found_s": 0.5740899084862658,
+   "class": "exact",
+   "ratio": 0.9999256123632814
+  }
+ },
+ {
+  "desc": {
+   "seed": 40,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.7824651269794795,
+  "old": {
+   "found_s": 0.7749224039319648,
+   "class": "exact",
+   "ratio": 0.9903603077153974
+  },
+  "new": {
+   "found_s": 1.569551646554206,
+   "class": "multiple",
+   "ratio": 2.0059061962455593
+  }
+ },
+ {
+  "desc": {
+   "seed": 41,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.3090142600307372,
+  "old": {
+   "found_s": 0.3090479259299647,
+   "class": "exact",
+   "ratio": 1.0001089461024362
+  },
+  "new": {
+   "found_s": 0.30902589604679753,
+   "class": "exact",
+   "ratio": 1.0000376552721522
+  }
+ },
+ {
+  "desc": {
+   "seed": 42,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.6749461870026975,
+  "old": {
+   "found_s": 0.674807486403984,
+   "class": "exact",
+   "ratio": 0.9997945012485671
+  },
+  "new": {
+   "found_s": 0.6749378016636423,
+   "class": "exact",
+   "ratio": 0.9999875762850184
+  }
+ },
+ {
+  "desc": {
+   "seed": 43,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.4151065176764695,
+  "old": {
+   "found_s": 0.4150185984806019,
+   "class": "exact",
+   "ratio": 0.9997882008782717
+  },
+  "new": {
+   "found_s": 0.41512129119546737,
+   "class": "exact",
+   "ratio": 1.0000355897061808
+  }
+ },
+ {
+  "desc": {
+   "seed": 44,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.8014548042903216,
+  "old": {
+   "found_s": 0.8031739625135046,
+   "class": "exact",
+   "ratio": 1.0021450469995066
+  },
+  "new": {
+   "found_s": 0.8020845150123844,
+   "class": "exact",
+   "ratio": 1.0007857095854837
+  }
+ },
+ {
+  "desc": {
+   "seed": 45,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.7311227367087494,
+  "old": {
+   "found_s": 0.7346317077151929,
+   "class": "exact",
+   "ratio": 1.00479942809909
+  },
+  "new": {
+   "found_s": 0.7355369610395701,
+   "class": "exact",
+   "ratio": 1.0060375968482282
+  }
+ },
+ {
+  "desc": {
+   "seed": 46,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.3196645055512968,
+  "old": {
+   "found_s": 0.3196000655240881,
+   "class": "exact",
+   "ratio": 0.9997984135676948
+  },
+  "new": {
+   "found_s": 0.3196267853469949,
+   "class": "exact",
+   "ratio": 0.9998820006486587
+  }
+ },
+ {
+  "desc": {
+   "seed": 47,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.44389774454674086,
+  "old": {
+   "found_s": 0.4392844221084681,
+   "class": "exact",
+   "ratio": 0.989607240642812
+  },
+  "new": {
+   "found_s": 0.44395765317305225,
+   "class": "exact",
+   "ratio": 1.000134960420609
+  }
+ },
+ {
+  "desc": {
+   "seed": 48,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.5531148188319119,
+  "old": {
+   "found_s": 0.5545394023390434,
+   "class": "exact",
+   "ratio": 1.0025755656124709
+  },
+  "new": {
+   "found_s": 0.5551936222867577,
+   "class": "exact",
+   "ratio": 1.003758357910634
+  }
+ },
+ {
+  "desc": {
+   "seed": 49,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.7862396794308348,
+  "old": {
+   "found_s": 0.8021359439703526,
+   "class": "exact",
+   "ratio": 1.0202180899226876
+  },
+  "new": {
+   "found_s": 0.7865018254359654,
+   "class": "exact",
+   "ratio": 1.000333417419635
+  }
+ },
+ {
+  "desc": {
+   "seed": 50,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.36273583410554133,
+  "old": {
+   "found_s": 0.36271976318186716,
+   "class": "exact",
+   "ratio": 0.9999556952411007
+  },
+  "new": {
+   "found_s": 0.36273561384266884,
+   "class": "exact",
+   "ratio": 0.9999993927733304
+  }
+ },
+ {
+  "desc": {
+   "seed": 51,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.7378010087191387,
+  "old": {
+   "found_s": 0.7382031192452204,
+   "class": "exact",
+   "ratio": 1.000545012166329
+  },
+  "new": {
+   "found_s": 0.7380098620684794,
+   "class": "exact",
+   "ratio": 1.0002830754456453
+  }
+ },
+ {
+  "desc": {
+   "seed": 52,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.3982804890195882,
+  "old": {
+   "found_s": 0.7966041692443141,
+   "class": "multiple",
+   "ratio": 2.000108444190284
+  },
+  "new": {
+   "found_s": 0.3987233183296201,
+   "class": "exact",
+   "ratio": 1.0011118528831828
+  }
+ },
+ {
+  "desc": {
+   "seed": 53,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.35501193685966526,
+  "old": {
+   "found_s": 0.3548893923588274,
+   "class": "exact",
+   "ratio": 0.9996548158297948
+  },
+  "new": {
+   "found_s": 0.3550038602771966,
+   "class": "exact",
+   "ratio": 0.9999772498284422
+  }
+ },
+ {
+  "desc": {
+   "seed": 54,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.4727896570791805,
+  "old": {
+   "found_s": 0.466534609967776,
+   "class": "exact",
+   "ratio": 0.9867699155052435
+  },
+  "new": {
+   "found_s": 0.47054949687235814,
+   "class": "exact",
+   "ratio": 0.9952618248447698
+  }
+ },
+ {
+  "desc": {
+   "seed": 55,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.7544950291533038,
+  "old": {
+   "found_s": 0.7543649333556647,
+   "class": "exact",
+   "ratio": 0.9998275723595089
+  },
+  "new": {
+   "found_s": 0.7545045144828795,
+   "class": "exact",
+   "ratio": 1.0000125717588708
+  }
+ },
+ {
+  "desc": {
+   "seed": 56,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.5290348224404513,
+  "old": {
+   "found_s": 0.5290031334635509,
+   "class": "exact",
+   "ratio": 0.9999401003949906
+  },
+  "new": {
+   "found_s": 0.5290036438212783,
+   "class": "exact",
+   "ratio": 0.9999410650908966
+  }
+ },
+ {
+  "desc": {
+   "seed": 57,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.4858683759711946,
+  "old": {
+   "found_s": 0.4843956174643223,
+   "class": "exact",
+   "ratio": 0.9969688117611516
+  },
+  "new": {
+   "found_s": 0.48659273206354686,
+   "class": "exact",
+   "ratio": 1.001490848402933
+  }
+ },
+ {
+  "desc": {
+   "seed": 58,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.9714190932059392,
+  "old": {
+   "found_s": 1.0023794708251823,
+   "class": "precision",
+   "ratio": 1.031871287928947
+  },
+  "new": {
+   "found_s": 0.980346683859272,
+   "class": "exact",
+   "ratio": 1.0091902565182957
+  }
+ },
+ {
+  "desc": {
+   "seed": 59,
+   "family": "click_train",
+   "split": "train"
+  },
+  "beat_s": 0.6195838184594314,
+  "old": {
+   "found_s": 0.6194854349525883,
+   "class": "exact",
+   "ratio": 0.999841210335209
+  },
+  "new": {
+   "found_s": 0.6195881285521077,
+   "class": "exact",
+   "ratio": 1.0000069564319594
+  }
+ },
+ {
+  "desc": {
+   "seed": 1000,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.6621587961716644,
+  "old": {
+   "found_s": 0.6616246122881592,
+   "class": "exact",
+   "ratio": 0.9991932692179072
+  },
+  "new": {
+   "found_s": 0.6619347747404845,
+   "class": "exact",
+   "ratio": 0.9996616802004668
+  }
+ },
+ {
+  "desc": {
+   "seed": 1001,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.33389745980454855,
+  "old": {
+   "found_s": 1.673245447683154,
+   "class": "multiple",
+   "ratio": 5.01125539757808
+  },
+  "new": {
+   "found_s": 0.33900783263282686,
+   "class": "exact",
+   "ratio": 1.0153052162519287
+  }
+ },
+ {
+  "desc": {
+   "seed": 1002,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.49913855907782123,
+  "old": {
+   "found_s": 0.992284682706987,
+   "class": "multiple",
+   "ratio": 1.9879944449498617
+  },
+  "new": {
+   "found_s": 0.4965039102864603,
+   "class": "exact",
+   "ratio": 0.9947216083721752
+  }
+ },
+ {
+  "desc": {
+   "seed": 1003,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.62787033638782,
+  "old": {
+   "found_s": 1.2591082818856372,
+   "class": "multiple",
+   "ratio": 2.005363542302972
+  },
+  "new": {
+   "found_s": 0.6283883158339477,
+   "class": "exact",
+   "ratio": 1.0008249783691132
+  }
+ },
+ {
+  "desc": {
+   "seed": 1004,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.4095284156249627,
+  "old": {
+   "found_s": 0.4077554718762413,
+   "class": "exact",
+   "ratio": 0.995670767445976
+  },
+  "new": {
+   "found_s": 0.40922101527021365,
+   "class": "exact",
+   "ratio": 0.9992493796693449
+  }
+ },
+ {
+  "desc": {
+   "seed": 1005,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.8160845024477451,
+  "old": {
+   "found_s": 0.8158919143796735,
+   "class": "exact",
+   "ratio": 0.9997640096491307
+  },
+  "new": {
+   "found_s": 0.8159952571160822,
+   "class": "exact",
+   "ratio": 0.9998906420457744
+  }
+ },
+ {
+  "desc": {
+   "seed": 1006,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.38276591976479274,
+  "old": {
+   "found_s": 0.38356012939657236,
+   "class": "exact",
+   "ratio": 1.0020749225329875
+  },
+  "new": {
+   "found_s": 0.3824695440947935,
+   "class": "exact",
+   "ratio": 0.9992256999521238
+  }
+ },
+ {
+  "desc": {
+   "seed": 1007,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.5521097054029371,
+  "old": {
+   "found_s": 0.5521692335923228,
+   "class": "exact",
+   "ratio": 1.0001078194945736
+  },
+  "new": {
+   "found_s": 0.5521177022593817,
+   "class": "exact",
+   "ratio": 1.0000144841801661
+  }
+ },
+ {
+  "desc": {
+   "seed": 1008,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.5752520505214834,
+  "old": {
+   "found_s": 1.150889926528482,
+   "class": "multiple",
+   "ratio": 2.0006707068408804
+  },
+  "new": {
+   "found_s": 0.5731150404736927,
+   "class": "exact",
+   "ratio": 0.9962850892128876
+  }
+ },
+ {
+  "desc": {
+   "seed": 1009,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.6921885969999717,
+  "old": {
+   "found_s": 0.6977058446146899,
+   "class": "exact",
+   "ratio": 1.0079707288427324
+  },
+  "new": {
+   "found_s": 0.6927250496601387,
+   "class": "exact",
+   "ratio": 1.000775009386881
+  }
+ },
+ {
+  "desc": {
+   "seed": 1010,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.3605029768835758,
+  "old": {
+   "found_s": 0.3604078650014309,
+   "class": "exact",
+   "ratio": 0.9997361689410525
+  },
+  "new": {
+   "found_s": 0.3605146281717826,
+   "class": "exact",
+   "ratio": 1.0000323195339675
+  }
+ },
+ {
+  "desc": {
+   "seed": 1011,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.3827894340818351,
+  "old": {
+   "found_s": 0.3828062475327222,
+   "class": "exact",
+   "ratio": 1.0000439234978558
+  },
+  "new": {
+   "found_s": 0.3827780446879869,
+   "class": "exact",
+   "ratio": 0.9999702463212562
+  }
+ },
+ {
+  "desc": {
+   "seed": 1012,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.5815826553272975,
+  "old": {
+   "found_s": 1.150737571601559,
+   "class": "multiple",
+   "ratio": 1.978631173163096
+  },
+  "new": {
+   "found_s": 0.5811697401433087,
+   "class": "exact",
+   "ratio": 0.9992900146175157
+  }
+ },
+ {
+  "desc": {
+   "seed": 1013,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.47250262900487217,
+  "old": {
+   "found_s": 0.4759665279643817,
+   "class": "exact",
+   "ratio": 1.0073309622992042
+  },
+  "new": {
+   "found_s": 0.4730951097135414,
+   "class": "exact",
+   "ratio": 1.0012539204489022
+  }
+ },
+ {
+  "desc": {
+   "seed": 1014,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.3395074904895789,
+  "old": {
+   "found_s": 0.6746952521033179,
+   "class": "multiple",
+   "ratio": 1.987276484328488
+  },
+  "new": {
+   "found_s": 0.3375216708142147,
+   "class": "exact",
+   "ratio": 0.9941508811116344
+  }
+ },
+ {
+  "desc": {
+   "seed": 1015,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.42845178961571384,
+  "old": {
+   "found_s": 0.42848174402354683,
+   "class": "exact",
+   "ratio": 1.0000699131350574
+  },
+  "new": {
+   "found_s": 0.4284717230258771,
+   "class": "exact",
+   "ratio": 1.000046524277985
+  }
+ },
+ {
+  "desc": {
+   "seed": 1016,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.6196797978147314,
+  "old": {
+   "found_s": 0.6170263495700696,
+   "class": "exact",
+   "ratio": 0.9957180333229856
+  },
+  "new": {
+   "found_s": 0.6200349888547275,
+   "class": "exact",
+   "ratio": 1.0005731847984212
+  }
+ },
+ {
+  "desc": {
+   "seed": 1017,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.4974191203733117,
+  "old": {
+   "found_s": 0.9939061834374816,
+   "class": "multiple",
+   "ratio": 1.9981262133461168
+  },
+  "new": {
+   "found_s": 0.4973398114343962,
+   "class": "exact",
+   "ratio": 0.9998405591267662
+  }
+ },
+ {
+  "desc": {
+   "seed": 1018,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.38083527899276787,
+  "old": {
+   "found_s": 0.38074997064096333,
+   "class": "exact",
+   "ratio": 0.9997759967195524
+  },
+  "new": {
+   "found_s": 0.3809480910411436,
+   "class": "exact",
+   "ratio": 1.0002962226836603
+  }
+ },
+ {
+  "desc": {
+   "seed": 1019,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.7471200626147034,
+  "old": {
+   "found_s": 0.7471419299792937,
+   "class": "exact",
+   "ratio": 1.0000292688761614
+  },
+  "new": {
+   "found_s": 0.747110684003984,
+   "class": "exact",
+   "ratio": 0.9999874469831708
+  }
+ },
+ {
+  "desc": {
+   "seed": 1020,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.49434483752340375,
+  "old": {
+   "found_s": 0.9863092858392041,
+   "class": "multiple",
+   "ratio": 1.9951847596517265
+  },
+  "new": {
+   "found_s": 0.4942119040474444,
+   "class": "exact",
+   "ratio": 0.9997310916067713
+  }
+ },
+ {
+  "desc": {
+   "seed": 1021,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.3766580416112103,
+  "old": {
+   "found_s": 0.3768350379127334,
+   "class": "exact",
+   "ratio": 1.000469912445692
+  },
+  "new": {
+   "found_s": 0.37683646549651734,
+   "class": "exact",
+   "ratio": 1.000473702577924
+  }
+ },
+ {
+  "desc": {
+   "seed": 1022,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.6417936780229088,
+  "old": {
+   "found_s": 0.6418080881908843,
+   "class": "exact",
+   "ratio": 1.0000224529603032
+  },
+  "new": {
+   "found_s": 0.6417958182865268,
+   "class": "exact",
+   "ratio": 1.0000033348156756
+  }
+ },
+ {
+  "desc": {
+   "seed": 1023,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.42989010618983264,
+  "old": {
+   "found_s": 0.8610738740223134,
+   "class": "multiple",
+   "ratio": 2.0030092845218372
+  },
+  "new": {
+   "found_s": 0.4299856469039546,
+   "class": "exact",
+   "ratio": 1.000222244505622
+  }
+ },
+ {
+  "desc": {
+   "seed": 1024,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.33941036508632955,
+  "old": {
+   "found_s": 0.3393830621743404,
+   "class": "exact",
+   "ratio": 0.9999195578132029
+  },
+  "new": {
+   "found_s": 0.3393939825620921,
+   "class": "exact",
+   "ratio": 0.999951732398528
+  }
+ },
+ {
+  "desc": {
+   "seed": 1025,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.8443935417190866,
+  "old": {
+   "found_s": 0.8442538659812262,
+   "class": "exact",
+   "ratio": 0.9998345845497869
+  },
+  "new": {
+   "found_s": 0.8443869604529659,
+   "class": "exact",
+   "ratio": 0.99999220592556
+  }
+ },
+ {
+  "desc": {
+   "seed": 1026,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.7734600202634407,
+  "old": {
+   "found_s": 1.5461960970131867,
+   "class": "multiple",
+   "ratio": 1.999064019477764
+  },
+  "new": {
+   "found_s": 0.7730282398186854,
+   "class": "exact",
+   "ratio": 0.9994417546693515
+  }
+ },
+ {
+  "desc": {
+   "seed": 1027,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.3689273724583729,
+  "old": {
+   "found_s": 0.36862331246947555,
+   "class": "exact",
+   "ratio": 0.9991758269740972
+  },
+  "new": {
+   "found_s": 0.3689718830632032,
+   "class": "exact",
+   "ratio": 1.0001206486917296
+  }
+ },
+ {
+  "desc": {
+   "seed": 1028,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.35125865316830535,
+  "old": {
+   "found_s": 0.3511766357460185,
+   "class": "exact",
+   "ratio": 0.9997665041941399
+  },
+  "new": {
+   "found_s": 0.3512639776464208,
+   "class": "exact",
+   "ratio": 1.0000151582831267
+  }
+ },
+ {
+  "desc": {
+   "seed": 1029,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.5020138685910567,
+  "old": {
+   "found_s": 0.5020583369579235,
+   "class": "exact",
+   "ratio": 1.0000885799569474
+  },
+  "new": {
+   "found_s": 0.5020208354675282,
+   "class": "exact",
+   "ratio": 1.0000138778565841
+  }
+ },
+ {
+  "desc": {
+   "seed": 1030,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.41131434473347994,
+  "old": {
+   "found_s": 0.41125697784302356,
+   "class": "exact",
+   "ratio": 0.9998605278634434
+  },
+  "new": {
+   "found_s": 0.41131552315948805,
+   "class": "exact",
+   "ratio": 1.00000286502531
+  }
+ },
+ {
+  "desc": {
+   "seed": 1031,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.7005384709161452,
+  "old": {
+   "found_s": 0.700430263329653,
+   "class": "exact",
+   "ratio": 0.9998455365536875
+  },
+  "new": {
+   "found_s": 0.7005364011989365,
+   "class": "exact",
+   "ratio": 0.9999970455338363
+  }
+ },
+ {
+  "desc": {
+   "seed": 1032,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.4259190085159585,
+  "old": {
+   "found_s": 0.42585007127886826,
+   "class": "exact",
+   "ratio": 0.9998381447277255
+  },
+  "new": {
+   "found_s": 0.42591355066129716,
+   "class": "exact",
+   "ratio": 0.9999871856983318
+  }
+ },
+ {
+  "desc": {
+   "seed": 1033,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.7616548966970353,
+  "old": {
+   "found_s": 0.7616320512216155,
+   "class": "exact",
+   "ratio": 0.999970005476865
+  },
+  "new": {
+   "found_s": 0.7613528409544105,
+   "class": "exact",
+   "ratio": 0.9996034217807372
+  }
+ },
+ {
+  "desc": {
+   "seed": 1034,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.40636378240993076,
+  "old": {
+   "found_s": 0.8127685378089821,
+   "class": "multiple",
+   "ratio": 2.000100828348623
+  },
+  "new": {
+   "found_s": 0.4063695642371282,
+   "class": "exact",
+   "ratio": 1.000014228204992
+  }
+ },
+ {
+  "desc": {
+   "seed": 1035,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.4223435789176942,
+  "old": {
+   "found_s": 0.42239991171655195,
+   "class": "exact",
+   "ratio": 1.0001333814497715
+  },
+  "new": {
+   "found_s": 0.42235121308963286,
+   "class": "exact",
+   "ratio": 1.0000180757381425
+  }
+ },
+ {
+  "desc": {
+   "seed": 1036,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.3722044966104782,
+  "old": {
+   "found_s": 0.7439611142032634,
+   "class": "multiple",
+   "ratio": 1.9987966856344517
+  },
+  "new": {
+   "found_s": 0.3639516776945686,
+   "class": "exact",
+   "ratio": 0.9778271917962711
+  }
+ },
+ {
+  "desc": {
+   "seed": 1037,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.3918396648652734,
+  "old": {
+   "found_s": 0.7774300268102107,
+   "class": "multiple",
+   "ratio": 1.9840513774365216
+  },
+  "new": {
+   "found_s": 0.3953123210386879,
+   "class": "exact",
+   "ratio": 1.008862441668861
+  }
+ },
+ {
+  "desc": {
+   "seed": 1038,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.38123485785903366,
+  "old": {
+   "found_s": 0.7625348760067348,
+   "class": "multiple",
+   "ratio": 2.0001709190209764
+  },
+  "new": {
+   "found_s": 0.3812398572011552,
+   "class": "exact",
+   "ratio": 1.0000131135493475
+  }
+ },
+ {
+  "desc": {
+   "seed": 1039,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.38368759229116456,
+  "old": {
+   "found_s": 0.7693327090602204,
+   "class": "multiple",
+   "ratio": 2.0051018706813064
+  },
+  "new": {
+   "found_s": 0.38119357770157974,
+   "class": "exact",
+   "ratio": 0.9934998820923763
+  }
+ },
+ {
+  "desc": {
+   "seed": 1040,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.820033855816651,
+  "old": {
+   "found_s": 0.813164177327787,
+   "class": "exact",
+   "ratio": 0.9916226891851646
+  },
+  "new": {
+   "found_s": 0.8164520813391027,
+   "class": "exact",
+   "ratio": 0.9956321626818916
+  }
+ },
+ {
+  "desc": {
+   "seed": 1041,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.39369025816540526,
+  "old": {
+   "found_s": 0.3938829203576634,
+   "class": "exact",
+   "ratio": 1.0004893750563095
+  },
+  "new": {
+   "found_s": 0.3937094793544202,
+   "class": "exact",
+   "ratio": 1.0000488231258362
+  }
+ },
+ {
+  "desc": {
+   "seed": 1042,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.3748460569866095,
+  "old": {
+   "found_s": 0.3752959673202747,
+   "class": "exact",
+   "ratio": 1.001200253611528
+  },
+  "new": {
+   "found_s": 0.3749013537842095,
+   "class": "exact",
+   "ratio": 1.0001475186855227
+  }
+ },
+ {
+  "desc": {
+   "seed": 1043,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.3817290508869663,
+  "old": {
+   "found_s": 0.7632880675464436,
+   "class": "multiple",
+   "ratio": 1.9995545682805804
+  },
+  "new": {
+   "found_s": 0.3819222226754103,
+   "class": "exact",
+   "ratio": 1.000506044242625
+  }
+ },
+ {
+  "desc": {
+   "seed": 1044,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.39545261059224,
+  "old": {
+   "found_s": 0.7968243766559389,
+   "class": "multiple",
+   "ratio": 2.014968052588132
+  },
+  "new": {
+   "found_s": 0.3977358986231502,
+   "class": "exact",
+   "ratio": 1.0057738600523856
+  }
+ },
+ {
+  "desc": {
+   "seed": 1045,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.3573204283091182,
+  "old": {
+   "found_s": 1.0747395646090043,
+   "class": "multiple",
+   "ratio": 3.007775317226605
+  },
+  "new": {
+   "found_s": 0.3548561165216291,
+   "class": "exact",
+   "ratio": 0.9931033560013612
+  }
+ },
+ {
+  "desc": {
+   "seed": 1046,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.517909126649918,
+  "old": {
+   "found_s": 0.5173804076417771,
+   "class": "exact",
+   "ratio": 0.9989791278412858
+  },
+  "new": {
+   "found_s": 0.5177301115120717,
+   "class": "exact",
+   "ratio": 0.9996543502930636
+  }
+ },
+ {
+  "desc": {
+   "seed": 1047,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.4285014089496928,
+  "old": {
+   "found_s": 0.4285143579770301,
+   "class": "exact",
+   "ratio": 1.0000302193343285
+  },
+  "new": {
+   "found_s": 0.42852708650878935,
+   "class": "exact",
+   "ratio": 1.0000599240949044
+  }
+ },
+ {
+  "desc": {
+   "seed": 1048,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.37123762130272175,
+  "old": {
+   "found_s": 0.3711632505293097,
+   "class": "exact",
+   "ratio": 0.9997996680046837
+  },
+  "new": {
+   "found_s": 0.37124258807978194,
+   "class": "exact",
+   "ratio": 1.0000133789701668
+  }
+ },
+ {
+  "desc": {
+   "seed": 1049,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.5812021650643094,
+  "old": {
+   "found_s": 0.5836761670225841,
+   "class": "exact",
+   "ratio": 1.0042566977671201
+  },
+  "new": {
+   "found_s": 0.5812391376935035,
+   "class": "exact",
+   "ratio": 1.0000636140596448
+  }
+ },
+ {
+  "desc": {
+   "seed": 1050,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.776887894476113,
+  "old": {
+   "found_s": 0.7759038322337649,
+   "class": "exact",
+   "ratio": 0.998733327872213
+  },
+  "new": {
+   "found_s": 0.7773297163973497,
+   "class": "exact",
+   "ratio": 1.0005687074343392
+  }
+ },
+ {
+  "desc": {
+   "seed": 1051,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.4167372867368931,
+  "old": {
+   "found_s": 0.833893783860717,
+   "class": "multiple",
+   "ratio": 2.001005934434649
+  },
+  "new": {
+   "found_s": 0.41688298685055675,
+   "class": "exact",
+   "ratio": 1.000349621016167
+  }
+ },
+ {
+  "desc": {
+   "seed": 1052,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.38219061024857376,
+  "old": {
+   "found_s": 1.5304934235533572,
+   "class": "multiple",
+   "ratio": 4.00452910802266
+  },
+  "new": {
+   "found_s": 0.3838490999465557,
+   "class": "exact",
+   "ratio": 1.0043394307801106
+  }
+ },
+ {
+  "desc": {
+   "seed": 1053,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.41064263673844,
+  "old": {
+   "found_s": 0.4105264847059064,
+   "class": "exact",
+   "ratio": 0.9997171457073817
+  },
+  "new": {
+   "found_s": 0.4106354864028282,
+   "class": "exact",
+   "ratio": 0.9999825874495922
+  }
+ },
+ {
+  "desc": {
+   "seed": 1054,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.45510381037999104,
+  "old": {
+   "found_s": 0.9074688709877398,
+   "class": "multiple",
+   "ratio": 1.9939821427336424
+  },
+  "new": {
+   "found_s": 0.45476203094909445,
+   "class": "exact",
+   "ratio": 0.9992490077580075
+  }
+ },
+ {
+  "desc": {
+   "seed": 1055,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.5931622781700682,
+  "old": {
+   "found_s": 0.5918189796241425,
+   "class": "exact",
+   "ratio": 0.9977353608019887
+  },
+  "new": {
+   "found_s": 0.5911714679967508,
+   "class": "exact",
+   "ratio": 0.9966437343597454
+  }
+ },
+ {
+  "desc": {
+   "seed": 1056,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.5719558160062531,
+  "old": {
+   "found_s": 0.5780556881163739,
+   "class": "exact",
+   "ratio": 1.0106649358908766
+  },
+  "new": {
+   "found_s": 0.5692285774252458,
+   "class": "exact",
+   "ratio": 0.9952317320592164
+  }
+ },
+ {
+  "desc": {
+   "seed": 1057,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.3708045748504626,
+  "old": {
+   "found_s": 0.37070370097167493,
+   "class": "exact",
+   "ratio": 0.999727959454577
+  },
+  "new": {
+   "found_s": 0.3707912446839877,
+   "class": "exact",
+   "ratio": 0.99996405069576
+  }
+ },
+ {
+  "desc": {
+   "seed": 1058,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.6427118640163384,
+  "old": {
+   "found_s": 1.9320032627265098,
+   "class": "multiple",
+   "ratio": 3.006017736553555
+  },
+  "new": {
+   "found_s": 0.642610299056223,
+   "class": "exact",
+   "ratio": 0.9998419743499355
+  }
+ },
+ {
+  "desc": {
+   "seed": 1059,
+   "family": "groove",
+   "split": "test"
+  },
+  "beat_s": 0.6907508575324433,
+  "old": {
+   "found_s": 1.3825407082148935,
+   "class": "multiple",
+   "ratio": 2.0015041503585222
+  },
+  "new": {
+   "found_s": 0.690886236908147,
+   "class": "exact",
+   "ratio": 1.0001959887189824
+  }
+ }
+]

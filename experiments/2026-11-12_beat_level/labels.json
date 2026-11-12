@@ -1,0 +1,16 @@
+{
+ "_note": "Beat labels for the real drum stems. A Suno prompt tempo is not a label. 'verified' needs an independent check (for example a human tapping, or a published annotation); 'ambiguous' lists every level a careful reading accepts; 'unverified' is not scored.",
+ "gravity": {"status": "unverified"},
+ "pure_voltage": {"status": "unverified"},
+ "metro": {"status": "unverified"},
+ "tempo_080_4-4": {"status": "unverified", "note": "requested 80 BPM; came out near 122 BPM"},
+ "tempo_080_4-4_retake": {"status": "unverified", "note": "requested 80 BPM"},
+ "tempo_100_4-4": {"status": "unverified", "note": "requested 100 BPM"},
+ "tempo_120_4-4": {"status": "unverified", "note": "requested 120 BPM"},
+ "tempo_140_4-4": {"status": "unverified", "note": "requested 140 BPM"},
+ "tempo_160_4-4": {"status": "unverified", "note": "requested 160 BPM"},
+ "tempo_174_4-4": {"status": "ambiguous", "beats_s": [0.3449, 0.6898], "note": "breakbeat: tapping at 174 or at 87 BPM are both readings of the genre (tempo-series README)"},
+ "meter_3-4": {"status": "unverified", "note": "requested 120 BPM waltz; the meter README reads a waltz at 182.4 BPM"},
+ "meter_6-8": {"status": "unverified", "note": "requested 6/8; the meter README reads a binary groove near 128 BPM"},
+ "meter_6-8_retake": {"status": "ambiguous", "beats_s": [0.5715, 0.2856], "note": "jig prompt; the meter README reads a binary, reel-like groove: a beat of 0.5715 s or its half"}
+}

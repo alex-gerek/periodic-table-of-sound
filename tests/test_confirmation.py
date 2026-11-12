@@ -130,3 +130,11 @@ def test_verdict_names_the_three_states():
     assert P.verdict(True) == "confirmed"
     assert P.verdict(False) == "not confirmed"
     assert P.verdict(None) == "not tested"
+
+
+@pytest.mark.parametrize("tau", [-0.1, 0.0, float("nan"), float("inf")])
+def test_an_impossible_candidate_is_not_confirmed(tau):
+    """A non-positive or non-finite period is no candidate; it must not raise (issue #15)."""
+    env = np.random.default_rng(0).random(4000)
+    p = P.confirm_period(env, 200.0, P.Periodicity(tau, 0.5), 0.25)
+    assert p.confirmed is False and p.evidence["reason"] == "no candidate"
