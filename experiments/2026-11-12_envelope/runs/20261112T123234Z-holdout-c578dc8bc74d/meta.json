@@ -1,0 +1,23 @@
+{
+ "run_id": "20261112T123234Z-holdout-c578dc8bc74d",
+ "label": "holdout",
+ "started_utc": "2026-11-12T12:32:34.750799+00:00",
+ "revision": "c578dc8bc74d",
+ "local_changes": false,
+ "diff_sha256": null,
+ "command": [
+  "run.py",
+  "holdout"
+ ],
+ "python": "3.14.3",
+ "numpy": "2.4.2",
+ "code_sha256": {
+  "analyze.py": "e8825e67f54928bebbf5385d0caf1ef308459101de8ab824d69044d8c4d1bed6",
+  "envelope.py": "2fe1979fe69fda4ed99cb1bee658f3118bf866e764a6c4b86dce58282db25299",
+  "region.py": "a6f6736d4e5e0b75188f5950dc7568233eba6575b8b2f1223e910591c9276c54",
+  "run.py": "2ca5275f08bae954d2915cb97d3f09660896faa8d977d16ef007dac4a033bd37"
+ },
+ "pts_env": {},
+ "outcome": "completed",
+ "ended_utc": "2026-11-12T12:36:04.134757+00:00"
+}

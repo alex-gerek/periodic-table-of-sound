@@ -1,0 +1,18 @@
+{
+ "run_id": "20261112T121927Z-scaling-04751999c485",
+ "label": "scaling",
+ "started_utc": "2026-11-12T12:19:27.874066+00:00",
+ "revision": "04751999c485",
+ "local_changes": false,
+ "diff_sha256": null,
+ "command": [
+  "run.py",
+  "scaling"
+ ],
+ "python": "3.14.3",
+ "numpy": "2.4.2",
+ "pts_env": {},
+ "outcome": "crashed",
+ "error": "ValueError: attempt to get argmax of an empty sequence",
+ "ended_utc": "2026-11-12T12:19:43.776243+00:00"
+}
