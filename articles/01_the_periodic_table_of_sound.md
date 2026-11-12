@@ -1,4 +1,6 @@
-# The Periodic Table of Sound: ordering music by time, and a collider to test it
+# We Built a Periodic Table of Sound. Then We Tried to Break It.
+
+*One measurable number orders the elements of music. A collider builds the missing ones. Every claim had to survive a test it could fail.*
 
 *Lex Gerek, with Claude. November 2026.*
 
@@ -59,11 +61,12 @@ The rule of the project is *measure, don't guess*. Every claim needs a number, a
 | A best peak is not yet a period | Four tests on every candidate: significance against the noise level, enough repetitions, stability in both halves, and a correlation that falls and then returns. Checked on held-out noise, on smooth swells, and on real drums whose beat was destroyed | 0% false periods and 0% misses on held-out signals, where the bare peak rule gave 100% false periods. Without the fourth test, 25 of 40 smooth swells passed as periods; with it, none |
 | The method has no hidden bias towards doubling | A waltz, and a real 6/8 march from Freesound | Three beats per bar in the waltz; three eighths per beat and two beats per bar in the march |
 | Natural vibrato lives in the Event row | Two operatic voices and a historic solo violin, with a piano as a control | Z 12.3 to 12.5. The piano gave no false alarms, and vibrato we wrote into it was found at the written rate |
+| Envelope is a Level element | Known rises, decays and bursts on tones and noise, one held-out run, and compression and stretching in time | Times within 10% (median 0.3%) when a change lasts at least 8 carrier periods. The time scales exactly with tape speed, and the element stays in the Level column. Not checked for noise-like sounds at short times |
 | The detector can say no | Two Suno tracks requested in 6/8 | Both came out binary, and the method said so |
 
 Some results surprised us. Asked for 80 BPM, Suno returned a track at 122 BPM; asked for a 6/8 jig, it twice returned a straight groove. In the Suno voices, vibrato often starts only at the end of a long note. This is a candidate fingerprint of generated singing, not yet a finding, because we still need a human reference recording.
 
-Some things did not work, and we have kept them in the record. A live violinist bends the tempo so much that our fixed-lag method cannot see the meter. Vibrato inside a mix, such as a violin over a piano, is still unsolved.
+Some things did not work, and we have kept them in the record. A live violinist bends the tempo so much that our fixed-lag method cannot see the meter. Vibrato inside a mix, such as a violin over a piano, is still unsolved. Splitting drums into low, mid and high bands looked like it told the beat from its subdivision, until a fair control showed that the gain came from how our own generator placed the hats.
 
 Review found errors in our own checks, and we corrected them in public:
 - A single smooth swell in a long recording was accepted as periodic. That led to the fourth test above.
