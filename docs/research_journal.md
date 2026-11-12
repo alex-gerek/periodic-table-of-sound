@@ -164,3 +164,17 @@ The entries below were **reconstructed on 2026-11-12** from commits, experiment 
   - The evidence link for the bar prediction pointed to `docs/z16_border.md`, which does not hold the numbers. The real record is the tempo-series README at commit `069cff0` (2026-11-10 23:15): "the bar should land in row 5 (Z 16.58 and 16.26)". Those tracks were measured at 23:17 and 23:31.
   - Collider facts are labelled as collider facts (for example "in the collider, a rhythm without accents gives no meter").
 - **Next:** collider elements for Envelope, Sidechain pump and chord changes, each with a detector and a control; then wave 2 (defects to hear).
+
+### 2026-11-12-cards-003: the prediction scoreboard (issue #24)
+
+- **Before:** a prediction is counted only if it was written down before its test. Every entry names its record and its test.
+- **Checked in the git history:**
+  - the row predictions of the second edition and the compression test date from 21:32, and the Periodicity column was measured at 21:43;
+  - vibrato was measured at 23:11;
+  - the bar values were written at 23:15 and measured at 23:17 and 23:31;
+  - "finds 3 where 3 is" was written at 23:34 and measured at 23:46;
+  - the Envelope criteria were fixed before its runs.
+  - Observed patterns that became hypotheses (late vibrato, rigid harmonic rhythm) are listed as waiting, not as results.
+- **Result:** `table/predictions.json` holds 23 predictions: 8 came true, 1 partly, 3 did not (Loop, Repetition, and Envelope scaling for every carrier), and 11 are waiting.
+- **The scoreboard:** a strip above the table in both copies; each entry opens its element's card or panel.
+- **Checked in the browser:** all 23 entries render, every element link resolves, and there are no errors.

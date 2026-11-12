@@ -1,0 +1,28 @@
+{
+ "_note": "The prediction scoreboard (issue #24). A prediction is listed only if it was written down before its test; 'evidence' names the record and the test. status: true | partly | false | waiting. 'el' opens that element's card ('gap:<name>' for a predicted cell). Built into the table by table/build_cards.py.",
+ "list": [
+  {"status": "true", "el": "F0", "text": "Pitch lives in the Tone row (Z 6 to 10.7).", "evidence": "Second edition, 2026-11-10 21:32; measured on real stems at 21:43.", "link": "experiments/2026-11-10_periodicity_column/README.md"},
+  {"status": "true", "el": "F0", "text": "A rhythm played fast enough turns into a pitch of the same column.", "evidence": "Test defined in the ordering rules at 21:32; drums played 32 times faster gave 2.00, 2.00 and 1.00 pulses at 21:43.", "link": "experiments/2026-11-10_periodicity_column/README.md"},
+  {"status": "true", "el": "Pu", "text": "A pulse lives in the Beat row.", "evidence": "Second edition; every confirmed pulse is in the row.", "link": "experiments/2026-11-10_tempo_series/README.md"},
+  {"status": "true", "el": "Sc", "text": "A sidechain pump lives in the Beat row.", "evidence": "Second edition; found at 1 and 2 pulses, and correctly absent on the track without pumping.", "link": "experiments/2026-11-10_periodicity_column/README.md"},
+  {"status": "true", "el": "Vb", "text": "Vibrato lives in the Event row.", "evidence": "Second edition; measured at Z 12.29 to 12.50 at 23:11.", "link": "experiments/2026-11-10_vibrato_real/README.md"},
+  {"status": "true", "el": "Me", "text": "The 4/4 bar lands at Z 16.58 at 80 BPM and Z 16.26 at 100 BPM.", "evidence": "Written at 23:15 (commit 069cff0); measured at 23:17 and 23:31.", "link": "experiments/2026-11-10_tempo_series/README.md"},
+  {"status": "true", "el": "Me", "text": "The method finds 3 where 3 is, not only 2 and 4.", "evidence": "Stated in the prompts at 23:34; the waltz gave 3 beats at 23:46, and a real 6/8 march gave 3 eighths per beat.", "link": "experiments/2026-11-10_meters/README.md"},
+  {"status": "true", "el": "Ev", "text": "Envelope is a Level element near Z 8, for tonal sounds.", "evidence": "Criteria fixed before the runs; 279 of 279 held-out region cells passed.", "link": "experiments/2026-11-12_envelope/README.md"},
+  {"status": "partly", "el": "Hr", "text": "Chord changes nest at log₂ of a whole number of pulses.", "evidence": "Held on the 4 of 7 tracks where the chord period is confirmed; not testable on the other 3.", "link": "experiments/2026-11-10_tempo_series/README.md"},
+  {"status": "false", "el": "Lp", "text": "Loop is an element of the Phrase row.", "evidence": "Never confirmed on any track. Loop is not yet a well-posed element.", "link": "experiments/2026-11-12_periodicity_confirmation/README.md"},
+  {"status": "false", "el": "Rp", "text": "Repetition is an element of the Form row.", "evidence": "Never confirmed on any track (0.2 to 3.6 σ).", "link": "experiments/2026-11-12_periodicity_confirmation/README.md"},
+  {"status": "false", "el": "Ev", "text": "Envelope time scales exactly with tape speed for every carrier.", "evidence": "Held for tones; a compressed noise carrier was off by up to 7.2%.", "link": "experiments/2026-11-12_envelope/README.md"},
+  {"status": "waiting", "el": "Pu", "text": "A rule can be found that returns the beat itself, not its bar or its half.", "evidence": "A candidate gets 94 to 95% on two held-out sets; real labels next (issue #15).", "link": "experiments/2026-11-12_beat_level/README.md"},
+  {"status": "waiting", "el": "gap:Variation", "text": "Variation is a measurable element of the Phrase row in real music.", "evidence": "Built and detected only in the collider."},
+  {"status": "waiting", "el": "gap:Spatial motion", "text": "Spatial motion is a measurable element of the Bar row in real mixes.", "evidence": "Built and detected only in the collider."},
+  {"status": "waiting", "el": "gap:Width arc", "text": "Width arc is a measurable element of the Phrase row in real music.", "evidence": "Built and detected only in the collider."},
+  {"status": "waiting", "el": "gap:Novelty", "text": "Novelty, the share of new material in a song, is a measurable element of the Form row.", "evidence": "Predicted cell of the third edition."},
+  {"status": "waiting", "el": "gap:Tonal palette", "text": "Tonal palette, the pitch-class profile of a song, is a measurable element of the Form row.", "evidence": "Predicted cell of the third edition."},
+  {"status": "waiting", "el": "gap:Stereo form", "text": "Stereo form, width that changes by section, is a measurable element of the Form row.", "evidence": "Predicted cell of the third edition."},
+  {"status": "waiting", "el": "Vb", "text": "Generated singing starts its vibrato late in a long note.", "evidence": "Seen in two Suno voices; no human reference yet."},
+  {"status": "waiting", "el": "Hr", "text": "Generated music changes chords more rigidly than played music.", "evidence": "A hypothesis; no human reference yet."},
+  {"status": "waiting", "el": "gap:Variation", "text": "Loop-based AI music has less variation than played music.", "evidence": "A hypothesis."},
+  {"status": "waiting", "el": "Vb", "text": "Vibrato can be read inside a full mix, not only on a solo stem.", "evidence": "Not found yet in the two mixes tried."}
+ ]
+}
