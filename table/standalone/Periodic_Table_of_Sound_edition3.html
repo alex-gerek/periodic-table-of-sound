@@ -3,7 +3,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<style>*{box-sizing:border-box} body{margin:0}</style>
+<style>*{box-sizing:border-box} body{margin:0}
+/* element cards (issue #24) */
+.cardbg { position: fixed; inset: 0; z-index: 50; background: color-mix(in srgb, #000 55%, transparent); display: flex; align-items: flex-start; justify-content: center; overflow-y: auto; padding: 32px 16px; }
+.cardbg[hidden] { display: none; }
+.card { width: min(860px, 100%); background: var(--panel); color: var(--ink); border: 1px solid var(--line); border-top: 6px solid var(--fam); border-radius: 14px; padding: 22px 26px 26px; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,.35); }
+.card .x { position: absolute; top: 12px; right: 12px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 8px; width: 36px; height: 36px; font-size: 18px; cursor: pointer; }
+.card .hd { display: flex; gap: 18px; align-items: center; margin: 0 40px 12px 0; }
+.card .sym { font-family: var(--font-display); font-size: 44px; font-weight: 800; color: var(--fam); min-width: 86px; }
+.card h2 { margin: 0; font-family: var(--font-display); font-size: 24px; letter-spacing: .03em; }
+.card .meta { color: var(--muted); font-size: 13.5px; margin-top: 4px; }
+.card .badge { display: inline-block; font-size: 12.5px; padding: 2px 9px; border-radius: 99px; border: 1px solid var(--fam); color: var(--fam); margin-right: 6px; }
+.card .one { font-size: 18px; margin: 6px 0 4px; }
+.card h4 { font-family: var(--font-display); font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--fam); margin: 22px 0 8px; }
+.card ul { margin: 0; padding-left: 20px; } .card li { margin: 3px 0; }
+.card .typ { color: var(--muted); font-size: 12.5px; margin: -4px 0 6px; }
+.card .listen { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.card .btn { display: inline-block; background: var(--fam); color: var(--panel); text-decoration: none; font-weight: 700; padding: 9px 16px; border-radius: 8px; }
+.card .chart { width: 100%; height: auto; display: block; margin: 6px 0 4px; }
+.card .pred { border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; }
+.card .pred b { margin-right: 6px; } .card .pred small { display: block; color: var(--muted); margin-top: 3px; }
+.card a { color: var(--fam); }
+@media (max-width: 640px) { .card { padding: 18px 16px 20px; } .card .sym { font-size: 34px; min-width: 60px; } }
+</style>
 <title>Periodic Table of Sound III</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -208,6 +230,7 @@ code, .mono { font-family: var(--font-data); font-size: .92em; }
   <p class="note">Fill and border show what PHARMAKON 3.2 measures; the ✓ shows what this project has checked. τ values are typical, with ranges in the detail panel. An element is placed by its typical τ, so elements near a border can belong to both neighbouring periods. The first and second editions are kept as separate pages.</p>
 </div>
 
+<div class="cardbg" id="cardbg" hidden><article class="card" id="card" role="dialog" aria-modal="true" aria-labelledby="cardname"></article></div>
 <script>
 const GRP = {
   level:  ["Level",        "How strong is it?",                         "--level"],
@@ -474,9 +497,835 @@ function showGap(name) {
 const press = sel => { document.querySelectorAll(".el").forEach(x => x.setAttribute("aria-pressed", "false")); const b = T.querySelector(sel); if (b) b.setAttribute("aria-pressed", "true"); };
 T.addEventListener("click", ev => {
   const b = ev.target.closest(".el"); if (!b) return;
-  if (b.dataset.gap) { press(`[data-gap="${b.dataset.gap}"]`); showGap(b.dataset.gap); }
-  else { press(`[data-s="${b.dataset.s}"]`); showEl(byS[b.dataset.s]); }
+  if (b.dataset.gap) { press(`[data-gap="${b.dataset.gap}"]`); showGap(b.dataset.gap); openGapCard(b.dataset.gap); }
+  else { press(`[data-s="${b.dataset.s}"]`); showEl(byS[b.dataset.s]); openCard(byS[b.dataset.s]); }
 });
+
+// element cards (issue #24): the data is injected by table/build_cards.py
+// CARDS:BEGIN
+const CARDS = {
+ "Vb": {
+  "sentence": "A regular wobble in the pitch of a held note, about five to seven times a second.",
+  "where": [
+   "Classical and operatic singing, on long notes",
+   "Violin, viola and cello: the finger rocks on the string",
+   "Guitar, with a bending finger or a tremolo arm",
+   "Synthesizer leads, with a slow oscillator on the pitch"
+  ],
+  "place": [
+   "Column: Periodicity. It asks what repeats, and how often, but of the pitch track rather than of the raw sound. That makes it a second-order element, built on Pitch (F0).",
+   "Row: Event (Z 10.7 to 13). One wobble takes 0.15 to 0.18 s: too slow to be heard as a pitch of its own, too fast to tap along to.",
+   "Expected, not yet measured: played about five times faster, a vibrato crosses 20 wobbles a second and stops sounding like a wobble. It becomes a roughness of the tone, in the Tone row. Played much slower, it becomes a slow drift of pitch."
+  ],
+  "listen": {
+   "recipe": "vibrato",
+   "label": "A held melody with a 5.5 Hz vibrato of ±40 cents. Switch it off to hear the same notes straight."
+  },
+  "found": {
+   "summary": "We tracked the pitch of every held note, removed the note itself, and looked for a regular swing in what was left. Each one-second window was judged on its own, by the same gate for every recording.",
+   "chart": {
+    "title": "Vibrato rate found, median and 10–90% range",
+    "unit": "Hz",
+    "lo": 4,
+    "hi": 8,
+    "rows": [
+     {
+      "label": "Soprano (Suno)",
+      "median": 5.67,
+      "p10": 5.48,
+      "p90": 6.05
+     },
+     {
+      "label": "Baritone (Suno)",
+      "median": 5.84,
+      "p10": 5.5,
+      "p90": 6.47
+     },
+     {
+      "label": "Violin, Bach (Telmányi)",
+      "median": 6.54,
+      "p10": 6.05,
+      "p90": 6.96
+     },
+     {
+      "label": "Piano (control, no vibrato)",
+      "median": null,
+      "note": "nothing found"
+     },
+     {
+      "label": "Same piano, 5.5 Hz written in",
+      "median": 5.51,
+      "p10": 5.34,
+      "p90": 5.67,
+      "control": true
+     }
+    ]
+   },
+   "numbers": [
+    "Every solo recording lands in the Event row: Z 12.29 to 12.50.",
+    "The piano without vibrato gave no false alarms; a 5.5 Hz vibrato written into it was found at 5.51 Hz.",
+    "Voices swing wider than the violin: ±30 to 40 cents against ±13."
+   ],
+   "limits": [
+    "Inside a mix it is not solved yet: a violin with piano and a cello with orchestra gave no vibrato windows.",
+    "The Suno voices carry vibrato on only 11 to 16% of their held-note time, mostly late in long notes."
+   ],
+   "links": [
+    [
+     "The experiment",
+     "experiments/2026-11-10_vibrato_real/README.md"
+    ]
+   ]
+  },
+  "predictions": [
+   {
+    "status": "true",
+    "text": "Vibrato lives in the Event row (Z 10.7 to 13).",
+    "fail": "A natural vibrato read outside the row, slower than 4 or faster than 20 wobbles a second (the borders of the row).",
+    "evidence": "Predicted by the second edition of the table before the measurement; measured at Z 12.29 to 12.50.",
+    "link": "experiments/2026-11-10_vibrato_real/README.md"
+   },
+   {
+    "status": "waiting",
+    "text": "Generated singing starts its vibrato late in a long note, which makes it a fingerprint of generation.",
+    "fail": "A human reference singer shows the same late start.",
+    "evidence": "Seen in two Suno voices; no human reference recording yet."
+   },
+   {
+    "status": "waiting",
+    "text": "Vibrato can be read inside a full mix, not only on a solo stem.",
+    "fail": "No method finds it in a mix where it is known to be present.",
+    "evidence": "Not found yet in the two mixes tried."
+   }
+  ],
+  "pharmakon": "Not in PHARMAKON yet. Measured in this project."
+ },
+ "F0": {
+  "sentence": "The note you hear: how many times a second the waveform repeats. A4 repeats 440 times a second.",
+  "where": [
+   "Every melody and bass line",
+   "A sung or spoken voice",
+   "Any instrument that plays a note rather than a noise"
+  ],
+  "place": [
+   "Column: Periodicity. It asks what repeats, and how often, of the raw waveform.",
+   "Row: Tone (Z 6 to 10.7). A note's period is 2 to 50 ms. Faster than about 20 repeats a second, repeats are heard as pitch.",
+   "Measured: play a drum loop 32 times faster and its rhythm turns into a note of this row, five rows below the pulse. Rhythm and pitch are the same question at different speeds."
+  ],
+  "listen": {
+   "recipe": "pitch",
+   "label": "The collider's melody alone: eight held notes, no vibrato."
+  },
+  "found": {
+   "summary": "We followed the waveform period frame by frame on the bass and lead-vocal stems of three tracks, keeping only the frames where the period was clear.",
+   "chart": {
+    "title": "Pitch found, as Z (10th to 90th percentile)",
+    "unit": "Z",
+    "lo": 5,
+    "hi": 11,
+    "step": 1,
+    "dec": 2,
+    "band": [
+     6,
+     10.7,
+     "Tone row"
+    ],
+    "rows": [
+     {
+      "label": "Bass, GRAVITY",
+      "median": 9.14,
+      "p10": 8.56,
+      "p90": 9.56
+     },
+     {
+      "label": "Bass, Metro",
+      "median": 9.3,
+      "p10": 8.72,
+      "p90": 10.06
+     },
+     {
+      "label": "Bass, Pure voltage",
+      "median": 9.55,
+      "p10": 8.55,
+      "p90": 9.72
+     },
+     {
+      "label": "Vocal, GRAVITY",
+      "median": 6.95,
+      "p10": 6.72,
+      "p90": 8.82
+     },
+     {
+      "label": "Vocal, Pure voltage",
+      "median": 6.56,
+      "p10": 5.12,
+      "p90": 7.53
+     }
+    ]
+   },
+   "numbers": [
+    "Every bass and vocal median lands in the Tone row.",
+    "The highest vocal notes cross into the Wave row (Z below 6), as the Z rule says they should.",
+    "Time compression: drums played 32 times faster gave a note whose period, times 32, was 2.00, 2.00 and 1.00 pulses (within 0.3%)."
+   ],
+   "limits": [
+    "The Metro vocal stem is almost silent (voiced in under 0.1% of frames), so it is left out."
+   ],
+   "links": [
+    [
+     "The experiment",
+     "experiments/2026-11-10_periodicity_column/README.md"
+    ]
+   ]
+  },
+  "predictions": [
+   {
+    "status": "true",
+    "text": "Pitch lives in the Tone row.",
+    "fail": "A bass or vocal median outside Z 6 to 10.7.",
+    "evidence": "Predicted by the second edition before measuring; all five medians are in the row.",
+    "link": "experiments/2026-11-10_periodicity_column/README.md"
+   },
+   {
+    "status": "true",
+    "text": "A rhythm played fast enough becomes a pitch of the same column.",
+    "fail": "The compressed drums give a note that is not a whole number of pulses.",
+    "evidence": "2.00, 2.00 and 1.00 pulses on three tracks.",
+    "link": "experiments/2026-11-10_periodicity_column/README.md"
+   }
+  ],
+  "pharmakon": "Used inside the tempo and chroma analysis; there is no pitch tracker for melody or bass in PHARMAKON yet."
+ },
+ "Pu": {
+  "sentence": "The beat you tap your foot to. Its rate is the tempo, and 120 BPM is exactly Z 14.",
+  "where": [
+   "The kick of a four-on-the-floor dance track",
+   "The kick and snare of rock and hip-hop",
+   "The bass and chords of music without drums"
+  ],
+  "place": [
+   "Column: Periodicity. It asks what repeats, and how often, of the onsets.",
+   "Row: Beat (Z 13 to 16), 0.25 to 2 s: the range in which a pulse can be felt and tapped.",
+   "It is the reference of the metric axis. Bars, subdivisions and chord changes are counted from it."
+  ],
+  "listen": {
+   "recipe": "pulse",
+   "label": "A kick on every beat with a hat between, at 110 BPM. Switch the pulse off to hear the rest of the sound without it."
+  },
+  "found": {
+   "summary": "We took the onset curve of the drums, looked for its best period, and accepted it only after four tests: significance against the noise level, enough repetitions, stability in both halves, and a correlation that falls and returns.",
+   "chart": {
+    "title": "Tempo found on the real drum stems",
+    "unit": "BPM",
+    "lo": 60,
+    "hi": 180,
+    "step": 20,
+    "dec": 1,
+    "rows": [
+     {
+      "label": "GRAVITY",
+      "median": 119.0
+     },
+     {
+      "label": "Pure voltage",
+      "median": 111.5
+     },
+     {
+      "label": "Metro",
+      "median": 132.0
+     },
+     {
+      "label": "Requested 80 (retake)",
+      "median": 80.5
+     },
+     {
+      "label": "Requested 100",
+      "median": 100.0
+     },
+     {
+      "label": "Requested 120",
+      "median": 121.1
+     },
+     {
+      "label": "Requested 140",
+      "median": 141.6
+     },
+     {
+      "label": "Requested 160",
+      "median": 164.1
+     }
+    ]
+   },
+   "numbers": [
+    "The pulse is confirmed on every real drum stem, at 42 to 116 standard deviations above the noise level.",
+    "On noise and on shuffled drums, no pulse is confirmed (0% false periods held out).",
+    "On a strict benchmark the rule is exact on 76.5 to 80% of beats; the rest are bars or half bars."
+   ],
+   "limits": [
+    "The level is not always right: on a 174 BPM breakbeat and on a fast waltz the rule returns the bar, not the beat. A better rule is a candidate, not yet in the core code."
+   ],
+   "links": [
+    [
+     "Tempo series",
+     "experiments/2026-11-10_tempo_series/README.md"
+    ],
+    [
+     "Confirming a period",
+     "experiments/2026-11-12_periodicity_confirmation/README.md"
+    ],
+    [
+     "Beat level",
+     "experiments/2026-11-12_beat_level/README.md"
+    ]
+   ]
+  },
+  "predictions": [
+   {
+    "status": "true",
+    "text": "A pulse lives in the Beat row.",
+    "fail": "A confirmed pulse slower than 30 or faster than 240 BPM.",
+    "evidence": "Every confirmed pulse is in the row.",
+    "link": "experiments/2026-11-10_tempo_series/README.md"
+   },
+   {
+    "status": "waiting",
+    "text": "A rule can be found that returns the beat itself, not its bar or its half.",
+    "fail": "No rule passes real recordings with verified beat labels.",
+    "evidence": "A candidate gets 94 to 95% on two held-out sets; real labels are the next step (issue #15).",
+    "link": "experiments/2026-11-12_beat_level/README.md"
+   }
+  ],
+  "pharmakon": "Tempo in the Track Map: multi-band onsets with octave and meter checks."
+ },
+ "Sc": {
+  "sentence": "The whole mix ducks on every kick and swells back, so the track seems to breathe.",
+  "where": [
+   "House, EDM and French touch, on pads and bass",
+   "Pop productions that keep the kick clear of the bass"
+  ],
+  "place": [
+   "Column: Periodicity, asked of the level track rather than of the sound. That makes it a second-order element, built on Momentary loudness.",
+   "Row: Beat. It pumps once per beat or once per two beats, so its period nests in whole pulses."
+  ],
+  "listen": {
+   "recipe": null,
+   "label": "Not in the collider yet: a sidechain element is planned for the next step."
+  },
+  "found": {
+   "summary": "We searched the bass stem's level track freely, from 50 ms to 4 s, without telling the detector where the drums are. Then we compared what it found with the pulse measured on a different stem.",
+   "chart": {
+    "title": "Pump period in pulses of the drum stem",
+    "unit": "pulses",
+    "lo": 0,
+    "hi": 3,
+    "step": 1,
+    "dec": 2,
+    "rows": [
+     {
+      "label": "GRAVITY",
+      "median": 1.0,
+      "text": "1.00 (0.3% from one pulse)"
+     },
+     {
+      "label": "Pure voltage",
+      "median": 1.99,
+      "text": "2 pulses"
+     },
+     {
+      "label": "Metro (no pump)",
+      "median": null,
+      "note": "none confirmed (4.0 σ, below 5)"
+     }
+    ]
+   },
+   "numbers": [
+    "Where pumping exists, it nests in whole pulses within 0.5%.",
+    "On the track without pumping, the test says no, as it should."
+   ],
+   "limits": [
+    "Only three tracks so far."
+   ],
+   "links": [
+    [
+     "The experiment",
+     "experiments/2026-11-10_periodicity_column/README.md"
+    ]
+   ]
+  },
+  "predictions": [
+   {
+    "status": "true",
+    "text": "A sidechain pump nests in whole pulses and lives in the Beat row.",
+    "fail": "A confirmed pump whose period is not a whole number of pulses.",
+    "evidence": "1 pulse on GRAVITY, 2 pulses on Pure voltage; corrected in issue #5.",
+    "link": "experiments/2026-11-10_periodicity_column/README.md"
+   }
+  ],
+  "pharmakon": "Not measured in PHARMAKON yet."
+ },
+ "Me": {
+  "sentence": "Beats grouped into bars: four in 4/4, three in a waltz, two dotted beats in 6/8.",
+  "where": [
+   "The accented first beat of every bar",
+   "The bass note that lands on beat one",
+   "The oom-pah-pah of a waltz"
+  ],
+  "place": [
+   "Column: Periodicity of the accents.",
+   "Row: Bar (Z 16 to 18) or Beat. Its Z moves with tempo: a 4/4 bar is in the Bar row below about 120 BPM and in the Beat row above it. That is a fact about the absolute time axis, not an error of the table.",
+   "Metric interval: a 4/4 bar is log₂ 4 = 2 above the pulse, a waltz log₂ 3 = 1.585."
+  ],
+  "listen": {
+   "recipe": "meter",
+   "label": "A pulse with an accent and a low bass note on beat 1 of every 3-beat bar. Switch the meter off to hear the beats all equal."
+  },
+  "found": {
+   "summary": "We found the pulse, then measured how strong each beat is and looked for the cycle of strong and weak beats.",
+   "chart": {
+    "title": "4/4 bars measured against tempo, as Z",
+    "unit": "Z",
+    "lo": 15,
+    "hi": 17,
+    "step": 0.5,
+    "dec": 2,
+    "band": [
+     16,
+     17,
+     "Bar row"
+    ],
+    "rows": [
+     {
+      "label": "80.5 BPM",
+      "median": 16.58
+     },
+     {
+      "label": "100 BPM",
+      "median": 16.26
+     },
+     {
+      "label": "121 BPM",
+      "median": 15.99
+     },
+     {
+      "label": "142 BPM",
+      "median": 15.76
+     },
+     {
+      "label": "164 BPM",
+      "median": 15.55
+     },
+     {
+      "label": "174 BPM",
+      "median": 15.46
+     }
+    ]
+   },
+   "numbers": [
+    "The bars at 80.5 and 100 BPM landed at Z 16.58 and 16.26, the values written down before measuring.",
+    "A waltz gives 3 beats per bar; a real 6/8 march gives 3 eighths per beat and 2 beats per bar.",
+    "In the collider, a rhythm without accents gives no meter."
+   ],
+   "limits": [
+    "Meter in a live, tempo-bending performance is not solved: a solo violinist bends the time too much for a fixed-lag method."
+   ],
+   "links": [
+    [
+     "Tempo series",
+     "experiments/2026-11-10_tempo_series/README.md"
+    ],
+    [
+     "Meters",
+     "experiments/2026-11-10_meters/README.md"
+    ]
+   ]
+  },
+  "predictions": [
+   {
+    "status": "true",
+    "text": "The 4/4 bar lands at Z 16.58 at 80.5 BPM and Z 16.26 at 100 BPM.",
+    "fail": "Measured bars away from those values.",
+    "evidence": "Written in the tempo-series README before those two tracks were measured (commit 069cff0, 2026-11-10 23:15; measured at 23:17 and 23:31). Both came out at those values.",
+    "link": "experiments/2026-11-10_tempo_series/README.md"
+   },
+   {
+    "status": "true",
+    "text": "The method finds 3 where 3 is, not only 2 and 4.",
+    "fail": "A waltz or a real 6/8 read as binary.",
+    "evidence": "Waltz: 3 beats; real 6/8 march: 3 eighths per beat.",
+    "link": "experiments/2026-11-10_meters/README.md"
+   }
+  ],
+  "pharmakon": "Meter checks inside the Track Map tempo."
+ },
+ "Hr": {
+  "sentence": "How often the chords change: every bar, every two bars, every four.",
+  "where": [
+   "The chord progression of a pop song",
+   "The changes of a blues",
+   "A pad or a piano that moves to a new chord on the bar line"
+  ],
+  "place": [
+   "Column: Change. It asks where something starts or turns: here, the moment a chord turns into the next one.",
+   "Row: Bar or Phrase, depending on how many bars a chord holds.",
+   "It is measured from the notes only, never from the drums. That makes it an independent test of the metric axis."
+  ],
+  "listen": {
+   "recipe": null,
+   "label": "Not in the collider yet: a chord-change element is planned for the next step."
+  },
+  "found": {
+   "summary": "We measured how much the pitch-class content changes at each moment, on the pitched stems only, and looked for the period of those changes.",
+   "chart": {
+    "title": "Chord-change period in pulses, by track",
+    "unit": "pulses",
+    "lo": 0,
+    "hi": 16,
+    "step": 4,
+    "dec": 2,
+    "rows": [
+     {
+      "label": "100 BPM",
+      "median": 8.0
+     },
+     {
+      "label": "120 BPM",
+      "median": 8.01
+     },
+     {
+      "label": "140 BPM",
+      "median": 3.99
+     },
+     {
+      "label": "160 BPM",
+      "median": 8.01
+     },
+     {
+      "label": "80 BPM (not confirmed)",
+      "median": 4.0,
+      "open": true
+     },
+     {
+      "label": "122 BPM (not confirmed)",
+      "median": 15.98,
+      "open": true
+     },
+     {
+      "label": "174 BPM (not confirmed)",
+      "median": 4.0,
+      "open": true
+     }
+    ]
+   },
+   "numbers": [
+    "On the four tracks where the chord period is confirmed, it is 4 or 8 pulses: ΔZ = log₂ 4 or log₂ 8 within 0.003.",
+    "On three tracks it is not confirmed, so it is not counted."
+   ],
+   "limits": [
+    "Confirmed on four of seven tracks. The earlier claim \"at every tempo\" was too strong and was corrected (issue #7)."
+   ],
+   "links": [
+    [
+     "Tempo series",
+     "experiments/2026-11-10_tempo_series/README.md"
+    ],
+    [
+     "Confirming a period",
+     "experiments/2026-11-12_periodicity_confirmation/README.md"
+    ]
+   ]
+  },
+  "predictions": [
+   {
+    "status": "partly",
+    "text": "Chord changes nest at log₂ of a whole number of pulses.",
+    "fail": "A confirmed chord period that is not a whole number of pulses.",
+    "evidence": "Held on the 4 of 7 tracks where the period is confirmed; not testable on the other 3.",
+    "link": "experiments/2026-11-10_tempo_series/README.md"
+   },
+   {
+    "status": "waiting",
+    "text": "Generated music changes chords more rigidly than played music.",
+    "fail": "A human-played reference shows the same rigidity.",
+    "evidence": "A hypothesis; no human reference yet."
+   }
+  ],
+  "pharmakon": "Not measured in PHARMAKON yet."
+ },
+ "Ev": {
+  "sentence": "The outline of a note: how fast its level rises, how it holds and how it dies away.",
+  "where": [
+   "The sharp attack of a plucked string or a piano key",
+   "The slow swell of a bowed string or a pad",
+   "The decay of a cymbal or a bell"
+  ],
+  "place": [
+   "Column: Level. It asks how strong the sound is, followed over a few milliseconds.",
+   "Row: Tone (Z 6 to 10.7) at its typical 10 ms.",
+   "Measured: played faster or slower, its time changes by exactly the same factor and it stays in the Level column, while it moves between rows."
+  ],
+  "listen": {
+   "recipe": null,
+   "label": "Not in the collider yet: an attack and decay element is planned for the next step."
+  },
+  "found": {
+   "summary": "We built sounds whose envelope is known exactly, read it back with our own method, and fixed the method and its valid region before one run on held-out sounds.",
+   "chart": {
+    "title": "Share of held-out cases read within the criteria",
+    "unit": "%",
+    "lo": 0,
+    "hi": 100,
+    "step": 25,
+    "dec": 0,
+    "rows": [
+     {
+      "label": "Inside the region",
+      "median": 100,
+      "text": "279 of 279"
+     },
+     {
+      "label": "Noisy tone, short window",
+      "median": 92
+     },
+     {
+      "label": "Under 2 carrier periods",
+      "median": 51,
+      "open": true
+     },
+     {
+      "label": "Window over T/4",
+      "median": 34,
+      "open": true
+     },
+     {
+      "label": "Noise carrier, short window",
+      "median": 21,
+      "open": true
+     },
+     {
+      "label": "SNR 10 dB",
+      "median": 20,
+      "open": true
+     }
+    ]
+   },
+   "numbers": [
+    "Inside the region, the time is read with a median error of 0.3%.",
+    "A change must last at least 8 periods of the carrier: at the typical 10 ms that means a note above about 800 Hz.",
+    "Under tape-speed changes, tones keep their time ratio within 0.55%."
+   ],
+   "limits": [
+    "Not checked for noise-like sounds at short times: their own level fluctuates.",
+    "A compressed noise carrier failed the time-scaling criterion (up to 7.2%)."
+   ],
+   "links": [
+    [
+     "The experiment",
+     "experiments/2026-11-12_envelope/README.md"
+    ]
+   ]
+  },
+  "predictions": [
+   {
+    "status": "true",
+    "text": "Envelope is a Level element near Z 8, for tonal sounds.",
+    "fail": "Known envelopes read outside the criteria fixed before the run.",
+    "evidence": "Criteria fixed before the runs; 279 of 279 held-out region cells passed.",
+    "link": "experiments/2026-11-12_envelope/README.md"
+   },
+   {
+    "status": "false",
+    "text": "Envelope time scales exactly with tape speed for every carrier.",
+    "fail": "Any carrier off by more than 5%.",
+    "evidence": "Held for tones; a compressed noise carrier was off by up to 7.2%.",
+    "link": "experiments/2026-11-12_envelope/README.md"
+   }
+  ],
+  "pharmakon": "Used by the kick onset detector; no general envelope readout yet."
+ },
+ "gap:Variation": {
+  "sentence": "How much the bars of a phrase differ from each other: a fill, a small change, a repeat that is played rather than copied.",
+  "where": [
+   "The drum fill at the end of a four-bar phrase",
+   "A guitarist who never plays a riff twice the same way",
+   "Loop-based music, where it is often almost absent"
+  ],
+  "place": [
+   "Column: Irregularity. It asks how far from regular something is.",
+   "Row: Phrase. A fill that returns every 4 or 8 bars has a period of a whole phrase."
+  ],
+  "listen": {
+   "recipe": "variation",
+   "label": "A fill closes every 4-bar phrase. Switch Variation off to hear every bar the same."
+  },
+  "found": {
+   "summary": "Not yet found in real music. In the collider, the detector compares every bar with the median bar and asks whether the bars that stand out sit on a grid.",
+   "numbers": [
+    "Fills every 4 bars: the detector finds exactly 4 bars.",
+    "The same fills in random bars: variation without a period, and no false period.",
+    "Across 360 collider settings, pulse, meter and variation are all right in 359."
+   ],
+   "limits": [
+    "Only built and detected in our own synthetic sound."
+   ],
+   "links": [
+    [
+     "The collider",
+     "lab/README.md"
+    ]
+   ]
+  },
+  "predictions": [
+   {
+    "status": "waiting",
+    "text": "Variation is a measurable element of the Phrase row in real music.",
+    "fail": "No real recording shows a confirmed variation period, though its fills are audible.",
+    "evidence": "Only in the collider so far."
+   },
+   {
+    "status": "waiting",
+    "text": "Loop-based AI music has less variation than played music.",
+    "fail": "Generated and played music show the same variation.",
+    "evidence": "A hypothesis."
+   }
+  ],
+  "pharmakon": "Not measured in PHARMAKON yet."
+ },
+ "gap:Spatial motion": {
+  "sentence": "A sound that travels across the stereo field in a pattern: left, right, and back again.",
+  "where": [
+   "Auto-pan synced to the tempo",
+   "The rotating speaker of an organ",
+   "Psychedelic and electronic mixes"
+  ],
+  "place": [
+   "Column: Space. It asks where a sound is, and how signals relate.",
+   "Row: Bar. A pan that returns once per bar or two has the period of a bar."
+  ],
+  "listen": {
+   "recipe": "spatial",
+   "label": "The melody travels left to right and back every 2 bars. Switch it off to hear it stay in the middle."
+  },
+  "found": {
+   "summary": "Not yet found in real music. In the collider, the detector follows the left–right balance of the melody and looks for its period.",
+   "numbers": [
+    "A cycle of 2 bars is found at 2.00 bars.",
+    "With spatial motion switched off, nothing is found."
+   ],
+   "limits": [
+    "Only built and detected in our own synthetic sound."
+   ],
+   "links": [
+    [
+     "The collider",
+     "lab/README.md"
+    ]
+   ]
+  },
+  "predictions": [
+   {
+    "status": "waiting",
+    "text": "Spatial motion is a measurable element of the Bar row in real mixes.",
+    "fail": "Real mixes with audible auto-pan show no confirmed period.",
+    "evidence": "Only in the collider so far."
+   }
+  ],
+  "pharmakon": "Not measured in PHARMAKON yet."
+ },
+ "gap:Width arc": {
+  "sentence": "The stereo image opening or closing over a phrase, from mono to wide.",
+  "where": [
+   "A build-up that widens into a drop",
+   "A filtered intro that starts in mono",
+   "A chorus that is wider than the verse"
+  ],
+  "place": [
+   "Column: Space.",
+   "Row: Phrase. An arc that opens over 8 bars has the period of a phrase."
+  ],
+  "listen": {
+   "recipe": "width",
+   "label": "The pad opens from mono to wide over 8 bars, then starts again. Switch it off to hear it stay narrow."
+  },
+  "found": {
+   "summary": "Not yet found in real music. In the collider, the detector follows the pad's side-to-mid energy and looks for its period.",
+   "numbers": [
+    "An arc over 8 bars is found at 8.00 bars.",
+    "With the arc switched off, nothing is found."
+   ],
+   "limits": [
+    "Only built and detected in our own synthetic sound."
+   ],
+   "links": [
+    [
+     "The collider",
+     "lab/README.md"
+    ]
+   ]
+  },
+  "predictions": [
+   {
+    "status": "waiting",
+    "text": "Width arc is a measurable element of the Phrase row in real music.",
+    "fail": "Real build-ups that audibly widen show no confirmed arc.",
+    "evidence": "Only in the collider so far."
+   }
+  ],
+  "pharmakon": "Not measured in PHARMAKON yet."
+ }
+};
+// CARDS:END
+const REPO = "https://github.com/alex-gerek/periodic-table-of-sound/blob/main/";
+const LAB = location.pathname.includes("/standalone/") ? "../../lab/" : "../lab/";
+const STATUS_ICON = {true: "✓ came true", partly: "✓ partly", false: "✗ did not come true", waiting: "🔮 waiting for a test"};
+function cardChart(c) {
+  const W = 760, rowH = 34, top = c.band ? 44 : 30, left = 250, right = 120, H = top + c.rows.length * rowH + 34;
+  const x = v => left + (v - c.lo) / (c.hi - c.lo) * (W - left - right);
+  let s = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="${c.title}"><text x="0" y="16" font-size="13" fill="var(--muted)">${c.title}</text>`;
+  const step = c.step || 1, dec = c.dec == null ? 2 : c.dec;
+  for (let v = c.lo; v <= c.hi + 1e-9; v += step) s += `<line x1="${x(v)}" x2="${x(v)}" y1="${top - 6}" y2="${H - 28}" stroke="var(--line)"/><text x="${x(v)}" y="${H - 10}" font-size="12" text-anchor="middle" fill="var(--muted)">${+v.toFixed(3)}${Math.abs(v - c.hi) < 1e-9 ? " " + c.unit : ""}</text>`;
+  if (c.band) s += `<rect x="${x(c.band[0])}" y="${top - 6}" width="${x(c.band[1]) - x(c.band[0])}" height="${H - 22 - top}" fill="var(--fam)" opacity="0.08"/><text x="${x((c.band[0] + c.band[1]) / 2)}" y="${top - 10}" font-size="11.5" text-anchor="middle" fill="var(--fam)">${c.band[2] || ""}</text>`;
+  c.rows.forEach((r, i) => {
+    const y = top + i * rowH + rowH / 2;
+    s += `<text x="0" y="${y + 4}" font-size="13" fill="var(--ink)">${r.label}</text>`;
+    if (r.median == null) { s += `<text x="${left}" y="${y + 4}" font-size="13" fill="var(--muted)">${r.note || "none"}</text>`; return; }
+    const a = r.p10 == null ? r.median : r.p10, b = r.p90 == null ? r.median : r.p90, dim = r.control || r.open;
+    if (b > a) s += `<line x1="${x(a)}" x2="${x(b)}" y1="${y}" y2="${y}" stroke="var(--fam)" stroke-width="8" stroke-linecap="round" opacity="${dim ? 0.45 : 0.85}"${dim ? ' stroke-dasharray="3 5"' : ""}/>`;
+    s += `<circle cx="${x(r.median)}" cy="${y}" r="7" fill="${r.open ? "var(--panel)" : "var(--fam)"}" stroke="var(--fam)" stroke-width="3"/><text x="${x(b) + 12}" y="${y + 4}" font-size="12.5" fill="var(--muted)">${r.text || r.median.toFixed(dec) + " " + c.unit}</text>`;
+  });
+  return s + "</svg>";
+}
+function openGapCard(name) {
+  const g = GAPS.find(x => x[0] === name);
+  if (!g || !CARDS["gap:" + name]) return false;
+  return openCard({ s: "?", name: g[0], g: g[1], p: g[2], gap: true, key: "gap:" + name });
+}
+function openCard(e) {
+  const k = CARDS[e.key || e.s], bg = document.getElementById("cardbg"), C = document.getElementById("card");
+  if (!k) return false;
+  const P = PERIODS[e.p - 1];
+  C.style.setProperty("--fam", gv(e.g));
+  const chk = !e.gap && CHECK[e.s];
+  const links = (k.found && k.found.links || []).map(([t, u]) => `<a href="${REPO}${u}" target="_blank" rel="noopener">${t}</a>`).join(" · ");
+  C.innerHTML = `<button class="x" id="cardx" aria-label="Close">✕</button>
+    <div class="hd"><div class="sym">${e.s}</div><div><h2 id="cardname">${e.name}</h2>
+      <div class="meta">${e.gap ? `Predicted cell · ${GRP[e.g][0]} · Period ${e.p} (${P[0]}, ${P[1]}, ${P[2]})` : `${GRP[e.g][0]} · Period ${e.p} (${P[0]}, ${P[1]}) · Z ${fmtZ(e.z)}, range ${fmtZ(zOf(e.tmin))} – ${fmtZ(zOf(e.tmax))}`}</div>
+      <div style="margin-top:6px">${e.gap ? `<span class="badge">🔮 predicted cell</span>` : chk ? `<span class="badge">✓ measured in this project</span>` : `<span class="badge">not measured yet</span>`}${e.of && byS[e.of] ? `<span class="badge">built on ${byS[e.of].name}</span>` : ""}</div></div></div>
+    <p class="one">${k.sentence}</p>
+    <h4>Where you hear it</h4><p class="typ">Typical examples, a description rather than a measurement.</p><ul>${k.where.map(w => `<li>${w}</li>`).join("")}</ul>
+    <h4>Its place in the table</h4><ul>${k.place.map(w => `<li>${w}</li>`).join("")}</ul>
+    ${k.listen ? `<h4>Listen</h4><div class="listen">${k.listen.recipe ? `<a class="btn" href="${LAB}collider.html?recipe=${k.listen.recipe}" target="_blank" rel="noopener">▶ Open in the collider</a>` : ""}<span>${k.listen.label}</span></div>` : ""}
+    ${k.found ? `<h4>How we found it</h4><p>${k.found.summary}</p>${k.found.chart ? cardChart(k.found.chart) : ""}<ul>${k.found.numbers.map(w => `<li>${w}</li>`).join("")}</ul>
+      ${k.found.limits && k.found.limits.length ? `<p style="margin:10px 0 4px"><b>Where it does not work yet</b></p><ul>${k.found.limits.map(w => `<li>${w}</li>`).join("")}</ul>` : ""}<p>${links}</p>` : ""}
+    ${k.predictions ? `<h4>Our predictions</h4>${k.predictions.map(p => `<div class="pred"><b>${STATUS_ICON[p.status]}</b>${p.text}<small>Would fail if: ${p.fail}</small><small>${p.evidence}${p.link ? ` <a href="${REPO}${p.link}" target="_blank" rel="noopener">evidence</a>` : ""}</small></div>`).join("")}` : ""}
+    <h4>In PHARMAKON</h4><p>${k.pharmakon}</p>`;
+  bg.hidden = false;
+  document.getElementById("cardx").onclick = closeCard;
+  document.getElementById("cardx").focus();
+  return true;
+}
+function closeCard() { document.getElementById("cardbg").hidden = true; }
+document.getElementById("cardbg").addEventListener("click", ev => { if (ev.target.id === "cardbg") closeCard(); });
+document.addEventListener("keydown", ev => { if (ev.key === "Escape") closeCard(); });
 
 // column chains
 const TESTS = {

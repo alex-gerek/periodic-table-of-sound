@@ -131,3 +131,36 @@ The entries below were **reconstructed on 2026-11-12** from commits, experiment 
   - It is **not checked for noise-like sounds** at its typical time; the reading needs a 10 ms window, so only changes of 40 ms and longer.
   - The analytic estimator is adopted as `pts.amplitude_envelope()`, with tests.
   - Next: real notes with known onsets; other envelope shapes; inharmonic sounds.
+
+### 2026-11-12-cards-001: the sample element card, Vibrato (issue #24)
+
+- **Before:** one sample card, shown to Lex before the other nine are built. Every "measured" line on it must link to evidence. Every prediction must have been written down before its test, and must say what would prove it wrong.
+- **Done:**
+  - `table/cards.json` holds the card data, and `table/build_cards.py` builds it into both copies of the third edition;
+  - the card opens on a click and holds its sections, a chart drawn from the vibrato experiment's numbers, and three predictions (one came true, two are waiting);
+  - the collider opens from `?recipe=vibrato` with a with/without button.
+- **Checks:**
+  - In the browser, the card opens and has all its sections. Elements without a card keep the old panel.
+  - The prediction "Vibrato lives in the Event row" is backed by the git history: the second edition placed Vibrato in row 3 (commit `3916a46`, 2026-11-10 21:32) before the measurement (`86ca8e1`, 23:11).
+  - The collider found vibrato at 5.49 Hz with it on, found nothing with it off, and found 5.49 Hz again after switching back.
+- **Corrections while building:**
+  - The draft condition for refuting the prediction said "faster than 8 wobbles a second". The Event row ends at 20 (Z 10.7), so the condition did not match the prediction. It was corrected before publishing.
+  - Locally, `edition3.html` shows broken characters, because the fragment has no charset and the local server sends none. The standalone copy and GitHub Pages are unaffected.
+
+### 2026-11-12-cards-002: the other nine cards of wave 1 (issue #24)
+
+- **Before:** Lex approved the Vibrato card. The rule is the same as for the sample: every measured line links to evidence, and every prediction says what would refute it and links to a record from before its test.
+- **Done:**
+  - cards for Pitch, Pulse, Sidechain pump, Meter, Harmonic rhythm and Envelope;
+  - cards for the predicted cells Variation, Spatial motion and Width arc, which are marked 🔮 and say plainly that they are only built in the collider;
+  - collider recipes `pitch`, `pulse`, `meter`, `variation`, `spatial` and `width`.
+  - Envelope, Sidechain pump and Harmonic rhythm have no collider element yet. Their cards say so.
+- **Checks:**
+  - in the browser, all ten cards open without errors, each with its six sections;
+  - every linked file exists;
+  - for every recipe with a switch, the collider's detector finds the element when it is on and finds nothing when it is off: Vibrato 5.49 Hz, Pulse 110.0 BPM, Meter 3 beats, Variation 4 bars, Spatial motion 2.01 bars, Width arc 8.01 bars.
+- **Corrections before publishing:**
+  - Sidechain pump is built on Momentary loudness, not on "Loudness".
+  - The evidence link for the bar prediction pointed to `docs/z16_border.md`, which does not hold the numbers. The real record is the tempo-series README at commit `069cff0` (2026-11-10 23:15): "the bar should land in row 5 (Z 16.58 and 16.26)". Those tracks were measured at 23:17 and 23:31.
+  - Collider facts are labelled as collider facts (for example "in the collider, a rhythm without accents gives no meter").
+- **Next:** collider elements for Envelope, Sidechain pump and chord changes, each with a detector and a control; then wave 2 (defects to hear).
