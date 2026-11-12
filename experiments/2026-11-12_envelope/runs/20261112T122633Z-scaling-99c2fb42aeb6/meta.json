@@ -1,0 +1,22 @@
+{
+ "run_id": "20261112T122633Z-scaling-99c2fb42aeb6",
+ "label": "scaling",
+ "started_utc": "2026-11-12T12:26:33.247582+00:00",
+ "revision": "99c2fb42aeb6",
+ "local_changes": false,
+ "diff_sha256": null,
+ "command": [
+  "run.py",
+  "scaling"
+ ],
+ "python": "3.14.3",
+ "numpy": "2.4.2",
+ "code_sha256": {
+  "analyze.py": "e8825e67f54928bebbf5385d0caf1ef308459101de8ab824d69044d8c4d1bed6",
+  "envelope.py": "2fe1979fe69fda4ed99cb1bee658f3118bf866e764a6c4b86dce58282db25299",
+  "run.py": "7110ce560591e2dd3156623fdf8841e5ca3fd8d16491cbaed875b9a66944fb10"
+ },
+ "pts_env": {},
+ "outcome": "completed",
+ "ended_utc": "2026-11-12T12:26:53.398067+00:00"
+}

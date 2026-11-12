@@ -271,6 +271,40 @@ def onset_envelope(x: np.ndarray, sr: int, hop_s: float = 0.005):
     return rise.sum(axis=1), fs
 
 
+def amplitude_envelope(x: np.ndarray, sr: int, window_s: float = 0.005) -> np.ndarray:
+    """The amplitude envelope (Envelope, Level column): one value per sample, on the scale of the RMS.
+
+    The magnitude of the analytic signal (negative frequencies zeroed in the FFT), smoothed by a
+    zero-phase Hann window of window_s seconds. Validated in experiments/2026-11-12_envelope/
+    (issue #21) on held-out signals: rise, decay and burst times of 1.5 to 300 ms are read within
+    10% (median 0.3%) when
+      - the window is at most a quarter of the change: window_s <= T / 4;
+      - the window holds at least two periods of a tonal carrier: window_s * f0 >= 2;
+      - the SNR is at least 20 dB, with window_s >= T / 50 and >= 2 ms when noise is present.
+    Together these mean the change must last at least 8 carrier periods. A noise carrier needs
+    window_s >= 10 ms, because its own level fluctuates. In additive noise, remove the noise floor
+    in power before reading times: sqrt(env^2 - floor^2).
+    """
+    _check_sr(sr)
+    x = mono(x)
+    n = len(x)
+    if n == 0:
+        return np.zeros(0)
+    g = np.zeros(n)
+    g[0] = 1.0
+    if n % 2 == 0:
+        g[1:n // 2], g[n // 2] = 2.0, 1.0
+    else:
+        g[1:(n + 1) // 2] = 2.0
+    mag = np.abs(np.fft.ifft(np.fft.fft(x) * g))
+    m = max(3, int(round(_samples("window_s", window_s, sr))) | 1)
+    h = np.hanning(m + 2)[1:-1]
+    h /= h.sum()
+    size = 1 << int(np.ceil(np.log2(n + m - 1)))
+    out = np.fft.irfft(np.fft.rfft(mag, size) * np.fft.rfft(h, size), size)[:n + m - 1]
+    return out[m // 2:m // 2 + n] / np.sqrt(2.0)
+
+
 def level_track(x: np.ndarray, sr: int, hop_s: float = 0.01, detrend_s: float = 4.0):
     """Level in dB per hop with the slow trend removed. Returns (track, fs).
 

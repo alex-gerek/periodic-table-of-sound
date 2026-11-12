@@ -1,0 +1,20 @@
+run 20261112T121927Z-scaling-04751999c485
+rise done
+decay done
+Traceback (most recent call last):
+  File "<repo>\experiments\runlog.py", line 76, in run_folder
+    yield run
+  File "<repo>\experiments\2026-11-12_envelope\run.py", line 97, in main
+    (grid if mode == "grid" else scaling)(run)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "<repo>\experiments\2026-11-12_envelope\run.py", line 81, in scaling
+    Tk, fl, tp = E.characteristic_time(ek, shape, nk, Tk_true)
+                 ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>\experiments\2026-11-12_envelope\envelope.py", line 148, in characteristic_time
+    ip = int(np.argmax(e[guard:-guard])) + guard
+             ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "<site-packages>\numpy\_core\fromnumeric.py", line 1314, in argmax
+    return _wrapfunc(a, 'argmax', axis=axis, out=out, **kwds)
+  File "<site-packages>\numpy\_core\fromnumeric.py", line 54, in _wrapfunc
+    return bound(*args, **kwds)
+ValueError: attempt to get argmax of an empty sequence

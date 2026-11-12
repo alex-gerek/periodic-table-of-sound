@@ -1,0 +1,4 @@
+run 20261112T122408Z-scaling-04751999c485
+rise done
+decay done
+burst done

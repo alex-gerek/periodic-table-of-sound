@@ -1,0 +1,4 @@
+run 20261112T122633Z-grid-99c2fb42aeb6
+rise done
+decay done
+burst done

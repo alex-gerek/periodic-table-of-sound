@@ -7,7 +7,8 @@
 
 This creates `<experiment>/runs/<run-id>/` with:
   meta.json     run ID, UTC start and end, git revision, whether the tree had local changes
-                (and the SHA-256 of `git diff HEAD`), the command line, the Python and numpy
+                (and the SHA-256 of `git diff HEAD`), the SHA-256 of every .py file in the experiment
+                folder (untracked files are not in the diff), the command line, the Python and numpy
                 versions, and the names of the PTS_* variables that were set
   console.txt   everything printed during the run
 The run ID is `<UTC time>-<label>-<revision>`, so a rerun never overwrites an earlier run.
@@ -45,6 +46,16 @@ def _git(repo, *args):
     return r.stdout.strip() if r.returncode == 0 else ""
 
 
+def _code_hashes(folder):
+    """SHA-256 of every .py file in the experiment folder, line endings normalised."""
+    out = {}
+    for name in sorted(os.listdir(folder)):
+        if name.endswith(".py"):
+            with open(os.path.join(folder, name), "rb") as f:
+                out[name] = hashlib.sha256(f.read().replace(b"\r\n", b"\n")).hexdigest()
+    return out
+
+
 class Run:
     def __init__(self, path, meta):
         self.path, self.meta = path, meta
@@ -67,6 +78,7 @@ def run_folder(script, label):
     meta = {"run_id": run_id, "label": label, "started_utc": start.isoformat(), "revision": rev,
             "local_changes": bool(diff), "diff_sha256": hashlib.sha256(diff.encode()).hexdigest() if diff else None,
             "command": [os.path.basename(sys.argv[0])] + sys.argv[1:], "python": platform.python_version(), "numpy": np_version,
+            "code_sha256": _code_hashes(here),
             "pts_env": {k: hashlib.sha256(v.encode()).hexdigest()[:16] for k, v in sorted(os.environ.items()) if k.startswith("PTS_")}}
     console = open(os.path.join(path, "console.txt"), "w", encoding="utf-8")
     old = sys.stdout
@@ -78,7 +90,12 @@ def run_folder(script, label):
     except BaseException as e:
         meta["outcome"] = "crashed"
         meta["error"] = "".join(traceback.format_exception_only(type(e), e)).strip()
-        console.write(traceback.format_exc())
+        tb = traceback.format_exc()
+        root = _git(here, "rev-parse", "--show-toplevel").replace("/", os.sep)
+        if root:
+            tb = tb.replace(root, "<repo>")           # no local paths in the record
+        tb = tb.replace(os.path.expanduser("~"), "~")
+        console.write(tb)
         raise
     finally:
         sys.stdout = old
