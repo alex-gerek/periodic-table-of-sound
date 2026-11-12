@@ -402,7 +402,7 @@ N_MULT = 4
 # ---------------------------------------------------------------- confirmation
 #
 # The peak rule always returns its best candidate, even in pure noise. Whether that
-# candidate is a real period is a separate question, answered here with three tests:
+# candidate is a real period is a separate question, answered here with four tests:
 #
 # 1. Significance. If a track has no periodicity, its autocorrelation at a long lag l is
 #    noise with standard deviation (Bartlett's formula for a correlated sequence)
@@ -412,6 +412,13 @@ N_MULT = 4
 # 2. Repetitions. The period must fit into the track at least MIN_REPS times.
 # 3. Stability. The same lag must stay significant in each half of the track, at
 #    Z_MIN / sqrt(2) (each half has half the data).
+# 4. Return. A period means the track becomes unlike itself and then like itself again:
+#    the correlation must fall after half the candidate lag and rise back at the lag.
+#    The candidate must stand Z_MIN standard deviations above the lowest correlation
+#    between lag/2 and lag. A single smooth swell has an autocorrelation that only falls,
+#    so tests 1 to 3 alone confirmed a "period" on one burst in 100 s (14 sigma, found in
+#    review). The valley is not searched below lag/2: an onset envelope dips at its
+#    shortest lags by construction, and that dip gave smooth swells up to 10 sigma.
 #
 # The thresholds were chosen on a training set and checked on independent signals:
 # experiments/2026-11-12_periodicity_confirmation/.
@@ -419,7 +426,9 @@ N_MULT = 4
 # Chosen on the training set (largest share of true detections with at most 1% false
 # detections): 5 sigma and 4 repetitions. On the test set and on the real drum stems this
 # gave 0% false detections and 0% misses. The noisiest negative reached 5.2 sigma once and
-# was rejected by the stability test, so the three tests are meant to work together.
+# was rejected by the stability test, so the tests are meant to work together. The return
+# test was added after review; with it the thresholds were chosen again on a training set
+# that includes smooth swells and crescendos, and the same values came out.
 Z_MIN = 5.0
 MIN_REPS = 4.0
 
@@ -458,15 +467,18 @@ def confirm_period(track, fs, cand: Periodicity, tau_lo: float, corr=None,
     reps = n / lag
     ev = {"repetitions": reps}
 
-    def significance(seq):
+    def significance(seq, rise=False):
         m = len(seq)
         if m <= lag + 2:
             return 0.0
         r = corr(seq, int(lag * 1.05) + 2)
         k, val = _peak_near(r, lag)
+        if rise:                                  # height above the valley between lag/2 and the peak
+            val -= float(np.min(r[max(1, k // 2):k + 1]))
         return val / _bartlett_sigma(r, m, k, k_short)
 
     ev["significance"] = significance(track)
+    ev["return"] = significance(track, rise=True)
     half = n // 2
     ev["significance_halves"] = (significance(track[:half]), significance(track[half:]))
     reasons = []
@@ -476,10 +488,22 @@ def confirm_period(track, fs, cand: Periodicity, tau_lo: float, corr=None,
         reasons.append(f"peak {ev['significance']:.1f} sigma (need {z_min:g})")
     if min(ev["significance_halves"]) < z_min / np.sqrt(2):
         reasons.append("not stable in both halves")
+    if ev["return"] < z_min:
+        reasons.append(f"correlation does not fall and return ({ev['return']:.1f} sigma, need {z_min:g})")
     cand.confirmed = not reasons
     ev["reason"] = "; ".join(reasons) if reasons else "confirmed"
     cand.evidence = ev
     return cand
+
+
+def verdict(confirmed) -> str:
+    """How a report must show a period: "confirmed", "not confirmed" or "not tested".
+
+    `confirmed` is Periodicity.confirmed (True, False or None). A report shows a period that
+    is not confirmed as a candidate, never as a measurement, and leaves it out of its counts.
+    "not tested" is for tools that have their own test instead (pitch, vibrato).
+    """
+    return {True: "confirmed", False: "not confirmed"}.get(confirmed, "not tested")
 
 
 def envelope_periodicity(env, fs, tau_lo, tau_hi, n_mult=N_MULT, confirm=True):

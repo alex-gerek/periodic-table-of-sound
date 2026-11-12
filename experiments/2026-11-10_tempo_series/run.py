@@ -58,7 +58,7 @@ def measure(folder):
            "harm_tau": harm.tau, "harm_strength": harm.strength, "harm_candidates": harm.candidates,
            "pulse_confirmed": pulse.confirmed, "pulse_significance": pulse.evidence.get("significance"),
            "harm_confirmed": harm.confirmed, "harm_significance": harm.evidence.get("significance"),
-           "harm_confirmation": harm.evidence.get("reason")}
+           "pulse_confirmation": pulse.evidence.get("reason"), "harm_confirmation": harm.evidence.get("reason")}
     if harm.tau:
         out.update({"harm_z": z_of(harm.tau), "harm_in_pulses": harm.tau / pulse.tau,
                     "dz": z_of(harm.tau) - z_of(pulse.tau)})
@@ -76,12 +76,22 @@ def main():
     with open(os.path.join(HERE, "results.json"), "w", encoding="utf-8") as f:
         json.dump(res, f, indent=1, default=float)
     L = ["# Tempo series: measured", "",
-         "| Track | Pulse found | Z | 4/4 bar = 4 pulses | Z of the bar | Row of the bar | Harmonic rhythm | In pulses | ΔZ to the pulse | r |",
-         "|---|---|---|---|---|---|---|---|---|---|"]
+         "A period the confirmation test rejected (issue #7) is shown in italics as a *candidate*, with the reason; it is not a measurement.", "",
+         "| Track | Pulse found | Z | 4/4 bar = 4 pulses | Z of the bar | Row of the bar | Harmonic rhythm | In pulses | ΔZ to the pulse | r | Harmonic rhythm confirmed |",
+         "|---|---|---|---|---|---|---|---|---|---|---|"]
     for name, m in res.items():
-        hr = (f"{m['harm_tau']:.3f} s | {m['harm_in_pulses']:.2f} | {m['dz']:.3f} | {m['harm_strength']:.2f}"
-              if m.get("harm_tau") else "not found | | | ")
-        L.append(f"| {name} | {m['pulse_bpm']:.1f} BPM ({m['pulse_tau']:.4f} s) | {m['pulse_z']:.2f} | {m['bar_tau']:.3f} s | "
+        if not m.get("harm_tau"):
+            hr = "not found | | | | –"
+        elif m.get("harm_confirmed") is False:
+            hr = (f"*candidate {m['harm_tau']:.3f} s* | *{m['harm_in_pulses']:.2f}* | *{m['dz']:.3f}* | *{m['harm_strength']:.2f}* | "
+                  f"no: {m.get('harm_confirmation')}")
+        else:
+            hr = (f"{m['harm_tau']:.3f} s | {m['harm_in_pulses']:.2f} | {m['dz']:.3f} | {m['harm_strength']:.2f} | "
+                  f"{P.verdict(m.get('harm_confirmed'))}, {m['harm_significance']:.0f} σ")
+        pulse = f"{m['pulse_bpm']:.1f} BPM ({m['pulse_tau']:.4f} s)"
+        if m.get("pulse_confirmed") is False:
+            pulse = f"*candidate {pulse}, not confirmed*"
+        L.append(f"| {name} | {pulse} | {m['pulse_z']:.2f} | {m['bar_tau']:.3f} s | "
                  f"{m['bar_z']:.2f} | {m['bar_row']} | {hr} |")
     L += ["", "Drum-pattern strength (comb score) at fractions and multiples of the pulse found:", "",
           "| Track | ½ pulse | 1 pulse | 2 pulses | 4 pulses |", "|---|---|---|---|---|"]

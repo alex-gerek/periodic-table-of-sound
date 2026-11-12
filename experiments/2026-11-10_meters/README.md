@@ -37,7 +37,7 @@ Autocorrelation of the onset envelope at multiples of the unit:
 | Percussion | 0.42 | **0.51** | 0.41 | **0.50** | 0.37 | 0.46 | **0.46** | 0.34 | 0.40 | 0.35 | 0.31 | 0.27 |
 | Bass, keyboard, guitar | flat, falling slowly: no grouping | | | | | | | | | | | |
 
-- **Chord changes:** the strongest candidates are 7.50 s (32 units) and 3.76 s (16 units), both powers of two. The peak is weak (r = 0.23).
+- **Chord changes:** the strongest candidates are 7.50 s (32 units) and 3.76 s (16 units), both powers of two. The peak is weak (r = 0.23). The confirmation test (issue #7) rejects the chord period of this take (2.0 σ), so it is a candidate, not a measurement.
 
 **Verdict: inconclusive, leaning binary.** Nothing in this track groups clearly in threes:
 - The drums lean slightly towards 3 (0.47 at 3 units against 0.40 and 0.43 at 2 and 4), but not cleanly.

@@ -1,8 +1,8 @@
 """Confirmation of a period candidate (issue #7).
 
 The peak rule always returns a candidate. These tests check that noise is not confirmed,
-a real pulse is, and that each of the three tests (significance, repetitions, stability)
-can reject a candidate on its own.
+a real pulse is, and that each of the four tests (significance, repetitions, stability,
+return) can reject a candidate on its own.
 """
 import os
 import sys
@@ -78,3 +78,55 @@ def test_confirmation_can_be_switched_off():
     env, fs = P.onset_envelope(rng.standard_normal(10 * SR), SR)
     p = P.envelope_periodicity(env, fs, 0.25, 2.0, confirm=False)
     assert p.confirmed is None and p.evidence == {}
+
+
+# ---------------------------------------------------------------- return (review of issue #7)
+
+FS = 100.0
+
+
+def bell(t, centre, width):
+    return np.exp(-0.5 * ((t - centre) / width) ** 2)
+
+
+@pytest.mark.parametrize("dur,width", [(100, 5), (60, 3), (100, 2), (100, 10)])
+def test_a_single_smooth_burst_is_not_a_period(dur, width):
+    """One swell in a long track: before the return test this was confirmed at 14 sigma."""
+    t = np.arange(int(dur * FS)) / FS
+    p = P.envelope_periodicity(bell(t, dur / 2, width), FS, 0.25, 2.0)
+    assert p.confirmed is False
+    if p.tau is not None:
+        assert "does not fall and return" in p.evidence["reason"]
+
+
+def test_a_few_bursts_and_a_crescendo_are_not_periods():
+    t = np.arange(int(80 * FS)) / FS
+    few = bell(t, 12, 2) + bell(t, 41, 4) + bell(t, 63, 1.5)
+    assert P.envelope_periodicity(few, FS, 0.25, 2.0).confirmed is False
+    assert P.envelope_periodicity((t / 80) ** 2, FS, 0.25, 2.0).confirmed is False
+
+
+def test_a_pulse_under_a_crescendo_is_still_confirmed():
+    """A slow trend must not hide a real period: the correlation still falls between beats."""
+    rng = np.random.default_rng(3)
+    x = clicks(np.arange(80) * 0.5, 40, rng)
+    x *= np.linspace(0.1, 1.0, len(x))
+    p = pulse_of(x)
+    assert p.confirmed is True
+    assert p.tau == pytest.approx(0.5, rel=0.02)
+    assert p.evidence["return"] >= P.Z_MIN
+
+
+def test_a_pulse_inside_one_swell_is_still_confirmed():
+    rng = np.random.default_rng(4)
+    x = clicks(np.arange(80) * 0.5, 40, rng)
+    x *= bell(np.arange(len(x)) / SR, 20, 8)
+    p = pulse_of(x)
+    assert p.confirmed is True
+    assert p.tau == pytest.approx(0.5, rel=0.02)
+
+
+def test_verdict_names_the_three_states():
+    assert P.verdict(True) == "confirmed"
+    assert P.verdict(False) == "not confirmed"
+    assert P.verdict(None) == "not tested"
