@@ -1,0 +1,468 @@
+{
+ "signals": 1920,
+ "ambiguous": 160,
+ "scored": 1760,
+ "accuracy": {
+  "full / logistic": 0.9073863636363636,
+  "full / knn": 0.9545454545454546,
+  "bands / logistic": 0.9551136363636363,
+  "bands / knn": 0.9602272727272727,
+  "both / logistic": 0.9573863636363636,
+  "both / knn": 0.9551136363636363
+ },
+ "per_combo": {
+  "every|none|2|0 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "every|none|2|1 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 7
+  },
+  "every|none|2|1 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "every|none|4|0 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "every|none|4|1 as T": {
+   "n": 20,
+   "full": 19,
+   "both": 7
+  },
+  "every|none|4|1 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "every|2_4|2|0 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "every|2_4|2|0 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "every|2_4|2|1 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "every|2_4|2|1 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "every|2_4|4|0 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "every|2_4|4|0 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "every|2_4|4|1 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "every|2_4|4|1 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "every|every|2|0 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "every|every|2|0 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "every|every|2|1 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "every|every|2|1 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "every|every|4|0 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "every|every|4|0 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "every|every|4|1 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "every|every|4|1 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3|none|2|1 as T": {
+   "n": 20,
+   "full": 8,
+   "both": 20
+  },
+  "1_3|none|2|1 as T/2": {
+   "n": 20,
+   "full": 0,
+   "both": 17
+  },
+  "1_3|none|4|1 as T": {
+   "n": 20,
+   "full": 10,
+   "both": 20
+  },
+  "1_3|none|4|1 as T/2": {
+   "n": 20,
+   "full": 2,
+   "both": 16
+  },
+  "1_3|2_4|2|0 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3|2_4|2|0 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3|2_4|2|1 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3|2_4|2|1 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3|2_4|4|0 as T": {
+   "n": 20,
+   "full": 19,
+   "both": 20
+  },
+  "1_3|2_4|4|0 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3|2_4|4|1 as T": {
+   "n": 20,
+   "full": 18,
+   "both": 20
+  },
+  "1_3|2_4|4|1 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3|every|2|0 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3|every|2|0 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3|every|2|1 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3|every|2|1 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3|every|4|0 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3|every|4|0 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3|every|4|1 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3|every|4|1 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3_and3|none|2|0 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 19
+  },
+  "1_3_and3|none|2|0 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3_and3|none|2|1 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 19
+  },
+  "1_3_and3|none|2|1 as T/2": {
+   "n": 20,
+   "full": 18,
+   "both": 20
+  },
+  "1_3_and3|none|4|0 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3_and3|none|4|0 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3_and3|none|4|1 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3_and3|none|4|1 as T/2": {
+   "n": 20,
+   "full": 19,
+   "both": 20
+  },
+  "1_3_and3|2_4|2|0 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3_and3|2_4|2|0 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3_and3|2_4|2|1 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3_and3|2_4|2|1 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3_and3|2_4|4|0 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3_and3|2_4|4|0 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3_and3|2_4|4|1 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3_and3|2_4|4|1 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3_and3|every|2|0 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3_and3|every|2|0 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3_and3|every|2|1 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3_and3|every|2|1 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3_and3|every|4|0 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3_and3|every|4|0 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3_and3|every|4|1 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1_3_and3|every|4|1 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1|none|2|0 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1|none|2|1 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1|none|2|1 as T/2": {
+   "n": 20,
+   "full": 14,
+   "both": 0
+  },
+  "1|none|4|0 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1|none|4|1 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1|none|4|1 as T/2": {
+   "n": 20,
+   "full": 15,
+   "both": 0
+  },
+  "1|2_4|2|0 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1|2_4|2|0 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1|2_4|2|1 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1|2_4|2|1 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1|2_4|4|0 as T": {
+   "n": 20,
+   "full": 19,
+   "both": 20
+  },
+  "1|2_4|4|0 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1|2_4|4|1 as T": {
+   "n": 20,
+   "full": 19,
+   "both": 20
+  },
+  "1|2_4|4|1 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1|every|2|0 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1|every|2|0 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1|every|2|1 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1|every|2|1 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1|every|4|0 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1|every|4|0 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1|every|4|1 as T": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  },
+  "1|every|4|1 as T/2": {
+   "n": 20,
+   "full": 20,
+   "both": 20
+  }
+ },
+ "mcnemar": {
+  "full_right_both_wrong": 56,
+  "full_wrong_both_right": 61,
+  "chi2": 0.13675213675213677,
+  "best_full": [
+   "full",
+   "knn"
+  ],
+  "best_both": [
+   "both",
+   "logistic"
+  ]
+ }
+}
