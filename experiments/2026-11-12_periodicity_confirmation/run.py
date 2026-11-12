@@ -1,17 +1,20 @@
 """When is a period real? Train the confirmation thresholds, then test them on new signals.
 
 Training set (seeds 0..59):
-  negatives: white noise, pink noise, random clicks, random drum hits
+  negatives: white noise, pink noise, random clicks, random drum hits, smooth swells
+             (noise under one to three slow bell-shaped envelopes), crescendos
   positives: click trains, 60-200 BPM, with timing jitter, dropped beats and added noise
 Test set (seeds 1000.., a different positive generator, and real material):
-  negatives: the four noise families with new seeds; real drum stems cut into 120 ms
+  negatives: the six non-periodic families with new seeds; real drum stems cut into 120 ms
              pieces and shuffled, which keeps the sounds but destroys the beat
   positives: synthetic drum grooves (kick, snare, hats, swing, humanised timing, noise);
              the real drum stems themselves
 
 For each signal the onset envelope is computed, the pulse candidate is picked in
 0.25-2 s, and the evidence (significance in sigma, repetitions, significance in each
-half) is recorded. The thresholds are swept on the training set; the pair with at most
+half, and the return: the height of the peak above the lowest correlation between
+half the lag and the lag)
+is recorded. The thresholds are swept on the training set; the pair with at most
 1% false detections and the most true detections is chosen, and then applied unchanged
 to the test set.
 
@@ -86,8 +89,22 @@ def random_drums(rng, dur):
     return x
 
 
+def swells(rng, dur):
+    """Noise under one to three slow bell-shaped swells: change without repetition."""
+    t = np.arange(int(dur * SR)) / SR
+    env = sum(np.exp(-0.5 * ((t - rng.uniform(0.15, 0.85) * dur) / rng.uniform(0.5, 8.0)) ** 2)
+              for _ in range(rng.integers(1, 4)))
+    return env * rng.standard_normal(len(t))
+
+
+def crescendo(rng, dur):
+    """Noise that only grows louder."""
+    t = np.arange(int(dur * SR)) / SR
+    return (t / dur) ** rng.uniform(0.5, 3.0) * rng.standard_normal(len(t))
+
+
 NEGATIVES = {"white noise": white, "pink noise": pink, "random clicks": random_clicks,
-             "random drum hits": random_drums}
+             "random drum hits": random_drums, "smooth swells": swells, "crescendo": crescendo}
 
 
 def add_noise(rng, x, snr_db):
@@ -165,13 +182,14 @@ def evidence(x, sr=SR):
     cand = P.envelope_periodicity(env, fs, TAU_LO, TAU_HI, confirm=False)
     c = P.confirm_period(env, fs, cand, TAU_LO, P.autocorr, z_min=0.0, min_reps=0.0)
     if c.tau is None:
-        return {"tau": None, "sig": 0.0, "reps": 0.0, "half": 0.0}
+        return {"tau": None, "sig": 0.0, "reps": 0.0, "half": 0.0, "ret": 0.0}
     return {"tau": c.tau, "sig": c.evidence["significance"], "reps": c.evidence["repetitions"],
-            "half": min(c.evidence["significance_halves"])}
+            "half": min(c.evidence["significance_halves"]), "ret": c.evidence["return"]}
 
 
-def accept(e, z, reps):
-    return e["tau"] is not None and e["sig"] >= z and e["reps"] >= reps and e["half"] >= z / np.sqrt(2)
+def accept(e, z, reps, use_return=True):
+    return (e["tau"] is not None and e["sig"] >= z and e["reps"] >= reps and e["half"] >= z / np.sqrt(2)
+            and (not use_return or e["ret"] >= z))
 
 
 def right_period(e, beat):
@@ -188,7 +206,7 @@ def main():
         for s in seeds:
             rng = np.random.default_rng(s)
             dur = rng.uniform(20, 40)
-            fam = list(NEGATIVES)[s % 4]
+            fam = list(NEGATIVES)[s % len(NEGATIVES)]
             data[split]["neg"].append({"family": fam, **evidence(NEGATIVES[fam](rng, dur))})
             x, beat = posgen(rng, dur)
             e = evidence(x)
@@ -217,32 +235,42 @@ def main():
         neg, pos = data[split]["neg"], data[split]["pos"]
         fp = np.mean([accept(e, z, reps) for e in neg])
         miss = np.mean([not accept(e, z, reps) for e in pos])
-        wrong = np.mean([accept(e, z, reps) and not e.get("right", True) for e in pos])
+        # a wrong period can only be judged where the true beat is known: not on the real stems
+        if all("right" in e for e in pos):
+            wrong = np.mean([accept(e, z, reps) and not e["right"] for e in pos])
+        else:
+            wrong = None
         return fp, miss, wrong
 
     res = {"chosen": {"z_min": z_best, "min_reps": r_best},
            "train": rates("train", z_best, r_best), "test": rates("test", z_best, r_best),
            "real": rates("real", z_best, r_best),
+           "without_return_test": {s: float(np.mean([accept(e, z_best, r_best, use_return=False) for e in data[s]["neg"]]))
+                                   for s in data},
            "old_rule_false_detections": {s: float(np.mean([e["tau"] is not None for e in data[s]["neg"]])) for s in data},
            "grid": grid, "data": data}
     with open(os.path.join(HERE, "results.json"), "w", encoding="utf-8") as f:
         json.dump(res, f, indent=1, default=float)
 
     L = ["# Confirming a period: results", "",
-         f"Thresholds chosen on the training set: **significance ≥ {z_best:g} σ**, **at least {r_best:g} repetitions**, and ≥ {z_best / np.sqrt(2):.2f} σ in each half.", "",
+         f"Thresholds chosen on the training set: **significance ≥ {z_best:g} σ**, **at least {r_best:g} repetitions**, ≥ {z_best / np.sqrt(2):.2f} σ in each half, and a **return of ≥ {z_best:g} σ** above the lowest correlation between half the lag and the lag.", "",
          "| Set | Signals (neg / pos) | False detections on non-periodic signals | Misses on periodic signals | Confirmed but wrong period |",
          "|---|---|---|---|---|"]
     for split, label in (("train", "Training (click trains)"), ("test", "Test (grooves, new seeds)"), ("real", "Real drum stems")):
         fp, miss, wrong = res[split]
-        L.append(f"| {label} | {len(data[split]['neg'])} / {len(data[split]['pos'])} | {100 * fp:.1f}% | {100 * miss:.1f}% | {100 * wrong:.1f}% |")
-    L += ["", "Before this change, a period was returned for "
+        wr = "not evaluated (no independent beat labels)" if wrong is None else f"{100 * wrong:.1f}%"
+        L.append(f"| {label} | {len(data[split]['neg'])} / {len(data[split]['pos'])} | {100 * fp:.1f}% | {100 * miss:.1f}% | {wr} |")
+    sw = [e for sp in ("train", "test") for e in data[sp]["neg"] if e["family"] in ("smooth swells", "crescendo")]
+    L += ["", f"Without the return test, {sum(accept(e, z_best, r_best, use_return=False) for e in sw)} of {len(sw)} smooth swells and crescendos "
+          f"(training and test) would be confirmed; with it, {sum(accept(e, z_best, r_best) for e in sw)}.", ""]
+    L += ["Before issue #7, a period was returned for "
           + ", ".join(f"{100 * v:.0f}% ({k})" for k, v in res["old_rule_false_detections"].items())
           + " of the non-periodic signals.", "",
           "## Real drum stems", "",
-          "| Stem | Candidate | Significance | Repetitions | Weaker half | Confirmed | Shuffled: significance | Shuffled: confirmed |",
-          "|---|---|---|---|---|---|---|---|"]
+          "| Stem | Candidate | Significance | Repetitions | Weaker half | Return | Confirmed | Shuffled: significance | Shuffled: confirmed |",
+          "|---|---|---|---|---|---|---|---|---|"]
     for p_, n_ in zip(data["real"]["pos"], data["real"]["neg"]):
-        L.append(f"| {p_['family']} | {p_['tau']:.3f} s | {p_['sig']:.1f} σ | {p_['reps']:.0f} | {p_['half']:.1f} σ | "
+        L.append(f"| {p_['family']} | {p_['tau']:.3f} s | {p_['sig']:.1f} σ | {p_['reps']:.0f} | {p_['half']:.1f} σ | {p_['ret']:.1f} σ | "
                  f"{'yes' if accept(p_, z_best, r_best) else 'no'} | {n_['sig']:.1f} σ | {'yes' if accept(n_, z_best, r_best) else 'no'} |")
     L += ["", "## Significance by family (median, training and test)", "",
           "| Family | Median significance | Largest |", "|---|---|---|"]

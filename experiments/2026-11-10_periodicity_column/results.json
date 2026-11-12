@@ -156,7 +156,7 @@
    ],
    "confirmed": false,
    "significance": 0.18117877713731503,
-   "confirmation": "peak 0.2 sigma (need 5); not stable in both halves"
+   "confirmation": "peak 0.2 sigma (need 5); not stable in both halves; correlation does not fall and return (0.8 sigma, need 5)"
   },
   "Rp": {
    "tau": 140.93277201806637,
@@ -187,7 +187,7 @@
    ],
    "confirmed": false,
    "significance": 0.5049262884791387,
-   "confirmation": "only 2.0 repetitions (need 4); peak 0.5 sigma (need 5); not stable in both halves"
+   "confirmation": "only 2.0 repetitions (need 4); peak 0.5 sigma (need 5); not stable in both halves; correlation does not fall and return (1.8 sigma, need 5)"
   },
   "free": {
    "Vb": {
@@ -272,9 +272,9 @@
       0.3891962686385545
      ]
     ],
-    "confirmed": true,
+    "confirmed": false,
     "significance": 11.35821192237417,
-    "confirmation": "confirmed"
+    "confirmation": "correlation does not fall and return (1.8 sigma, need 5)"
    }
   },
   "compression": {
@@ -288,9 +288,9 @@
   "duration_s": 282.0,
   "consistency": {
    "Pu/Sd": {
-    "ratio": 4.024937762574023,
-    "nearest_integer": 4,
-    "error": 0.0062344406435057564
+    "ratio": null,
+    "nearest_integer": null,
+    "error": null
    },
    "Me/Pu": {
     "ratio": 3.999424367092711,
@@ -298,9 +298,9 @@
     "error": 0.00014390822682219806
    },
    "Lp/Me": {
-    "ratio": 6.988163001981409,
-    "nearest_integer": 7,
-    "error": 0.00169099971694158
+    "ratio": null,
+    "nearest_integer": null,
+    "error": null
    },
    "Sc/Pu": {
     "ratio": 0.9970312847522256,
@@ -477,7 +477,7 @@
    ],
    "confirmed": false,
    "significance": 1.0075146891523508,
-   "confirmation": "only 2.1 repetitions (need 4); peak 1.0 sigma (need 5); not stable in both halves"
+   "confirmation": "only 2.1 repetitions (need 4); peak 1.0 sigma (need 5); not stable in both halves; correlation does not fall and return (2.5 sigma, need 5)"
   },
   "free": {
    "Vb": {
@@ -543,7 +543,7 @@
     ],
     "confirmed": false,
     "significance": 1.5393004868215494,
-    "confirmation": "only 2.1 repetitions (need 4); peak 1.5 sigma (need 5); not stable in both halves"
+    "confirmation": "only 2.1 repetitions (need 4); peak 1.5 sigma (need 5); not stable in both halves; correlation does not fall and return (3.8 sigma, need 5)"
    }
   },
   "compression": {
@@ -567,9 +567,9 @@
     "error": 0.0002210183095634477
    },
    "Lp/Me": {
-    "ratio": 3.9927619756348682,
-    "nearest_integer": 4,
-    "error": 0.001809506091282942
+    "ratio": null,
+    "nearest_integer": null,
+    "error": null
    },
    "Sc/Pu": {
     "ratio": null,
@@ -723,7 +723,7 @@
    ],
    "confirmed": false,
    "significance": 1.7443241740469557,
-   "confirmation": "peak 1.7 sigma (need 5); not stable in both halves"
+   "confirmation": "peak 1.7 sigma (need 5); not stable in both halves; correlation does not fall and return (1.0 sigma, need 5)"
   },
   "Rp": {
    "tau": 36.65659600835437,
@@ -754,7 +754,7 @@
    ],
    "confirmed": false,
    "significance": 0.6541423512104294,
-   "confirmation": "peak 0.7 sigma (need 5); not stable in both halves"
+   "confirmation": "peak 0.7 sigma (need 5); not stable in both halves; correlation does not fall and return (0.5 sigma, need 5)"
   },
   "free": {
    "Vb": {
@@ -845,7 +845,7 @@
     ],
     "confirmed": false,
     "significance": 1.126645460091648,
-    "confirmation": "peak 1.1 sigma (need 5); not stable in both halves"
+    "confirmation": "peak 1.1 sigma (need 5); not stable in both halves; correlation does not fall and return (0.8 sigma, need 5)"
    }
   },
   "compression": {
@@ -869,9 +869,9 @@
     "error": 0.005532927211314265
    },
    "Lp/Me": {
-    "ratio": 4.017769225979304,
-    "nearest_integer": 4,
-    "error": 0.0044423064948260205
+    "ratio": null,
+    "nearest_integer": null,
+    "error": null
    },
    "Sc/Pu": {
     "ratio": 1.990999017447679,

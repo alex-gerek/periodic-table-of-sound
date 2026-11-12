@@ -54,6 +54,7 @@ def measure(folder):
     env, fs = P.onset_envelope(drums, sr)
     pulse = P.envelope_periodicity(env, fs, 0.25, 2.0)
     res = {"pulse_tau": pulse.tau, "pulse_bpm": 60 / pulse.tau, "pulse_candidates": pulse.candidates,
+           "pulse_confirmed": pulse.confirmed, "pulse_confirmation": pulse.evidence.get("reason"),
            "drums": combs(env, fs, pulse.tau, (2, 3, 4)),
            "subdivision": combs(env, fs, pulse.tau, (1 / 3, 1 / 2))}
     bass_files = [f for f in files if "Bass" in os.path.basename(f)]
@@ -64,7 +65,9 @@ def measure(folder):
     pitched, _ = load_sum([f for f in files if not any(s in os.path.basename(f) for s in NOT_PITCHED)])
     hc, hfs = P.harmonic_change(pitched, sr)
     h = P.envelope_periodicity(hc, hfs, 1.0, 8.0)
-    res.update({"harm_tau": h.tau, "harm_strength": h.strength, "harm_candidates": h.candidates})
+    res.update({"harm_tau": h.tau, "harm_strength": h.strength, "harm_candidates": h.candidates,
+                "harm_confirmed": h.confirmed, "harm_significance": h.evidence.get("significance"),
+                "harm_confirmation": h.evidence.get("reason")})
     if h.tau:
         res.update({"harm_in_pulses": h.tau / pulse.tau, "harm_dz": z_of(h.tau) - z_of(pulse.tau)})
     return res
@@ -78,21 +81,32 @@ def winner(d):
 def main():
     res = {}
     for folder in sorted(glob.glob(os.path.join(MDIR, "meter_*"))):
-        if glob.glob(os.path.join(folder, "*.wav")):
+        # Suno stem folders only; the real 6/8 recordings (no drum stem) are measured by hand in the README
+        if any("Drums" in os.path.basename(f) for f in glob.glob(os.path.join(folder, "*.wav"))):
             res[os.path.basename(folder)] = measure(folder)
     with open(os.path.join(HERE, "results.json"), "w", encoding="utf-8") as f:
         json.dump({k: {kk: (vv if not isinstance(vv, dict) else {str(a): b for a, b in vv.items()}) for kk, vv in v.items()}
                    for k, v in res.items()}, f, indent=1, default=float)
     fmt = lambda d: " / ".join(f"{d[n]:.2f}" if d.get(n) is not None else "–" for n in (2, 3, 4))
     L = ["# Meter test: measured", "",
-         "Comb scores at 2 / 3 / 4 pulses (higher = the pattern repeats more strongly with that period).", "",
-         "| Track | Pulse | Drums 2/3/4 | Drums say | Bass 2/3/4 | Bass says | Chord changes | In pulses | ΔZ | r |",
-         "|---|---|---|---|---|---|---|---|---|---|"]
+         "Comb scores at 2 / 3 / 4 pulses (higher = the pattern repeats more strongly with that period).",
+         "A period the confirmation test rejected (issue #7) is shown in italics as a *candidate*, with the reason; it is not a measurement.", "",
+         "| Track | Pulse | Drums 2/3/4 | Drums say | Bass 2/3/4 | Bass says | Chord changes | In pulses | ΔZ | r | Chord changes confirmed |",
+         "|---|---|---|---|---|---|---|---|---|---|---|"]
     for name, m in res.items():
         b = m.get("bass", {})
-        h = (f"{m['harm_tau']:.3f} s | {m['harm_in_pulses']:.2f} | {m['harm_dz']:.3f} | {m['harm_strength']:.2f}"
-             if m.get("harm_tau") else "not found | | | ")
-        L.append(f"| {name} | {m['pulse_bpm']:.1f} BPM | {fmt(m['drums'])} | {winner(m['drums'])} | "
+        if not m.get("harm_tau"):
+            h = "not found | | | | –"
+        elif m.get("harm_confirmed") is False:
+            h = (f"*candidate {m['harm_tau']:.3f} s* | *{m['harm_in_pulses']:.2f}* | *{m['harm_dz']:.3f}* | *{m['harm_strength']:.2f}* | "
+                 f"no: {m.get('harm_confirmation')}")
+        else:
+            h = (f"{m['harm_tau']:.3f} s | {m['harm_in_pulses']:.2f} | {m['harm_dz']:.3f} | {m['harm_strength']:.2f} | "
+                 f"{P.verdict(m.get('harm_confirmed'))}, {m['harm_significance']:.0f} σ")
+        pulse = f"{m['pulse_bpm']:.1f} BPM"
+        if m.get("pulse_confirmed") is False:
+            pulse = f"*candidate {pulse}, not confirmed*"
+        L.append(f"| {name} | {pulse} | {fmt(m['drums'])} | {winner(m['drums'])} | "
                  f"{fmt(b) if b else '–'} | {winner(b) if b else '–'} | {h} |")
     L += ["", "Division of the pulse (drums): comb at 1/3 and 1/2 of the pulse.", "",
           "| Track | 1/3 pulse | 1/2 pulse |", "|---|---|---|"]
