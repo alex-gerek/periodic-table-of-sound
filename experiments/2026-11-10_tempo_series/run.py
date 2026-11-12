@@ -55,7 +55,10 @@ def measure(folder):
     out = {"duration_s": len(drums) / sr, "pulse_tau": pulse.tau, "pulse_bpm": 60 / pulse.tau,
            "pulse_z": z_of(pulse.tau), "pulse_strength": pulse.strength, "drum_levels": levels,
            "bar_tau": 4 * pulse.tau, "bar_z": z_of(4 * pulse.tau), "bar_row": period_of(z_of(4 * pulse.tau)),
-           "harm_tau": harm.tau, "harm_strength": harm.strength, "harm_candidates": harm.candidates}
+           "harm_tau": harm.tau, "harm_strength": harm.strength, "harm_candidates": harm.candidates,
+           "pulse_confirmed": pulse.confirmed, "pulse_significance": pulse.evidence.get("significance"),
+           "harm_confirmed": harm.confirmed, "harm_significance": harm.evidence.get("significance"),
+           "harm_confirmation": harm.evidence.get("reason")}
     if harm.tau:
         out.update({"harm_z": z_of(harm.tau), "harm_in_pulses": harm.tau / pulse.tau,
                     "dz": z_of(harm.tau) - z_of(pulse.tau)})

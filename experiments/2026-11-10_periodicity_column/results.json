@@ -37,7 +37,10 @@
      0.125,
      0.07421053723164756
     ]
-   ]
+   ],
+   "confirmed": false,
+   "significance": 10.367212868704444,
+   "confirmation": "not stable in both halves"
   },
   "Pu": {
    "tau": 0.5043409505228824,
@@ -65,7 +68,10 @@
      0.25,
      0.23366016294042719
     ]
-   ]
+   ],
+   "confirmed": true,
+   "significance": 115.59825629067508,
+   "confirmation": "confirmed"
   },
   "Me": {
    "tau": 2.0170734868439153,
@@ -93,7 +99,10 @@
      3.53,
      0.7675354568950054
     ]
-   ]
+   ],
+   "confirmed": true,
+   "significance": 45.20115034413141,
+   "confirmation": "confirmed"
   },
   "Sc": {
    "tau": 0.5028437058529881,
@@ -113,7 +122,10 @@
      1.51,
      0.2969422194909437
     ]
-   ]
+   ],
+   "confirmed": true,
+   "significance": 32.49817704199597,
+   "confirmation": "confirmed"
   },
   "Lp": {
    "tau": 14.095638313040283,
@@ -141,7 +153,10 @@
      9.6,
      0.098423154572332
     ]
-   ]
+   ],
+   "confirmed": false,
+   "significance": 0.18117877713731503,
+   "confirmation": "peak 0.2 sigma (need 5); not stable in both halves"
   },
   "Rp": {
    "tau": 140.93277201806637,
@@ -169,7 +184,10 @@
      56.2,
      0.15984117536540665
     ]
-   ]
+   ],
+   "confirmed": false,
+   "significance": 0.5049262884791387,
+   "confirmation": "only 2.0 repetitions (need 4); peak 0.5 sigma (need 5); not stable in both halves"
   },
   "free": {
    "Vb": {
@@ -222,7 +240,10 @@
       2.52,
       0.3843802625790271
      ]
-    ]
+    ],
+    "confirmed": true,
+    "significance": 41.985198483579964,
+    "confirmation": "confirmed"
    },
    "Lp": {
     "tau": 0.9898321474532559,
@@ -250,7 +271,10 @@
       3.0,
       0.3891962686385545
      ]
-    ]
+    ],
+    "confirmed": true,
+    "significance": 11.35821192237417,
+    "confirmation": "confirmed"
    }
   },
   "compression": {
@@ -323,7 +347,10 @@
      0.225,
      0.4878393729278353
     ]
-   ]
+   ],
+   "confirmed": true,
+   "significance": 52.169897801502195,
+   "confirmation": "confirmed"
   },
   "Pu": {
    "tau": 0.45439189809697716,
@@ -351,7 +378,10 @@
      1.59,
      0.49109268032994996
     ]
-   ]
+   ],
+   "confirmed": true,
+   "significance": 49.123548900812956,
+   "confirmation": "confirmed"
   },
   "Me": {
    "tau": 3.6343317533422437,
@@ -379,7 +409,10 @@
      4.09,
      0.548978228881807
     ]
-   ]
+   ],
+   "confirmed": true,
+   "significance": 22.891894246050402,
+   "confirmation": "confirmed"
   },
   "Sc": {
    "tau": null
@@ -410,7 +443,10 @@
      29.3,
      0.23628341074226647
     ]
-   ]
+   ],
+   "confirmed": false,
+   "significance": 3.5937198317295502,
+   "confirmation": "peak 3.6 sigma (need 5); not stable in both halves"
   },
   "Rp": {
    "tau": 63.39981853379892,
@@ -438,7 +474,10 @@
      58.6,
      0.20397046642496178
     ]
-   ]
+   ],
+   "confirmed": false,
+   "significance": 1.0075146891523508,
+   "confirmation": "only 2.1 repetitions (need 4); peak 1.0 sigma (need 5); not stable in both halves"
   },
   "free": {
    "Vb": {
@@ -470,7 +509,10 @@
       3.3,
       0.0937926103953329
      ]
-    ]
+    ],
+    "confirmed": false,
+    "significance": 3.9924090864054134,
+    "confirmation": "peak 4.0 sigma (need 5); not stable in both halves"
    },
    "Lp": {
     "tau": 63.39981853379892,
@@ -498,7 +540,10 @@
       14.5,
       0.280845784231844
      ]
-    ]
+    ],
+    "confirmed": false,
+    "significance": 1.5393004868215494,
+    "confirmation": "only 2.1 repetitions (need 4); peak 1.5 sigma (need 5); not stable in both halves"
    }
   },
   "compression": {
@@ -590,7 +635,10 @@
      0.81,
      0.1056014473581291
     ]
-   ]
+   ],
+   "confirmed": true,
+   "significance": 73.08858857037133,
+   "confirmation": "confirmed"
   },
   "Me": {
    "tau": 2.1413975143561497,
@@ -618,7 +666,10 @@
      3.24,
      0.3804395598269623
     ]
-   ]
+   ],
+   "confirmed": true,
+   "significance": 20.879613542534415,
+   "confirmation": "confirmed"
   },
   "Sc": {
    "tau": 1.0718103353317239,
@@ -638,7 +689,10 @@
      1.61,
      0.30375128048063543
     ]
-   ]
+   ],
+   "confirmed": true,
+   "significance": 17.87774385895354,
+   "confirmation": "confirmed"
   },
   "Lp": {
    "tau": 8.603641033768714,
@@ -666,7 +720,10 @@
      9.1,
      0.11390108583591957
     ]
-   ]
+   ],
+   "confirmed": false,
+   "significance": 1.7443241740469557,
+   "confirmation": "peak 1.7 sigma (need 5); not stable in both halves"
   },
   "Rp": {
    "tau": 36.65659600835437,
@@ -694,7 +751,10 @@
      35.8,
      0.06124866242098465
     ]
-   ]
+   ],
+   "confirmed": false,
+   "significance": 0.6541423512104294,
+   "confirmation": "peak 0.7 sigma (need 5); not stable in both halves"
   },
   "free": {
    "Vb": {
@@ -751,7 +811,10 @@
       3.75,
       0.3521668919408386
      ]
-    ]
+    ],
+    "confirmed": true,
+    "significance": 23.071016918297104,
+    "confirmation": "confirmed"
    },
    "Lp": {
     "tau": 36.65659600835437,
@@ -779,7 +842,10 @@
       3.2,
       0.3269279651810081
      ]
-    ]
+    ],
+    "confirmed": false,
+    "significance": 1.126645460091648,
+    "confirmation": "peak 1.1 sigma (need 5); not stable in both halves"
    }
   },
   "compression": {

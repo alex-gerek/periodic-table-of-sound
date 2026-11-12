@@ -22,12 +22,16 @@ No search is limited by row borders:
 
 **80 BPM requested, about 122 BPM generated.** The drums have no periodicity at 80 BPM (r = 0.13 at 0.75 s). They repeat at 122 BPM (r = 0.86) and at its half, 61 BPM (r = 0.81). Suno ignored the requested tempo and returned its usual dance tempo. Measured as it is, the track agrees with the rule (bar at Z 15.98, row 4), but it could not test the prediction for a real 80 BPM bar.
 
-**80 BPM retake** (downtempo hip hop prompt, `data/suno_prompts.md`): 80.5 BPM. The bar lands at **Z 16.58, row 5, exactly the value predicted before measuring**. The chord changes, found independently, fall every 4.00 pulses (ΔZ = 2.000), once per bar as requested. Both periodicities are weaker than in the electronic tracks (drum comb 0.34–0.38, harmonic r = 0.14), because a boom-bap pattern is less regular, but the two independent cues agree exactly.
+**80 BPM retake** (downtempo hip hop prompt, `data/suno_prompts.md`): 80.5 BPM. The bar lands at **Z 16.58, row 5, exactly the value predicted before measuring**. The chord changes, found independently, fall every 4.00 pulses (ΔZ = 2.000), once per bar as requested. Both periodicities are weaker than in the electronic tracks (drum comb 0.34–0.38, harmonic r = 0.14), because a boom-bap pattern is less regular.
+
+**Corrected on 2026-11-12 (issue #7).** The confirmation test now separates a candidate from a proven period. On this retake the pulse is confirmed (42 σ), so the bar at Z 16.58 stands. The chord-change period is **not** confirmed: it reaches 4.8 σ, below the 5 σ threshold, and is not stable in both halves. The earlier sentence "the two independent cues agree exactly" was too strong. The bar here rests on the pulse alone.
 
 ## What it shows
 
 1. **The bar crosses the Z 16 border with tempo, as option A predicts.** At 80.5 BPM the bar is at Z 16.58 and at 100 BPM at Z 16.26, both in row 5 (Bar), both predicted in this file before measuring. At 100 BPM the bar is at Z 16.26, in row 5 (Bar). This value was predicted in this file before the track was measured. At 121 BPM the bar is at Z 15.99, right on the border. At 142, 164 and 174 BPM it is at Z 15.76, 15.55 and 15.46, all in row 4 (Beat). A 4/4 bar is therefore an element whose Z depends on tempo, and the border at Z 16 has to cut through it. This is a physical fact about the absolute axis, not an error of the table.
-2. **The metric levels nest exactly, at every tempo.** The harmonic rhythm sits at ΔZ = 3.000, 3.002, 1.997, 3.001 and 2.001 from the pulse or the bar. These are log₂ 4 and log₂ 8 within 0.003, whatever the tempo. The relative (metric) axis is exact.
+2. **The metric levels nest exactly where the chord changes are confirmed.** The harmonic rhythm sits at ΔZ = 3.000, 3.002, 1.997, 3.001 and 2.001 from the pulse or the bar, log₂ 4 and log₂ 8 within 0.003.
+
+   **Corrected on 2026-11-12 (issue #7).** The chord-change period is confirmed (issue #7: at least 5 σ, at least 4 repetitions, stable in both halves) at 100, 120, 140 and 160 BPM only (7.9 to 18 σ). At the track requested at 80 BPM (122 BPM), at the 80 BPM retake and at 174 BPM it is not confirmed (2.1 to 5.6 σ, not stable in both halves). The claim "at every tempo" was too strong: it holds for four of the seven tracks.
 3. **Suno did not follow "chord changing once per bar" exactly.** The chords change every bar at 140 BPM, every 2 bars at 100, 120 and 160, and every 4 bars at 174. This is useful in itself: the harmonic rhythm is a Makeup-group element with its own period, separate from the meter.
 
 ## Limits

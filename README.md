@@ -37,7 +37,8 @@ Every claim needs a number, a control with a known answer, and a check on data t
 | Finding | Evidence |
 |---|---|
 | The bar is an element whose Z moves with tempo | At 80.5 and 100 BPM the bar landed at Z **16.58** and **16.26**, the values written down *before* measuring |
-| Metric levels nest as whole numbers | Chord changes sit at ΔZ = log₂ 4 or log₂ 8 from the pulse, **within 0.003**, at every tempo |
+| Metric levels nest as whole numbers | Where the chord changes are confirmed (4 of 7 tracks), they sit at ΔZ = log₂ 4 or log₂ 8 from the pulse, **within 0.003** |
+| A best peak is not yet a period | A confirmation test (significance, repetitions, stability) gives **0%** false periods on held-out noise, where the bare peak rule gave **100%** |
 | No hidden bias towards doubling | A waltz gives **3** beats per bar; a real 6/8 march gives **3** eighths per beat and **2** beats per bar |
 | Natural vibrato lives in the predicted cell | Voices and a solo violin land at **Z 12.3–12.5**; a piano control gives **no** false alarms |
 | The method can say no | Two tracks requested in 6/8 came out binary, and the method reported that |

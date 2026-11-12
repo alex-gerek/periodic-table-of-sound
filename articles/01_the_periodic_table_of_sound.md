@@ -53,7 +53,8 @@ The rule of the project is *measure, don't guess*. Every claim needs a number, a
 | Claim | How it was tested | Result |
 |---|---|---|
 | The bar is an element whose Z moves with tempo | Six Suno tracks in 4/4. The Z values for 80.5 and 100 BPM were written down **before** measuring | Z 16.58 and 16.26 as predicted. Above about 120 BPM the bar falls below Z 16, into the Beat row |
-| Metric levels nest as logarithms of whole numbers | Chord changes, measured independently of the drums | ΔZ = log₂ 4 or log₂ 8 within 0.003, at every tempo |
+| Metric levels nest as logarithms of whole numbers | Chord changes, measured independently of the drums | ΔZ = log₂ 4 or log₂ 8 within 0.003, on the four of seven tracks where the chord-change period is confirmed |
+| A best peak is not yet a period | A confirmation test on held-out noise and on real drums whose beat was destroyed | 0% false periods, where the bare peak rule gave 100% |
 | The method has no hidden bias towards doubling | A waltz, and a real 6/8 march from Freesound | Three beats per bar in the waltz; three eighths per beat and two beats per bar in the march |
 | Natural vibrato lives in the Event row | Two operatic voices and a historic solo violin, with a piano as a control | Z 12.3 to 12.5. The piano gave no false alarms, and vibrato we wrote into it was found at the written rate |
 | The detector can say no | Two Suno tracks requested in 6/8 | Both came out binary, and the method said so |
