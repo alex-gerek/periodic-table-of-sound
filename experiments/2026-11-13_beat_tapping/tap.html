@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tap the Beat</title>
+<style>
+:root { --bg: #f3f4f7; --panel: #fff; --ink: #11131a; --muted: #5b6273; --line: #d8dce5; --acc: #e8761a; --ok: #0f9e8e; --warn: #b98a00; }
+@media (prefers-color-scheme: dark) { :root { --bg: #0b0d13; --panel: #131722; --ink: #eef1f7; --muted: #9aa3b5; --line: #262c3b; --acc: #fb923c; --ok: #2dd4bf; --warn: #eab308; color-scheme: dark; } }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 "Segoe UI", system-ui, sans-serif; }
+main { max-width: 760px; margin: 0 auto; padding: 28px 16px 60px; }
+h1 { font-size: 28px; margin: 0 0 6px; }
+.lede { color: var(--muted); margin: 0 0 18px; }
+.how { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; margin-bottom: 18px; }
+.how ol { margin: 6px 0 0; padding-left: 20px; }
+.list { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; margin-bottom: 18px; }
+.trk { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; cursor: pointer; text-align: left; color: var(--ink); font: inherit; }
+.trk[aria-current="true"] { border-color: var(--acc); box-shadow: 0 0 0 2px color-mix(in srgb, var(--acc) 35%, transparent); }
+.trk small { display: block; color: var(--muted); }
+.trk.done small { color: var(--ok); } .trk.redo small { color: var(--warn); }
+.stage { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px; text-align: center; }
+.stage h2 { margin: 0 0 4px; font-size: 22px; }
+.tap { width: 100%; max-width: 420px; height: 180px; margin: 14px auto 10px; display: block; border-radius: 16px; border: 3px solid var(--acc); background: transparent; color: var(--ink); font-size: 26px; font-weight: 700; cursor: pointer; touch-action: manipulation; user-select: none; }
+.tap.flash { background: color-mix(in srgb, var(--acc) 30%, transparent); }
+.tap:disabled { opacity: .45; cursor: default; }
+.row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 6px 0; }
+button.b { font: inherit; padding: 9px 16px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); cursor: pointer; }
+button.p { background: var(--acc); color: #111; border-color: var(--acc); font-weight: 700; }
+.msg { min-height: 1.6em; color: var(--muted); margin: 8px 0 0; }
+.bar { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; max-width: 420px; margin: 6px auto 0; } .bar i { display: block; height: 100%; width: 0; background: var(--acc); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Tap the Beat</h1>
+  <p class="lede">13 short excerpts, two passes each, about 15 minutes. Tap a <b>steady, even pulse</b>, like a metronome or your foot while walking: the same gap every time, even through breaks. Do not follow the drum pattern. There is no right speed, and the page does not show any tempo.</p>
+  <div class="how"><b>How it works</b><ol>
+    <li>Pick a track, press <b>Start pass</b>, and listen for a few seconds.</li>
+    <li>Tap the big button, or press <b>Space</b>, on every beat until the excerpt ends (30 s).</li>
+    <li>Then the second pass of the same track. If the two passes agree, the track is done.</li>
+    <li>If you cannot feel a steady beat, press <b>No steady beat</b>.</li>
+  </ol></div>
+  <div class="list" id="list"></div>
+  <div class="stage" id="stage"><p class="msg">Pick a track above.</p></div>
+</main>
+<script>
+const MIN_INTERVALS = 12, DROP_FIRST = 4, AGREE = 0.04;
+let TRACKS = [], TAPS = {}, cur = null, ctx = null, src = null, t0 = 0, taps = [], playing = false, passNo = 1;
+const $ = id => document.getElementById(id);
+
+function median(a) { const s = [...a].sort((x, y) => x - y), h = s.length >> 1; return s.length % 2 ? s[h] : (s[h - 1] + s[h]) / 2; }
+function passPeriod(p) {           // the protocol of journal step 2026-11-13-tapping-001
+  if (!p || p.no_steady_beat) return null;
+  const t = p.taps_s.slice(DROP_FIRST);
+  let d = t.slice(1).map((x, i) => x - t[i]);
+  if (d.length < 2) return null;
+  const m = median(d);
+  d = d.filter(x => x >= 0.6 * m && x <= 1.6 * m);
+  return d.length >= MIN_INTERVALS ? median(d) : null;
+}
+function verdict(id) {
+  const r = TAPS[id] || {}, keys = Object.keys(r).sort();
+  if (keys.some(k => r[k].no_steady_beat)) return "none";
+  const per = keys.map(k => passPeriod(r[k])).filter(x => x);
+  if (per.length < 2) return keys.length >= 2 ? "redo" : (keys.length ? "half" : "todo");
+  // any two valid passes that agree verify the track; a factor of 2 makes it ambiguous
+  const pairs = []; per.forEach((a, i) => per.slice(i + 1).forEach(b => pairs.push(Math.max(a, b) / Math.min(a, b))));
+  if (pairs.some(q => q - 1 <= AGREE)) return "verified";
+  if (pairs.some(q => Math.abs(q / 2 - 1) <= AGREE)) return "ambiguous";
+  return "redo";
+}
+const LABEL = { todo: "not started", half: "1 pass done", verified: "done ✓", ambiguous: "done (two levels)", none: "done (no steady beat)", redo: "tap again" };
+
+function drawList() {
+  $("list").innerHTML = TRACKS.map((id, i) => { const v = verdict(id);
+    return `<button class="trk ${["verified", "ambiguous", "none"].includes(v) ? "done" : v === "redo" ? "redo" : ""}" data-id="${id}" aria-current="${id === cur}">Track ${i + 1}<small>${LABEL[v]}</small></button>`; }).join("");
+  document.querySelectorAll(".trk").forEach(b => b.onclick = () => select(b.dataset.id));
+  const done = TRACKS.filter(id => ["verified", "ambiguous", "none"].includes(verdict(id))).length;
+  document.title = `Tap the Beat (${done}/${TRACKS.length})`;
+}
+function nextPass(id) { const r = TAPS[id] || {}; return Object.keys(r).length + 1; }
+function select(id) {
+  if (playing) return;
+  cur = id; passNo = nextPass(id); drawList();
+  const i = TRACKS.indexOf(id) + 1, v = verdict(id);
+  const finished = ["verified", "ambiguous", "none"].includes(v);
+  $("stage").innerHTML = `<h2>Track ${i}</h2><div class="msg">${finished ? "This track is done. You can still tap it again." : v === "redo" ? "The two passes did not agree. Please tap it once more, calmly." : `Pass ${Math.min(passNo, 2)} of 2.`}</div>
+    <button class="tap" id="tap" disabled>TAP</button><div class="bar"><i id="prog"></i></div>
+    <div class="row"><button class="b p" id="start">Start pass</button><button class="b" id="none">No steady beat</button></div>
+    <p class="msg" id="msg"></p>`;
+  $("start").onclick = start; $("none").onclick = noBeat;
+  const tb = $("tap");
+  tb.addEventListener("pointerdown", ev => { ev.preventDefault(); tap(); });
+}
+async function start() {
+  if (playing || passNo > 4) return;
+  ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+  await ctx.resume();
+  $("msg").textContent = "Loading…";
+  const buf = await ctx.decodeAudioData(await (await fetch(`/audio/${cur}.wav`)).arrayBuffer());
+  src = ctx.createBufferSource(); src.buffer = buf; src.connect(ctx.destination);
+  taps = []; playing = true; $("tap").disabled = false; $("start").disabled = true; $("none").disabled = true;
+  $("msg").textContent = "Listen, then tap on every beat.";
+  t0 = ctx.currentTime + 0.05; src.start(t0);
+  const dur = buf.duration, tick = () => { if (!playing) return; $("prog").style.width = `${Math.min(100, (ctx.currentTime - t0) / dur * 100)}%`; requestAnimationFrame(tick); }; tick();
+  src.onended = finish;
+}
+function tap() {
+  if (!playing) return;
+  taps.push(+(ctx.currentTime - t0).toFixed(4));
+  const b = $("tap"); b.classList.add("flash"); setTimeout(() => b.classList.remove("flash"), 90);
+}
+async function save(rec) {
+  const r = await fetch("/save", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(rec) });
+  if (!r.ok) throw new Error("save failed");
+  (TAPS[rec.id] = TAPS[rec.id] || {})[String(rec.pass)] = { taps_s: rec.taps_s, no_steady_beat: !!rec.no_steady_beat };
+}
+async function finish() {
+  playing = false;
+  const rec = { id: cur, pass: passNo, taps_s: taps };
+  const ok = passPeriod({ taps_s: taps }) !== null;
+  try { await save(rec); } catch (e) { $("msg").textContent = "Could not save. Please tell Claude."; return; }
+  drawList();
+  const v = verdict(cur);
+  if (!ok) { $("msg").textContent = "Too few steady taps in this pass. Please try it again."; select(cur); return; }
+  if (v === "half") { select(cur); $("msg").textContent = "Saved. Now the second pass of the same track."; return; }
+  const nxt = TRACKS.find(id => !["verified", "ambiguous", "none"].includes(verdict(id)));
+  if (["verified", "ambiguous"].includes(v)) {
+    if (nxt) { select(nxt); $("msg").textContent = "Saved, that track is done. Here is the next one."; }
+    else { $("stage").innerHTML = `<h2>All done. Thank you!</h2><p class="msg">Every track has its label. You can close this page.</p>`; }
+  } else { select(cur); }
+}
+async function noBeat() {
+  if (playing) return;
+  try { await save({ id: cur, pass: passNo, taps_s: [], no_steady_beat: true }); } catch (e) { $("msg").textContent = "Could not save. Please tell Claude."; return; }
+  drawList();
+  const nxt = TRACKS.find(id => !["verified", "ambiguous", "none"].includes(verdict(id)));
+  if (nxt) select(nxt); else $("stage").innerHTML = `<h2>All done. Thank you!</h2>`;
+}
+document.addEventListener("keydown", ev => { if (ev.code === "Space") { ev.preventDefault(); if (playing) tap(); } });
+(async () => { const r = await (await fetch("/tracks")).json(); TRACKS = r.tracks; TAPS = r.taps || {}; drawList();
+  const first = TRACKS.find(id => !["verified", "ambiguous", "none"].includes(verdict(id))); if (first) select(first); })();
+</script>
+</body>
+</html>
