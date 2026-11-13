@@ -178,3 +178,45 @@ The entries below were **reconstructed on 2026-11-12** from commits, experiment 
 - **Result:** `table/predictions.json` holds 23 predictions: 8 came true, 1 partly, 3 did not (Loop, Repetition, and Envelope scaling for every carrier), and 11 are waiting.
 - **The scoreboard:** a strip above the table in both copies; each entry opens its element's card or panel.
 - **Checked in the browser:** all 23 entries render, every element link resolves, and there are no errors.
+
+### 2026-11-13-tapping-001: verified beat labels by tapping (issue #15)
+
+- **State:** done. The protocol was written before any tap; the deviation and the outcome were added after the taps.
+- **Question:** do the frozen pulse rules (old, candidate v1, candidate v2) return the beat on our own real recordings, when the beat is labelled by a person?
+- **Protocol, fixed now:**
+  - **Material:** one 30 s excerpt per track from the full mix (all stems summed), starting at 30% of the track. There are 13 tracks, the drum-stem set of `experiments/2026-11-12_beat_level/labels.json`.
+  - **Blinding:** tracks are shown as "Track 1" to "Track 13" in a random order, fixed by seed 20261113. No track name, no requested tempo and no detector output is shown.
+  - **Tapping:** two passes per track, with a key or a button on every beat. The first 4 taps of a pass are dropped. Intervals outside 0.6 to 1.6 times the pass median are dropped as slips. A pass needs at least 12 remaining intervals.
+  - **Labels:**
+    - verified: the two pass medians agree within 4%; the beat is their mean;
+    - ambiguous: the passes are a factor of 2 apart (within 4%), and both levels are accepted;
+    - otherwise the track is tapped again;
+    - "no steady beat" is recorded as none.
+  - **Scoring, after all labels are in:** the frozen old rule, v1 and v2 each run once on the drum stem of each track (full length, as in `results_real`). The beat-level metric is unchanged: exact within 3%, then precision, subdivision, multiple, other. Ambiguous tracks are scored against both levels and reported apart.
+- **Hypothesis:**
+  - v1 and v2 are exact on more verified tracks than the old rule;
+  - the 80 BPM boom-bap retake is the expected error of the candidates.
+- **Clarification of the protocol (before any real tap):**
+  - when a track is tapped more than twice, any two valid passes that agree within 4% verify it; the beat is the mean of that pair;
+  - a factor of 2 between two passes, with no agreeing pair, makes the track ambiguous.
+  - Found while testing the page on synthetic taps: comparing only the last two passes would have asked for a fourth pass after a good first and third.
+- **Deviation during tapping (written after the taps, before any scoring):**
+  - the first three passes of Track 1 followed the drum rhythm (bursts of fast taps and pauses), not a steady pulse. Two of them happened to agree within 4%, so the rule alone would have accepted a label that is not a beat;
+  - those passes were moved to `taps_practice.json` outside the repository (the timestamped history keeps them), Track 1 was restarted, and the page instruction was clarified to "a steady, even pulse ... the same gap every time, even through breaks";
+  - lesson: agreement between passes does not prove a steady pulse. A future protocol should also bound the spread of the kept intervals;
+  - the restarted Track 1 got four steady passes that never agreed (each slower than the one before), so it is incomplete and excluded;
+  - the other 12 tracks were verified on their first two passes (ratios 1.000 to 1.016). No detector output was seen before or during tapping.
+- **Outcome (run `20261113T060232Z-score-3ca4a3164622`, one scoring run):**
+  - labels: 12 verified, 0 ambiguous, 0 none, 1 incomplete (Track 1);
+  - exact on the 12 verified tracks: **old 9, v1 7, v2 7**. The hypothesis is false: the candidates are not better on tapped labels, they are worse by two tracks;
+  - per track, against the old rule:
+    - v1 and v2 lost `meter_3-4` (tapped 62 BPM, the bar; old found 60.8, the candidates 181.9) and `tempo_080_4-4_retake` (tapped 80.3; the candidates found 160.9);
+    - v1 and v2 moved `tempo_174_4-4` from multiple (old 43.5) to subdivision (174.0); the tapped beat was 87.7, half the requested tempo, so no rule found it;
+    - both 6/8 tracks were tapped at the dotted level (105.5 and 63.4 BPM) and every rule returned twice that;
+    - `tempo_080_4-4` was tapped at 120.7 BPM, and every rule agreed with the listener, not with the prompt. This confirms that the prompt tempo is not a label;
+  - every miss of every rule is a metrical relative of the tapped beat (×2, ×3 or ½). No rule returned an unrelated period. The rules find the metrical grid; they disagree with the listener about which level is the beat;
+  - limits: one listener, 12 tracks. This listener tapped slow levels (half time, the bar in 3/4, the dotted beat in 6/8), and another listener may choose differently. A difference of two tracks is not significant, but it is against the pre-registered direction.
+- **Decision (issue #15):**
+  - the old rule stays; candidates v1 and v2 are not adopted. Their gains on synthetic and held-out sets did not transfer to tapped labels, because refine-from-multiples pushes them towards faster levels;
+  - this is kept as a negative result, with all runs;
+  - next, in a new issue: report the confirmed metrical ladder (all related levels) instead of one "beat", and collect labels from more listeners before choosing a preferred level. The beat level is a perceptual choice, and one listener cannot settle it.
