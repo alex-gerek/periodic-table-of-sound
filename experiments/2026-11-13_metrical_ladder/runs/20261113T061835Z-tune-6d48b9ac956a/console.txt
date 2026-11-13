@@ -1,0 +1,6 @@
+Z_ACC  2.0: seeded 200/200  coverage 0.980  median size 2.0  meter 0.762 (baseline 0.662, n 80)  sub 0.286
+Z_ACC  3.0: seeded 200/200  coverage 0.980  median size 2.0  meter 0.713 (baseline 0.662, n 80)  sub 0.286
+Z_ACC  4.0: seeded 200/200  coverage 0.980  median size 2.0  meter 0.700 (baseline 0.662, n 80)  sub 0.286
+Z_ACC  5.0: seeded 200/200  coverage 0.980  median size 2.0  meter 0.688 (baseline 0.662, n 80)  sub 0.286
+Z_ACC  6.0: seeded 200/200  coverage 0.980  median size 2.0  meter 0.637 (baseline 0.662, n 80)  sub 0.286
+Z_ACC  8.0: seeded 200/200  coverage 0.980  median size 2.0  meter 0.613 (baseline 0.662, n 80)  sub 0.286

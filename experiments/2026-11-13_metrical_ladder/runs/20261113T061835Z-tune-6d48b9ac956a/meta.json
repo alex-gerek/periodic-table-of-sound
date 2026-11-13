@@ -1,0 +1,21 @@
+{
+ "run_id": "20261113T061835Z-tune-6d48b9ac956a",
+ "label": "tune",
+ "started_utc": "2026-11-13T06:18:35.502497+00:00",
+ "revision": "6d48b9ac956a",
+ "local_changes": false,
+ "diff_sha256": null,
+ "command": [
+  "evaluate.py",
+  "tune"
+ ],
+ "python": "3.14.3",
+ "numpy": "2.4.2",
+ "code_sha256": {
+  "evaluate.py": "66cff475330c8ebfbead5233a80b97c9b87f8d549f8a8fae9e594d38b81c6ddf",
+  "ladder.py": "cbcbbe8af7a2ad09e59db2fc6fcd50eff2baaf2bb904bce58aff45542994bebb"
+ },
+ "pts_env": {},
+ "outcome": "completed",
+ "ended_utc": "2026-11-13T06:29:59.512972+00:00"
+}

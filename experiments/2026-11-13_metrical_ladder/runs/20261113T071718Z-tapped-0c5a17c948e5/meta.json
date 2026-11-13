@@ -1,0 +1,24 @@
+{
+ "run_id": "20261113T071718Z-tapped-0c5a17c948e5",
+ "label": "tapped",
+ "started_utc": "2026-11-13T07:17:18.160107+00:00",
+ "revision": "0c5a17c948e5",
+ "local_changes": false,
+ "diff_sha256": null,
+ "command": [
+  "evaluate.py",
+  "tapped"
+ ],
+ "python": "3.14.3",
+ "numpy": "2.4.2",
+ "code_sha256": {
+  "evaluate.py": "d42624e84b8ba3d902eea9fe8e3fcc3d653f1f81ce252a292c5abcd8d8313bf9",
+  "ladder.py": "f02eac3f62331f1b7960f67e5ce307482e407b420664cd4e5358a3d31c0fec02"
+ },
+ "pts_env": {
+  "PTS_METRO_STEMS": "ea41d9eb691472f7",
+  "PTS_TAPPING_DIR": "ec5477b6a44053d1"
+ },
+ "outcome": "completed",
+ "ended_utc": "2026-11-13T07:17:52.079400+00:00"
+}
