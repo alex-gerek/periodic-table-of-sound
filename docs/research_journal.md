@@ -220,3 +220,63 @@ The entries below were **reconstructed on 2026-11-12** from commits, experiment 
   - the old rule stays; candidates v1 and v2 are not adopted. Their gains on synthetic and held-out sets did not transfer to tapped labels, because refine-from-multiples pushes them towards faster levels;
   - this is kept as a negative result, with all runs;
   - next, in a new issue: report the confirmed metrical ladder (all related levels) instead of one "beat", and collect labels from more listeners before choosing a preferred level. The beat level is a perceptual choice, and one listener cannot settle it.
+
+### 2026-11-13-ladder-001: the metrical ladder instead of one beat (issue #29)
+
+- **State:** done. The protocol was written before any ladder run; the dev changes, the frozen constants and the outcome were added in order.
+- **Question:** can the pulse be reported as a ladder of related levels (the tatum and its groupings by 2 or by 3), each confirmed, so that the listener's beat is on the ladder without the ladder being every multiple?
+- **Method, fixed now:**
+  - the seed is the old rule's period (onset envelope, `envelope_periodicity`). A seed that is not confirmed gives an empty ladder;
+  - **down:** from the current level l, try l/2 and l/3 (each moved to the nearest autocorrelation peak within 2%). A division joins the ladder if it passes `confirm_period`; if both pass, the one with the higher significance wins. Repeat while the level is at least 0.06 s;
+  - **up:** from the current level l, try 2l and 3l. The grouping evidence for factor k is z_k = (r(kl) - mean of r(jl) for j = 1..k-1) / sigma, with the Bartlett sigma at lag kl. A grouping joins the ladder if z_k reaches Z_ACC and kl passes `confirm_period`; the larger z wins. Repeat while the level is at most 4.5 s;
+  - Z_ACC is the only free constant. It is chosen on the dev grooves (seeds 0-199) and frozen before any held-out run.
+- **Held-out check, run once:** the final grooves (seeds 50000-50199), the second held-out set (`holdout_b`), the negatives of the confirmation experiment, and the 12 tapped tracks.
+- **Success criteria:**
+  - S1, coverage: the true beat is on the ladder (within 3%) in at least 95% of the held-out grooves with a confirmed seed, and on at least 11 of the 12 tapped tracks;
+  - S2, compactness: the median ladder has at most 5 levels between 0.06 s and 4.5 s (all ×2 and ×3 relatives in that range would be about 10);
+  - S3, meter: for simple meters with 2, 3 or 4 beats a bar, the first grouping above the true beat is 2 for 2 and 4 beats and 3 for 3 beats in at least 70% of cases, and more often than the baseline that always answers 2;
+  - S4, negatives: the ladder is empty on at least 95% of the negatives;
+  - reported without a target: the level just below the beat against the true subdivision, and the meters with 5, 6 and 7 beats.
+- **Decision rule:** the ladder goes into the core only if S1 to S4 all hold. Otherwise it stays an experiment and the failure is recorded.
+- **Changes on the dev grooves (before any held-out run):**
+  - divisions were never confirmed in the full-band onset envelope: the kick and the snare dominate its autocorrelation, and quiet hats between the beats hardly change it (dev seeds 1, 5 and 7). Divisions are now also looked for in a high-band envelope (2500 Hz to 11 kHz), and a division joins the ladder if it is confirmed in either envelope. They are still rarely confirmed when white noise covers the hats (SNR 0 to 15 dB), which is the honest answer;
+  - **first tuning run, autocorrelation evidence for groupings** (its run folder was deleted by mistake before it was committed; the numbers below are copied from its console). Coverage 0.980 and median size 1 to 2 at every Z_ACC. Meter accuracy 0.537, 0.300, 0.225, 0.150, 0.113, 0.025 and 0.000 at Z_ACC 1, 2, 3, 4, 5, 6 and 8, against a baseline of 0.662 (n = 80). When a grouping was found it was mostly right (43 of 47 at Z_ACC 1), but most bars got no grouping at all. The autocorrelation difference is too weak a test;
+  - the grouping evidence is therefore replaced by an accent test. The envelope maximum near each event of the level is taken in three bands (40-150 Hz, 150-2500 Hz, 2500 Hz-11 kHz). For factor k, a Welch t compares every k-th event with the others, taking the best band and the best offset. Z_ACC is now a threshold on that t;
+  - the division metric in `evaluate.py` read the step of the wrong level (it scored 0.000 at every Z_ACC); this was fixed.
+  - selection rule for the accent threshold, written while the second tuning run was still going: Z_ACC is the grid value (2, 3, 4, 5, 6 or 8) with the highest dev meter accuracy among those with coverage of at least 0.95 and a median size of at most 5. A tie goes to the larger value, which makes fewer false groupings.
+  - **second tuning run (accent test):** coverage 0.980 and median size 2 at every Z_ACC; meter accuracy 0.762, 0.713, 0.700, 0.688, 0.637 and 0.613 at Z_ACC 2, 3, 4, 5, 6 and 8, against a baseline of 0.662 (n = 80); division 0.286;
+  - two defects found by the new regression test `tests/test_ladder.py` (kicks every 0.4 s, no hats):
+    - a false division at 0.14 s, confirmed in the high band from a bump inside each kick (autocorrelation 0.035 against 0.8 at the beat). A division must now reach DIV_SHARE = 0.25 of the level's own peak in the same envelope (real hats on dev give 0.5 to 1.05);
+    - the meter and division metrics read the step stored on a level, which is wrong when the beat lies below the seed. Both now read the factor from the two periods;
+  - so the tuning was run a third time, and the selection rule above applies to that run.
+
+### 2026-11-13-cards-004: the Sidechain pump in the collider (issue #24)
+
+- **State:** done.
+- **What:** a new collider element, Sidechain pump (Sc). The pad and the melody pass through one gain that drops by Depth (3 to 18 dB) on every beat and ramps back over Release (60 to 400 ms, at most 90% of a beat). The Sc card now opens the recipe `?recipe=sidechain` (120 BPM, 9 dB, 200 ms), with the with / without switch.
+- **Detector (sandbox only):** the level of the pad's mid signal (L + R, so that the width arc cancels) in 50 ms windows every 10 ms, in dB. It needs a level swing of at least 1.5 dB (5th to 95th percentile), then the shortest autocorrelation peak from 0.2 to 2 s whose comb over four multiples reaches 0.9 of the best, with r of at least 0.5.
+- **Check, every element of the first wave on, with and without Sc,** at 60 BPM 9 dB 200 ms 4/4, 90 BPM 3 dB 100 ms 3/4, 128 BPM 6 dB 150 ms 4/4, 174 BPM 12 dB 60 ms 4/4, 200 BPM 18 dB 400 ms 7/4 and 100 BPM 3 dB 400 ms 5/4:
+  - with Sc: the pump was found at the beat every time, within 0.6% (worst: 671 ms against 667 ms at 90 BPM and 3 dB, r 0.83);
+  - without Sc: no pump in any of the six;
+  - the pulse and the width arc were found the same with and without Sc;
+  - the recipe's own control run (Pulse and Sc) removed each element in turn, and each one disappeared.
+- **Limit:** this is the sandbox detector, a simplified copy; official results stay in `pts/`.
+
+- **2026-11-13-ladder-001, continued: the frozen ladder.**
+  - third tuning run `20261113T063038Z-tune`: coverage 0.980 and median size 2 at every Z_ACC; meter accuracy 0.925, 0.875, 0.863, 0.850, 0.800 and 0.775 at Z_ACC 2, 3, 4, 5, 6 and 8, against a baseline of 0.662 (n = 80); division 0.281. At Z_ACC 2, bars of 5 and 7 beats got no grouping by 2 or 3 in 50 of 54 cases;
+  - by the selection rule, **Z_ACC = 2**, frozen with DIV_SHARE = 0.25 and HIGH_FMIN = 2500 Hz before any held-out run. The second tuning run is kept as `20261113T061835Z-tune`.
+- **Outcome, one held-out run each** (`20261113T064201Z-final`, `20261113T071718Z-tapped`):
+
+  | Set | Seeded | Coverage | Median size | Meter (baseline) | Division |
+  |---|---|---|---|---|---|
+  | final grooves | 200/200 | 0.965 | 3 | 0.888 (0.629), n 89 | 0.306 |
+  | second held-out set | 199/200 | 0.965 | 3 | 0.955 (0.731), n 67 | 0.802 |
+  | tapped tracks | 12/12 | 12/12 | 3 | not scored | not scored |
+  | negatives | 0/120 | empty 120/120 | | | |
+
+  - S1 to S4 all hold;
+  - on the tapped tracks every listener's beat is on the ladder: the bar of the waltz (60.8 BPM, grouping by 3 above 181.8), the dotted beats of both 6/8 tracks (105.0 and 64.0), and the half time of the 174 BPM track (87.0). The prompt tempo of `tempo_080_4-4` is not on its ladder, and the listener's 120.7 is;
+  - every meter error on the final grooves was a 3-beat bar read as 2 (5 cases), a 2-beat bar read as 3 (1) or no grouping (4);
+  - divisions stay weak on the final grooves (0.306), where white noise often covers the hats; they are much better on the second set (0.802);
+  - limits: the meter rule only says 2 or 3 above a level; 5 and 7 beats are left without a grouping in most cases (41 of 45 on the final set), which is honest but not a meter. One listener labelled the real tracks.
+- **Decision:** by the pre-registered rule the ladder goes into the core, as `pts/ladder.py`, beside the old rule, which still gives the single period of `envelope_periodicity`. The evaluated copy stays in the experiment folder, and a test checks that the two agree. Issue #15's question, which level is "the beat", is now answered by not choosing: the report shows the whole ladder.

@@ -1,0 +1,13 @@
+{'track': 'tempo_120_4-4', 'tapped_bpm': 122.31792467254459, 'on_ladder': True, 'ladder_bpm': [240.0, np.float64(121.1)], 'steps': [2, None]}
+{'track': 'pure_voltage', 'tapped_bpm': 112.03435720287578, 'on_ladder': True, 'ladder_bpm': [222.2, np.float64(111.5), np.float64(55.7)], 'steps': [2, None, 2]}
+{'track': 'tempo_140_4-4', 'tapped_bpm': 142.56861114411305, 'on_ladder': True, 'ladder_bpm': [279.1, np.float64(141.6)], 'steps': [2, None]}
+{'track': 'meter_6-8_retake', 'tapped_bpm': 105.46669010370896, 'on_ladder': True, 'ladder_bpm': [413.8, np.float64(210.1), np.float64(105.0)], 'steps': [2, None, 2]}
+{'track': 'tempo_174_4-4', 'tapped_bpm': 87.6872488125685, 'on_ladder': True, 'ladder_bpm': [352.9, 173.9, 87.0, np.float64(43.5)], 'steps': [2, 2, 2, None]}
+{'track': 'tempo_100_4-4', 'tapped_bpm': 98.79389124439133, 'on_ladder': True, 'ladder_bpm': [400.0, 200.0, np.float64(100.0), np.float64(50.0)], 'steps': [2, 2, None, 2]}
+{'track': 'gravity', 'tapped_bpm': 119.30801352157489, 'on_ladder': True, 'ladder_bpm': [480.0, 240.0, np.float64(119.0), np.float64(59.5)], 'steps': [2, 2, None, 2]}
+{'track': 'meter_3-4', 'tapped_bpm': 62.02992944095525, 'on_ladder': True, 'ladder_bpm': [181.8, np.float64(60.8)], 'steps': [3, None]}
+{'track': 'tempo_080_4-4_retake', 'tapped_bpm': 80.27829810008028, 'on_ladder': True, 'ladder_bpm': [164.4, np.float64(80.5), np.float64(40.3), np.float64(20.1)], 'steps': [2, None, 2, 2]}
+{'track': 'tempo_160_4-4', 'tapped_bpm': 162.11834639286684, 'on_ladder': True, 'ladder_bpm': [324.3, np.float64(164.1)], 'steps': [2, None]}
+{'track': 'meter_6-8', 'tapped_bpm': 63.36299073316265, 'on_ladder': True, 'ladder_bpm': [255.3, np.float64(127.9), np.float64(64.0), np.float64(32.0), np.float64(16.0)], 'steps': [2, None, 2, 2, 2]}
+{'track': 'tempo_080_4-4', 'tapped_bpm': 120.71220199175171, 'on_ladder': True, 'ladder_bpm': [244.9, np.float64(122.0)], 'steps': [2, None]}
+tapped: on the ladder 12/12, median size 3.0

@@ -1,0 +1,21 @@
+{
+ "run_id": "20261113T064201Z-final-0c5a17c948e5",
+ "label": "final",
+ "started_utc": "2026-11-13T06:42:01.682662+00:00",
+ "revision": "0c5a17c948e5",
+ "local_changes": false,
+ "diff_sha256": null,
+ "command": [
+  "evaluate.py",
+  "final"
+ ],
+ "python": "3.14.3",
+ "numpy": "2.4.2",
+ "code_sha256": {
+  "evaluate.py": "d42624e84b8ba3d902eea9fe8e3fcc3d653f1f81ce252a292c5abcd8d8313bf9",
+  "ladder.py": "f02eac3f62331f1b7960f67e5ce307482e407b420664cd4e5358a3d31c0fec02"
+ },
+ "pts_env": {},
+ "outcome": "completed",
+ "ended_utc": "2026-11-13T07:17:17.473339+00:00"
+}

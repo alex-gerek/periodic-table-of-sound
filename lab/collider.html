@@ -121,6 +121,8 @@ const EL = [
     dials: [["bars", "Cycle", 1, 8, 1, 2, "bars"]] },
   { k: "Wa", name: "Width arc", g: 5, fam: "var(--space)", on: true, hint: "Predicted cell. The pad opens from mono to wide, then starts again.",
     dials: [["bars", "Opens over", 2, 16, 1, 8, "bars"]] },
+  { k: "Sc", name: "Sidechain pump", g: 1, fam: "var(--period)", on: false, hint: "The pad and the melody duck on every beat and swell back, as if each kick pushed them down.",
+    dials: [["depth", "Depth", 3, 18, 1, 9, "dB"], ["release", "Release", 60, 400, 10, 200, "ms"]] },
 ];
 const val = {}; EL.forEach(e => e.dials.forEach(d => val[e.k + "." + d[0]] = d[5]));
 const R = document.getElementById("recipe");
@@ -149,6 +151,7 @@ function expected() {
   if (on("Va") && !val["Va.random"]) x.Va = val["Va.bars"] * p.bar;
   if (on("Sp")) x.Sp = val["Sp.bars"] * p.bar;
   if (on("Wa")) x.Wa = val["Wa.bars"] * p.bar;
+  if (on("Sc")) x.Sc = p.beat;
   return x;
 }
 // every change of the recipe gets a new version; a run remembers the version it started
@@ -267,16 +270,24 @@ async function renderRhythm(v, active, P, len) {
   return out;
 }
 
+// Sidechain pump: the stem goes through one gain that drops by Depth on every beat and ramps
+// back over Release (never longer than 90% of a beat).
+function duck(ctx, v, P) {
+  const g = ctx.createGain(), floor = Math.pow(10, -v["Sc.depth"] / 20), rel = Math.min(v["Sc.release"] / 1000, 0.9 * P.beat);
+  g.connect(ctx.destination); g.gain.setValueAtTime(1, 0);
+  for (let i = 0; i * P.beat < P.dur; i++) { const t = i * P.beat; g.gain.setValueAtTime(floor, t); g.gain.linearRampToValueAtTime(1, t + rel); }
+  return g;
+}
 async function renderStem(kind, v, active) {
   const P = plan(v, active), len = Math.ceil(P.dur * SR) + SR;
   if (kind === "rhythm") {
     const x = active("Pu") ? await renderRhythm(v, active, P, len) : new Float32Array(len);
     return { L: x, R: x, dur: P.dur, P };   // mono: both channels share one read-only array
   }
-  const ctx = new OfflineAudioContext(2, len, SR);
+  const ctx = new OfflineAudioContext(2, len, SR), out = active("Sc") ? duck(ctx, v, P) : ctx.destination;
   if (kind === "melody") {
     const noteLen = 2 * P.bar, n = Math.ceil(P.dur / noteLen);
-    const pan = ctx.createStereoPanner(); pan.connect(ctx.destination);
+    const pan = ctx.createStereoPanner(); pan.connect(out);
     if (active("Sp")) {
       const l = ctx.createOscillator(), lg = ctx.createGain();
       l.frequency.value = 1 / (v["Sp.bars"] * P.bar); lg.gain.value = 0.9;
@@ -298,7 +309,7 @@ async function renderStem(kind, v, active) {
     }
   }
   if (kind === "pad") {
-    const merge = ctx.createChannelMerger(2); merge.connect(ctx.destination);
+    const merge = ctx.createChannelMerger(2); merge.connect(out);
     const mid = ctx.createGain(), side = ctx.createGain(), inv = ctx.createGain();
     mid.gain.value = 0.18; inv.gain.value = -1;
     mid.connect(merge, 0, 0); mid.connect(merge, 0, 1);
@@ -490,11 +501,23 @@ function detectSlow(st, f) {
 const balance = (L, R, a, b) => { let l = 0, r = 0; for (let i = a; i < b; i++) { l += L[i] * L[i]; r += R[i] * R[i]; } return (r - l) / (r + l + 1e-9); };
 const sideShare = (L, R, a, b) => { let m = 0, s = 0; for (let i = a; i < b; i++) { const M = L[i] + R[i], S = L[i] - R[i]; m += M * M; s += S * S; } return s / (m + s + 1e-9); };
 
+// Sidechain pump: the level of the pad's mid signal (L + R, so the width arc cancels) in 50 ms
+// windows every 10 ms, in dB. A steady pad has a flat level; a pump makes it repeat on the beat.
+function detectPump(st) {
+  const hop = Math.round(0.01 * SR), W = Math.round(0.05 * SR), fs = SR / hop, lv = [];
+  for (let a = 0; a + W <= st.L.length; a += hop) { let e = 0; for (let i = a; i < a + W; i++) { const m = st.L[i] + st.R[i]; e += m * m; } lv.push(10 * Math.log10(e / W + 1e-12)); }
+  const use = lv.slice(Math.round(0.5 * fs), lv.length - Math.round(1.5 * fs)), srt = [...use].sort((a, b) => a - b);
+  const swing = srt[Math.floor(0.95 * srt.length)] - srt[Math.floor(0.05 * srt.length)];
+  if (!(swing >= 1.5)) return null;
+  const r = autocorr(use, Math.round(2.2 * fs)), p = pick(r, fs, 0.2, 2.0, 4, 0.9);
+  return p && p.r >= 0.5 ? { tau: p.tau, r: p.r, extra: `${swing.toFixed(1)} dB swing,` } : null;
+}
+
 async function collide(v = val, active = k => on(k)) {
   const [rh, me, pa] = await Promise.all(["rhythm", "melody", "pad"].map(k => renderStem(k, v, active)));
   const rd = detectRhythm(rh);
   if (!rd.Pu) { rd.beatT = null; }
-  const found = { Pu: rd.Pu, Me: rd.Me, Va: rd.Pu ? detectVariation(rd) : null, Vb: detectVibrato(me), Sp: detectSlow(me, balance), Wa: detectSlow(pa, sideShare) };
+  const found = { Pu: rd.Pu, Me: rd.Me, Va: rd.Pu ? detectVariation(rd) : null, Vb: detectVibrato(me), Sp: detectSlow(me, balance), Wa: detectSlow(pa, sideShare), Sc: detectPump(pa) };
   if (found.Sp) found.Sp.extra = `${(found.Sp.tau / rh.P.bar).toFixed(2)} bars`;
   if (found.Wa) found.Wa.extra = `${(found.Wa.tau / pa.P.bar).toFixed(2)} bars`;
   return { found, stems: { Rhythm: rh, Melody: me, Pad: pa } };
@@ -630,6 +653,8 @@ const RECIPES = {
              hint: "Variation (predicted cell): a fill closes every 4-bar phrase. Press Collide, then Without Variation to hear every bar the same." },
   spatial: { focus: "Sp", on: ["Sp"], v: { "Pu.bpm": 100, "Me.beats": 4, "Sp.bars": 2 },
              hint: "Spatial motion (predicted cell): the melody travels left to right and back every 2 bars. Use headphones. Press Collide, then Without Spatial motion." },
+  sidechain: { focus: "Sc", on: ["Pu", "Sc"], v: { "Pu.bpm": 120, "Me.beats": 4, "Sc.depth": 9, "Sc.release": 200 },
+             hint: "Sidechain pump: the pad and the melody duck 9 dB on every kick and swell back over 200 ms. Press Collide, then Without Sidechain pump to hear them steady." },
   width:   { focus: "Wa", on: ["Wa"], v: { "Pu.bpm": 120, "Me.beats": 4, "Wa.bars": 8 },
              hint: "Width arc (predicted cell): the pad opens from mono to wide over 8 bars. Use headphones. Press Collide, then Without Width arc." },
 };
