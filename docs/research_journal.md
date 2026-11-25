@@ -280,3 +280,27 @@ The entries below were **reconstructed on 2026-11-12** from commits, experiment 
   - divisions stay weak on the final grooves (0.306), where white noise often covers the hats; they are much better on the second set (0.802);
   - limits: the meter rule only says 2 or 3 above a level; 5 and 7 beats are left without a grouping in most cases (41 of 45 on the final set), which is honest but not a meter. One listener labelled the real tracks.
 - **Decision:** by the pre-registered rule the ladder goes into the core, as `pts/ladder.py`, beside the old rule, which still gives the single period of `envelope_periodicity`. The evaluated copy stays in the experiment folder, and a test checks that the two agree. Issue #15's question, which level is "the beat", is now answered by not choosing: the report shows the whole ladder.
+
+### 2026-11-22-live-001: the metrical ladder on live recordings (issue #29)
+
+- **State:** planned. Written before any ladder run on these recordings.
+- **Question:** does the frozen ladder (`pts/ladder.py`) put the listener's beat on its ladder for real musicians, in rooms, streets and old 78s, and does it stay empty where there is no steady beat?
+- **Material:** 17 live recordings in `data/material/live/` (sources and licences in `SOURCES.txt`; the audio stays out of git): a folk dance band, a jig, four street and village bands, bagpipes and drums, three jazz records of 1923, a work song, body percussion, a beach celebration recorded on the move, a Macedonian tambura improvisation, a Bulgarian krivo horo, and two free-rhythm controls (a violin improvisation and a taksim soundcheck). Lex's sung pair (free, with claps, claps only) will be added before tapping if it is recorded in time, under the same protocol.
+- **Excerpts:** one 30 s excerpt per recording, starting at 30% of its length, but never before the music starts (20 s for the folk festival) and never running past the end. Peak 0.89, 50 ms fades. A random order with seed 20261122 and names hidden, as in step 2026-11-13-tapping-001. **Blinding is only partial:** Lex chose these recordings and knows their kinds; the detector output stays hidden until all labels are in.
+- **Labels:** the tapping protocol of 2026-11-13-tapping-001 with its clarification, plus one bound learnt from that day's rhythm-tapping passes: a pass is valid only if the spread (coefficient of variation) of its kept intervals is at most 0.15. The steady passes of 2026-11-13 reached at most 0.149; the passes that followed the drum rhythm gave 0.164 to 0.294.
+- **Scoring, once, after all labels are in:** the frozen ladder runs on each 30 s excerpt (what was tapped) and, as a secondary result, on the whole recording from the music start. The first 20 s of the folk festival (room sound only) is an extra negative.
+- **Hypotheses:**
+  - H1: the tapped beat is on the excerpt's ladder (within 3%) on at least 80% of the verified tracks. Live tempo drift and 30 s excerpts make this harder than the synthetic check (0.965);
+  - H2: the ladder is empty on the two free-rhythm controls and on the room-only segment;
+  - H3, reported without a target (too few cases): where the source states the meter (3/4 waltz by tag, 6/8 jig, 4/4 "When the Saints", 4/4 jazz, an uneven krivo horo), the first grouping above the tapped beat against that meter.
+- **Decision rule:** if H1 or H2 fails, the failures are analysed and a defect issue is opened; the core is not changed on this material without a new held-out check.
+- **Addition on 2026-11-25, before any tap or run on the live material:** one prediction is added to H3 with a target. On the krivo horo (`tsalapishko_krivo_horo_gerganov.ogg`) the ladder finds no grouping by 2 or by 3 directly above the tapped beat. Grouping by 2 or 3 there would be a wrong meter; no grouping is the honest answer for a crooked bar. The live hypotheses H1, H2 and this one are now on the prediction scoreboard as "waiting".
+
+### 2026-11-25-cards-005: the scoreboard after issues #15 and #29 (issue #24)
+
+- **State:** done.
+- The issue #15 prediction "a rule can be found that returns the beat itself" is now **false**: the candidate lost on the tapped labels (7 exact against 9), and the beat level proved to be the listener's choice.
+- Two pre-registered ladder criteria are added as **true** (coverage, and bars of 3 against 2), and the three live predictions as **waiting**.
+- Scoreboard: 28 predictions, 10 true, 1 partly, 4 false, 13 waiting.
+- The Pulse card was brought up to date: the ladder in its numbers and limits, the issue #15 prediction marked false, the ladder prediction added as true.
+- The table page had no `<meta charset="utf-8">`. GitHub Pages sends the encoding itself, but a local server does not, and the scoreboard symbols then showed as mojibake. The tag was added; the standalone file already had it.
