@@ -255,10 +255,12 @@
    "numbers": [
     "The pulse is confirmed on every real drum stem, at 42 to 116 standard deviations above the noise level.",
     "On noise and on shuffled drums, no pulse is confirmed (0% false periods held out).",
-    "On a strict benchmark the rule is exact on 76.5 to 80% of beats; the rest are bars or half bars."
+    "On a strict benchmark the rule is exact on 76.5 to 80% of beats; the rest are bars or half bars.",
+    "The metrical ladder holds the listener's tapped beat on 12 of 12 tracks, and the true beat on 96.5% of held-out grooves."
    ],
    "limits": [
-    "The level is not always right: on a 174 BPM breakbeat and on a fast waltz the rule returns the bar, not the beat. A better rule is a candidate, not yet in the core code."
+    "Which level is the beat depends on the listener: half time, the bar of a waltz, or the dotted beat of 6/8. So the table reports the whole ladder of levels, not one beat.",
+    "Checked on synthetic grooves and on our own Suno tracks; the check on live musicians is pre-registered and waiting for taps."
    ],
    "links": [
     [
@@ -272,6 +274,10 @@
     [
      "Beat level",
      "experiments/2026-11-12_beat_level/README.md"
+    ],
+    [
+     "Metrical ladder",
+     "experiments/2026-11-13_metrical_ladder/README.md"
     ]
    ]
   },
@@ -284,11 +290,18 @@
     "link": "experiments/2026-11-10_tempo_series/README.md"
    },
    {
-    "status": "waiting",
+    "status": "false",
     "text": "A rule can be found that returns the beat itself, not its bar or its half.",
     "fail": "No rule passes real recordings with verified beat labels.",
-    "evidence": "A candidate gets 94 to 95% on two held-out sets; real labels are the next step (issue #15).",
-    "link": "experiments/2026-11-12_beat_level/README.md"
+    "evidence": "The candidate lost on 12 tracks with tapped labels: 7 exact against 9 for the old rule. The beat level is the listener's choice (issue #15).",
+    "link": "experiments/2026-11-13_beat_tapping/runs/20261113T060232Z-score-3ca4a3164622/report.md"
+   },
+   {
+    "status": "true",
+    "text": "The listener's beat is one level of the metrical ladder.",
+    "fail": "Fewer than 11 of 12 tapped tracks, or under 95% of held-out grooves.",
+    "evidence": "12 of 12 tapped tracks; 96.5% on both held-out groove sets (issue #29).",
+    "link": "experiments/2026-11-13_metrical_ladder/README.md"
    }
   ],
   "pharmakon": "Tempo in the Track Map: multi-band onsets with octave and meter checks."

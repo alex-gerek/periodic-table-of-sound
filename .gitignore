@@ -3,6 +3,16 @@ data/stems/
 *.wav
 *.flac
 *.mp3
+*.m4a
+*.aac
+*.ogg
+*.ogx
+*.opus
+*.aif
+*.aiff
+*.wma
+*.3gp
+*.amr
 *.zip
 *.bundle
 
