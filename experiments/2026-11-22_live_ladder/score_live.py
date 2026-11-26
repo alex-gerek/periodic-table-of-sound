@@ -39,10 +39,42 @@ def pass_period(p):
     return float(np.median(d))
 
 
+def spread(a):
+    a = np.asarray(a, dtype=float)
+    return a.std() / a.mean()
+
+
+def pass_cycle(p):
+    """A repeating uneven cycle in a pass that is not even (added on 2026-11-25, before any tap)."""
+    if not p or p.get("no_steady_beat"):
+        return None
+    d = np.diff(p["taps_s"][DROP_FIRST:])
+    if len(d) < 12:
+        return None
+    m0 = np.median(d)
+    d = d[(d >= 0.3 * m0) & (d <= 3 * m0)]
+    for k in range(2, 6):
+        for ph in range(k):
+            n = (len(d) - ph) // k
+            if n < 6:
+                continue
+            block = d[ph:ph + n * k].reshape(n, k)
+            steps = np.median(block, axis=0)
+            if (spread(block.sum(axis=1)) <= 0.08 and all(spread(block[:, i]) <= 0.15 for i in range(k))
+                    and steps.max() >= 1.25 * steps.min()):
+                return {"k": k, "cycle_s": float(np.median(block.sum(axis=1))), "steps_s": [float(v) for v in steps]}
+    return None
+
+
 def label(passes):
     if any(p.get("no_steady_beat") for p in passes.values()):
         return {"status": "none"}
     per = [x for x in (pass_period(passes[k]) for k in sorted(passes)) if x]
+    cyc = [c for c in (None if pass_period(passes[k]) else pass_cycle(passes[k]) for k in sorted(passes)) if c]
+    for i, a in enumerate(cyc):
+        for b in cyc[i + 1:]:
+            if a["k"] == b["k"] and max(a["cycle_s"], b["cycle_s"]) / min(a["cycle_s"], b["cycle_s"]) - 1 <= AGREE:
+                return {"status": "uneven", "k": a["k"], "cycle_s": (a["cycle_s"] + b["cycle_s"]) / 2, "steps_s": a["steps_s"]}
     pairs = [(a, b) for i, a in enumerate(per) for b in per[i + 1:]]
     for a, b in pairs:
         if max(a, b) / min(a, b) - 1 <= AGREE:
@@ -79,6 +111,9 @@ def main():
             whole = L.ladder(mono(full)[int(k["music_start_s"] * fsr):], fsr)
             row = {"id": k["id"], "name": k["name"], "label": lab, "excerpt_bpm": bpm(ex), "whole_bpm": bpm(whole),
                    "control": k["name"] in CONTROLS}
+            if lab["status"] == "uneven":                 # reported apart from H1: does the ladder hold the cycle?
+                row["excerpt_holds_cycle"] = L.on_ladder(ex, lab["cycle_s"]) is not None
+                row["whole_holds_cycle"] = L.on_ladder(whole, lab["cycle_s"]) is not None
             for tag, lv in (("excerpt", ex), ("whole", whole)):
                 if lab["status"] in ("verified", "ambiguous"):
                     hits = [L.on_ladder(lv, b) for b in lab["beats_s"]]
@@ -92,7 +127,9 @@ def main():
         room = L.ladder(mono(y)[int(ROOM[1] * sr):int(ROOM[2] * sr)], sr)
         ver = [r for r in rows if r["label"]["status"] in ("verified", "ambiguous")]
         res = {"rows": rows, "room_only_bpm": bpm(room),
-               "labels": {s: sum(r["label"]["status"] == s for r in rows) for s in ("verified", "ambiguous", "none", "incomplete")},
+               "labels": {s: sum(r["label"]["status"] == s for r in rows) for s in ("verified", "ambiguous", "uneven", "none", "incomplete")},
+               "uneven": {r["name"]: {"cycle_s": r["label"]["cycle_s"], "steps_s": r["label"]["steps_s"],
+                                      "excerpt_holds_cycle": r["excerpt_holds_cycle"]} for r in rows if r["label"]["status"] == "uneven"},
                "H1_excerpt": f"{sum(r['excerpt_on_ladder'] for r in ver)}/{len(ver)}",
                "H1_whole": f"{sum(r['whole_on_ladder'] for r in ver)}/{len(ver)}",
                "H2_controls_empty": {r["name"]: r["excerpt_empty"] for r in rows if r["control"]},

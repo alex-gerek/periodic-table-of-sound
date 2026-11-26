@@ -61,10 +61,34 @@ function passPeriod(p) {           // the protocol of journal steps 2026-11-13-t
   const mu = d.reduce((a, b) => a + b, 0) / d.length, sd = Math.sqrt(d.reduce((a, b) => a + (b - mu) ** 2, 0) / d.length);
   return sd / mu <= MAX_CV ? median(d) : null;   // an uneven pass follows the rhythm, not a steady pulse (step 2026-11-22-live-001)
 }
+// A pass that is not even may still be a repeating uneven cycle, like the steps of a crooked dance
+// (step 2026-11-22-live-001, added on 2026-11-25). Returns {k, cycle, steps} or null.
+const sdOf = a => { const m = a.reduce((x, y) => x + y, 0) / a.length; return Math.sqrt(a.reduce((x, y) => x + (y - m) ** 2, 0) / a.length) / m; };
+function passCycle(p) {
+  if (!p || p.no_steady_beat) return null;
+  const t = p.taps_s.slice(DROP_FIRST);
+  let d = t.slice(1).map((x, i) => x - t[i]);
+  if (d.length < 12) return null;
+  const m0 = median(d);
+  d = d.filter(x => x >= 0.3 * m0 && x <= 3 * m0);
+  for (let k = 2; k <= 5; k++) for (let ph = 0; ph < k; ph++) {
+    const n = Math.floor((d.length - ph) / k);
+    if (n < 6) continue;
+    const cyc = [], pos = Array.from({ length: k }, () => []);
+    for (let j = 0; j < n; j++) { let s = 0; for (let i = 0; i < k; i++) { const v = d[ph + j * k + i]; s += v; pos[i].push(v); } cyc.push(s); }
+    const steps = pos.map(median);
+    if (sdOf(cyc) <= 0.08 && pos.every(a => sdOf(a) <= 0.15) && Math.max(...steps) >= 1.25 * Math.min(...steps))
+      return { k, cycle: median(cyc), steps };
+  }
+  return null;
+}
 function verdict(id) {
   const r = TAPS[id] || {}, keys = Object.keys(r).sort();
   if (keys.some(k => r[k].no_steady_beat)) return "none";
   const per = keys.map(k => passPeriod(r[k])).filter(x => x);
+  const cyc = keys.map(k => passPeriod(r[k]) ? null : passCycle(r[k])).filter(x => x);
+  for (let i = 0; i < cyc.length; i++) for (let j = i + 1; j < cyc.length; j++)
+    if (cyc[i].k === cyc[j].k && Math.max(cyc[i].cycle, cyc[j].cycle) / Math.min(cyc[i].cycle, cyc[j].cycle) - 1 <= AGREE) return "uneven";
   if (per.length < 2) return keys.length >= 2 ? "redo" : (keys.length ? "half" : "todo");
   // any two valid passes that agree verify the track; a factor of 2 makes it ambiguous
   const pairs = []; per.forEach((a, i) => per.slice(i + 1).forEach(b => pairs.push(Math.max(a, b) / Math.min(a, b))));
@@ -72,13 +96,14 @@ function verdict(id) {
   if (pairs.some(q => Math.abs(q / 2 - 1) <= AGREE)) return "ambiguous";
   return "redo";
 }
-const LABEL = { todo: "not started", half: "1 pass done", verified: "done ✓", ambiguous: "done (two levels)", none: "done (no steady beat)", redo: "tap again" };
+const LABEL = { todo: "not started", half: "1 pass done", verified: "done ✓", ambiguous: "done (two levels)", uneven: "done (uneven cycle)", none: "done (no steady beat)", redo: "tap again" };
+const DONE = ["verified", "ambiguous", "uneven", "none"];
 
 function drawList() {
   $("list").innerHTML = TRACKS.map((id, i) => { const v = verdict(id);
-    return `<button class="trk ${["verified", "ambiguous", "none"].includes(v) ? "done" : v === "redo" ? "redo" : ""}" data-id="${id}" aria-current="${id === cur}">Track ${i + 1}<small>${LABEL[v]}</small></button>`; }).join("");
+    return `<button class="trk ${DONE.includes(v) ? "done" : v === "redo" ? "redo" : ""}" data-id="${id}" aria-current="${id === cur}">Track ${i + 1}<small>${LABEL[v]}</small></button>`; }).join("");
   document.querySelectorAll(".trk").forEach(b => b.onclick = () => select(b.dataset.id));
-  const done = TRACKS.filter(id => ["verified", "ambiguous", "none"].includes(verdict(id))).length;
+  const done = TRACKS.filter(id => DONE.includes(verdict(id))).length;
   document.title = `Tap the Beat (${done}/${TRACKS.length})`;
 }
 function nextPass(id) { const r = TAPS[id] || {}; return Object.keys(r).length + 1; }
@@ -86,7 +111,7 @@ function select(id) {
   if (playing) return;
   cur = id; passNo = nextPass(id); drawList();
   const i = TRACKS.indexOf(id) + 1, v = verdict(id);
-  const finished = ["verified", "ambiguous", "none"].includes(v);
+  const finished = DONE.includes(v);
   $("stage").innerHTML = `<h2>Track ${i}</h2><div class="msg">${finished ? "This track is done. You can still tap it again." : v === "redo" ? "The two passes did not agree. Please tap it once more, calmly." : `Pass ${Math.min(passNo, 2)} of 2.`}</div>
     <button class="tap" id="tap" disabled>TAP</button><div class="bar"><i id="prog"></i></div>
     <div class="row"><button class="b p" id="start">Start pass</button><button class="b" id="none">No steady beat</button></div>
@@ -121,14 +146,14 @@ async function save(rec) {
 async function finish() {
   playing = false;
   const rec = { id: cur, pass: passNo, taps_s: taps };
-  const ok = passPeriod({ taps_s: taps }) !== null;
+  const ok = passPeriod({ taps_s: taps }) !== null || passCycle({ taps_s: taps }) !== null;
   try { await save(rec); } catch (e) { $("msg").textContent = "Could not save. Please tell Claude."; return; }
   drawList();
   const v = verdict(cur);
   if (!ok) { $("msg").textContent = "This pass was not steady enough. Keep the same gap every time, and try it again."; select(cur); return; }
   if (v === "half") { select(cur); $("msg").textContent = "Saved. Now the second pass of the same track."; return; }
-  const nxt = TRACKS.find(id => !["verified", "ambiguous", "none"].includes(verdict(id)));
-  if (["verified", "ambiguous"].includes(v)) {
+  const nxt = TRACKS.find(id => !DONE.includes(verdict(id)));
+  if (["verified", "ambiguous", "uneven"].includes(v)) {
     if (nxt) { select(nxt); $("msg").textContent = "Saved, that track is done. Here is the next one."; }
     else { $("stage").innerHTML = `<h2>All done. Thank you!</h2><p class="msg">Every track has its label. You can close this page.</p>`; }
   } else { select(cur); }
@@ -137,12 +162,12 @@ async function noBeat() {
   if (playing) return;
   try { await save({ id: cur, pass: passNo, taps_s: [], no_steady_beat: true }); } catch (e) { $("msg").textContent = "Could not save. Please tell Claude."; return; }
   drawList();
-  const nxt = TRACKS.find(id => !["verified", "ambiguous", "none"].includes(verdict(id)));
+  const nxt = TRACKS.find(id => !DONE.includes(verdict(id)));
   if (nxt) select(nxt); else $("stage").innerHTML = `<h2>All done. Thank you!</h2>`;
 }
 document.addEventListener("keydown", ev => { if (ev.code === "Space") { ev.preventDefault(); if (playing) tap(); } });
 (async () => { const r = await (await fetch("/tracks")).json(); TRACKS = r.tracks; TAPS = r.taps || {}; drawList();
-  const first = TRACKS.find(id => !["verified", "ambiguous", "none"].includes(verdict(id))); if (first) select(first); })();
+  const first = TRACKS.find(id => !DONE.includes(verdict(id))); if (first) select(first); })();
 </script>
 </body>
 </html>

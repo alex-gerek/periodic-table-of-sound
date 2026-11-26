@@ -123,6 +123,8 @@ const EL = [
     dials: [["bars", "Opens over", 2, 16, 1, 8, "bars"]] },
   { k: "Sc", name: "Sidechain pump", g: 1, fam: "var(--period)", on: false, hint: "The pad and the melody duck on every beat and swell back, as if each kick pushed them down.",
     dials: [["depth", "Depth", 3, 18, 1, 9, "dB"], ["release", "Release", 60, 400, 10, 200, "ms"]] },
+  { k: "Ns", name: "Noise", g: 2, fam: "var(--irreg)", on: false, hint: "A control, not an element: white noise, a steady hiss with no period, over every stem. The detectors must keep finding what is there, and must find nothing in the noise itself.",
+    dials: [["level", "Level", -40, -6, 1, -24, "dB"]] },
 ];
 const val = {}; EL.forEach(e => e.dials.forEach(d => val[e.k + "." + d[0]] = d[5]));
 const R = document.getElementById("recipe");
@@ -278,7 +280,19 @@ function duck(ctx, v, P) {
   for (let i = 0; i * P.beat < P.dur; i++) { const t = i * P.beat; g.gain.setValueAtTime(floor, t); g.gain.linearRampToValueAtTime(1, t + rel); }
   return g;
 }
+// Noise: independent white noise in each channel of each stem, at Level dB RMS (full scale = 0 dB).
+// Seeded, so every render of the same recipe adds the same samples.
+function addNoise(st, v, kind) {
+  const g = seeded(NOISE_SEED + { rhythm: 1, melody: 2, pad: 3 }[kind]), a = Math.pow(10, v["Ns.level"] / 20) * Math.sqrt(3);
+  const L = Float32Array.from(st.L), R = Float32Array.from(st.R);
+  for (let i = 0; i < L.length; i++) { L[i] += a * (g() * 2 - 1); R[i] += a * (g() * 2 - 1); }
+  return { ...st, L, R };
+}
 async function renderStem(kind, v, active) {
+  const st = await renderStemClean(kind, v, active);
+  return active("Ns") ? addNoise(st, v, kind) : st;
+}
+async function renderStemClean(kind, v, active) {
   const P = plan(v, active), len = Math.ceil(P.dur * SR) + SR;
   if (kind === "rhythm") {
     const x = active("Pu") ? await renderRhythm(v, active, P, len) : new Float32Array(len);
@@ -496,7 +510,11 @@ function detectSlow(st, f) {
   const s = frames(st.L, hop, (a, b) => f(st.L, st.R, a, b));
   const r = autocorr(s, Math.floor(s.length / 2));
   const p = pick(r, fs, 0.4, st.dur / 2, 2);
-  return p && p.r >= 0.5 ? { tau: p.tau, r: p.r } : null;
+  if (!p || p.r < 0.5 || p.tau < 0.4) return null;
+  // the peak must rise above the valley before it (from half its lag), as in pts confirm_period:
+  // in plain noise a slowly decaying curve has small bumps that are not periods (Noise control)
+  let valley = Infinity; for (let k = Math.floor(p.k / 2); k <= p.k; k++) valley = Math.min(valley, r[k]);
+  return p.r - valley >= 0.15 ? { tau: p.tau, r: p.r } : null;
 }
 const balance = (L, R, a, b) => { let l = 0, r = 0; for (let i = a; i < b; i++) { l += L[i] * L[i]; r += R[i] * R[i]; } return (r - l) / (r + l + 1e-9); };
 const sideShare = (L, R, a, b) => { let m = 0, s = 0; for (let i = a; i < b; i++) { const M = L[i] + R[i], S = L[i] - R[i]; m += M * M; s += S * S; } return s / (m + s + 1e-9); };
@@ -543,6 +561,7 @@ function showResults() {
     const fTxt = !f ? (x ? `<span class="no">not found</span>` : `<span class="mut">—</span>`)
       : !f.tau ? `<span class="${randomVa ? "yes" : "no"}">variation without a period</span><br><span class="mut">${f.extra}</span>`
       : `<span class="${x ? (match ? "yes" : "no") : "no"}">${fmtT(f.tau)} · Z ${zOf(f.tau).toFixed(2)}</span><br><span class="mut">${f.extra || ""} r ${f.r.toFixed(2)}</span>`;
+    if (e.k === "Ns") return `<tr><td><b>Ns</b> Noise</td><td>${e.on ? "no period (a control)" : `<span class="mut">off</span>`}</td><td>${e.on ? `<span class="mut">nothing to find</span>` : `<span class="mut">—</span>`}</td><td></td><td><span class="mut">—</span></td></tr>`;
     const exTxt = x ? `${fmtT(x)} · Z ${zOf(x).toFixed(2)}` : randomVa ? `variation, no period` : `<span class="mut">off</span>`;
     const cell = f && f.tau ? `${rowOf(zOf(f.tau))} ${PERIODS[rowOf(zOf(f.tau)) - 1]}` : "";
     const cTxt = c === undefined ? `<span class="mut">—</span>` : c ? `<span class="yes">gone ✓</span>` : `<span class="no">still found ✗</span>`;
@@ -601,7 +620,7 @@ document.getElementById("ctl").onclick = async () => {
     if (stale(snap)) return;
     lastFound = full.found; lastStems = full.stems; controls = {}; showResults(); drawWave(full.stems);
     document.getElementById("play").disabled = false;
-    for (const k of act) {
+    for (const k of act.filter(j => j !== "Ns")) {      // noise is a control: removing it is not a test
       status(`Control: everything except ${k}…`);
       const res = await collide(snap.v, j => snap.active(j) && j !== k);
       if (stale(snap)) return;
@@ -622,6 +641,10 @@ const PRESETS = [
     on: ["Pu", "Me", "Va"], v: { "Pu.bpm": 100, "Me.beats": 4, "Va.bars": 4, "Va.fill": 2, "Va.random": 1 } },
   { name: "No variation · loop", hint: "The control: every bar identical. Expect no variation.",
     on: ["Pu", "Me"], v: { "Pu.bpm": 100, "Me.beats": 4 } },
+  { name: "Noise only", hint: "Only the noise control on (the plain melody and pad still sound). Expect nothing found: no pulse, no meter, no vibrato in a hiss.",
+    on: ["Ns"], v: { "Pu.bpm": 120, "Me.beats": 4, "Ns.level": -18 } },
+  { name: "Pulse through noise", hint: "A pulse under noise louder than the drums (-12 dB). Expect the pulse still found.",
+    on: ["Pu", "Ns"], v: { "Pu.bpm": 110, "Ns.level": -12 } },
   { name: "Everything", hint: "All six elements at once.",
     on: ["Pu", "Me", "Va", "Vb", "Sp", "Wa"], v: { "Pu.bpm": 120, "Me.beats": 3, "Va.bars": 4, "Va.fill": 2, "Va.random": 0, "Vb.rate": 5.5, "Vb.depth": 40, "Sp.bars": 2, "Wa.bars": 8 } },
 ];
@@ -655,6 +678,8 @@ const RECIPES = {
              hint: "Spatial motion (predicted cell): the melody travels left to right and back every 2 bars. Use headphones. Press Collide, then Without Spatial motion." },
   sidechain: { focus: "Sc", on: ["Pu", "Sc"], v: { "Pu.bpm": 120, "Me.beats": 4, "Sc.depth": 9, "Sc.release": 200 },
              hint: "Sidechain pump: the pad and the melody duck 9 dB on every kick and swell back over 200 ms. Press Collide, then Without Sidechain pump to hear them steady." },
+  noise:   { focus: "Ns", on: ["Pu", "Me", "Ns"], v: { "Pu.bpm": 110, "Me.beats": 3, "Ns.level": -30 },
+             hint: "Noise: a steady hiss over a pulse in 3/4. Press Collide, then Without Noise: the pulse and the meter are found both times. Raise the noise to -24 dB and the quiet beats drown: this sandbox then reads the bar as the pulse (a known limit; the Python ladder keeps both levels)." },
   width:   { focus: "Wa", on: ["Wa"], v: { "Pu.bpm": 120, "Me.beats": 4, "Wa.bars": 8 },
              hint: "Width arc (predicted cell): the pad opens from mono to wide over 8 bars. Use headphones. Press Collide, then Without Width arc." },
 };

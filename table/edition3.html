@@ -1403,14 +1403,30 @@ const PREDICTIONS = [
   "el": "Ev",
   "text": "Envelope is a Level element near Z 8, for tonal sounds.",
   "evidence": "Criteria fixed before the runs; 279 of 279 held-out region cells passed.",
-  "link": "experiments/2026-11-12_envelope/README.md"
+  "link": "experiments/2026-11-12_envelope/README.md",
+  "rates": [
+   [
+    "held-out region cells passed",
+    279,
+    279
+   ]
+  ],
+  "ci": "held-out region cells passed: 279 of 279 (100.0%, 95% CI 98.7 to 100.0%)"
  },
  {
   "status": "partly",
   "el": "Hr",
   "text": "Chord changes nest at log₂ of a whole number of pulses.",
   "evidence": "Held on the 4 of 7 tracks where the chord period is confirmed; not testable on the other 3.",
-  "link": "experiments/2026-11-10_tempo_series/README.md"
+  "link": "experiments/2026-11-10_tempo_series/README.md",
+  "rates": [
+   [
+    "tracks where the nesting held",
+    4,
+    7
+   ]
+  ],
+  "ci": "tracks where the nesting held: 4 of 7 (57.1%, 95% CI 18.4 to 90.1%)"
  },
  {
   "status": "false",
@@ -1438,21 +1454,80 @@ const PREDICTIONS = [
   "el": "Pu",
   "text": "A rule can be found that returns the beat itself, not its bar or its half.",
   "evidence": "The candidate won on two synthetic held-out sets (94 to 95%) but lost on 12 tracks with tapped labels: 7 exact against 9 for the old rule. Which level is the beat turned out to be the listener's choice (issue #15).",
-  "link": "experiments/2026-11-13_beat_tapping/runs/20261113T060232Z-score-3ca4a3164622/report.md"
+  "link": "experiments/2026-11-13_beat_tapping/runs/20261113T060232Z-score-3ca4a3164622/report.md",
+  "rates": [
+   [
+    "candidate rule, exact beat on tapped tracks",
+    7,
+    12
+   ],
+   [
+    "old rule, exact beat on tapped tracks",
+    9,
+    12
+   ]
+  ],
+  "ci": "candidate rule, exact beat on tapped tracks: 7 of 12 (58.3%, 95% CI 27.7 to 84.8%); old rule, exact beat on tapped tracks: 9 of 12 (75.0%, 95% CI 42.8 to 94.5%)"
  },
  {
   "status": "true",
   "el": "Pu",
   "text": "The listener's beat is one level of the metrical ladder (pre-registered: at least 11 of 12 tapped tracks, 95% of held-out grooves).",
   "evidence": "12 of 12 tapped tracks; 96.5% on both held-out groove sets; all 120 noise controls empty (issue #29).",
-  "link": "experiments/2026-11-13_metrical_ladder/README.md"
+  "link": "experiments/2026-11-13_metrical_ladder/README.md",
+  "rates": [
+   [
+    "tapped beat on the ladder",
+    12,
+    12
+   ],
+   [
+    "final grooves covered",
+    193,
+    200
+   ],
+   [
+    "second held-out set covered",
+    192,
+    199
+   ],
+   [
+    "noise controls with an empty ladder",
+    120,
+    120
+   ]
+  ],
+  "ci": "tapped beat on the ladder: 12 of 12 (100.0%, 95% CI 73.5 to 100.0%); final grooves covered: 193 of 200 (96.5%, 95% CI 92.9 to 98.6%); second held-out set covered: 192 of 199 (96.5%, 95% CI 92.9 to 98.6%); noise controls with an empty ladder: 120 of 120 (100.0%, 95% CI 97.0 to 100.0%)"
  },
  {
   "status": "true",
   "el": "Me",
   "text": "The ladder tells a bar of 3 from a bar of 2 better than always answering 2 (pre-registered: at least 70%).",
   "evidence": "88.8% against 62.9%, and 95.5% against 73.1%, on two held-out groove sets (issue #29).",
-  "link": "experiments/2026-11-13_metrical_ladder/README.md"
+  "link": "experiments/2026-11-13_metrical_ladder/README.md",
+  "rates": [
+   [
+    "final grooves, meter right",
+    79,
+    89
+   ],
+   [
+    "always 2 on the same",
+    56,
+    89
+   ],
+   [
+    "second set, meter right",
+    64,
+    67
+   ],
+   [
+    "always 2 on the same",
+    49,
+    67
+   ]
+  ],
+  "ci": "final grooves, meter right: 79 of 89 (88.8%, 95% CI 80.3 to 94.5%); always 2 on the same: 56 of 89 (62.9%, 95% CI 52.0 to 72.9%); second set, meter right: 64 of 67 (95.5%, 95% CI 87.5 to 99.1%); always 2 on the same: 49 of 67 (73.1%, 95% CI 60.9 to 83.2%)"
  },
  {
   "status": "waiting",
@@ -1544,7 +1619,7 @@ const PREDICTIONS = [
       <span class="n">✗ ${n("false")} did not</span><span class="n">🔮 ${n("waiting")} waiting</span>
       <span class="hint">Only predictions written down before their test are counted. Click to see each one and its evidence.</span></summary>
     <ol>${PREDICTIONS.map(p => `<li>${ICON[p.status]} ${p.text}<button class="chip" data-el="${p.el}">${name(p.el)}</button>
-      <small>${p.evidence}${p.link ? ` <a href="${REPO}${p.link}" target="_blank" rel="noopener">evidence</a>` : ""}</small></li>`).join("")}</ol></details>`;
+      <small>${p.evidence}${p.link ? ` <a href="${REPO}${p.link}" target="_blank" rel="noopener">evidence</a>` : ""}</small>${p.ci ? `<small class="ci">Counts with exact 95% intervals: ${p.ci}.</small>` : ""}</li>`).join("")}</ol></details>`;
   box.addEventListener("click", ev => {
     const c = ev.target.closest(".chip"); if (!c) return;
     const k = c.dataset.el, el = k.startsWith("gap:") ? T.querySelector(`.el[data-gap="${k.slice(4)}"]`) : T.querySelector(`.el[data-s="${k}"]`);
