@@ -304,3 +304,57 @@ The entries below were **reconstructed on 2026-11-12** from commits, experiment 
 - Scoreboard: 28 predictions, 10 true, 1 partly, 4 false, 13 waiting.
 - The Pulse card was brought up to date: the ladder in its numbers and limits, the issue #15 prediction marked false, the ladder prediction added as true.
 - The table page had no `<meta charset="utf-8">`. GitHub Pages sends the encoding itself, but a local server does not, and the scoreboard symbols then showed as mojibake. The tag was added; the standalone file already had it.
+- **Clarification on 2026-11-25, still before any tap on the live material:** the krivo horo prediction can only be tested if the tapped level is a beat inside the dance cycle. A crooked cycle has long and short beats, so tapping every step gives uneven intervals that the spread bound (0.15) rejects, and the listener may instead tap the whole cycle or press "No steady beat". If the tapped level is the whole cycle, a grouping found above it would be about phrases, not about the meter. So in that case, or with "No steady beat", the prediction is recorded as **not testable** and stays out of the true and false counts. The listener gets no instruction specific to this track.
+- **Uneven cycles (added on 2026-11-25, before any tap on the live material):** a musician can tap the steps of a crooked dance, long and short, and that is a correct beat. So a pass that fails the spread bound is now also tested as a **repeating uneven cycle**, instead of being thrown away:
+  - the first 4 taps are dropped, and only extreme slips (under 0.3 or over 3 times the median interval) are removed;
+  - for k = 2 to 5 taps per cycle and every starting phase, the cycle lengths (sums of k neighbouring intervals) must have a spread of at most 0.08, each step position a spread of at most 0.15, at least 6 whole cycles must fit, and the longest step must be at least 1.25 times the shortest (otherwise the pulse is even and the normal rule applies). The smallest k that passes is taken;
+  - two such passes with the same k and cycle lengths within 4% give the label **uneven**, with the cycle length and the median step lengths;
+  - uneven tracks are reported apart from H1. The ladder is asked only whether it holds the cycle length, and the krivo horo prediction stays **not testable** for an uneven label, as written above. The labels are kept for a future element of uneven meters.
+  - checked before any real tap: synthetic 2+2+3 steps give an uneven cycle of k = 3 and no even period; steady taps give a period and no cycle; random taps give neither; two matching uneven passes label the track "uneven", two different ones ask for another pass. None of the 2026-11-13 passes is read as a cycle, so the three passes that followed the drum rhythm are still rejected.
+
+### 2026-11-26-collider-003: a Noise control in the collider (issue #24)
+
+- **State:** done.
+- **What:** a new collider control, Noise (Ns): independent, seeded white noise in each channel of every stem, at Level dB RMS (-40 to -6 dB, full scale 0 dB). It is a control, not an element: it has no period, the results table says "nothing to find", and the control run does not remove it. Recipe `?recipe=noise`, presets "Noise only" and "Pulse through noise".
+- **Findings:**
+  - **noise only**, at -36, -30, -24, -18, -12 and -6 dB and two tempi: before the fix, the width detector reported a false 378 ms period at -12 dB. The cause: in noise the side-share curve decays slowly, and a bump of 0.01 on that slope passed as a peak. `detectSlow` now needs the peak to rise at least 0.15 above the lowest correlation between half its lag and its lag (as in `confirm_period`) and the period to be at least 0.4 s. After the fix: nothing found in 12 of 12;
+  - **spatial motion and width arc under noise** (60 to 200 BPM, clean, -24 and -12 dB): all 15 spatial motions were found within 1%; width arcs were found in 12 of 15. Of the 3 misses, two are a 22 s cycle at 174 BPM, half the sound, which the old rule missed too; the third (120 BPM at -12 dB) is masked by noise: the old rule would have reported a wrong 0.39 s there, the new one reports nothing;
+  - **pulse under noise:** a pulse alone is found at every level up to -6 dB (13 dB of noise over the drums). With a meter, whose weak beats are at 0.42 of the downbeat, the sandbox rule reads the bar as the pulse from -24 dB on and loses the meter. This is the beat-or-bar choice of issue #15 again; the Python ladder keeps both levels, the sandbox does not. Recorded as a known limit, and said in the recipe hint.
+
+### 2026-11-26-calib-001: a calibrated false-alarm rate for period confirmation (issue #32)
+
+- **State:** planned. Written before any run of the surrogate test.
+- **Owner:** Claude. **Previous step:** 2026-11-12, period confirmation (issue #7), `experiments/2026-11-12_periodicity_confirmation/`.
+- **Question:** `confirm_period()` decides in sigma (Bartlett's formula, 5 sigma, chosen on a training set). A sigma is a distance, not a probability: smooth swells, which have no period, reach a median of 7.6 sigma on the significance test and are stopped only by the return test. Can the decision state its false-alarm rate directly, and does that change any decision?
+- **Method (from our Blind Signal Discovery project, re-derived in `pts/stats.py` with numpy only):**
+  - the statistic of a track is S = min(significance, return, sqrt(2) x weaker half), all three from `confirm_period` with its thresholds set to zero. The candidate is picked by the full search in 0.25 to 2 s, so the choice of the best lag is inside the statistic (the look-elsewhere effect);
+  - the null cases are K = 199 surrogates of the same onset envelope: cut into pieces of tau_lo/3 to tau_lo (83 to 250 ms) of random length and shuffled. They keep the track's own sounds and density and destroy repetition at the searched lags;
+  - p = (1 + number of surrogates with S >= S_track) / 200; a period passes the surrogate test at alpha = 0.01, the smallest p-value that is reachable with two tail cases (p <= 2/200);
+  - all rates are reported with exact (Clopper-Pearson) 95% intervals.
+- **Data and split status:**
+  - **fresh**, never seen: seeds 2000 to 2119 with the generators of 2026-11-12 (the six non-periodic families in turn, and grooves as positives); the 12 real drum stems shuffled again in the audio domain with a new seed (26);
+  - **development**, already inspected in 2026-11-12: the training (0 to 59) and test (1000 to 1059) seeds, and the real stems with the seed 7 shuffles. They are re-run only to compare the two rules on the same signals.
+- **Hypotheses:**
+  - H1 (calibration): on the shuffled real stems, the null by construction, the surrogate test passes at most 1% plus sampling error; the guarantee is approximate, because the stems are shuffled as audio and the surrogates as envelopes. Expected: 0 of 12, which can only show gross miscalibration;
+  - H2 (other negatives, no guarantee): on the fresh negatives of all six families, the surrogate test passes at most 5% (6 of 120). The swells are the risk: shuffling destroys a swell, so a swell differs from its own surrogates without being periodic. The return term of S is meant to prevent that;
+  - H3 (power): every positive that the sigma rule confirms has p at the floor (1/200), because rhythm reaches 19 to 55 sigma;
+  - H4: the two rules disagree on at most 2% of all signals. Every disagreement is listed with its evidence.
+- **Decision rule, fixed now:**
+  - the surrogate p-value is added to `confirm_period` as an optional, reported piece of evidence (off by default, because it costs 199 extra searches) if H1 holds;
+  - it becomes part of the decision (sigma rule AND p <= 0.01) only if, on the fresh data, it rejects at least one negative that the sigma rule confirms and loses no positive that the sigma rule confirms. If it changes nothing, it stays evidence only: a gate that never acts only adds cost;
+  - if H2 fails, the surrogate test is not adopted as a gate, and the failing family is analysed in a defect note.
+- **Limits known before the run:** 12 real stems can reveal only a gross error; the surrogates test "the order of events is random", which is not the only way a track can be non-periodic.
+- **Run:** `20261126T124214Z-final-7d14a7e63135` (code at 7d14a7e, 534 s), one run, no reruns. Results: `experiments/2026-11-26_calibrated_confirmation/runs/20261126T124214Z-final-7d14a7e63135/`.
+- **Outcome against the hypotheses:**
+  - H1 **holds**: 0 of 12 shuffled real stems pass the surrogate test (95% CI 0 to 26.5%), on both shuffle seeds. As stated before the run, 12 cases can only exclude a gross error;
+  - H2 **holds**: 2 of 120 fresh negatives pass (1.7%, CI 0.2 to 5.9%), against a limit of 6. One is random drum hits at p = 0.010, exactly at alpha; the other is a smooth swell at p = 0.005, the risk named before the run. The p-values of the fresh negatives are close to uniform (median 0.54, 5% of them at or below 0.05), although only the shuffled stems are exchangeable with the surrogates by construction;
+  - H3 **fails by one case**: 262 of 263 positives confirmed by the sigma rule have p at the floor 1/200. The exception is a training click train (seed 58) at p = 0.010: one of its 199 surrogates reached S = 8.58 against its own 8.46. Shuffled pieces of up to 250 ms keep part of a fast pulse, so the surrogates are not a perfect null near the short end of the range (tau_lo). It still passes at alpha;
+  - H4 **holds**: 4 disagreements in 528 signals (0.8%). Three are negatives that the surrogate test passes and the sigma rule rejects; one is a training click train (seed 40) that the surrogate test confirms at p = 0.010 and the sigma rule misses (4.7 sigma).
+- **What this shows:** the sigma rule is **more conservative** than a 1% false-alarm rate: it passed 0 of 252 negatives in all sets (CI 0 to 1.5%), where a calibrated 1% test passes about 1%. Its real false-alarm rate is below 1.5% (95%), but sigma does not say how far below. The surrogate p-value states its rate directly and is close to calibrated even on families it does not model.
+- **Decision, by the rule fixed before the run:**
+  - the surrogate p-value is **adopted as reported evidence** (H1 holds): `pts.periodicity.surrogate_p()`, off by default because it costs 199 extra searches (about 1 s per track);
+  - it is **not made a gate**: on the fresh data the sigma rule confirmed no negative, so the AND gate would never have acted. The decision rule stays the sigma rule;
+  - every counted rate on the scoreboard now carries its exact 95% interval (computed by `table/build_cards.py`).
+- **Found on the way:** with intervals, the issue #15 result reads 7 of 12 (CI 28 to 85%) against 9 of 12 (CI 43 to 94%). The prediction is "false" by its pre-registered rule (the candidate had to win and did not), but these 12 tracks do not show that the old rule is better. The scoreboard entry is unchanged; this note is the correction of its reading.
+- **Limits:** the surrogates keep repetition shorter than tau_lo, so a period just above tau_lo is tested against a slightly periodic null (conservative, as seed 58 shows). The 12 real stems are the only real material; other genres are untested.
+- **Next:** the pilot "seam hunt" (step 2 of the plan in issue #32's motivation): the excess-power detector and the regime monitor on Suno tracks against the live recordings, with the shuffled-pieces null from `pts/stats.py`.

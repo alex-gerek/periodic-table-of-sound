@@ -24,6 +24,7 @@
   - the meter median was biased.
 
   With hits rendered once and copied, a robust grid cut from the downbeat, a smoothed onset curve and a true median, the battery of 360 settings passes 359 times (before: 304).
+- **2026-11-26. Calibrated confirmation** ([`experiments/2026-11-26_calibrated_confirmation/`](experiments/2026-11-26_calibrated_confirmation/README.md), issue #32). A surrogate p-value (199 shuffles of the track itself) states the false-alarm rate of a period directly; on fresh negatives its p-values are near uniform, and the sigma rule proves more conservative than 1% (0 of 252 negatives, 95% CI 0 to 1.5%). Adopted as reported evidence, not as a gate. Every counted rate on the prediction scoreboard now shows its exact 95% interval. The method comes from our Blind Signal Discovery project.
 - **Next:** a pulse rule that returns the beat, not the strongest repeat; the Level column; vibrato inside a mix; a human singer as the vibrato reference. Meanwhile Claude checks the borders against the literature, runs the echo and loop injection tests, and starts the Level column.
 
 ## 1. Why a separate project

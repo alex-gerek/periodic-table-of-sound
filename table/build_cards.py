@@ -112,9 +112,26 @@ document.addEventListener("keydown", ev => { if (ev.key === "Escape") closeCard(
 """
 
 
+def with_intervals(preds):
+    """Write every counted rate as k of n with its exact 95% interval (issue #32).
+
+    An entry may carry "rates": [[what, k, n], ...]. The interval is computed here, at build
+    time, so the page shows the uncertainty of every count and nobody types it by hand.
+    """
+    sys.path.insert(0, os.path.dirname(HERE))
+    from pts.stats import rate_text
+    out = []
+    for p in preds:
+        p = dict(p)
+        if p.get("rates"):
+            p["ci"] = "; ".join(f"{what}: {rate_text(k, n)}" for what, k, n in p["rates"])
+        out.append(p)
+    return out
+
+
 def inject_predictions(s, preds):
     a, b = s.index(PBEGIN), s.index(PEND)
-    return s[:a] + PBEGIN + "\nconst PREDICTIONS = " + json.dumps(preds["list"], ensure_ascii=False, indent=1) + ";\n" + s[b:]
+    return s[:a] + PBEGIN + "\nconst PREDICTIONS = " + json.dumps(with_intervals(preds["list"]), ensure_ascii=False, indent=1) + ";\n" + s[b:]
 
 
 SCORE_JS = r"""
@@ -132,7 +149,7 @@ const PREDICTIONS = [];
       <span class="n">✗ ${n("false")} did not</span><span class="n">🔮 ${n("waiting")} waiting</span>
       <span class="hint">Only predictions written down before their test are counted. Click to see each one and its evidence.</span></summary>
     <ol>${PREDICTIONS.map(p => `<li>${ICON[p.status]} ${p.text}<button class="chip" data-el="${p.el}">${name(p.el)}</button>
-      <small>${p.evidence}${p.link ? ` <a href="${REPO}${p.link}" target="_blank" rel="noopener">evidence</a>` : ""}</small></li>`).join("")}</ol></details>`;
+      <small>${p.evidence}${p.link ? ` <a href="${REPO}${p.link}" target="_blank" rel="noopener">evidence</a>` : ""}</small>${p.ci ? `<small class="ci">Counts with exact 95% intervals: ${p.ci}.</small>` : ""}</li>`).join("")}</ol></details>`;
   box.addEventListener("click", ev => {
     const c = ev.target.closest(".chip"); if (!c) return;
     const k = c.dataset.el, el = k.startsWith("gap:") ? T.querySelector(`.el[data-gap="${k.slice(4)}"]`) : T.querySelector(`.el[data-s="${k}"]`);

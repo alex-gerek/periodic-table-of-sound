@@ -530,6 +530,46 @@ def confirm_period(track, fs, cand: Periodicity, tau_lo: float, corr=None,
     return cand
 
 
+def confirmation_statistic(track, fs, tau_lo, tau_hi, corr=None, n_mult=None) -> tuple[float, "Periodicity"]:
+    """The whole search in one number: S = min(significance, return, sqrt(2) x weaker half).
+
+    The best candidate in [tau_lo, tau_hi) is picked first, so a track that has no period
+    still gets the best lag it can offer, exactly as the search would report it. S is in
+    sigma units, but it is only used as a score to rank a track against its surrogates.
+    """
+    corr = corr or autocorr
+    n_mult = N_MULT if n_mult is None else n_mult
+    r = corr(track, int(n_mult * tau_hi * fs) + 2)
+    cand = pick_period(r, fs, tau_lo, tau_hi, n_mult=n_mult)
+    cand = confirm_period(track, fs, cand, tau_lo, corr, z_min=0.0, min_reps=0.0)
+    if cand.tau is None:
+        return 0.0, cand
+    ev = cand.evidence
+    s = min(ev["significance"], ev["return"], np.sqrt(2.0) * min(ev["significance_halves"]))
+    return float(s), cand
+
+
+def surrogate_p(track, fs, tau_lo, tau_hi, corr=None, n_mult=None, k: int = 199, seed: int = 0) -> dict:
+    """A calibrated p-value for "this track repeats", against shuffles of itself (issue #32).
+
+    The track is cut into pieces of tau_lo/3 to tau_lo of random length and shuffled, k
+    times. Each surrogate keeps the track's own sounds and density, and has no repetition
+    at the searched lags. The full search runs on each, so picking the best lag is part of
+    the null. If the track's events are in random order, P(p <= alpha) <= alpha exactly.
+    With k = 199, the smallest p is 1/200.
+    """
+    from .stats import conformal_p, shuffle_pieces
+    track = np.asarray(track, dtype=np.float64)
+    s_obs, _ = confirmation_statistic(track, fs, tau_lo, tau_hi, corr, n_mult)
+    lo = max(1, int(round(tau_lo * fs / 3)))
+    hi = max(lo, int(round(tau_lo * fs)))
+    rng = np.random.default_rng(seed)
+    null = [confirmation_statistic(shuffle_pieces(track, rng, lo, hi), fs, tau_lo, tau_hi, corr, n_mult)[0]
+            for _ in range(k)]
+    return {"statistic": s_obs, "p": conformal_p(s_obs, null), "k": k,
+            "null_median": float(np.median(null)), "null_max": float(np.max(null))}
+
+
 def verdict(confirmed) -> str:
     """How a report must show a period: "confirmed", "not confirmed" or "not tested".
 
