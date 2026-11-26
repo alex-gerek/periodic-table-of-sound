@@ -1,0 +1,20 @@
+{
+ "run_id": "20261126T130343Z-final-8b6fbfe16b76",
+ "label": "final",
+ "started_utc": "2026-11-26T13:03:43.712470+00:00",
+ "revision": "8b6fbfe16b76",
+ "local_changes": false,
+ "diff_sha256": null,
+ "command": [
+  "run.py",
+  "final"
+ ],
+ "python": "3.14.3",
+ "numpy": "2.4.2",
+ "code_sha256": {
+  "run.py": "99374bd36234594452fa0716043217225b995bee74f03249e4912c5322d206cc"
+ },
+ "pts_env": {},
+ "outcome": "completed",
+ "ended_utc": "2026-11-26T13:05:30.342758+00:00"
+}
