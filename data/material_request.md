@@ -71,3 +71,14 @@ Real musicians, not Suno and not synthesis. The ladder was checked on synthetic 
 - The meter stated by the source or the performer is the label for the meter test; the beat is labelled by tapping, ideally by someone who did not choose the tracks.
 
 **A controlled pair from Lex (planned for after the trip):** one old song sung by Lex, recorded three times on a phone, about a minute each: `voice_free` (sung freely, no claps: negative control), `voice_claps` (the same song with even claps on every beat), and `claps_only` (the claps alone at the same tempo: the answer). Only the steady beat differs between the first two, as in the collider's with / without switch.
+
+## 7. Generated tracks with known join times (2026-11-26, seam hunt, issue #34)
+
+The seam pilot showed that seams cannot be judged without generated tracks whose joins are known. Please make **4 to 6 Suno tracks** like this:
+
+- generate a first part of about 60 s, then **Extend** it once or twice;
+- write down, for each track, the time of every extend point (the second where the new part starts), as Suno shows it;
+- export the full track **and** its stems, as for the earlier material;
+- vary the style: at least one with drums all the way through, one quiet and sparse (piano or voice), one with a long held sound across the extend point.
+
+Put them in `data/material/seams/<track name>/` with a `joins.txt` that lists the extend times. The times are the ground truth; the detector output is not shown before they are written down.

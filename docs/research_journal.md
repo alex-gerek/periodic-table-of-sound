@@ -358,3 +358,45 @@ The entries below were **reconstructed on 2026-11-12** from commits, experiment 
 - **Found on the way:** with intervals, the issue #15 result reads 7 of 12 (CI 28 to 85%) against 9 of 12 (CI 43 to 94%). The prediction is "false" by its pre-registered rule (the candidate had to win and did not), but these 12 tracks do not show that the old rule is better. The scoreboard entry is unchanged; this note is the correction of its reading.
 - **Limits:** the surrogates keep repetition shorter than tau_lo, so a period just above tau_lo is tested against a slightly periodic null (conservative, as seed 58 shows). The 12 real stems are the only real material; other genres are untested.
 - **Next:** the pilot "seam hunt" (step 2 of the plan in issue #32's motivation): the excess-power detector and the regime monitor on Suno tracks against the live recordings, with the shuffled-pieces null from `pts/stats.py`.
+
+### 2026-11-26-seam-001: seam hunt, pilot (issue #34)
+
+- **State:** planned. Written before any run on the material below.
+- **Owner:** Claude. **Previous step:** 2026-11-26-calib-001 (conformal p-values in `pts/stats.py`).
+- **Question:** a Seam is a join in generated audio where the background changes without a musical reason. Can a join be found from the background of the sound alone, with a calibrated false-alarm rate, before we have generated tracks with known join times?
+- **Detector (prototype in the experiment folder, not in `pts/`):** the idea is the regime monitor of our Blind Signal Discovery project, re-derived for music.
+  - mono mix, STFT of 2048 samples, hop 50 ms; 1 s blocks;
+  - per block, 9 background features: the 10th percentile of frame power (dB) in 8 log bands from 100 Hz to 16 kHz (the floor between notes, not the notes), and the bandwidth ratio: energy above 16 kHz against 8 to 16 kHz (dB);
+  - change score at each block boundary: |median of the next 6 blocks - median of the previous 6| / (1.4826 x pooled MAD of both sides + 0.5 dB), per feature;
+  - two scores, both fixed now: **S_all** = the largest change over all 9 features, **S_bw** = the change of the bandwidth ratio alone (the feature that arrangement changes should move least);
+  - a 30 s window gets the largest score over its boundaries 6 to 24 s, and the time of that boundary.
+- **Calibration:** the 17 live recordings (`data/material/live/`), cut into non-overlapping 30 s windows. Each window gets a conformal p-value against the windows of the other 16 recordings (leave one recording out). A window is flagged at p <= 0.05.
+- **Known seams (injection):** every live window gets each of four seams at a time drawn uniformly in 8 to 22 s (seed 20261126), scored against the windows of the other recordings:
+  - bandwidth: everything after the join low-passed at 16 kHz (8th order Butterworth, zero phase);
+  - floor: white noise at -60 dB relative to the window RMS added after the join;
+  - tilt: a +3 dB high shelf above 4 kHz after the join;
+  - splice: the audio after the join replaced by audio of the same recording from 60 s later (or earlier, if too close to the end), joined with a 5 ms crossfade.
+  A seam counts as found if the window is flagged and the found time is within 1 s of the join.
+- **Generated material (exploration):** the Suno tracks we hold as stems (`data/stems/*`, `data/material/tempo_series/*`, `data/material/meters/*` without `meter_6-8_real`, `data/material/vibrato/*`), each mixed by summing its stems, cut into 30 s windows and scored against all live windows.
+- **Hypotheses:**
+  - P1 (calibration): at most 10% of live windows are flagged under leave-one-recording-out (5% nominal; windows of one recording are not independent);
+  - P2 (sensitivity): the bandwidth seam is found in at least 80% of windows by S_bw and by S_all; the floor seam in at least 60% by S_all; the tilt seam in at least 50% by S_all. The splice is reported without a target;
+  - P3 (exploration, direction only): S_bw flags a larger share of Suno windows than of live windows. If not, there is no sign of bandwidth joins in this Suno material.
+- **Decision rule:** nothing goes into `pts/` from this pilot. If P1 and P2 hold, the next step is a test on generated tracks with known join times (tracks extended at recorded times, requested from Lex), and the Suno candidates of P3 are listed for that test, not counted as seams. If P1 fails, the null is analysed first. If P2 fails for a seam type, that type is outside what background features can see.
+- **Not tested here:** the excess-power detector of Blind Signal Discovery itself (a join without a crossfade would be a short broadband transient). It is a separate step.
+- **Known confounds:** live recordings have room noise, walking microphones and crowd; Suno tracks are studio-clean, so they are not exchangeable with the live windows, and P3 is a comparison, not a calibrated test. Arrangement changes (instruments entering) move band floors too; that is why S_bw is kept apart.
+- **Run:** `20261126T130343Z-final-8b6fbfe16b76` (code at 8b6fbfe, 107 s), one run. 95 live windows from 17 recordings, 380 known seams (6 splices excluded: recordings too short for a 60 s offset), 65 Suno windows from 15 tracks.
+- **Outcome against the hypotheses:**
+  - P1 **holds**: 4 of 95 live windows flagged by S_all (4.2%, CI 1.2 to 10.4%), 5 of 95 by S_bw (5.3%, CI 1.7 to 11.9%);
+  - P2 **fails for every seam type**: bandwidth found by S_bw in 43 of 95 (45.3%, CI 35.0 to 55.8%; target 80%) and by S_all in 9 of 95; floor 1 of 95 by S_all (target 60%); tilt 1 of 95 (target 50%); splice 0 of 89 by S_all, 3 of 89 by S_bw;
+  - P3 holds by the letter: S_bw flags 13 of 65 Suno windows (20.0%, CI 11.1 to 31.8%) against 5 of 95 live. It cannot be read as seams: the same score misses half of the known bandwidth joins, and Suno mixes are studio-clean, where energy above 16 kHz comes and goes with cymbals and hats. Several candidates sit in the first 10 to 20 s of a track, where the drums enter.
+- **Post-hoc diagnosis** (`diagnose.py`, run `20261126T130602Z-diagnose-6f24a5d6bb7d`, written after the results, exploratory):
+  - the live null is loud: its 95th percentiles are S_all 12.7 and S_bw 4.2. With the floor, tilt and splice seams the median scores (4.4 to 5.1 for S_all) are the same as without any seam (4.3): at these levels the joins are smaller than the natural movement of a live background (walking microphones, crowds, room noise);
+  - bandwidth seams are invisible where there is nothing above 16 kHz to remove (the krivo horo file, -55 dB: 0 of 7). The 1923 transfers have the most energy above 16 kHz (-3 to -7 dB), which is surface noise of the record, not music;
+  - S_all is worse than S_bw on bandwidth seams (9 against 43): taking the largest change over nine features adds the volatility of eight band floors to the one feature that carries the seam.
+- **Decision, by the rule fixed before the run:** nothing goes into `pts/`; P2 failed, so there is no step to Suno joins from this design. What failed is narrower than "background features cannot see seams": against a live-recording null, single seams of these sizes (-60 dB noise, +3 dB tilt, a 16 kHz low-pass, a crossfaded splice) are below the background movement of live music. The pilot does not test a studio null, larger seams or a level sweep.
+- **What it says about Blind Signal Discovery:** its regime-monitor idea, ported as it is, does not find seams in music. Its calibration did its job (P1 held, and the failure is measured, not guessed).
+- **Next:**
+  1. ground truth first: generated tracks with known extend times (request in `data/material_request.md`, section 7). Without them a seam detector can only be tuned on our own guesses of what a seam is;
+  2. on those tracks: a null of the same track (its other joins-free windows), not of live recordings; the bandwidth feature alone; and the short-scale excess-power detector of Blind Signal Discovery for joins without a crossfade;
+  3. a level sweep of the injected seams on a studio null, to give a detection limit in dB instead of one pass or fail.

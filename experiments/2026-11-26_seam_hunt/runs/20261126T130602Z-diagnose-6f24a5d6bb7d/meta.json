@@ -1,0 +1,22 @@
+{
+ "run_id": "20261126T130602Z-diagnose-6f24a5d6bb7d",
+ "label": "diagnose",
+ "started_utc": "2026-11-26T13:06:02.139244+00:00",
+ "revision": "6f24a5d6bb7d",
+ "local_changes": false,
+ "diff_sha256": null,
+ "command": [
+  "diagnose.py",
+  "runs/20261126T130343Z-final-8b6fbfe16b76/results.json",
+  "diagnose"
+ ],
+ "python": "3.14.3",
+ "numpy": "2.4.2",
+ "code_sha256": {
+  "diagnose.py": "12f13b797e82f948152b22410be807917825b1445b54d1572de6fbc081fe3f3a",
+  "run.py": "99374bd36234594452fa0716043217225b995bee74f03249e4912c5322d206cc"
+ },
+ "pts_env": {},
+ "outcome": "completed",
+ "ended_utc": "2026-11-26T13:06:11.406469+00:00"
+}
