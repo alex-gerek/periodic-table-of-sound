@@ -1,0 +1,24 @@
+{
+ "run_id": "20261126T145945Z-dev-f91c371fc8cf",
+ "label": "dev",
+ "started_utc": "2026-11-26T14:59:45.446960+00:00",
+ "revision": "f91c371fc8cf",
+ "local_changes": false,
+ "diff_sha256": null,
+ "command": [
+  "dev_sweep.py",
+  "dev"
+ ],
+ "python": "3.14.3",
+ "numpy": "2.4.2",
+ "code_sha256": {
+  "dev_sweep.py": "ab3d805996c04e2665968ecf5a53310f19ef72b7bc4d6908ff20f70f4ceef2d5",
+  "seam_features.py": "b7243441c4a70367c9f49c7857e6ae98d7985e0c44048587b201a040da63bbc5"
+ },
+ "pts_env": {
+  "PTS_ARCHIVE_DIR": "5a701b293b6ff6bc",
+  "PTS_ARCHIVE_MANIFEST": "3cb0f78fb1c3d256"
+ },
+ "outcome": "completed",
+ "ended_utc": "2026-11-26T16:03:25.959327+00:00"
+}
