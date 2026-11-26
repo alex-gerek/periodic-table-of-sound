@@ -441,3 +441,72 @@ The entries below were **reconstructed on 2026-11-12** from commits, experiment 
   - stems that are silent in the excerpt show -inf with p = 1 (Guitar and Woodwinds in EVERYTHINGS ALRIGHT, Strings and Brass in GRAVITY).
 - **Decision, by the rule fixed before the run:** H2 and H3 failed, so **nothing goes into `pts/`**. The limit is stated as measured: on 60 s excerpts of real drums, a voice leak is detected reliably from -25 dB and its level is read within 1 dB from -35 dB. The within-song findings above -25 dB are reported as measurements with that limit.
 - **Next (not run):** the full track instead of 60 s (about 4 times the frames, so the chance level should fall by about 6 dB), and weighting frames by the witness's activity. Both need a new pre-registered run on the same cross-song design.
+
+### 2026-11-26-leak-002: stem leakage on full tracks, and frames weighted by the drums (issue #38)
+
+- **State:** planned. Written before any run of the new estimators.
+- **Previous step:** 2026-11-26-leak-001 (60 s excerpts; limit -25 dB, H2 and H3 failed, nothing adopted). Its cause: on real drums the chance level of the share is -39 dB, because drum energy sits in few frames.
+- **Two estimators, both fixed now:**
+  - **A, full track:** the estimator of leak-001 unchanged, on the whole common length of the two stems instead of 60 s. Expected gain: about 10 log10(4) = 6 dB for a 4-minute track;
+  - **B, full track, weighted (generalised least squares):** every frame of every band is weighted by the inverse of the target's own power there, smoothed by a running median over 11 frames (plus 1e-3 of the band's median power). Drum hits get little weight, the quiet frames between them get much. The gain per band is g_b = sum_t w D V* / sum_t w |V|^2. The statistic for the p-value is the weighted explained share; the leak estimate is the unweighted energy of g_b V relative to the target's band energy, minus its chance level (median over the shifted witnesses).
+- **Unchanged from leak-001:** STFT 2048/512 at 48 kHz, 16 log bands 100 Hz to 12 kHz, K = 199 circular shifts between 2 s and length - 2 s, detection at p <= 0.01, linear and masked leaks at -50 to -20 dB of the target's band energy. New seed 20261127.
+- **Material and split status:** the same 7 Suno songs and 42 cross-song pairs as leak-001. They are **development data** now: leak-001's result motivated this step. No parameter of A or B was fitted on them (the median window, 11 frames, and the floor, 1e-3, are fixed by reasoning, not tried). A held-out confirmation needs new stem sets (for example the extended tracks Lex will generate, which come with stems).
+- **Hypotheses (the targets of leak-001, now asked of A and B):**
+  - H1: without a leak, at most 2 of 42 pairs detected;
+  - H2: linear leaks detected in at least 90% of pairs at -35 dB, masked leaks at -30 dB;
+  - H3: median absolute error of the linear estimate at most 1 dB at -40 dB and above;
+  - H4 (exploration): the within-song matrices on full tracks with the estimator that passes.
+- **Decision rule:** the first estimator that meets H1 to H3 (A before B, as the simpler) goes into `pts/` as `pts/leakage.py`, with its measured limit and a note that its validation used development data; a held-out check on new stem sets follows before any PHARMAKON use. If neither meets them, the measured limits of both are reported and nothing is adopted.
+### 2026-11-26-seam-002: seam protocol v2, development on studio material (issue #34)
+
+- **State:** planned. Written before any run of the new features.
+- **Why a v2:** the pilot (2026-11-26-seam-001) used live recordings as the null, and their background moves more than the joins did. Lex does not remember which archive tracks were extended, so the ground truth will be new Suno tracks with written-down extend times (material request, section 7). The protocol for them must be frozen before they arrive.
+- **The question, in two stages:**
+  - **Stage 1 (is a join visible?):** at each known join, a feature is compared with the same feature at other places of **the same track**. Per join and feature: the largest value in ±2 s around the join, against the largest values in ±2 s windows centred on every second of the track that is more than 10 s from any join and not in the first or last 10 s. Conformal p per join. Per feature: the number of joins with p <= 0.05 against a one-sided binomial with rate 0.05; Holm correction over the five features at 0.05;
+  - **Stage 2 (blind detection):** only if Stage 1 finds a visible feature; designed after Stage 1.
+- **Five features, frozen in `seam_features.py` before any run** (mono mix; STFT 2048/512; values every 0.25 s):
+  - `envelope`: change of the median log energy in 24 log bands (50 Hz to 16 kHz) over 4 s before and after, mean over bands of |difference| / (1.4826 x pooled MAD + 0.5 dB);
+  - `floor`: the largest change over 8 bands (100 Hz to 16 kHz) of the 10th percentile of frame power (dB) over 6 s before and after;
+  - `bandwidth`: change of the median ratio of energy above 16 kHz to 8 to 16 kHz (dB) over 6 s before and after;
+  - `level`: change of the median total energy (dB) over 2 s before and after;
+  - `click` (the short-scale idea of the Blind Signal Discovery detector): from an STFT of 512/128, the median over 4 to 16 kHz of how far one frame's log power rises above both of its neighbours. A join without a crossfade is a one-frame broadband spike; a drum hit decays over several frames.
+- **Development sweep (this step):** Suno mixes in Lex's archive (unique files of at least 90 s with a Suno version suffix, excluding separator outputs and speed-changed copies; extend status unknown). Two fake joins per track at seeded times (seed 20261126, at least 20 s from the ends and 30 s apart). Conditions: none (fake joins on untouched audio); splice (audio after the join replaced by audio of the same track at least 30 s away) with no crossfade, 5 ms and 50 ms crossfades; low-pass after the join at 16 and 12 kHz; high shelf above 4 kHz of +1, +2 and +4 dB; level step of +0.5, +1 and +2 dB; white noise at -70, -60 and -50 dB re track RMS.
+- **What the sweep is for:** the sensitivity of each feature to each kind and size of join, so that the real result can be read ("no feature saw the joins" means "the joins are smaller than these limits"). No feature is changed after the sweep; the protocol freezes all five.
+- **Hypothesis to check the method:** with no join written, each feature has p <= 0.05 at about 5% of the fake joins (at most 10%).
+- **Development run:** `20261126T145945Z-dev-f91c371fc8cf` (code at f91c371, 3820 s), one run. 21 Suno mixes, 42 fake joins per condition.
+- **Outcome:**
+  - **calibration holds:** with no join written, 1 to 3 of 42 fake joins have p <= 0.05 for each feature (2 to 7%; target at most 10%);
+  - **what the features see:** a low-pass at 12 kHz after the join, seen by `bandwidth` in 28 of 42 (67%); at 16 kHz, 8 of 42 (19%). Splices of the same track, seen by `floor` in 9 to 12 of 42 (21 to 29%) and by `level` in 7 to 11 (17 to 26%); a splice without a crossfade by `click` in 6 of 42 (14%), with a 5 or 50 ms crossfade not (0 to 5%);
+  - **what they do not see:** level steps of +0.5 to +2 dB, a high shelf of +1 to +4 dB, and white noise down to -50 dB stay at the chance rate (2 to 14%). In music the medians of level and spectrum move by more than this within a few seconds anyway, so a join of this size is below the music's own motion at the same place in the track.
+- **Reading for the real joins:** if Stage 1 finds nothing, Suno's joins are smaller than a 12 kHz bandwidth change and than an audible splice; it would not exclude small changes of level, tilt or noise. As planned, no feature is changed after the sweep: `PROTOCOL.md` and `seam_features.py` stay frozen (SHA-256 b7243441…).
+- **Material status:** Lex generated a first extended track on 2026-11-26 (Paper Wings Ballad, Suno v6, extend from 1:29.0) but Suno does not allow the download without payment before 1 December. The extend times are being sent to Claude in the chat before any audio exists here.
+
+### 2026-11-26-leak-002, outcome
+
+- **Run:** `20261126T144633Z-final-16b0271af642` (code at 16b0271, 7410 s), one run.
+- **Estimator A (full track, unweighted):** H1 holds (0 of 42 without a leak; chance level -43.6 dB, against -39 dB on 60 s). H2 fails for linear leaks (26 of 42 at -35 dB) and holds for masked leaks (40 of 42 at -30 dB). H3 fails narrowly (median absolute error 1.10 dB at -40 dB; 0.41 at -35). Measured limit: **detection from -30 dB** (41 of 42 linear, 40 of 42 masked), level within about 1 dB from -40 dB. Five dB better than on 60 s, close to the 6 dB expected.
+- **Estimator B (weighted by the target):** H1, H2 and H3 all hold on the cross-song ground truth: detection 90 to 95% from -40 dB, median error under 0.1 dB, chance level -97 dB.
+- **But B disagrees with A on the real stems.** Voice in the drum stem, A against B: GRAVITY -23.9 dB against -92.5 dB, Pure voltage -25.0 against -43.2, EVERYTHINGS ALRIGHT -36.8 (p = 0.005) against -98.4 (p = 0.39). A agrees with the 60 s estimator of leak-001 (-21.8, -21.5, -29.8 dB).
+- **Why:** B gives almost no weight to the frames where the drums are loud. A separator leaves another source mostly in the time-frequency cells where the target is loud (its mask passes them), so B looks only where real leakage is not. The ground truth wrote the leak evenly over time (linear) or through a mask independent of the drums, so it could not reveal this. The validation passed; the validation was not representative.
+- **Decision (a deviation from the pre-registered rule, recorded as such):** by the letter of the rule B would go into `pts/`. It is **not adopted**, because the evidence above shows it would mismeasure the leakage it is meant to measure. A is not adopted either (H2 and H3 failed). Nothing goes into `pts/` from this step.
+- **Lesson for the ground truth:** a leak must be written the way a separator leaves it, concentrated where the target is loud. Next step (to be pre-registered): masks drawn with a probability that grows with the target's own power in each cell; A and B both tested on it, together with the uniform leaks used here.
+- **What stands from this step:** with A on full tracks, voice in the drum stem is measured at -23.9 dB in GRAVITY and -25.0 dB in Pure voltage (inside A's reliable range) and -36.8 dB in EVERYTHINGS ALRIGHT (detected, below the reliable range).
+
+### 2026-11-26-leak-003: leaks written where the target is loud (issue #38)
+
+- **State:** planned. Written before any run.
+- **Why:** in leak-002 the weighted estimator B passed a ground truth whose leaks were spread evenly in time, but on real stems it contradicted A by up to 70 dB. A separator leaves another source mostly in the cells where the target is loud. The ground truth must contain such leaks.
+- **Two new kinds of leak**, both made in the STFT domain of the witness V and returned to audio by the inverse STFT (then scaled to the level L):
+  - **wiener:** V times the soft mask |D|^2 / (|D|^2 + |V|^2), where D is the target (the drums of song A) and V the witness at their natural levels. This is the mask a separator would use to pass the drums, applied to the voice;
+  - **loud cells:** V kept only in the cells where the target's power is above the median of its frequency bin, elsewhere zero.
+- **Also run again, for one table:** linear and independent-mask leaks as in leak-002, and no leak. Levels -40, -35, -30 and -25 dB of the target's band energy. Estimators A and B unchanged (imported from leak-002). Same 7 songs and 42 pairs (development data), new seed 20261128.
+- **Hypotheses:**
+  - H1: at most 2 of 42 detections without a leak, for each estimator;
+  - H2: on wiener and loud-cell leaks, B reads at least 10 dB too low at -30 dB (median), which would confirm the cause found in leak-002; A reads within 3 dB;
+  - H3: A detects wiener and loud-cell leaks at -30 dB in at least 90% of pairs.
+- **Decision rule:** an estimator goes into `pts/leakage.py` only if, for every leak kind, it has at most 2 of 42 false alarms, detects at least 90% at -30 dB and reads within 3 dB at -30 dB (median); and if on real stems it agrees within 3 dB with the 60 s estimator where both detect. The -30 dB target is the limit A reached in leak-002, set here knowing that result; what is new is the two kinds of leak. If it passes, it is adopted with the measured limit and marked as validated on development data, and a held-out check on new stem sets follows.
+- **Amendments before the first data run** (from a synthetic check only: impulsive synthetic drums, gated noise as the voice; no stem analysed):
+  - the synthetic check showed that **A also reads a wiener leak too low** (-40.5 dB for a leak written at -30 dB; B -77.7 dB). One gain per band over the whole track cannot describe a leak that exists only where the target is loud: it measures the part that is coherent on average. So the real values of leak-002 (about -24 dB in GRAVITY) are likely underestimates;
+  - **estimator C is added:** one complex gain per band and per quartile of the target's cell power (16 x 4 gains), the same shift null and chance-level subtraction. On the same synthetic signals: linear -30.0, independent -30.7, wiener -34.7, loud cells -30.6 dB for leaks written at -30 dB; chance level -44.6 dB (A: -50.6 dB). No further tuning was done;
+  - the real-stem check of the decision rule is made concrete: target = the drum stem of each song, every other stem as witness, full tracks, all three estimators computed in this run, against the 60 s values of leak-001, median absolute difference over the pairs that both detect;
+  - C uses a multithreaded FFT (scipy.fft) for speed only.

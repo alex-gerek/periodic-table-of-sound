@@ -1,0 +1,52 @@
+!Hey Kitty_V0000: done (65 s)
+Boo-da Boo-da Boo-da Boom_V003: done (183 s)
+Pure Ecstasy_V00001: done (282 s)
+!!!Boo-da Boo-da Boo-da Boom_V0000: done (464 s)
+Mozart's Elegance_V000: done (559 s)
+!!!Nobody Asked Why_V009: done (718 s)
+Satin Casket_V000: done (818 s)
+Synesthetic Asphalt_V000: done (945 s)
+!!!The Day That Hasn’t Happened Yet_V007: done (1094 s)
+!!!Vector Pulse_V000: done (1243 s)
+The Fire Within_V008: done (1473 s)
+The Glass Architect_V019: done (1566 s)
+ADRENALINE!_V001: done (1689 s)
+Bronze Psalter_V001: done (1798 s)
+DATA COLLECTION_v004SS: done (2057 s)
+The Fire Within_V006: done (2463 s)
+The Fire Within_V007: done (2843 s)
+The Glass Architect_V015: done (3429 s)
+Void Architecture_V001: done (3549 s)
+!!!ADRENALINE!_V006: done (3677 s)
+The Glass Architect_V009: done (3820 s)
+# Seam protocol v2: development sweep
+
+Run `20261126T145945Z-dev-f91c371fc8cf`. 21 Suno mixes, 2 joins each; share of joins with p <= 0.05 against the same track's other places (exact 95% intervals).
+
+| Join | envelope | floor | bandwidth | level | click |
+|---|---|---|---|---|---|
+| none  | 2/42 (5%) | 2/42 (5%) | 1/42 (2%) | 3/42 (7%) | 1/42 (2%) |
+| splice 0.0 | 8/42 (19%) | 12/42 (29%) | 4/42 (10%) | 7/42 (17%) | 6/42 (14%) |
+| splice 0.005 | 4/42 (10%) | 11/42 (26%) | 6/42 (14%) | 9/42 (21%) | 2/42 (5%) |
+| splice 0.05 | 6/42 (14%) | 9/42 (21%) | 6/42 (14%) | 11/42 (26%) | 0/42 (0%) |
+| lowpass 16000.0 | 2/42 (5%) | 2/42 (5%) | 8/42 (19%) | 3/42 (7%) | 1/42 (2%) |
+| lowpass 12000.0 | 1/42 (2%) | 2/42 (5%) | 28/42 (67%) | 3/42 (7%) | 1/42 (2%) |
+| shelf 1.0 | 1/42 (2%) | 2/42 (5%) | 1/42 (2%) | 3/42 (7%) | 1/42 (2%) |
+| shelf 2.0 | 1/42 (2%) | 2/42 (5%) | 1/42 (2%) | 3/42 (7%) | 1/42 (2%) |
+| shelf 4.0 | 1/42 (2%) | 3/42 (7%) | 1/42 (2%) | 3/42 (7%) | 1/42 (2%) |
+| level 0.5 | 1/42 (2%) | 2/42 (5%) | 1/42 (2%) | 4/42 (10%) | 1/42 (2%) |
+| level 1.0 | 1/42 (2%) | 2/42 (5%) | 1/42 (2%) | 4/42 (10%) | 1/42 (2%) |
+| level 2.0 | 1/42 (2%) | 2/42 (5%) | 1/42 (2%) | 4/42 (10%) | 1/42 (2%) |
+| noise -70.0 | 2/42 (5%) | 2/42 (5%) | 2/42 (5%) | 3/42 (7%) | 1/42 (2%) |
+| noise -60.0 | 2/42 (5%) | 2/42 (5%) | 5/42 (12%) | 3/42 (7%) | 1/42 (2%) |
+| noise -50.0 | 3/42 (7%) | 2/42 (5%) | 6/42 (14%) | 3/42 (7%) | 1/42 (2%) |
+
+With no join written, every feature should flag about 5% of the fake joins (at most 10%):
+
+- envelope: 2 of 42 (4.8%, 95% CI 0.6 to 16.2%)
+- floor: 2 of 42 (4.8%, 95% CI 0.6 to 16.2%)
+- bandwidth: 1 of 42 (2.4%, 95% CI 0.1 to 12.6%)
+- level: 3 of 42 (7.1%, 95% CI 1.5 to 19.5%)
+- click: 1 of 42 (2.4%, 95% CI 0.1 to 12.6%)
+
+Run time: 3820 s.
