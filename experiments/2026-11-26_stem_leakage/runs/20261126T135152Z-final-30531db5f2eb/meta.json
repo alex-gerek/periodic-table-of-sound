@@ -1,0 +1,22 @@
+{
+ "run_id": "20261126T135152Z-final-30531db5f2eb",
+ "label": "final",
+ "started_utc": "2026-11-26T13:51:52.875624+00:00",
+ "revision": "30531db5f2eb",
+ "local_changes": false,
+ "diff_sha256": null,
+ "command": [
+  "run.py",
+  "final"
+ ],
+ "python": "3.14.3",
+ "numpy": "2.4.2",
+ "code_sha256": {
+  "run.py": "0053aa3587a6620269e12a153aeef815e5dcf8d39ce781bc57638ebdb29ac88f"
+ },
+ "pts_env": {
+  "PTS_ARCHIVE_DIR": "5a701b293b6ff6bc"
+ },
+ "outcome": "completed",
+ "ended_utc": "2026-11-26T14:15:50.100708+00:00"
+}

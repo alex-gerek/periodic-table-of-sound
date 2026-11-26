@@ -400,3 +400,44 @@ The entries below were **reconstructed on 2026-11-12** from commits, experiment 
   1. ground truth first: generated tracks with known extend times (request in `data/material_request.md`, section 7). Without them a seam detector can only be tuned on our own guesses of what a seam is;
   2. on those tracks: a null of the same track (its other joins-free windows), not of live recordings; the bandwidth feature alone; and the short-scale excess-power detector of Blind Signal Discovery for joins without a crossfade;
   3. a level sweep of the injected seams on a studio null, to give a detection limit in dB instead of one pass or fail.
+
+### 2026-11-26-leak-001: stem leakage with the other stem as a witness (issue #38)
+
+- **State:** planned. Written before any run.
+- **Owner:** Claude. **Previous step:** 2026-11-26-calib-001 (conformal p-values).
+- **Question:** a separated stem can hold part of another source, for example voice in the drum stem. The vocal stem of the same track is a witness of that voice. How much of a target stem does the witness explain, and from what level can we tell?
+- **Estimator** (prototype in the experiment folder; the method is the witness-channel regression used to remove known noise in gravitational-wave detectors, re-derived):
+  - mono, STFT of 2048 samples with a Hann window, hop 512, at 48 kHz; bins from 100 Hz to 12 kHz;
+  - for every bin k, the complex gain of the witness V in the target D over all frames, g_k = sum_t D V* / sum_t |V|^2. The **explained energy** is sum_k |sum_t D V*|^2 / sum_t |V|^2;
+  - the statistic is the **explained share** of the target: explained energy / sum_k sum_t |D|^2. The leakage estimate in dB relative to the target is 10 log10 of that share;
+  - significance: the same statistic for the witness circularly shifted by K = 199 random offsets between 2 s and the length minus 2 s (seed 20261126); conformal p, detection at p <= 0.01. A shift keeps the witness's own sound and timing statistics and destroys only its alignment with the target.
+- **Material:** Suno stem sets with a lead vocal and drums at 48 kHz, one per song: Boo-da Boo-da Boo-da Boom, Data Corruption (The 42nd Blueprint Ash_Circuit), EVERYTHINGS ALRIGHT, Metro, Pocket Blues (from Lex's archive, listed with hashes in an internal manifest outside git; provenance guessed from Suno's stem naming, not yet confirmed by Lex) and GRAVITY and Pure voltage (`data/stems/`). Excluded: the set of 04.03.26 (its stems have different lengths, so they are not one track), the 44.1 kHz second exports of Metro and Pocket Blues (the same songs).
+- **Excerpts:** 60 s per song, the window with the most lead-vocal energy (1 s steps).
+- **Ground truth across songs:** for every ordered pair of different songs (7 x 6 = 42 pairs), the drums of song A are the target and the lead vocal of song B is the witness. Before writing, the true leakage of B's voice into A's drums is zero. Written in at L = -50, -45, -40, -35, -30, -25 and -20 dB of the drum energy:
+  - **linear:** the witness itself, scaled;
+  - **masked:** the witness passed through a random binary time-frequency mask that keeps each STFT cell with probability 0.5 (seeded), then scaled to the same leak energy. This is closer to what a separator leaves behind.
+- **Hypotheses:**
+  - H1 (false alarms): without writing, at most 2 of the 42 pairs are detected (1% nominal);
+  - H2 (detection limit): linear leaks are detected in at least 90% of pairs at -35 dB; masked leaks at -30 dB;
+  - H3 (level): for linear leaks at -40 dB and above, the median absolute error of the leakage estimate is at most 1 dB. For masked leaks the estimate only counts the part coherent with the witness; its bias is reported, not judged;
+  - H4 (exploration, no target): within each song, the matrix of explained shares between all its stems (target rows, witness columns), with p-values.
+- **Decision rule:** if H1 to H3 hold, the estimator goes into `pts/` as a measurement of stem leakage, with its detection limit stated, and the within-song matrices become the first leakage report on Suno stems (a candidate metric for the PHARMAKON splitter, noted in the internal journal). If H1 fails, the shift null is analysed before anything else. If H2 or H3 fails, the limit is reported as measured and nothing is adopted.
+- **Limits known before the run:** seven songs, all Suno; mono only; a leak that is not coherent with the witness (a separator's own noise, a reverb tail it invents) is not measured by this estimator.
+- **Amendments before the first data run** (found by a synthetic check only: white noise as the target, gated filtered noise as the witness; no stem was analysed):
+  - with one complex gain per bin (508 free gains) the chance level of the explained share was about -35 dB, and a -40 dB leak read as -33 dB. The estimator now uses **one complex gain per log band (16 bands, 100 Hz to 12 kHz)**, which lowers the chance level to about -47 dB, and the leak estimate **subtracts the chance level** (the median share over the shifted witnesses). The p-value is unchanged in kind (share at shift 0 against the shifted shares);
+  - the inverse STFT divided by a near-zero window sum at the two ends of the excerpt; after masking this blew the energy up by 10^4. Those edge samples are now zeroed;
+  - leak levels are defined as energy **in the measured band** relative to the target's energy in that band, so that the written level and the estimate measure the same thing (white noise has half its energy above 12 kHz, which gave a +2.5 dB offset).
+  - After the changes, on the same synthetic signals: linear leaks written at -45, -40 and -30 dB read -43.3, -39.1 and -29.8 dB; masked leaks -44.0, -39.9 and -30.7 dB; all with p = 0.005. Hypotheses and decision rule are unchanged.
+- **Run:** `20261126T135152Z-final-30531db5f2eb` (code at 30531db, 1437 s), one run. 7 songs, 42 cross-song pairs, 7 within-song matrices. Inputs and excerpt starts with SHA-256 in `results.json`.
+- **Outcome against the hypotheses:**
+  - H1 **holds**: 1 of 42 pairs detected without any leak (2.4%, CI 0.1 to 12.6%; drums of Data Corruption against the voice of Pocket Blues, p = 0.005);
+  - H2 **fails**: linear leaks at -35 dB are detected in 6 of 42 (14%; target 90%), masked leaks at -30 dB in 30 of 42 (71%). The measured limit: **-25 dB for both kinds** (41 of 42, CI 87 to 100%); -30 dB gives 83% (linear) and 71% (masked);
+  - H3 **fails at -40 dB and holds from -35 dB up**: median absolute error 3.1 dB at -40, 0.99 at -35, 0.49 at -30, 0.17 at -25, 0.06 at -20. Masked leaks read about 1 dB low from -35 dB up (the coherent part only, as expected);
+  - why the synthetic check was too optimistic: the chance level of the share on real drums is -39 dB (median; -44 to -37 by song), against -47 dB on white noise. Drum energy sits in few frames, so fewer frames carry the estimate.
+- **H4, exploration** (within-song matrices; only values above -25 dB are inside the measured reliable range):
+  - **voice in the drum stem:** GRAVITY -21.8 dB and Pure voltage -21.5 dB (both p = 0.005, inside the reliable range); EVERYTHINGS ALRIGHT -29.8 dB (p = 0.005, in the range where detection is 71 to 83%); not detected in Boo-da, Data Corruption, Metro, Pocket Blues (below about -30 dB, or absent);
+  - **stems that share the same audio:** Keyboard and Synth explain each other at -1.0 to -1.1 dB in GRAVITY and EVERYTHINGS ALRIGHT, Bass and Synth or Keyboard at -2 dB in GRAVITY; Lead and Backing Vocals at -5 to -7 dB in four songs; Backing Vocals and Percussion at -6 dB in Data Corruption. The estimator cannot tell which stem the shared part belongs to;
+  - Pure voltage is coherent almost everywhere (-5 to -30 dB between most pairs): its twelve stems are heavily mixed into each other;
+  - stems that are silent in the excerpt show -inf with p = 1 (Guitar and Woodwinds in EVERYTHINGS ALRIGHT, Strings and Brass in GRAVITY).
+- **Decision, by the rule fixed before the run:** H2 and H3 failed, so **nothing goes into `pts/`**. The limit is stated as measured: on 60 s excerpts of real drums, a voice leak is detected reliably from -25 dB and its level is read within 1 dB from -35 dB. The within-song findings above -25 dB are reported as measurements with that limit.
+- **Next (not run):** the full track instead of 60 s (about 4 times the frames, so the chance level should fall by about 6 dB), and weighting frames by the witness's activity. Both need a new pre-registered run on the same cross-song design.
