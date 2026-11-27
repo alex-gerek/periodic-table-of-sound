@@ -82,3 +82,7 @@ The seam pilot showed that seams cannot be judged without generated tracks whose
 - vary the style: at least one with drums all the way through, one quiet and sparse (piano or voice), one with a long held sound across the extend point.
 
 Put them in `data/material/seams/<track name>/` with a `joins.txt` that lists the extend times. The times are the ground truth; the detector output is not shown before they are written down.
+
+## 8. A new live set for tapping (2026-11-27, ladder v2, issue #41)
+
+The live set of 2026-11-27 is now development data. Step 2026-11-27-ladder-002 needs a new one, tapped once after the candidate is frozen. This time Claude chooses the recordings, under the rules of section 6 (licence, length, `SOURCES.txt`), so the tapper has not heard them before. Lex only taps, with the same page and protocol. Claude asks before downloading any file.

@@ -538,3 +538,77 @@ The entries below were **reconstructed on 2026-11-12** from commits, experiment 
 - **Decision, by the rule fixed before the run:** no estimator passes; nothing goes into `pts/`.
 - **What this says about the real stems:** a leak of the kind a separator leaves (a soft mask of the target applied to the voice) is read 5 to 8 dB too low by A and about 4 dB too low by C. So the voice in the drum stems of GRAVITY and Pure voltage, measured at about -24 dB by A, is **at least** that strong and probably several dB stronger; the exact level is not measured.
 - **Next (not run):** an estimator that is local in time and frequency (a gain per short block and band, pooled with a penalty), and a ground truth from a real separator's mask rather than an ideal one. Both are separate steps under issue #38.
+
+### 2026-11-27-ladder-diag-001: why the ladder misses on live music (issue #41), diagnosis only
+
+- **Written before the run.** This is a diagnosis on development data (the live set, already scored once), not a test: no hypothesis is accepted or rejected here and `pts/ladder.py` is not changed.
+- **Reading of the code first:** the seed is searched between 0.25 and 2.0 s (240 to 30 BPM) and levels may reach 4.5 s (13 BPM). So the slowest tapped beats (claps at 48 BPM, the waltz at 65 BPM) are inside the range by construction; "too slow for the ladder" is not the explanation, and the question becomes which test rejects them.
+- **Part A, synthetic:** click trains of 30 s at 20 to 300 BPM, plain, with timing jitter (2% and 5% of the beat), with a slow tempo drift (3% and 6% over the excerpt), and with an accent every 3rd beat. For each: is the beat on the ladder, and which test rejects it if not.
+- **Part B, live:** for every labelled excerpt whose tapped beat is not on its ladder: the seed's candidates and evidence; the four confirmation tests (significance, repetitions, stability in both halves, return) applied at the tapped beat itself; the accent t for groupings by 2 and 3 from each level towards the tapped beat; the tempo drift measured from the taps (median interval in the first against the second half).
+- **Use of the result:** a list of causes, each with the tracks it explains. A fix is then written down here with its own held-out check (new tapped recordings) before any change to `pts/ladder.py`.
+
+### 2026-11-27-ladder-diag-001, outcome
+
+- **Run:** `20261127T143255Z-diag-78689d347713` (code at 78689d3).
+- **Synthetic:** plain clicks are on the ladder from 35 to 300 BPM (the seed range ends at 30 BPM, by design); a slow drift of 3% or 6% and an accent every 3rd beat change nothing. **Timing jitter of 5% of the beat breaks the slow tempi:** at 40, 48, 60, 65 and 70 BPM the beat's peak falls below 5 sigma, and at 60 to 70 BPM the ladder reports only half the tempo (30.2 to 35.2 BPM). Sharp clicks smeared by jitter flatten the autocorrelation peak.
+- **Live, 10 labelled excerpts whose tapped beat is not on the ladder; the cause at the tapped beat:**
+  - **Stability in both halves is the only failing test (5 tracks):** waltz (halves 3.35 and 7.24, need 3.54), 1923 jazz (4.50, 2.88), beach celebration recorded on the move (2.70, 3.96), Lex's claps (2.49, 17.55: the first half of the excerpt is not yet steady), tambura (5.32, 2.55). The whole-excerpt peak passes in each (5.7 to 13.8 sigma).
+  - **A grouping without an accent is not added (3 tracks):** the jig's tapped beat passes all four tests (9.7 sigma, halves 6.1 and 6.1) but the accent t is 1.51 (need 2.0); the waltz's 1.73; the tambura's 0.87 (and its grouping would lie 4% from the tapped beat).
+  - **The onset envelope does not carry the tapped beat (3 tracks):** a 1923 blues record (3.2 sigma), the krivo horo (2.1), Lex's free voice (-0.5). The voice has no percussive onsets.
+  - **Taksim control:** the tapped beat is absent from the signal (0.4 sigma); the listener imposed a beat on free rhythm. The ladder's own 54.2 BPM there is a separate question (H2).
+- **Two hypotheses from the planning discussion are not supported:** the lowest reportable tempo is not the cause (all tapped beats are inside the range and their peaks are found), and the ladder does not use a background estimated from the track, so a contaminated null cannot be the cause.
+- **Candidate fixes, not yet planned or run:** (1) confirmation by the calibrated surrogate p of step calib-001 instead of the fixed sigma rules, which calib-001 found conservative; (2) an onset envelope smoothed in proportion to the candidate lag, against jitter; (3) groupings without an accent reported as a separate role, scored apart; (4) a non-percussive feature (harmonic change) for voice and soft onsets. Each needs its own plan here and a held-out check on new tapped recordings.
+
+### 2026-11-27-ladder-002: calibrated confirmation for the ladder (issue #41)
+
+- **State:** planned. Written before any run of the candidate below; no code for it exists yet.
+- **Owner:** Claude. **Previous steps:** 2026-11-27-ladder-diag-001 (the diagnosis), 2026-11-26-calib-001 (surrogate p), 2026-11-13-ladder-001 (the frozen ladder).
+- **Question:** the diagnosis found that the fixed sigma rules reject real beats: in 5 of the 10 live misses only the stability test (each half at 3.54 sigma) fails, and with 5% timing jitter the beat's peak falls under 5 sigma at 40 to 70 BPM. calib-001 showed that the sigma rule is more conservative than a 1% false-alarm rate. If each level is confirmed by its calibrated surrogate p instead, are more real beats kept without more false levels?
+- **Scope:** only how a level is confirmed. The seed range, the division and grouping search, the accent test (Z_ACC = 2), DIV_SHARE and HIGH_FMIN stay as frozen. Groupings without an accent and a non-percussive feature for the voice are not part of this step (6 of the 10 misses are therefore out of its reach, so a large live gain is not expected).
+- **Candidate (code in `experiments/2026-11-27_ladder_v2/`, `pts/ladder.py` untouched until the decision):**
+  - **C1, calibrated confirmation:** a level passes if its surrogate p is at most alpha = 0.01 (K = 199, smallest p 1/200) and it fits at least 4 times into the track (the repetitions rule is kept). The statistic is S of calib-001: min(significance, return, sqrt(2) x weaker half). For the seed the full search in 0.25 to 2 s is inside the statistic, as in calib-001; for a division or grouping at lag l it is S at l, with the same search within 2% of l on each surrogate. Surrogates are the shuffled pieces of `pts.stats.shuffle_pieces`, of tau_lo/3 to tau_lo with tau_lo = min(0.25 s, l / 2), from a seed fixed per track;
+  - **C2, smoothing against jitter (optional arm):** before S is computed, the envelope is smoothed by a Gaussian of standard deviation sm x l (sm in 0.01, 0.02, 0.03), on the track and on every surrogate alike;
+  - the arms are v2a = C1, and v2b(sm) = C1 + C2.
+- **Development (selection only):** new synthetic click trains (seeds 7000 to 7599: 30 to 240 BPM, jitter 0 to 6%, drift up to 6%, accents every 2nd or 3rd beat, noise floors), the ladder-001 dev grooves (seeds 0 to 199), the calib-001 development negatives, and the 16 labelled live excerpts (development data since live-001).
+- **Selection rule, fixed now:** among v2a and v2b(0.01, 0.02, 0.03), keep those that on development have (a) coverage on the dev grooves of at least 0.95, (b) at most 2 of the 120 development negatives with a non-empty ladder, (c) no dev live track lost that v1 has. Among them take the highest coverage on the synthetic clicks with 5% jitter; a tie goes to v2a (fewer parts), then to the smaller sm. If no arm qualifies, the step ends here and the failure is recorded. The chosen arm and its constants are frozen and committed before any held-out run.
+- **Held-out checks, one run each after the freeze:**
+  - **R, regression on sets already seen once** (the final grooves 50000 to 50199, `holdout_b`, the 120 negatives of 2026-11-12, the 12 tapped tracks): S1 to S4 of ladder-001 must hold again (coverage at least 0.95 on both groove sets and 11 of 12 tapped tracks; median size at most 5; meter at least 70% and above the baseline; at least 95% of negatives empty);
+  - **N, fresh negatives** (seeds 3000 to 3119 with the generators of 2026-11-12, six families in turn): non-empty ladders in at most 6 of 120 (5%), with the exact 95% interval;
+  - **J, fresh jitter set** (seeds 8000 to 8299: 40 to 120 BPM, jitter 3 to 6%): beat on the ladder in at least 90%, v1 reported beside it;
+  - **L, a new live set**, never heard by the tapper: 16 to 20 recordings chosen by Claude under the licence rules of `data/material_request.md` section 6 (kinds as in live-001, plus slow pieces at 40 to 70 BPM), cut and blinded with the live-001 tools and seed 20261128, tapped by Lex with the live-001 protocol. Claude chooses them, so for the first time the tapper did not choose the tracks.
+- **Hypotheses:** H1 = R holds; H2 = N holds; H3 = J holds; H4 = on L, v2 puts the tapped beat on the excerpt's ladder on more tracks than v1 and loses none that v1 has. The live-001 target (80%) stays on the scoreboard as it is and is reported for v2 without being part of the decision.
+- **Decision rule:** v2 replaces the confirmation in `pts/ladder.py` only if H1, H2, H3 and H4 all hold. If H1 or H2 fails, v2 is not adopted, whatever its gains. If only H3 or H4 fails, v2 stays an experiment, and the surrogate p is reported on each level as evidence (as calib-001 decided for the single period).
+- **Limits known before the run:** surrogates keep repetition shorter than tau_lo, so short levels are tested against a slightly periodic null (conservative, calib-001 seed 58); one tapper; 16 to 20 live tracks can show only large effects; the cost is about 199 extra searches per tested level.
+- **Amendment, 2026-11-27, before any code or run of v2:** the plan named "the calib-001 development negatives" for development and "the 120 negatives of 2026-11-12" for check R, but these are the same signals (seeds 0 to 59 and 1000 to 1059). Development therefore uses calib-001's fresh negatives instead (seeds 2000 to 2119, six families in turn; seen once in calib-001, development from now on), and R keeps seeds 0 to 59 and 1000 to 1059. Fresh negatives for N stay seeds 3000 to 3119. The selection metric "synthetic clicks with 5% jitter" is the subset of seeds 7000 to 7599 whose jitter is exactly 5%: jitter is drawn from 0, 1, ..., 6% in turn (seed mod 7).
+- **Deviation, 2026-11-27:** the first development sweep (`20261127T145332Z-dev-aefc16f82893`) crashed after 450 of 936 signals: jitter pushed the last click of one dev click train past the end of the track, and the generator failed. No summary was produced and nothing was read from the partial run. The generator now skips a click that falls outside the track (no other signal changes; all 600 click trains were generated once to check), and the sweep is run again unchanged otherwise.
+- **Development sweep:** `20261127T151356Z-dev-748d5c56ea51` (code at 748d5c5, 2140 s).
+
+  | Arm | Dev grooves coverage | Median size | Meter (baseline 0.662) | Dev negatives non-empty | Live dev on ladder | Clicks on ladder (600) | Clicks, 5% jitter (85) |
+  |---|---|---|---|---|---|---|---|
+  | v1 | 0.980 | 2 | 0.925 | 0 | 6/16 | 502 | 56 |
+  | v2a | 0.985 | 3 | 0.925 | 1 (white noise) | 7/16 | 502 | 60 |
+  | v2b 0.01 | 0.985 | 3 | 0.925 | 1 (smooth swells) | 7/16 | 531 | 63 |
+  | v2b 0.02 | 0.985 | 3 | 0.925 | 1 (smooth swells) | 7/16 | 560 | 74 |
+  | v2b 0.03 | 0.985 | 3 | 0.925 | 0 | 6/16 | 570 | 78 |
+
+  - every v2 arm adds the beach celebration (124 BPM, tapped 127.6); v2b 0.03 loses a 1923 record that v1 has (its ladder is empty), so it does not qualify;
+  - the claps (48 BPM) stay empty in every arm: the claps are sparse, and the shuffled pieces of silence and single claps reach S up to 6.5 against the track's 3.5. A sparse pulse is a limit of this null, not of the sigma rule alone;
+  - groupings without an accent (waltz, jig, tambura) and the onset-less tracks are unchanged in every arm, as expected from the scope.
+- **Selection, by the rule:** v2a, v2b 0.01 and v2b 0.02 qualify; the most 5% jitter clicks on the ladder: **v2b with sm = 0.02**. Frozen as `FROZEN_SM = 0.02` in `ladder_v2.py` (K = 199, alpha = 0.01, seed 20261127), before any held-out run.
+- **Held-out script:** `holdout.py` runs R, N and J once, v1 beside v2. Before the run it was tried only on development seeds (a dev groove, a dev negative, a dev click) and its tapped inputs were loaded without running a ladder. J's generator is the dev click generator with 40 to 120 BPM (log-uniform) and jitter 3 to 6% (uniform).
+- **Held-out run, once:** `20261127T155142Z-final-f1fed4301ab7` (code at f1fed43, 1425 s), v1 beside v2.
+
+  | Check | v1 | v2 |
+  |---|---|---|
+  | R: final grooves, coverage / median size / meter (baseline 0.629) | 0.965 / 3 / 0.888 | 0.965 / 3 / 0.888 |
+  | R: second held-out set, coverage / median size / meter | 0.965 / 3 / 0.955 | 0.970 / 3 / 0.956 |
+  | R: 12 tapped tracks on the ladder | 12 | 12 (the same ladders) |
+  | R: negatives of 2026-11-12 empty | 120 of 120 | 118 of 120 (98.3%, 95% CI 94.1 to 99.8%) |
+  | N: fresh negatives non-empty | 0 of 120 | 2 of 120 (1.7%, 95% CI 0.2 to 5.9%) |
+  | J: fresh jitter set, beat on the ladder | 189 of 300 (63.0%) | 264 of 300 (88.0%, 95% CI 83.8 to 91.5%) |
+
+  - **H1 holds, H2 holds, H3 fails** (88.0% against the target of 90%, 6 tracks short); H4 needs the new live set.
+  - the four non-empty v2 ladders on negatives are random clicks (2) and pink noise (2), one level each except one; v1 had none. This is close to the 1% per test that a calibrated alpha allows, where the sigma rule was more conservative (as calib-001 found).
+- **Decision, by the rule fixed before the run:** H3 fails, so **v2 is not adopted**: `pts/ladder.py` keeps the v1 confirmation, and v2 stays an experiment. By the same rule, the surrogate p is to be reported on each level as evidence (a separate, small step, not done yet).
+- **What this shows:** the calibrated confirmation with lag-proportional smoothing recovers jittered beats much better (63% to 88% at 40 to 120 BPM with 3 to 6% jitter) at the cost of about 1.7% false ladders on noise, and it leaves the studio and groove results unchanged. It does not reach the target set before the run, and on the live dev set it adds one track of 16. The live misses are dominated by causes outside this step: groupings without an accent, sparse pulses, and voice or soft onsets.
+- **The new live set (check L) is still worth tapping:** it is the held-out material for the next candidate, not for v2.

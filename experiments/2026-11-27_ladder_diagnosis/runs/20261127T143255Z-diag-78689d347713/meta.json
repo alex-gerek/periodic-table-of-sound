@@ -1,0 +1,22 @@
+{
+ "run_id": "20261127T143255Z-diag-78689d347713",
+ "label": "diag",
+ "started_utc": "2026-11-27T14:32:55.249436+00:00",
+ "revision": "78689d347713",
+ "local_changes": false,
+ "diff_sha256": null,
+ "command": [
+  "diagnose.py",
+  "diag"
+ ],
+ "python": "3.14.3",
+ "numpy": "2.4.2",
+ "code_sha256": {
+  "diagnose.py": "5ded295620650ca85de211b03985a6bd960a03a9a5ab457ddbb046256a410c34"
+ },
+ "pts_env": {
+  "PTS_TAPPING_DIR": "cae05ce0776ddf78"
+ },
+ "outcome": "completed",
+ "ended_utc": "2026-11-27T14:34:21.449014+00:00"
+}

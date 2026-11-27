@@ -1,0 +1,26 @@
+{
+ "run_id": "20261127T155142Z-final-f1fed4301ab7",
+ "label": "final",
+ "started_utc": "2026-11-27T15:51:42.291453+00:00",
+ "revision": "f1fed4301ab7",
+ "local_changes": false,
+ "diff_sha256": null,
+ "command": [
+  "holdout.py",
+  "final",
+  "7"
+ ],
+ "python": "3.14.3",
+ "numpy": "2.4.2",
+ "code_sha256": {
+  "dev_sweep.py": "550ca2bda07b6662a5f6208da3c53c0d6028fc131dbf32e824d3c900b4768ec2",
+  "holdout.py": "12b36843d647c59a4adaa34360750bcd1cf4b9497083849b5d31ef7f6d3e65c6",
+  "ladder_v2.py": "4d8791ead5698b142cca634a7331be949c358cdb552ddde852ede03901ab577e"
+ },
+ "pts_env": {
+  "PTS_METRO_STEMS": "ea41d9eb691472f7",
+  "PTS_TAPPING_DIR": "ec5477b6a44053d1"
+ },
+ "outcome": "completed",
+ "ended_utc": "2026-11-27T16:15:27.888258+00:00"
+}

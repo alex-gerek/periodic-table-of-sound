@@ -1,0 +1,64 @@
+1/936 done (22 s)
+2/936 done (22 s)
+3/936 done (45 s)
+4/936 done (45 s)
+5/936 done (60 s)
+6/936 done (60 s)
+7/936 done (60 s)
+8/936 done (60 s)
+9/936 done (60 s)
+10/936 done (60 s)
+11/936 done (60 s)
+12/936 done (60 s)
+13/936 done (65 s)
+14/936 done (65 s)
+15/936 done (65 s)
+16/936 done (65 s)
+50/936 done (65 s)
+100/936 done (100 s)
+150/936 done (163 s)
+200/936 done (336 s)
+250/936 done (521 s)
+300/936 done (702 s)
+350/936 done (838 s)
+400/936 done (931 s)
+450/936 done (1045 s)
+concurrent.futures.process._RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Python314\Lib\concurrent\futures\process.py", line 254, in _process_worker
+    r = call_item.fn(*call_item.args, **call_item.kwargs)
+  File "C:\Python314\Lib\concurrent\futures\process.py", line 203, in _process_chunk
+    return [fn(*args) for args in chunk]
+            ~~^^^^^^^
+  File "<repo>\experiments\2026-11-27_ladder_v2\dev_sweep.py", line 79, in job
+    x, sr, beat, d = click_track(key)
+                     ~~~~~~~~~~~^^^^^
+  File "<repo>\experiments\2026-11-27_ladder_v2\dev_sweep.py", line 58, in click_track
+    x[a:a + len(seg)] += g * seg
+ValueError: operands could not be broadcast together with shapes (0,) (2,) (0,) 
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<repo>\experiments\runlog.py", line 88, in run_folder
+    yield run
+  File "<repo>\experiments\2026-11-27_ladder_v2\dev_sweep.py", line 130, in main
+    for i, (kind, key, d, out) in enumerate(ex.map(job, items, chunksize=2)):
+                                  ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\concurrent\futures\process.py", line 617, in _chain_from_iterable_of_lists
+    for element in iterable:
+                   ^^^^^^^^
+  File "C:\Python314\Lib\concurrent\futures\_base.py", line 639, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Python314\Lib\concurrent\futures\_base.py", line 311, in _result_or_cancel
+    return fut.result(timeout)
+           ~~~~~~~~~~^^^^^^^^^
+  File "C:\Python314\Lib\concurrent\futures\_base.py", line 443, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\concurrent\futures\_base.py", line 395, in __get_result
+    raise self._exception
+ValueError: operands could not be broadcast together with shapes (0,) (2,) (0,) 

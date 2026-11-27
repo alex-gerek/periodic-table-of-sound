@@ -1,0 +1,34 @@
+# Ladder v2, development sweep
+
+Run `20261127T151356Z-dev-748d5c56ea51`, 2140 s.
+
+| Arm | Dev grooves: coverage (seeded) | median size | meter (baseline) | Dev negatives non-empty | Live dev on ladder | Clicks on ladder | Clicks, 5% jitter | Qualifies |
+|---|---|---|---|---|---|---|---|---|
+| v1 | 0.980 (200) | 2 | 0.925 (0.662) | 0 of 120 (0.0%, 95% CI 0.0 to 3.0%) | 6/16 | 502 of 600 (83.7%, 95% CI 80.5 to 86.5%) | 56 of 85 (65.9%, 95% CI 54.8 to 75.8%) | — |
+| v2a | 0.985 (200) | 3 | 0.925 (0.662) | 1 of 120 (0.8%, 95% CI 0.0 to 4.6%) | 7/16 | 502 of 600 (83.7%, 95% CI 80.5 to 86.5%) | 60 of 85 (70.6%, 95% CI 59.7 to 80.0%) | yes |
+| v2b_0.01 | 0.985 (200) | 3 | 0.925 (0.662) | 1 of 120 (0.8%, 95% CI 0.0 to 4.6%) | 7/16 | 531 of 600 (88.5%, 95% CI 85.7 to 90.9%) | 63 of 85 (74.1%, 95% CI 63.5 to 83.0%) | yes |
+| v2b_0.02 | 0.985 (200) | 3 | 0.925 (0.662) | 1 of 120 (0.8%, 95% CI 0.0 to 4.6%) | 7/16 | 560 of 600 (93.3%, 95% CI 91.0 to 95.2%) | 74 of 85 (87.1%, 95% CI 78.0 to 93.4%) | yes |
+| v2b_0.03 | 0.985 (200) | 3 | 0.925 (0.662) | 0 of 120 (0.0%, 95% CI 0.0 to 3.0%) | 6/16 | 570 of 600 (95.0%, 95% CI 92.9 to 96.6%) | 78 of 85 (91.8%, 95% CI 83.8 to 96.6%) | no (loses track_20) |
+
+**Chosen by the selection rule:** v2b_0.02.
+
+## Live dev tracks
+
+| Track | Tapped BPM | v1 | v2a | v2b_0.01 | v2b_0.02 | v2b_0.03 |
+|---|---|---|---|---|---|---|
+| track_01 391806__martineerok__folkfestival-indoor | [65.0] | [np.float64(198.6)] | [np.float64(198.6)] | [np.float64(198.6)] | [np.float64(198.6)] | [np.float64(198.6)] |
+| track_02 king-oliver_working-man-blues_1923.flac | [56.3] | [] | [] | [] | [] | [] |
+| track_04 171092__ondrosik__body_rhythm.wav | [109.1] | **on** [np.float64(219.2), np.float64(109.6)] | **on** [np.float64(219.2), np.float64(109.6)] | **on** [np.float64(219.2), np.float64(109.6)] | **on** [np.float64(219.2), np.float64(109.6)] | **on** [np.float64(219.2), np.float64(109.6)] |
+| track_05 451425__kyles__ganpati-celebration-on-be | [127.6] | [] | **on** [250.0, np.float64(124.0)] | **on** [250.0, np.float64(124.0)] | **on** [250.0, np.float64(124.0)] | **on** [250.0, np.float64(124.0)] |
+| track_06 486407__martineerok__ottoman-taksim-musi | [105.2] | [np.float64(54.2), np.float64(18.1)] | [np.float64(54.2), np.float64(18.1)] | [np.float64(54.2), np.float64(18.1)] | [np.float64(54.2), np.float64(18.1)] | [np.float64(54.2)] |
+| track_08 185552__rtb45__brass-wedding-band-china. | [122.3, 60.4] | **on** [250.6, np.float64(120.9), np.float64(60.5), np.float64(20.2)] | **on** [250.6, np.float64(120.9), np.float64(60.5), np.float64(20.2)] | **on** [250.6, np.float64(120.9), np.float64(60.5), np.float64(20.2)] | **on** [250.6, np.float64(120.9), np.float64(60.5), np.float64(20.2)] | **on** [250.6, np.float64(120.9), np.float64(60.5), np.float64(20.2)] |
+| track_10 lex_claps_only.wav | [47.9] | [] | [] | [] | [] | [] |
+| track_11 812937__zachrau__school-marching-band-in | [52.7] | **on** [np.float64(53.7)] | **on** [109.3, np.float64(53.7)] | **on** [109.3, np.float64(53.7)] | **on** [109.3, np.float64(53.7)] | **on** [222.7, 109.3, np.float64(53.7)] |
+| track_12 nork_tin-root-blues_1923.flac | [53.3] | [] | [] | [] | [] | [] |
+| track_13 tsalapishko_krivo_horo_gerganov.ogg | [77.6] | [] | [] | [] | [] | [] |
+| track_14 110333__tomlija__traditional-eastern-ins | [98.8] | [387.1, np.float64(189.1)] | [387.1, np.float64(189.1)] | [387.1, np.float64(189.1)] | [387.1, np.float64(189.1)] | [387.1, np.float64(189.1)] |
+| track_15 772213__kevp888__241130_153241_fr_marchi | [99.9] | **on** [np.float64(197.6), np.float64(98.8)] | **on** [np.float64(197.6), np.float64(98.8)] | **on** [np.float64(197.6), np.float64(98.8)] | **on** [np.float64(197.6), np.float64(98.8)] | **on** [np.float64(197.6), np.float64(98.8)] |
+| track_17 819225__studioste__irish-trad-music-navv | [112.0] | [705.9, np.float64(220.4)] | [923.1, 428.6, np.float64(220.4)] | [923.1, 428.6, np.float64(220.4)] | [923.1, 428.6, np.float64(220.4)] | [923.1, 428.6, np.float64(220.4)] |
+| track_18 755187__kevp888__240815_140056_fr_marchi | [112.0] | **on** [np.float64(112.3)] | **on** [np.float64(112.3)] | **on** [np.float64(112.3)] | **on** [np.float64(112.3)] | **on** [np.float64(112.3)] |
+| track_19 lex_voice_free.wav | [49.1] | [] | [] | [] | [] | [] |
+| track_20 nork_da-da-strain_1923.flac | [78.9] | **on** [np.float64(78.4)] | **on** [np.float64(78.4)] | **on** [155.8, np.float64(78.4)] | **on** [155.8, np.float64(78.4)] | [] |
