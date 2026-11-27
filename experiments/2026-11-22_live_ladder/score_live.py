@@ -69,8 +69,8 @@ def pass_cycle(p):
 def label(passes):
     if any(p.get("no_steady_beat") for p in passes.values()):
         return {"status": "none"}
-    per = [x for x in (pass_period(passes[k]) for k in sorted(passes)) if x]
-    cyc = [c for c in (None if pass_period(passes[k]) else pass_cycle(passes[k]) for k in sorted(passes)) if c]
+    per = [x for x in (pass_period(passes[k]) for k in sorted(passes, key=int)) if x]
+    cyc = [c for c in (None if pass_period(passes[k]) else pass_cycle(passes[k]) for k in sorted(passes, key=int)) if c]
     for i, a in enumerate(cyc):
         for b in cyc[i + 1:]:
             if a["k"] == b["k"] and max(a["cycle_s"], b["cycle_s"]) / min(a["cycle_s"], b["cycle_s"]) - 1 <= AGREE:

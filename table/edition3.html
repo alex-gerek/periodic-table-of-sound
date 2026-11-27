@@ -770,7 +770,7 @@ const CARDS = {
    ],
    "limits": [
     "Which level is the beat depends on the listener: half time, the bar of a waltz, or the dotted beat of 6/8. So the table reports the whole ladder of levels, not one beat.",
-    "Checked on synthetic grooves and on our own Suno tracks; the check on live musicians is pre-registered and waiting for taps."
+    "On live musicians it fails: the tapped beat is on the ladder of 30 s excerpts in only 6 of 16 tracks, and 7 ladders are empty on clear beats, from a solo clapper to 1923 jazz (issue #41). The ladder is validated on studio grooves only."
    ],
    "links": [
     [
@@ -1295,7 +1295,7 @@ const CARDS = {
 // CARDS:END
 const REPO = "https://github.com/alex-gerek/periodic-table-of-sound/blob/main/";
 const LAB = location.pathname.includes("/standalone/") ? "../../lab/" : "../lab/";
-const STATUS_ICON = {true: "✓ came true", partly: "✓ partly", false: "✗ did not come true", waiting: "🔮 waiting for a test"};
+const STATUS_ICON = {true: "✓ came true", partly: "✓ partly", false: "✗ did not come true", waiting: "🔮 waiting for a test", "not testable": "– not testable"};
 function cardChart(c) {
   const W = 760, rowH = 34, top = c.band ? 44 : 30, left = 250, right = 120, H = top + c.rows.length * rowH + 34;
   const x = v => left + (v - c.lo) / (c.hi - c.lo) * (W - left - right);
@@ -1530,22 +1530,38 @@ const PREDICTIONS = [
   "ci": "final grooves, meter right: 79 of 89 (88.8%, 95% CI 80.3 to 94.5%); always 2 on the same: 56 of 89 (62.9%, 95% CI 52.0 to 72.9%); second set, meter right: 64 of 67 (95.5%, 95% CI 87.5 to 99.1%); always 2 on the same: 49 of 67 (73.1%, 95% CI 60.9 to 83.2%)"
  },
  {
-  "status": "waiting",
+  "status": "false",
   "el": "Pu",
   "text": "On live musicians the ladder holds the tapped beat on at least 80% of tracks.",
-  "evidence": "Pre-registered on 2026-11-22 for 17 live recordings: bands, a folk festival, 1923 jazz, a work song. Waiting for the taps."
+  "evidence": "Pre-registered on 2026-11-22 (80%). On 2026-11-27 the tapped beat was on the excerpt ladder in 6 of 16 labelled tracks, 8 of 16 on whole recordings; 7 excerpt ladders were empty on clear beats (issue #41).",
+  "link": "experiments/2026-11-22_live_ladder/",
+  "rates": [
+   [
+    "excerpts with the tapped beat on the ladder",
+    6,
+    16
+   ],
+   [
+    "whole recordings",
+    8,
+    16
+   ]
+  ],
+  "ci": "excerpts with the tapped beat on the ladder: 6 of 16 (37.5%, 95% CI 15.2 to 64.6%); whole recordings: 8 of 16 (50.0%, 95% CI 24.7 to 75.3%)"
  },
  {
-  "status": "waiting",
+  "status": "partly",
   "el": "Pu",
   "text": "On free improvisation and on room noise the ladder stays empty.",
-  "evidence": "Pre-registered on 2026-11-22: a violin improvisation, a taksim soundcheck, and 19 s of festival room sound. Waiting for the taps."
+  "evidence": "Pre-registered on 2026-11-22. The violin improvisation and the room sound are empty; the taksim soundcheck gave 54 BPM, and the listener tapped a steady beat in it (issue #41).",
+  "link": "experiments/2026-11-22_live_ladder/"
  },
  {
-  "status": "waiting",
+  "status": "not testable",
   "el": "Me",
   "text": "On a crooked Bulgarian dance (krivo horo) the ladder finds no grouping by 2 or by 3 above the beat: it says nothing rather than a wrong meter.",
-  "evidence": "Written on 2026-11-25, before any tap or run on it. Waiting for the taps."
+  "evidence": "Written on 2026-11-25. The listener tapped an even pulse and the excerpt ladder was empty, so there is no level above the beat to judge (2026-11-27).",
+  "link": "experiments/2026-11-22_live_ladder/"
  },
  {
   "status": "waiting",
@@ -1612,11 +1628,11 @@ const PREDICTIONS = [
 (function () {
   const box = document.getElementById("score"); if (!box) return;
   const n = st => PREDICTIONS.filter(p => p.status === st).length;
-  const ICON = { true: "✓", partly: "◐", false: "✗", waiting: "🔮" };
+  const ICON = { true: "✓", partly: "◐", false: "✗", waiting: "🔮", "not testable": "–" };
   const name = k => k.startsWith("gap:") ? k.slice(4) : (byS[k] ? byS[k].name : k);
   box.innerHTML = `<details class="score"><summary><b>Predictions</b>
       <span class="n">${PREDICTIONS.length} made</span><span class="n">✓ ${n("true")} came true</span><span class="n">◐ ${n("partly")} partly</span>
-      <span class="n">✗ ${n("false")} did not</span><span class="n">🔮 ${n("waiting")} waiting</span>
+      <span class="n">✗ ${n("false")} did not</span><span class="n">🔮 ${n("waiting")} waiting</span>${n("not testable") ? `<span class="n">– ${n("not testable")} not testable</span>` : ""}
       <span class="hint">Only predictions written down before their test are counted. Click to see each one and its evidence.</span></summary>
     <ol>${PREDICTIONS.map(p => `<li>${ICON[p.status]} ${p.text}<button class="chip" data-el="${p.el}">${name(p.el)}</button>
       <small>${p.evidence}${p.link ? ` <a href="${REPO}${p.link}" target="_blank" rel="noopener">evidence</a>` : ""}</small>${p.ci ? `<small class="ci">Counts with exact 95% intervals: ${p.ci}.</small>` : ""}</li>`).join("")}</ol></details>`;

@@ -59,7 +59,7 @@ const CARDS = {};
 // CARDS:END
 const REPO = "https://github.com/alex-gerek/periodic-table-of-sound/blob/main/";
 const LAB = location.pathname.includes("/standalone/") ? "../../lab/" : "../lab/";
-const STATUS_ICON = {true: "✓ came true", partly: "✓ partly", false: "✗ did not come true", waiting: "🔮 waiting for a test"};
+const STATUS_ICON = {true: "✓ came true", partly: "✓ partly", false: "✗ did not come true", waiting: "🔮 waiting for a test", "not testable": "– not testable"};
 function cardChart(c) {
   const W = 760, rowH = 34, top = c.band ? 44 : 30, left = 250, right = 120, H = top + c.rows.length * rowH + 34;
   const x = v => left + (v - c.lo) / (c.hi - c.lo) * (W - left - right);
@@ -142,11 +142,11 @@ const PREDICTIONS = [];
 (function () {
   const box = document.getElementById("score"); if (!box) return;
   const n = st => PREDICTIONS.filter(p => p.status === st).length;
-  const ICON = { true: "✓", partly: "◐", false: "✗", waiting: "🔮" };
+  const ICON = { true: "✓", partly: "◐", false: "✗", waiting: "🔮", "not testable": "–" };
   const name = k => k.startsWith("gap:") ? k.slice(4) : (byS[k] ? byS[k].name : k);
   box.innerHTML = `<details class="score"><summary><b>Predictions</b>
       <span class="n">${PREDICTIONS.length} made</span><span class="n">✓ ${n("true")} came true</span><span class="n">◐ ${n("partly")} partly</span>
-      <span class="n">✗ ${n("false")} did not</span><span class="n">🔮 ${n("waiting")} waiting</span>
+      <span class="n">✗ ${n("false")} did not</span><span class="n">🔮 ${n("waiting")} waiting</span>${n("not testable") ? `<span class="n">– ${n("not testable")} not testable</span>` : ""}
       <span class="hint">Only predictions written down before their test are counted. Click to see each one and its evidence.</span></summary>
     <ol>${PREDICTIONS.map(p => `<li>${ICON[p.status]} ${p.text}<button class="chip" data-el="${p.el}">${name(p.el)}</button>
       <small>${p.evidence}${p.link ? ` <a href="${REPO}${p.link}" target="_blank" rel="noopener">evidence</a>` : ""}</small>${p.ci ? `<small class="ci">Counts with exact 95% intervals: ${p.ci}.</small>` : ""}</li>`).join("")}</ol></details>`;

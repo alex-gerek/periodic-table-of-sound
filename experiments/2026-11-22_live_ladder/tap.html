@@ -121,7 +121,7 @@ function select(id) {
   tb.addEventListener("pointerdown", ev => { ev.preventDefault(); tap(); });
 }
 async function start() {
-  if (playing || passNo > 4) return;
+  if (playing || passNo > 8) return;   // up to 8 passes (raised from 4 on 2026-11-27)
   ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
   await ctx.resume();
   $("msg").textContent = "Loading…";

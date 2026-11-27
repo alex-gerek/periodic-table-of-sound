@@ -17,6 +17,9 @@ DATA = os.environ.get("PTS_TAPPING_DIR")
 if not DATA or not os.path.isdir(os.path.join(DATA, "audio")):
     raise SystemExit("set PTS_TAPPING_DIR to the folder that holds audio/track_NN.wav")
 TAPS = os.path.join(DATA, "taps.json")
+# up to 8 passes per track (raised from 4 on 2026-11-27 while tapping: a fifth pass on a track
+# whose passes did not agree, and the "No steady beat" answer after them, could not be saved)
+MAX_PASSES = 8
 
 
 def load():
@@ -65,7 +68,7 @@ class Handler(SimpleHTTPRequestHandler):
             return self._json({"error": "not found"}, 404)
         rec = json.loads(self.rfile.read(int(self.headers.get("Content-Length", 0))))
         tid, key = str(rec.get("id")), str(rec.get("pass"))
-        if not tid.startswith("track_") or key not in ("1", "2", "3", "4"):
+        if not tid.startswith("track_") or key not in tuple(str(i) for i in range(1, MAX_PASSES + 1)):
             return self._json({"error": "bad record"}, 400)
         taps = load()
         taps.setdefault(tid, {})[key] = {"taps_s": rec.get("taps_s", []), "no_steady_beat": bool(rec.get("no_steady_beat")),
