@@ -78,3 +78,13 @@ def test_core_matches_the_evaluated_copy():
     for seed in (0, 7, 21):
         x, _, _ = B.groove(seed)
         assert L.ladder(x, SR) == E.ladder(x, SR)
+
+
+def test_level_p_is_evidence_only():
+    """level_p adds a surrogate p to every level and changes nothing else (step 2026-11-27-ladder-003)."""
+    x = clicks(0.5, 3)
+    plain = L.ladder(x, SR)
+    with_p = L.ladder(x, SR, level_p=True, p_k=39)
+    assert [{k: v for k, v in lv.items() if k != "p"} for lv in with_p] == plain
+    assert all(0.0 < lv["p"] <= 1.0 for lv in with_p)
+    assert with_p[[lv["role"] for lv in with_p].index("seed")]["p"] == 1 / 40   # a clear beat sits at the floor

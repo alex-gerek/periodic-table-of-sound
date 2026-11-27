@@ -570,6 +570,32 @@ def surrogate_p(track, fs, tau_lo, tau_hi, corr=None, n_mult=None, k: int = 199,
             "null_median": float(np.median(null)), "null_max": float(np.max(null))}
 
 
+def surrogate_p_at(track, fs, tau, tau_lo, corr=None, k: int = 199, seed: int = 0) -> dict:
+    """surrogate_p for a lag fixed in advance (a ladder level): S at tau, against k shuffles.
+
+    S is the statistic of confirmation_statistic, taken at tau (peak within 2%) instead of after a
+    search; the shuffles are the same pieces of tau_lo/3 to tau_lo (journal step 2026-11-27-ladder-003).
+    """
+    from .stats import conformal_p, shuffle_pieces
+    corr = corr or autocorr
+    track = np.asarray(track, dtype=np.float64)
+
+    def stat(t):
+        c = confirm_period(t, fs, Periodicity(tau, 0.0), tau_lo, corr, z_min=0.0, min_reps=0.0)
+        ev = c.evidence
+        if "significance" not in ev:
+            return 0.0
+        return float(min(ev["significance"], ev["return"], np.sqrt(2.0) * min(ev["significance_halves"])))
+
+    s_obs = stat(track)
+    lo = max(1, int(round(tau_lo * fs / 3)))
+    hi = max(lo, int(round(tau_lo * fs)))
+    rng = np.random.default_rng(seed)
+    null = [stat(shuffle_pieces(track, rng, lo, hi)) for _ in range(k)]
+    return {"statistic": s_obs, "p": conformal_p(s_obs, null), "k": k,
+            "null_median": float(np.median(null)), "null_max": float(np.max(null))}
+
+
 def verdict(confirmed) -> str:
     """How a report must show a period: "confirmed", "not confirmed" or "not tested".
 

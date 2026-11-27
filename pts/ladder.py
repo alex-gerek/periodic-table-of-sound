@@ -7,6 +7,7 @@ the dotted beat of 6/8), and the ladder holds all of them.
 
     from pts.ladder import ladder, on_ladder
     levels = ladder(x, sr)   # [{"tau": s, "step": k or None, "z": evidence, "role": seed | division | grouping}]
+    levels = ladder(x, sr, level_p=True)   # each level also gets "p", its surrogate p (evidence only)
 
 Frozen on 2026-11-13 after the held-out check: coverage 0.965 on both held-out groove sets,
 12 of 12 tapped tracks, meter 0.888 and 0.955 against baselines 0.629 and 0.731, all 120
@@ -93,7 +94,10 @@ def _at(r, lag):
     return P._peak_near(r, lag)
 
 
-def ladder(x, sr, z_acc=None):
+def ladder(x, sr, z_acc=None, level_p=False, p_k=199, p_seed=0):
+    """The ladder of x. With level_p, every level also carries its surrogate p (p_k shuffles, seed p_seed):
+    reported evidence only, the levels themselves are decided by the frozen sigma rule
+    (journal steps 2026-11-27-ladder-002 and -003)."""
     z_acc = Z_ACC if z_acc is None else z_acc
     x = P.mono(np.asarray(x, dtype=np.float64))
     env, fs = P.onset_envelope(x, sr)
@@ -103,6 +107,7 @@ def ladder(x, sr, z_acc=None):
     n = len(env)
     r = P.autocorr(env, int(LEVEL_MAX * 1.05 * fs) + 2)
     levels = [{"tau": seed.tau, "step": None, "z": seed.evidence["significance"], "role": "seed"}]
+    where = [None]                                # envelope each level was confirmed in (for level_p)
 
     hi, _ = high_envelope(x, sr)
     tracks = [(e, P.autocorr(e, int(SEED_HI * 1.05 * fs) + 2)) for e in (env, hi)]
@@ -119,11 +124,12 @@ def ladder(x, sr, z_acc=None):
                     continue                      # a bump inside one event, not a level of its own
                 c = _confirm(e, fs, pos / fs)
                 if c.confirmed and (best is None or c.evidence["significance"] > best[2]):
-                    best = (k, pos / fs, c.evidence["significance"])
+                    best = (k, pos / fs, c.evidence["significance"], e)
         if best is None:
             break
-        k, l, z = best
+        k, l, z, e_div = best
         levels.insert(0, {"tau": l, "step": k, "z": z, "role": "division"})
+        where.insert(0, e_div)
 
     feats = band_envelopes(x, sr)
     l = seed.tau                                  # up: groupings by 2 or by 3, from the accents
@@ -139,6 +145,13 @@ def ladder(x, sr, z_acc=None):
             break
         k, l, z = best
         levels.append({"tau": l, "step": k, "z": z, "role": "grouping"})
+        where.append(env)
+    if level_p:
+        for lv, e in zip(levels, where):
+            if e is None:
+                lv["p"] = P.surrogate_p(env, fs, SEED_LO, SEED_HI, P.autocorr, k=p_k, seed=p_seed)["p"]
+            else:
+                lv["p"] = P.surrogate_p_at(e, fs, lv["tau"], min(SEED_LO, 0.5 * lv["tau"]), P.autocorr, k=p_k, seed=p_seed)["p"]
     return levels
 
 
