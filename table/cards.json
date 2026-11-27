@@ -260,7 +260,7 @@
    ],
    "limits": [
     "Which level is the beat depends on the listener: half time, the bar of a waltz, or the dotted beat of 6/8. So the table reports the whole ladder of levels, not one beat.",
-    "Checked on synthetic grooves and on our own Suno tracks; the check on live musicians is pre-registered and waiting for taps."
+    "On live musicians it fails: the tapped beat is on the ladder of 30 s excerpts in only 6 of 16 tracks, and 7 ladders are empty on clear beats, from a solo clapper to 1923 jazz (issue #41). The ladder is validated on studio grooves only."
    ],
    "links": [
     [
