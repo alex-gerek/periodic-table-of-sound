@@ -1,0 +1,42 @@
+50/952 done (295 s)
+100/952 done (295 s)
+150/952 done (295 s)
+200/952 done (295 s)
+250/952 done (295 s)
+300/952 done (318 s)
+350/952 done (366 s)
+400/952 done (413 s)
+450/952 done (469 s)
+500/952 done (721 s)
+550/952 done (927 s)
+600/952 done (1112 s)
+650/952 done (1212 s)
+700/952 done (1246 s)
+750/952 done (1288 s)
+800/952 done (1321 s)
+850/952 done (1358 s)
+900/952 done (1393 s)
+950/952 done (1425 s)
+# Ladder v2, held-out checks R, N, J
+
+Run `20261127T155142Z-final-f1fed4301ab7`, 1425 s.
+
+| | v1 | v2 |
+|---|---|---|
+| final: coverage | 0.965 | 0.965 |
+| final: median_size | 3 | 3 |
+| final: meter_acc | 0.888 | 0.888 |
+| final: meter baseline, n | 0.629, 89 | 0.629, 89 |
+| holdout_b: coverage | 0.965 | 0.970 |
+| holdout_b: median_size | 3 | 3 |
+| holdout_b: meter_acc | 0.955 | 0.956 |
+| holdout_b: meter baseline, n | 0.731, 67 | 0.721, 68 |
+| tapped tracks on the ladder | 12/12 | 12/12 |
+| R negatives empty | 120 of 120 (100.0%, 95% CI 97.0 to 100.0%) | 118 of 120 (98.3%, 95% CI 94.1 to 99.8%) |
+| N fresh negatives non-empty | 0 of 120 (0.0%, 95% CI 0.0 to 3.0%) | 2 of 120 (1.7%, 95% CI 0.2 to 5.9%) |
+| J jitter set, beat on the ladder | 189 of 300 (63.0%, 95% CI 57.3 to 68.5%) | 264 of 300 (88.0%, 95% CI 83.8 to 91.5%) |
+
+**v2:** H1 (R) holds, H2 (N) holds, H3 (J) fails. H4 waits for the new live set.
+
+Non-empty v2 ladders on negatives: seed 8 (random clicks): [np.float64(55.5)]; seed 14 (random clicks): [np.float64(143.2)]; seed 3007 (pink noise): [np.float64(193.0)]; seed 3079 (pink noise): [481.1, np.float64(155.4)].
+

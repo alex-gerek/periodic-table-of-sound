@@ -1,0 +1,25 @@
+{
+ "run_id": "20261127T145332Z-dev-aefc16f82893",
+ "label": "dev",
+ "started_utc": "2026-11-27T14:53:32.479956+00:00",
+ "revision": "aefc16f82893",
+ "local_changes": false,
+ "diff_sha256": null,
+ "command": [
+  "dev_sweep.py",
+  "dev",
+  "7"
+ ],
+ "python": "3.14.3",
+ "numpy": "2.4.2",
+ "code_sha256": {
+  "dev_sweep.py": "a50afe7bf091d667eee590e4469e6597ae47ba2bdfa4106cf3ab4d9bed33d15c",
+  "ladder_v2.py": "798167bbd0be54aff0ca26eda6d7faef324cc678fcbc9bebbe655b7b63348c0b"
+ },
+ "pts_env": {
+  "PTS_TAPPING_DIR": "cae05ce0776ddf78"
+ },
+ "outcome": "crashed",
+ "error": "ValueError: operands could not be broadcast together with shapes (0,) (2,) (0,)",
+ "ended_utc": "2026-11-27T15:13:25.272049+00:00"
+}
